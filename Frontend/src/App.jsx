@@ -26,7 +26,7 @@ const App = () => {
       experience_video: <img className='object-cover min-w-full min-h-full rounded-xl' src="/img/SURFTRIP-3.jpg"></img>,
       experience_instructor: 'Emiliano Gutiérrez',
       experience_instructor_type: 'Instructor',
-      experience_instructor_evaluation: '30 recomendaciones',
+      experience_instructor_evaluation: '30',
       experience_instructor_description: 'Instructor con más de 20 años de experiencia, experto en las condiciones climáticas y geográficas del lugar. Reconocido en el pueblo por su amabilidad y profesionalismo. Es el instructor oficial de la zona.',
       experience_instructor_img: <img className='object-cover min-w-full min-h-full' src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSyY_UEhEDiRsFfMpMQ-pJNk6GiZye7LWLBw&usqp=CAU'></img>,
       experience_included: [

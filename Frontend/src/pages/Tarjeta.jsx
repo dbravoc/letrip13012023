@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import { CheckIcon } from '@heroicons/react/20/solid'
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+import { faHeart } from '@fortawesome/free-solid-svg-icons';
 
 
 
@@ -60,7 +61,7 @@ const Tarjeta = ({ experienceCard }) => {
             </div>
 
             <div>
-                <p className=' text-base font-semibold leading-6 text-gray-900'>{selectedExperience.experience_instructor_evaluation}</p>
+                <p className=' text-base font-semibold leading-6 text-gray-900'>{selectedExperience.experience_instructor_evaluation}<FontAwesomeIcon icon={faHeart} /></p>
             </div>
          </div>
 
