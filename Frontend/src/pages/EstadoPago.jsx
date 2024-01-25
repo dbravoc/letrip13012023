@@ -17,7 +17,7 @@ const FormularioPago = ({ experienceCard }) => {
       { name: 'Ubicación', description: selectedExperience.experience_location },
       { name: 'País', description: selectedExperience.experience_country },
       { name: 'Disciplina Principal', description: selectedExperience.experience_main_discipline },
-      { name: 'Monto a pagar', description: `${selectedExperience.experience_price_from} USD` },
+      { name: 'Monto a pagar', description: `${selectedExperience.experience_price} USD` },
       { name: 'Estado de reserva', description: <strong>"Estamos validando tu pago, te enviaremos un mail. Esto puede tardar máximo 1 hora"</strong>}
     ];
 

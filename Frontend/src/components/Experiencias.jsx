@@ -27,7 +27,7 @@ const Experiencias = ({ experienceCard }) => { // Aceptar experienceCard como pr
                   <div className="inline-flex items-center rounded-md bg-gray-500 mr-2 mb-1 px-2 py-1 text-xs font-medium text-gray-50 ring-1 ring-inset ring-gray-500/10">{experience.experience_main_discipline}</div>
                   <div className="inline-flex items-center rounded-md bg-gray-500 mr-2 mb-1 px-2 py-1 text-xs font-medium text-gray-50 ring-1 ring-inset ring-gray-500/10">{experience.experience_demand_level}</div>
                 </div>
-                <Link to={`/tarjeta/${experience.experience_id}`} className="mt-1 text-gray-700 bg-letrip focus:outline-none focus:text-black focus:bg-gray-50 focus:ring-offset-2 rounded-lg px-4 py-1 ease-in-out duration-50 text-center"><strong>{experience.experience_price_from}<span> USD por persona</span></strong></Link>
+                <Link to={`/tarjeta/${experience.experience_id}`} className="mt-1 text-gray-700 bg-letrip focus:outline-none focus:text-black focus:bg-gray-50 focus:ring-offset-2 rounded-lg px-4 py-1 ease-in-out duration-50 text-center"><strong>{experience.experience_price}<span> USD por persona</span></strong></Link>
               </div>
             </div>
           ))}

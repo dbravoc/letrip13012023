@@ -26,8 +26,24 @@ const Tarjeta = ({ experienceCard }) => {
     { name: 'Disciplina Principal', description: selectedExperience.experience_main_discipline },
     { name: 'Geografía', description: selectedExperience.experience_geography },
     { name: 'Nivel de exigencia', description: selectedExperience.experience_demand_level },
-    { name: 'Precio Desde', description: `${selectedExperience.experience_price_from} USD` },
+    { name: 'Precio Desde', description: `${selectedExperience.experience_price} USD` },
   ];
+
+  const included = [
+    {name: 'Clase práctica', value: selectedExperience.included_practical_lessons},
+    {name: 'Clase teórica', value: selectedExperience.included_theoretical_lessons},
+    {name: 'Yoga', value: selectedExperience.included_yoga},
+    {name: 'Entrenamiento', value: selectedExperience.included_training},
+    {name: 'Video experiencia', value: selectedExperience.included_experience_video},
+    {name: 'Seguro accidentes', value: selectedExperience.included_accident_insurance},
+    {name: 'Arriendo equipos', value: selectedExperience.included_equipment_rental},
+    {name: 'Entrada a parques y eventos', value: selectedExperience.included_entry_fees},
+    {name: 'Ticket de Andarivel', value: selectedExperience.included_lift_ticket},
+  ]
+
+  const includedList = included.filter(feature => feature.value === true);
+  const notIncludedList = included.filter(feature => feature.value === false);
+
 
   const handlePayment = () => {
     // Redireccionar a la nueva ruta
@@ -67,7 +83,7 @@ const Tarjeta = ({ experienceCard }) => {
          </div>
 
          <div>
-            <p className="text-sm py-5 leading-6 text-gray-900">{selectedExperience.experience_description_instructor_message}</p>
+            <p className="text-sm py-5 leading-6 text-gray-900">{selectedExperience.experience_instructor_message}</p>
         </div>
 
         <div>
@@ -104,10 +120,10 @@ const Tarjeta = ({ experienceCard }) => {
               role="list"
               className="mt-8 grid grid-cols-1 gap-4 text-sm leading-6 text-gray-700 sm:grid-cols-4 sm:gap-0"
             >
-            {selectedExperience.experience_included.map((feature) => (
-              <li key={feature} className="flex gap-x-3">
+            {includedList.map((feature, index) => (
+              <li key={index} className="flex gap-x-3">
                 <CheckIcon className="h-6 w-5 flex-none text-gray-900" aria-hidden="true" />
-                {feature}
+                {feature.name}
               </li>
             ))}
 
@@ -120,13 +136,12 @@ const Tarjeta = ({ experienceCard }) => {
               role="list"
               className="mt-8 grid grid-cols-1 gap-4 text-sm leading-6 text-gray-700 sm:grid-cols-4 sm:gap-0"
             >
-            {selectedExperience.experience_not_included.map((feature) => (
-              <li key={feature} className="flex gap-x-3">
+            {notIncludedList.map((feature, index) => (
+              <li key={index} className="flex gap-x-3">
                 <CheckIcon className="h-6 w-5 flex-none text-gray-900" aria-hidden="true" />
-                {feature}
+                {feature.name}
               </li>
             ))}
-
             </ul>
           </div>
           <div className="-mt-2 p-2 flex justify-center lg:mt-0 lg:w-full lg:max-w-md lg:flex-shrink-0">
