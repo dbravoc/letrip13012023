@@ -4,18 +4,19 @@ import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faWhatsapp } from '@fortawesome/free-brands-svg-icons';
-import { faBicycle, faFish, faPersonSkiing, faMountainSun, faSwimmer, faGolfBallTee, faWater,faPersonHiking } from '@fortawesome/free-solid-svg-icons';
-
+import { faBicycle, faFish, faPersonSkiing, faMountainSun, faSwimmer, faSpa, faWater,faPersonHiking } from '@fortawesome/free-solid-svg-icons';
+import logo from '../../public/img/letrip logo.png';
 
 const navigation = [
-  { name: 'Ciclismo', href: '#', current: true, icon: faBicycle},
-  { name: 'Pesca', href: '#', current: false, icon: faFish },
-  { name: 'Snowsports', href: '#', current: false, icon:faPersonSkiing },
-  { name: 'Trekking/Camping', href: '#', current: false, icon: faMountainSun },
-  { name: 'Buceo', href: '#', current: false, icon: faSwimmer },
-  { name: 'Golf', href: '#', current: false, icon:faGolfBallTee },
-  { name: 'Surf', href: '#', current: false, icon: faWater },
-  { name: 'Escalada', href: '#', current: false, icon: faPersonHiking },
+  { name: 'Ciclismo', href: '', current: true, icon: faBicycle},
+  { name: 'Pesca', href: '', current: false, icon: faFish },
+  { name: 'Snowsports', href: '', current: false, icon:faPersonSkiing },
+  { name: 'Trekking/Camping', href: '', current: false, icon: faMountainSun },
+  { name: 'Yoga', href: '', current: false, icon:faSpa },
+  { name: 'Surf', href: '', current: false, icon: faWater },
+  { name: 'Escalada', href: '', current: false, icon: faPersonHiking },
+  { name: 'Otros', href: '', current: false, icon: faSwimmer },
+
 ]
 
 export default function Inicio() {
@@ -24,12 +25,12 @@ export default function Inicio() {
   return (
     <div className="bg-white">
       <header className="absolute inset-x-0 top-0 z-50">
-        <nav className="flex items-center justify-between p-6" aria-label="Global">
+        <nav className="flex items-center justify-between px-20 py-10" aria-label="Global">
         <div className="flex lg:flex-1">
           <Link to="/">
             <img
               className="h-10 w-auto"
-              src="/img/letrip logo sin fondo.png"
+              src={logo}
               alt="Logo de LeTrip"
             />
           </Link>
@@ -41,25 +42,25 @@ export default function Inicio() {
               className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-black-50"
               onClick={() => setMobileMenuOpen(true)}
             >
-              <span className="sr-only">Open main menu</span>
+              <span className="sr-only">menu</span>
               <Bars3Icon className="h-6 w-6 text-black" aria-hidden="true" />
             </button>
           </div>
-          <div className=" hidden lg:flex lg:gap-x-1">
+          <div className=" hidden sm:flex sm:gap-x-1">
             {navigation.map((item) => (
-              <a key={item.name} href={item.href} className="text-gray-500 text-center focus:outline-none focus:text-black focus:text-xl rounded-lg px-4 py-2 m-1 transition-all ease-in-out duration-50">
+              <a key={item.name} href={item.href} className="text-gray-500 text-xs text-center focus:outline-none focus:text-black focus:text-base rounded-lg px-4 py-2 m-1 transition-all ease-in-out duration-50">
                   <div><FontAwesomeIcon icon={item.icon} /></div>
                   <div>{item.name}</div>
               </a>
             ))}
           </div>
           <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-            <a href="#" className="lg:text-sm lg:font-semibold lg:leading-6 lg:text-black-900">
-            <FontAwesomeIcon icon={faWhatsapp} className='text-3xl text-gray-700' />
+            <a href="https://wa.me/12028125753" className="text-xs sm:leading-6 text-black">
+            <span className='pr-2'>Conversemos</span> <FontAwesomeIcon icon={faWhatsapp} className='text-3xl text-black' />
             </a>
           </div>
         </nav>
-        <Dialog as="div" className="lg:hidden " open={mobileMenuOpen} onClose={setMobileMenuOpen}>
+        <Dialog as="div" className="sm:hidden " open={mobileMenuOpen} onClose={setMobileMenuOpen}>
           <div className="fixed inset-0 z-50  text-black-900" />
           <Dialog.Panel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-50/10">
             <div className="flex items-center justify-between">
@@ -67,7 +68,7 @@ export default function Inicio() {
                 <span className="sr-only">Le Trip</span>
                 <img
                   className="h-auto w-1"
-                  src="src/assets/img/letrip logo blanco.png"
+                  src={logo}
                   alt=""
                 />
               </a>

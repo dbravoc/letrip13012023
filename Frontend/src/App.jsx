@@ -4,6 +4,9 @@ import Inicio from './components/Inicio';
 import Experiencias from './components/Experiencias';
 import Tarjeta from './pages/Tarjeta';
 import FormularioPago from './pages/EstadoPago';
+import ExperienceForm from './pages/ExperienceForm';
+import IncludedNotIncluded from './components/IncludedNotIncluded';
+import AvailablesExperiences from './components/AvailablesExperiences';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 const App = () => {
@@ -28,12 +31,23 @@ const App = () => {
             </div>
           </>
         } />
+
+      <Route path="/create" element={
+          <>
+            <div className="bg-white mx-auto w-full sm:px-6 px-8">
+              <div className="flex flex-col justify-between flex-wrap"><ExperienceForm /></div>
+            </div>
+          </>
+        } />  
+
         
         <Route path="/tarjeta/:id" element={
           <>
-          <div className="bg-white mx-auto w-full sm:px-6 px-8">
+          <div className="bg-white mx-auto w-full">
             <div className="flex flex-col justify-between flex-wrap"><Inicio /></div>
-            <div className='pt-36 '><Tarjeta experienceCard={experienceCard} /></div>
+            <div className='pt-36'><Tarjeta experienceCard={experienceCard} /></div>
+            <div className='pt-20'><IncludedNotIncluded experienceCard={experienceCard} /></div>
+            <div className='pt-20'><AvailablesExperiences experienceCard={experienceCard} /></div>
           </div>
           </>
         } />
@@ -43,6 +57,7 @@ const App = () => {
           <div className="bg-white mx-auto w-full sm:px-6 px-8">
             <div className="flex flex-col justify-between flex-wrap"><Inicio /></div>
             <div className='pt-36 '><FormularioPago experienceCard={experienceCard} /></div>
+
           </div>
           </>
         } />

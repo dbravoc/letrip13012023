@@ -7,7 +7,7 @@ import { CheckIcon } from '@heroicons/react/20/solid';
 
 const FormularioPago = ({ experienceCard }) => {
   const { id } = useParams(); // Obtiene el ID de la URL
-  const selectedExperience = experienceCard.find(e => e.experience_id === id);
+  const selectedExperience = experienceCard.find(e => e.experience_uuid === id);
 
   if (!selectedExperience) {
     return <div>No se encontró la experiencia</div>;

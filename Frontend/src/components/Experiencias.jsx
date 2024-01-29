@@ -14,12 +14,12 @@ const Experiencias = ({ experienceCard }) => {
 
     return (
         <div>
-            <div className="mx-auto">
-                <div className="grid lg:grid-cols-4 sm:grid-cols-1 lg:gap-6 sm:gap-0">
+            <div className="mx-auto flex justify-center">
+                <div className="grid sm:grid-cols-3 grid-cols-1 sm:gap-6 gap-0">
                     {experienceCard.map(experience => (
-                        <div key={experience.experience_id} className="flex flex-col justify-center mb-10 md:flex-row rounded-lg overflow-hidden px-0">
+                        <div key={experience.experience_uuid} className="flex flex-col justify-center mb-10 md:flex-row rounded-lg overflow-hidden px-0">
                             <div className="flex max-w-[350px] flex-col justify-between leading-normal">
-                                <div>{experience.experience_video}</div>
+                                <img src={experience.card_img_1}></img>
                                 <p className="text-gray-900 pt-4 font-bold text-l">{experience.experience_name}</p>
                                 <div className="mt-1">
                                     {/* Etiquetas de la experiencia */}
@@ -30,7 +30,7 @@ const Experiencias = ({ experienceCard }) => {
                                 </div>
                                 {/* Link a la tarjeta de la experiencia */}
                                 <Link 
-                                    to={`/tarjeta/${experience.experience_id}`}
+                                    to={`/tarjeta/${experience.experience_uuid}`}
                                     className="mt-1 text-gray-700 bg-letrip focus:outline-none focus:text-black focus:bg-gray-50 focus:ring-offset-2 rounded-lg px-4 py-1 ease-in-out duration-50 text-center"
                                     style={{ position: 'relative', zIndex: 2 }}
                                 >
