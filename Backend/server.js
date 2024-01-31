@@ -9,9 +9,7 @@ const { supabase, supabaseUrl } = require('./db');
 
 // Middleware
 app.use(cors({
-    origin: 'letrip13012023-frontend-fu6qv1aif-lawitec.vercel.app', // URL de tu frontend
-    methods: ['GET', 'POST', 'PUT', 'DELETE'], // Métodos HTTP permitidos
-    credentials: true, // Si estás usando cookies o autenticación
+    origin: 'http://letrip13012023-frontend-fu6qv1aif-lawitec.vercel.app', // URL de tu frontend
   }));
 app.use(express.json()); // Para parsear el cuerpo de las solicitudes en formato JSON
 
