@@ -6,9 +6,11 @@ const fs = require('fs');
 const { supabase, supabaseUrl } = require('./db');
 
   app.use(cors({
-    origin: 'https://letrip13012023-frontend.vercel.app', // URL de tu frontend
+    origin: ['https://letrip13012023-frontend.vercel.app', 'https://www.letriplab.com'],// URL de tu frontend
     methods: ['GET', 'POST', 'PUT', 'DELETE'], // Métodos HTTP permitidos
     credentials: true, // Si estás usando cookies o autenticación
+    optionsSuccessStatus: 200
+
   }));
 
 app.use(express.json()); // Para parsear el cuerpo de las solicitudes en formato JSON
