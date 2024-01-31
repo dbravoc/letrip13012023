@@ -1,4 +1,5 @@
 const express = require('express');
+const path = require('path');
 const app = express();
 const cors = require('cors');
 const multer = require('multer');
@@ -192,6 +193,14 @@ app.post('/upload', upload.single('image'), async (req, res) => {
         console.error('Error al subir la imagen:', err);
         res.status(500).send('Error al subir la imagen');
     }
+});
+
+// Después de tus rutas API, añade un middleware para servir archivos estáticos
+app.use(express.static(path.join(__dirname, 'build')));
+
+// Añade una ruta que capture todas las demás solicitudes y devuelva index.html
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
 // Configuración del puerto
