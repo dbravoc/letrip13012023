@@ -18,7 +18,7 @@ const corsOptions = {
 app.use(express.json()); // Para parsear el cuerpo de las solicitudes en formato JSON
 
 // Configuración de Multer para manejo de archivos
-const upload = multer({ dest: 'uploads/' });
+const upload = multer({ storage: multer.memoryStorage() });
 
 // Endpoint para obtener experiencias con fechas disponibles
 app.get('/experiences', async (req, res) => {
@@ -170,19 +170,12 @@ app.post('/upload', upload.single('image'), async (req, res) => {
         const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
         const uniqueFileName = `uploaded/${uniqueSuffix}-${file.originalname}`;
 
-        // Leer el archivo subido
-        const fileContent = fs.readFileSync(file.path);
-
         // Subir el archivo a Supabase
         const { data, error } = await supabase.storage
             .from('experience_images')
-            .upload(uniqueFileName, fileContent, {
+            .upload(uniqueFileName, file.buffer, { // Usa 'file.buffer' en lugar de leer desde el sistema de archivos
                 contentType: file.mimetype,
             });
-
-            console.log('Response data:', data); // Añade esto para depuración
-            console.log('Error:', error); // Añade esto para depuración
-
 
         if (error) {
             throw error;
@@ -190,9 +183,6 @@ app.post('/upload', upload.single('image'), async (req, res) => {
 
         // Construir la URL de la imagen subida
         const fileUrl = `${supabaseUrl}/storage/v1/object/public/${data.Key}`;
-
-        // Eliminar el archivo del servidor local
-        fs.unlinkSync(file.path);
 
         // Devolver la URL de la imagen
         res.json({ url: fileUrl });
