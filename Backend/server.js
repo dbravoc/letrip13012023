@@ -8,9 +8,8 @@ const { supabase, supabaseUrl } = require('./db');
 
 
 // Middleware
-app.use(cors({
-    origin: 'https://letrip13012023-frontend.vercel.app', // URL de tu frontend
-  }));
+app.use(cors());
+
 app.use(express.json()); // Para parsear el cuerpo de las solicitudes en formato JSON
 
 // Configuración de Multer para manejo de archivos
@@ -198,6 +197,9 @@ app.post('/upload', upload.single('image'), async (req, res) => {
     }
 });
 
+app.get('/test', (req, res) => {
+    res.send('El servidor está funcionando correctamente');
+});
 
 // Configuración del puerto
 const PORT = process.env.PORT || 3000;
