@@ -5,7 +5,7 @@ const multer = require('multer');
 const fs = require('fs');
 const { supabase, supabaseUrl } = require('./db');
 const corsOptions = {
-    origin: 'https://www.letriplab.com', // URL de tu frontend
+    origin: 'https://letrip13012023-frontend.vercel.app', // URL de tu frontend
     optionsSuccessStatus: 200 // para navegadores antiguos que no soportan 204
   };
 
