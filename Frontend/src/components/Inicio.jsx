@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faWhatsapp } from '@fortawesome/free-brands-svg-icons';
 import { faBicycle, faFish, faPersonSkiing, faMountainSun, faSwimmer, faSpa, faWater,faPersonHiking } from '@fortawesome/free-solid-svg-icons';
-import logo from '../../public/img/letrip logo.png';
+import logo from '/public/img/letrip logo.png';
 
 const navigation = [
   { name: 'Ciclismo', href: '', current: true, icon: faBicycle},
