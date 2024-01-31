@@ -192,10 +192,6 @@ app.post('/upload', upload.single('image'), async (req, res) => {
     }
 });
 
-app.get('https://letrip13012023-backend.vercel.app/', (req, res) => {
-    res.send('El servidor está funcionando correctamente');
-});
-
 // Configuración del puerto
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
