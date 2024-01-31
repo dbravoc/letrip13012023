@@ -6,8 +6,13 @@ const fs = require('fs');
 const { supabase, supabaseUrl } = require('./db');
 
 
+
 // Middleware
-app.use(cors());
+app.use(cors({
+    origin: 'letrip13012023-frontend-fu6qv1aif-lawitec.vercel.app', // URL de tu frontend
+    methods: ['GET', 'POST', 'PUT', 'DELETE'], // Métodos HTTP permitidos
+    credentials: true, // Si estás usando cookies o autenticación
+  }));
 app.use(express.json()); // Para parsear el cuerpo de las solicitudes en formato JSON
 
 // Configuración de Multer para manejo de archivos
@@ -159,16 +164,24 @@ app.post('/upload', upload.single('image'), async (req, res) => {
     }
 
     try {
+        // Generar un nombre de archivo único
+        const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
+        const uniqueFileName = `uploaded/${uniqueSuffix}-${file.originalname}`;
+
         // Leer el archivo subido
         const fileContent = fs.readFileSync(file.path);
 
         // Subir el archivo a Supabase
         const { data, error } = await supabase.storage
-        .from('experience_images')
-        .upload(uniqueFileName, fileContent, {
-            contentType: file.mimetype,
-        });
-        
+            .from('experience_images')
+            .upload(uniqueFileName, fileContent, {
+                contentType: file.mimetype,
+            });
+
+            console.log('Response data:', data); // Añade esto para depuración
+            console.log('Error:', error); // Añade esto para depuración
+
+
         if (error) {
             throw error;
         }
@@ -186,6 +199,7 @@ app.post('/upload', upload.single('image'), async (req, res) => {
         res.status(500).send('Error al subir la imagen');
     }
 });
+
 
 // Configuración del puerto
 const PORT = process.env.PORT || 3000;
