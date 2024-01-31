@@ -195,13 +195,13 @@ app.post('/upload', upload.single('image'), async (req, res) => {
     }
 });
 
-// Después de tus rutas API, añade un middleware para servir archivos estáticos
-app.use(express.static(path.join(__dirname, 'build')));
-
 // Añade una ruta que capture todas las demás solicitudes y devuelva index.html
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'build', 'index.html'));
-});
+    res.sendFile(path.join(__dirname, 'build', 'index.html'));
+  });
+
+// Después de tus rutas API, añade un middleware para servir archivos estáticos
+app.use(express.static(path.join(__dirname, 'build')));
 
 // Configuración del puerto
 const PORT = process.env.PORT || 3000;
