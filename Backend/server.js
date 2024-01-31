@@ -9,7 +9,7 @@ const { supabase, supabaseUrl } = require('./db');
 
 // Middleware
 app.use(cors({
-    origin: 'http://letrip13012023-frontend.vercel.app/', // URL de tu frontend
+    origin: 'https://letrip13012023-frontend.vercel.app', // URL de tu frontend
   }));
 app.use(express.json()); // Para parsear el cuerpo de las solicitudes en formato JSON
 
