@@ -55,7 +55,7 @@ const ExperienceForm = () => {
     uploadData.append('image', file);
   
     try {
-      const response = await fetch('https://letrip13012023-backend-lawitec.vercel.app/upload', {
+      const response = await fetch('https://letrip13012023-backend-lawitec.vercel.app/uploads', {
         method: 'POST',
         body: uploadData,
       });
