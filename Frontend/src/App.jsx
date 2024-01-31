@@ -14,7 +14,7 @@ const App = () => {
 
   useEffect(() => {
     // Obtener las experiencias desde el servidor
-    fetch('https://letrip13012023-backend-lawitec.vercel.app/experiences') // Asegúrate de usar la URL correcta de tu servidor
+    fetch('https://letrip13012023-backend-lawitec.vercel.app') // Asegúrate de usar la URL correcta de tu servidor
       .then(response => response.json())
       .then(data => setExperienceCard(data))
       .catch(error => console.error('Error:', error));

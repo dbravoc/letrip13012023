@@ -4,11 +4,12 @@ const cors = require('cors');
 const multer = require('multer');
 const fs = require('fs');
 const { supabase, supabaseUrl } = require('./db');
+const corsOptions = {
+    origin: 'https://www.letriplab.com', // URL de tu frontend
+    optionsSuccessStatus: 200 // para navegadores antiguos que no soportan 204
+  };
 
-
-
-// Middleware
-app.use(cors());
+app.use(cors(corsOptions));
 
 app.use(express.json()); // Para parsear el cuerpo de las solicitudes en formato JSON
 
