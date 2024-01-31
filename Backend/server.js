@@ -188,11 +188,6 @@ app.post('/upload', upload.single('image'), async (req, res) => {
     }
 });
 
-app.get('/', (req, res) => {
-    res.send('Backend operativo');
-  });
-  
-
 // Configuración del puerto
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
