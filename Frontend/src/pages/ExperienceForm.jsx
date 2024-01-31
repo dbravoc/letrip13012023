@@ -63,14 +63,14 @@ const ExperienceForm = () => {
       const result = await response.json();
       if (result.url) {
         setFormData({ ...formData, [e.target.name]: result.url });
-      
-    } else {
-      console.error('Error en la respuesta del servidor:', result);
-    }
+      } else {
+        console.error('Error en la respuesta del servidor:', result);
+      }
     } catch (error) {
       console.error('Error al subir la imagen:', error);
     }
   };
+  
 
 
   const handleChange = (e) => {
