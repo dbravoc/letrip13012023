@@ -4,13 +4,9 @@ const cors = require('cors');
 const multer = require('multer');
 const fs = require('fs');
 const { supabase, supabaseUrl } = require('./db');
-const corsOptions = {
-    origin: 'https://letrip13012023-frontend.vercel.app', // URL de tu frontend
-    optionsSuccessStatus: 200 // para navegadores antiguos que no soportan 204
-  };
 
   app.use(cors({
-    origin: 'https://asistentegpt.vercel.app', // URL de tu frontend
+    origin: 'https://letrip13012023-frontend.vercel.app', // URL de tu frontend
     methods: ['GET', 'POST', 'PUT', 'DELETE'], // Métodos HTTP permitidos
     credentials: true, // Si estás usando cookies o autenticación
   }));
