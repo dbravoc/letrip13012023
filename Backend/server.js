@@ -9,7 +9,11 @@ const corsOptions = {
     optionsSuccessStatus: 200 // para navegadores antiguos que no soportan 204
   };
 
-app.use(cors(corsOptions));
+  app.use(cors({
+    origin: 'https://asistentegpt.vercel.app', // URL de tu frontend
+    methods: ['GET', 'POST', 'PUT', 'DELETE'], // Métodos HTTP permitidos
+    credentials: true, // Si estás usando cookies o autenticación
+  }));
 
 app.use(express.json()); // Para parsear el cuerpo de las solicitudes en formato JSON
 
