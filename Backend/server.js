@@ -192,7 +192,7 @@ app.post('/upload', upload.single('image'), async (req, res) => {
     }
 });
 
-app.get('/test', (req, res) => {
+app.get('https://letrip13012023-backend.vercel.app/', (req, res) => {
     res.send('El servidor está funcionando correctamente');
 });
 
