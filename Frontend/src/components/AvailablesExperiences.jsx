@@ -7,7 +7,7 @@ const AvailablesExperiences = () => {
     const [selectedExperience, setSelectedExperience] = useState(null);
 
     useEffect(() => {
-        fetch('https://letrip13012023-backend-lawitec.vercel.app')
+        fetch('https://letrip13012023-backend-lawitec.vercel.app/experiences')
             .then(response => response.json())
             .then(data => setExperiences(data))
             .catch(error => console.error('Error:', error));

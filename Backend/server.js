@@ -18,6 +18,10 @@ app.use(express.json()); // Para parsear el cuerpo de las solicitudes en formato
 // Configuración de Multer para manejo de archivos
 const upload = multer({ storage: multer.memoryStorage() });
 
+app.use((err, req, res, next) => {
+    res.status(500).json({ error: err.message });
+  });
+
 // Endpoint para obtener experiencias con fechas disponibles
 app.get('/experiences', async (req, res) => {
     try {

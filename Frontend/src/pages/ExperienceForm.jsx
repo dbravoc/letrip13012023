@@ -82,7 +82,7 @@ const ExperienceForm = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch('https://letrip13012023-backend-lawitec.vercel.app', {
+      const response = await fetch('https://letrip13012023-backend-lawitec.vercel.app/upload', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
