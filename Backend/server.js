@@ -185,7 +185,7 @@ app.post('/upload', upload.single('image'), async (req, res) => {
         }
 
         // Construir la URL de la imagen subida
-        const fileUrl = `${supabaseUrl}/storage/v1/object/public/experience_images/uploaded/${data.Key}`;
+        const fileUrl = `https://aoxzwenqcgzeznwbmwri.supabase.co/storage/v1/object/public/experience_images/${uniqueFileName}`;
 
         // Devolver la URL de la imagen
         res.json({ url: fileUrl });
