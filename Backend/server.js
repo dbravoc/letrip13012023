@@ -1,11 +1,17 @@
 const express = require('express');
 const app = express();
 const cors = require('cors');
-const supabase = require('./db');
+const multer = require('multer');
+const fs = require('fs');
+const { supabase, supabaseUrl } = require('./db');
+
 
 // Middleware
 app.use(cors());
 app.use(express.json()); // Para parsear el cuerpo de las solicitudes en formato JSON
+
+// Configuración de Multer para manejo de archivos
+const upload = multer({ dest: 'uploads/' });
 
 // Endpoint para obtener experiencias con fechas disponibles
 app.get('/experiences', async (req, res) => {
@@ -44,13 +50,96 @@ app.get('/experiences', async (req, res) => {
 // Endpoint para crear una nueva experiencia
 app.post('/experiences', async (req, res) => {
     try {
-        const { experience_name } = req.body;
+        const { experience_name,
+                experience_duration,
+                experience_location,
+                target_audience_restrictions,
+                minimum_age,
+                minimum_group_size,
+                group_restrictions,
+                equipment_required,
+                certified_instructor,
+                included_practical_lessons,
+                included_theoretical_lessons,
+                included_yoga,
+                included_training,
+                included_experience_video,
+                included_accident_insurance,
+                included_equipment_rental,
+                included_entry_fees,
+                included_lift_ticket,
+                experience_accommodation,
+                meal_breakfast,
+                meal_lunch,
+                meal_dinner,
+                meal_snacks_and_drinks,
+                transport_airport,
+                transport_during_experience,
+                experience_type,
+                experience_country,
+                experience_instructor_message,
+                experience_main_discipline,
+                experience_geography,
+                experience_demand_level,
+                experience_price,
+                experience_instructor,
+                experience_instructor_type,
+                card_img_1,
+                card_img_2,
+                card_img_3,
+                card_img_4,
+                experience_included_description,
+                instructor_profile_img,
+                accident_insurance_file,
+        
+         } = req.body;
 
         // Insertar la nueva experiencia en Supabase
         const { data, error } = await supabase
             .from('experiences')
             .insert([
-                { experience_name: experience_name },
+                { experience_name,
+                    experience_duration,
+                    experience_location,
+                    target_audience_restrictions,
+                    minimum_age,
+                    minimum_group_size,
+                    group_restrictions,
+                    equipment_required,
+                    certified_instructor,
+                    included_practical_lessons,
+                    included_theoretical_lessons,
+                    included_yoga,
+                    included_training,
+                    included_experience_video,
+                    included_accident_insurance,
+                    included_equipment_rental,
+                    included_entry_fees,
+                    included_lift_ticket,
+                    experience_accommodation,
+                    meal_breakfast,
+                    meal_lunch,
+                    meal_dinner,
+                    meal_snacks_and_drinks,
+                    transport_airport,
+                    transport_during_experience,
+                    experience_type,
+                    experience_country,
+                    experience_instructor_message,
+                    experience_main_discipline,
+                    experience_geography,
+                    experience_demand_level,
+                    experience_price,
+                    experience_instructor,
+                    experience_instructor_type,
+                    card_img_1,
+                    card_img_2,
+                    card_img_3,
+                    card_img_4,
+                    experience_included_description,
+                    instructor_profile_img,
+                    accident_insurance_file,
+                },
             ])
             .select();
 
@@ -60,6 +149,41 @@ app.post('/experiences', async (req, res) => {
     } catch (err) {
         console.error(err.message);
         res.status(500).send('Server Error');
+    }
+});
+
+app.post('/upload', upload.single('image'), async (req, res) => {
+    const file = req.file;
+    if (!file) {
+        return res.status(400).send('No se envió ninguna imagen.');
+    }
+
+    try {
+        // Leer el archivo subido
+        const fileContent = fs.readFileSync(file.path);
+
+        // Subir el archivo a Supabase
+        const { data, error } = await supabase.storage
+        .from('experience_images')
+        .upload(uniqueFileName, fileContent, {
+            contentType: file.mimetype,
+        });
+        
+        if (error) {
+            throw error;
+        }
+
+        // Construir la URL de la imagen subida
+        const fileUrl = `${supabaseUrl}/storage/v1/object/public/${data.Key}`;
+
+        // Eliminar el archivo del servidor local
+        fs.unlinkSync(file.path);
+
+        // Devolver la URL de la imagen
+        res.json({ url: fileUrl });
+    } catch (err) {
+        console.error('Error al subir la imagen:', err);
+        res.status(500).send('Error al subir la imagen');
     }
 });
 

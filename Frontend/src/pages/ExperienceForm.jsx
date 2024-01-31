@@ -1,16 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+
 
 const ExperienceForm = () => {
   const [formData, setFormData] = useState({
     experience_name: '',
-    experience_description: '',
     experience_duration: '',
     experience_location: '',
     target_audience_restrictions: '',
     minimum_age: '',
     minimum_group_size: '',
     group_restrictions: '',
-    discount_percentage: '',
     equipment_required: '',
     certified_instructor: false,
     included_practical_lessons: false,
@@ -22,7 +21,7 @@ const ExperienceForm = () => {
     included_equipment_rental: false,
     included_entry_fees: false,
     included_lift_ticket: false,
-    accommodation_other: '',
+    experience_accommodation: '',
     meal_breakfast: false,
     meal_lunch: false,
     meal_dinner: false,
@@ -44,7 +43,32 @@ const ExperienceForm = () => {
     card_img_4: '',
     experience_included_description: '',
     instructor_profile_img: '',
+    accident_insurance_file: '',
+
   });
+
+  const handleImageUpload = async (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+  
+    const uploadData = new FormData();
+    uploadData.append('image', file);
+  
+    try {
+      const response = await fetch('http://localhost:3000/upload', {
+        method: 'POST',
+        body: uploadData,
+      });
+  
+      const result = await response.json();
+      if (result.url) {
+        setFormData({ ...formData, [e.target.name]: result.url });
+      }
+    } catch (error) {
+      console.error('Error al subir la imagen:', error);
+    }
+  };
+
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -75,14 +99,12 @@ const ExperienceForm = () => {
       // Resetear el formulario
       setFormData({
         experience_name: '',
-        experience_description: '',
         experience_duration: '',
         experience_location: '',
         target_audience_restrictions: '',
         minimum_age: '',
         minimum_group_size: '',
         group_restrictions: '',
-        discount_percentage: '',
         equipment_required: '',
         certified_instructor: false,
         included_practical_lessons: false,
@@ -94,7 +116,7 @@ const ExperienceForm = () => {
         included_equipment_rental: false,
         included_entry_fees: false,
         included_lift_ticket: false,
-        accommodation_other: '',
+        experience_accommodation: '',
         meal_breakfast: false,
         meal_lunch: false,
         meal_dinner: false,
@@ -116,6 +138,8 @@ const ExperienceForm = () => {
         card_img_4: '',
         experience_included_description: '',
         instructor_profile_img: '',
+        accident_insurance_file: '',
+
       });
     } catch (error) {
       console.error('Error al crear experiencia:', error);
@@ -124,106 +148,133 @@ const ExperienceForm = () => {
 
   return (
     <form className='flex flex-col' onSubmit={handleSubmit}>
-      <label htmlFor="experience_name">Nombre de la Experiencia:</label>
+
+<h3 className="mb-10 text-2xl font-bold tracking-tight text-gray-900">Datos generales</h3>
+
+      <label className='text-gray-700 text-sm' htmlFor="experience_name" >Título de la experiencia. <span className='text-xs italic'> (Escribe algo simple, breve y persuasivo para los visitantes de Le Trip)</span></label>
       <input
         id="experience_name"
         name="experience_name"
         type="text"
         value={formData.experience_name}
         onChange={handleChange}
-        placeholder="Introduce el nombre de la experiencia"
+        className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
       />
 
-      <label htmlFor="experience_description">Descripción Corta:</label>
-      <textarea
-        id="experience_description"
-        name="experience_description"
-        value={formData.experience_description}
+      <label className='text-gray-700 text-sm' htmlFor="experience_main_discipline">Disciplina principal</label>
+      <select
+        id="experience_main_discipline"
+        name="experience_main_discipline"
+        value={formData.experience_main_discipline}
         onChange={handleChange}
-        placeholder="Descripción de la experiencia"
-      />
+        className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
+      >
+        <option value=""></option>
+        <option value="Surf">Surf</option>
+        <option value="Ciclismo">Ciclismo</option>
+        <option value="Pesca">Pesca</option>
+        <option value="Snowsports">Snowsports</option>
+        <option value="Trekking/Camping">Trekking/Camping</option>
+        <option value="Escalada">Escalada</option>
+        <option value="Yoga">Yoga</option>
+        <option value="Escalada">Otros</option>
+      </select>
 
-      <label htmlFor="experience_duration">Duración (en horas):</label>
+
+      <label className='text-gray-700 text-sm' htmlFor="experience_type">Tipo de experiencia</label>
+      <select
+        id="experience_type"
+        name="experience_type"
+        value={formData.experience_type}
+        onChange={handleChange}
+        className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
+      >
+        <option value=''></option>
+        <option value='Surftrip'>Surftrip</option>
+        <option value='Surfweek'>Surfweek</option>
+        <option value='Surflessons'>Surflessons</option>
+
+        </select>
+
+        <label className='text-gray-700 text-sm' htmlFor="experience_demand_level">Nivel de exigencia</label>
+        <select
+          id="experience_demand_level"
+          name="experience_demand_level"
+          value={formData.experience_demand_level}
+          onChange={handleChange}
+          className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
+        >
+          <option value=''></option>
+          <option value="Básico">Básico</option>
+          <option value="Fácil">Fácil</option>
+          <option value="Intermedio">Intermedio</option>
+          <option value="Avanzado">Avanzado</option>
+          <option value="Experto">Experto</option>
+        </select>
+
+        <label className='text-gray-700 text-sm' htmlFor="experience_geography">Tipo de geografía</label>
+        <select
+          id="experience_geography"
+          name="experience_geography"
+          value={formData.experience_geography}
+          onChange={handleChange}
+          className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
+        >
+          <option value=""></option>
+          <option value="Océano">Océano</option>
+          <option value="Montaña">Montaña</option>
+          <option value="Selva">Selva</option>
+          <option value="Bosque">Bosque</option>
+        </select>
+
+
+      <label className='text-gray-700 text-sm' htmlFor="experience_country">País de la experiencia</label>
       <input
-        id="experience_duration"
-        name="experience_duration"
-        type="number"
-        value={formData.experience_duration}
+        id="experience_country"
+        name="experience_country"
+        type="text"
+        value={formData.experience_country}
         onChange={handleChange}
-        placeholder="Duración de la experiencia"
+        className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
       />
 
-      <label htmlFor="experience_location">Ubicación:</label>
+      <label className='text-gray-700 text-sm' htmlFor="experience_location">Ciudad</label>
       <input
         id="experience_location"
         name="experience_location"
         type="text"
         value={formData.experience_location}
         onChange={handleChange}
-        placeholder="Ubicación de la experiencia"
+        className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
       />
 
-      <label htmlFor="target_audience_restrictions">Restricciones para el público objetivo:</label>
+      <label className='text-gray-700 text-sm' htmlFor="experience_instructor">Anfitrión y/o instructor de la experiencia</label>
       <input
-        id="target_audience_restrictions"
-        name="target_audience_restrictions"
+        id="experience_instructor"
+        name="experience_instructor"
         type="text"
-        value={formData.target_audience_restrictions}
+        value={formData.experience_instructor}
         onChange={handleChange}
-        placeholder="Restricciones para el público objetivo"
+        className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
       />
 
-      <label htmlFor="minimum_age">Edad mínima:</label>
-      <input
-        id="minimum_age"
-        name="minimum_age"
-        type="number"
-        value={formData.minimum_age}
+      <label className='text-gray-700 text-sm' htmlFor="experience_instructor">Anfitrión de la experiencia</label>
+      <select
+        id="experience_instructor"
+        name="experience_instructor"
+        value={formData.experience_instructor}
         onChange={handleChange}
-        placeholder="Edad mínima requerida"
-      />
+        className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
+      >
+        <option value="Instructor"></option>
+        <option value="Instructor">Instructor</option>
+        <option value="Anfitrión">Guía</option>
+        <option value="Anfitrión">Especialista</option>
+        <option value="Anfitrión">Anfitrión</option>
+      </select>
 
-      <label htmlFor="minimum_group_size">Tamaño mínimo del grupo:</label>
-      <input
-        id="minimum_group_size"
-        name="minimum_group_size"
-        type="number"
-        value={formData.minimum_group_size}
-        onChange={handleChange}
-        placeholder="Tamaño mínimo del grupo"
-      />
 
-      <label htmlFor="group_restrictions">Restricciones de grupo:</label>
-      <input
-        id="group_restrictions"
-        name="group_restrictions"
-        type="text"
-        value={formData.group_restrictions}
-        onChange={handleChange}
-        placeholder="Restricciones de grupo"
-      />
-
-      <label htmlFor="discount_percentage">Porcentaje de descuento:</label>
-      <input
-        id="discount_percentage"
-        name="discount_percentage"
-        type="number"
-        value={formData.discount_percentage}
-        onChange={handleChange}
-        placeholder="Porcentaje de descuento"
-      />
-
-      <label htmlFor="equipment_required">Equipo requerido:</label>
-      <input
-        id="equipment_required"
-        name="equipment_required"
-        type="text"
-        value={formData.equipment_required}
-        onChange={handleChange}
-        placeholder="Equipo requerido"
-      />
-
-      <label htmlFor="certified_instructor">Instructor certificado:</label>
+      <label className='text-gray-700 text-sm' htmlFor="certified_instructor">Instructor certificado:</label>
       <input
         id="certified_instructor"
         name="certified_instructor"
@@ -232,61 +283,151 @@ const ExperienceForm = () => {
         onChange={handleChange}
       />
 
-      <label htmlFor="included_practical_lessons">Lecciones prácticas incluidas:</label>
-      <input
-        id="included_practical_lessons"
-        name="included_practical_lessons"
-        type="checkbox"
-        checked={formData.included_practical_lessons}
+      <label className='text-gray-700 text-sm' htmlFor="experience_instructor_message">Mensaje del instructor. <span className='text-xs italic'> (Invita mediante un mensaje cautivante a la persona que está visitando la experiencia. Dirígete en primera persona hacia un "tu")</span></label>
+      <textarea
+        id="experience_instructor_message"
+        name="experience_instructor_message"
+        value={formData.experience_instructor_message}
         onChange={handleChange}
+        className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
       />
 
-      <label htmlFor="included_theoretical_lessons">Lecciones teóricas incluidas:</label>
-      <input
-        id="included_theoretical_lessons"
-        name="included_theoretical_lessons"
-        type="checkbox"
-        checked={formData.included_theoretical_lessons}
+      <label className='text-gray-700 text-sm' htmlFor="experience_included_description">Descripción sobre qué incluye la experiencia.<span className='text-xs italic'> (Esto describe lo que incluye la experiencia que estaría comprando el cliente. Debes escribir algo breve, simple y específico)</span></label>
+      <textarea
+        id="experience_included_description"
+        name="experience_included_description"
+        value={formData.experience_included_description}
         onChange={handleChange}
+        className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
       />
 
-      <label htmlFor="included_yoga">Yoga incluido:</label>
+      <label className='text-gray-700 text-sm' htmlFor="experience_duration">Duración (en días):</label>
       <input
-        id="included_yoga"
-        name="included_yoga"
-        type="checkbox"
-        checked={formData.included_yoga}
+        id="experience_duration"
+        name="experience_duration"
+        type="number"
+        value={formData.experience_duration}
         onChange={handleChange}
+        className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
       />
 
-      <label htmlFor="included_training">Entrenamiento incluido:</label>
+      <label className='text-gray-700 text-sm' htmlFor="experience_price">Valor de la experiencia:</label>
       <input
-        id="included_training"
-        name="included_training"
-        type="checkbox"
-        checked={formData.included_training}
+        id="experience_price"
+        name="experience_price"
+        type="number"
+        value={formData.experience_price}
         onChange={handleChange}
+        className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
       />
 
-      <label htmlFor="included_experience_video">Video de la experiencia incluido:</label>
+      <label className='text-gray-700 text-sm' htmlFor="card_img_1">Imagen de experiencia 1:</label>
       <input
-        id="included_experience_video"
-        name="included_experience_video"
-        type="checkbox"
-        checked={formData.included_experience_video}
-        onChange={handleChange}
+        id="card_img_1"
+        name="card_img_1"
+        type="file" // Cambiamos el tipo de entrada a "file"
+        accept=".jpg, .jpeg, .png"
+        onChange={handleImageUpload} // Manejar la carga de imágenes en una función
+        className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
       />
 
-      <label htmlFor="included_accident_insurance">Seguro de accidentes incluido:</label>
+      
+
+      <label className='text-gray-700 text-sm' htmlFor="card_img_1">Imagen de experiencia 2:</label>
       <input
-        id="included_accident_insurance"
-        name="included_accident_insurance"
-        type="checkbox"
-        checked={formData.included_accident_insurance}
-        onChange={handleChange}
+        id="card_img_2"
+        name="card_img_2"
+        type="file" // Cambiamos el tipo de entrada a "file"
+        accept=".jpg, .jpeg, .png"
+        onChange={handleImageUpload} // Manejar la carga de imágenes en una función
+        className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
       />
 
-      <label htmlFor="included_equipment_rental">Alquiler de equipos incluido:</label>
+
+      <label className='text-gray-700 text-sm' htmlFor="card_img_1">Imagen de experiencia 3:</label>
+      <input
+        id="card_img_3"
+        name="card_img_3"
+        type="file" // Cambiamos el tipo de entrada a "file"
+        accept=".jpg, .jpeg, .png"
+        onChange={handleImageUpload} // Manejar la carga de imágenes en una función
+        className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
+      />
+
+
+      <label className='text-gray-700 text-sm' htmlFor="card_img_4">Imagen de experiencia 4:</label>
+      <input
+         id="card_img_4"
+         name="card_img_4"
+         type="file" // Cambiamos el tipo de entrada a "file"
+         accept=".jpg, .jpeg, .png"
+         onChange={handleImageUpload} // Manejar la carga de imágenes en una función
+         className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
+       />
+
+
+      <label className='text-gray-700 text-sm' htmlFor="instructor_profile_img">Imagen de perfil del anfitrión</label>
+      <input
+         id="instructor_profile_img"
+         name="instructor_profile_img"
+         type="file" // Cambiamos el tipo de entrada a "file"
+         accept=".jpg, .jpeg, .png"
+         onChange={handleImageUpload} // Manejar la carga de imágenes en una función
+         className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
+       />
+
+
+
+
+
+
+
+
+<h3 className="my-10 text-2xl font-bold tracking-tight text-gray-900">Restricciones</h3>
+
+      <label className='text-gray-700 text-sm' htmlFor="target_audience_restrictions">Restricciones de la experiencia.<span className='text-xs italic'> (Menciona las restricciones que pueden haber en una experiencia, tales como estado de salud, condición física, entre otros. Escribe algo breve y específico) </span></label>
+      <input
+        id="target_audience_restrictions"
+        name="target_audience_restrictions"
+        type="text"
+        value={formData.target_audience_restrictions}
+        onChange={handleChange}
+        className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
+      />
+
+      <label className='text-gray-700 text-sm' htmlFor="minimum_age">Edad mínima:</label>
+      <input
+        id="minimum_age"
+        name="minimum_age"
+        type="number"
+        value={formData.minimum_age}
+        onChange={handleChange}
+        className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
+      />
+
+      <label className='text-gray-700 text-sm' htmlFor="minimum_group_size">Tamaño mínimo del grupo</label>
+      <input
+        id="minimum_group_size"
+        name="minimum_group_size"
+        type="number"
+        value={formData.minimum_group_size}
+        onChange={handleChange}
+        className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
+      />
+
+
+<h3 className="my-10 text-2xl font-bold tracking-tight text-gray-900">Equipo</h3>
+      <label className='text-gray-700 text-sm' htmlFor="equipment_required">Equipo requerido</label>
+      <input
+        id="equipment_required"
+        name="equipment_required"
+        type="text"
+        value={formData.equipment_required}
+        onChange={handleChange}
+        className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
+      />
+
+      <label className='text-gray-700 text-sm' htmlFor="included_equipment_rental">Alquiler de equipos incluido:</label>
       <input
         id="included_equipment_rental"
         name="included_equipment_rental"
@@ -295,35 +436,73 @@ const ExperienceForm = () => {
         onChange={handleChange}
       />
 
-      <label htmlFor="included_entry_fees">Tarifas de entrada incluidas:</label>
+<h3 className="my-10 text-2xl font-bold tracking-tight text-gray-900">Entrenamiento</h3>
+
+      <label className='text-gray-700 text-sm' htmlFor="included_practical_lessons">Lecciones prácticas incluidas:</label>
       <input
-        id="included_entry_fees"
-        name="included_entry_fees"
+        id="included_practical_lessons"
+        name="included_practical_lessons"
         type="checkbox"
-        checked={formData.included_entry_fees}
+        checked={formData.included_practical_lessons}
         onChange={handleChange}
       />
 
-      <label htmlFor="included_lift_ticket">Boleto de ascensor incluido:</label>
+      <label className='text-gray-700 text-sm' htmlFor="included_theoretical_lessons">Lecciones teóricas incluidas:</label>
       <input
-        id="included_lift_ticket"
-        name="included_lift_ticket"
+        id="included_theoretical_lessons"
+        name="included_theoretical_lessons"
         type="checkbox"
-        checked={formData.included_lift_ticket}
+        checked={formData.included_theoretical_lessons}
         onChange={handleChange}
       />
 
-      <label htmlFor="accommodation_other">Otro tipo de alojamiento:</label>
+      <label className='text-gray-700 text-sm' htmlFor="included_yoga">Yoga incluido:</label>
       <input
-        id="accommodation_other"
-        name="accommodation_other"
-        type="text"
-        value={formData.accommodation_other}
+        id="included_yoga"
+        name="included_yoga"
+        type="checkbox"
+        checked={formData.included_yoga}
         onChange={handleChange}
-        placeholder="Otro tipo de alojamiento"
       />
 
-      <label htmlFor="meal_breakfast">Desayuno incluido:</label>
+      <label className='text-gray-700 text-sm' htmlFor="included_training">Entrenamiento incluido:</label>
+      <input
+        id="included_training"
+        name="included_training"
+        type="checkbox"
+        checked={formData.included_training}
+        onChange={handleChange}
+      />
+
+
+
+
+<h3 className="my-10 text-2xl font-bold tracking-tight text-gray-900">Alojamiento</h3>
+
+<label className='text-gray-700 text-sm' htmlFor="experience_accommodation">Tipo de alojamiento</label>
+<select
+  id="experience_accommodation"
+  name="experience_accommodation"
+  value={formData.experience_accommodation}
+  onChange={handleChange}
+  className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
+>
+  <option value=""></option>
+  <option value="Hotel">Hotel</option>
+  <option value="Alojamiento rural">Alojamiento rural</option>
+  <option value="Refugio de montaña">Refugio de montaña</option>
+  <option value="Chalet/lodge">Chalet/lodge</option>
+  <option value="Camping">Camping</option>
+  <option value="Cabaña">Cabaña</option>
+  <option value="Hostal">Hostal</option>
+  <option value="Casa">Casa</option>
+  <option value="Otro">Otro</option>
+  <option value="No incluido">No incluido</option>
+</select>
+
+
+
+      <label className='text-gray-700 text-sm' htmlFor="meal_breakfast">Desayuno incluido</label>
       <input
         id="meal_breakfast"
         name="meal_breakfast"
@@ -332,7 +511,7 @@ const ExperienceForm = () => {
         onChange={handleChange}
       />
 
-      <label htmlFor="meal_lunch">Almuerzo incluido:</label>
+      <label className='text-gray-700 text-sm' htmlFor="meal_lunch">Almuerzo incluido</label>
       <input
         id="meal_lunch"
         name="meal_lunch"
@@ -341,7 +520,7 @@ const ExperienceForm = () => {
         onChange={handleChange}
       />
 
-      <label htmlFor="meal_dinner">Cena incluida:</label>
+      <label className='text-gray-700 text-sm' htmlFor="meal_dinner">Cena incluida</label>
       <input
         id="meal_dinner"
         name="meal_dinner"
@@ -350,7 +529,7 @@ const ExperienceForm = () => {
         onChange={handleChange}
       />
 
-      <label htmlFor="meal_snacks_and_drinks">Aperitivos y bebidas incluidos:</label>
+      <label className='text-gray-700 text-sm' htmlFor="meal_snacks_and_drinks">Aperitivos y bebidas incluidos</label>
       <input
         id="meal_snacks_and_drinks"
         name="meal_snacks_and_drinks"
@@ -359,7 +538,10 @@ const ExperienceForm = () => {
         onChange={handleChange}
       />
 
-      <label htmlFor="transport_airport">Transporte desde el aeropuerto incluido:</label>
+
+<h3 className="my-10 text-2xl font-bold tracking-tight text-gray-900">Transporte </h3>
+
+      <label className='text-gray-700 text-sm' htmlFor="transport_airport">Transporte desde el aeropuerto incluido</label>
       <input
         id="transport_airport"
         name="transport_airport"
@@ -368,7 +550,7 @@ const ExperienceForm = () => {
         onChange={handleChange}
       />
 
-      <label htmlFor="transport_during_experience">Transporte durante la experiencia incluido:</label>
+      <label className='text-gray-700 text-sm' htmlFor="transport_during_experience">Transporte durante la experiencia incluido:</label>
       <input
         id="transport_during_experience"
         name="transport_during_experience"
@@ -377,153 +559,57 @@ const ExperienceForm = () => {
         onChange={handleChange}
       />
 
-      <label htmlFor="experience_type">Tipo de experiencia:</label>
+
+      
+
+      <label className='text-gray-700 text-sm' htmlFor="included_experience_video">Video de la experiencia incluido:</label>
       <input
-        id="experience_type"
-        name="experience_type"
+        id="included_experience_video"
+        name="included_experience_video"
+        type="checkbox"
+        checked={formData.included_experience_video}
+        onChange={handleChange}
+      />
+
+
+      <label className='text-gray-700 text-sm' htmlFor="included_entry_fees">Tarifas de entrada incluidas:</label>
+      <input
+        id="included_entry_fees"
+        name="included_entry_fees"
+        type="checkbox"
+        checked={formData.included_entry_fees}
+        onChange={handleChange}
+      />
+
+      <label className='text-gray-700 text-sm' htmlFor="included_lift_ticket">Boleto de ascensor incluido:</label>
+      <input
+        id="included_lift_ticket"
+        name="included_lift_ticket"
+        type="checkbox"
+        checked={formData.included_lift_ticket}
+        onChange={handleChange}
+      />
+
+<h3 className="mb-10 text-2xl font-bold tracking-tight text-gray-900">Seguridad</h3>
+      <label className='text-gray-700 text-sm' htmlFor="included_accident_insurance">Seguro de accidentes incluido</label>
+      <input
+        id="included_accident_insurance"
+        name="included_accident_insurance"
+        type="checkbox"
+        checked={formData.included_accident_insurance}
+        onChange={handleChange}
+      />
+      
+      <label className='text-gray-700 text-sm' htmlFor="accident_insurance_file">Poliza del seguro</label>
+      <input
+        id="accident_insurance_file"
+        name="accident_insurance_file"
         type="text"
-        value={formData.experience_type}
+        value={formData.accident_insurance_file}
         onChange={handleChange}
-        placeholder="Tipo de experiencia"
+        className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
       />
 
-      <label htmlFor="experience_country">País de la experiencia:</label>
-      <input
-        id="experience_country"
-        name="experience_country"
-        type="text"
-        value={formData.experience_country}
-        onChange={handleChange}
-        placeholder="País de la experiencia"
-      />
-
-      <label htmlFor="experience_instructor_message">Mensaje del instructor:</label>
-      <textarea
-        id="experience_instructor_message"
-        name="experience_instructor_message"
-        value={formData.experience_instructor_message}
-        onChange={handleChange}
-        placeholder="Mensaje del instructor"
-      />
-
-      <label htmlFor="experience_main_discipline">Disciplina principal de la experiencia:</label>
-      <input
-        id="experience_main_discipline"
-        name="experience_main_discipline"
-        type="text"
-        value={formData.experience_main_discipline}
-        onChange={handleChange}
-        placeholder="Disciplina principal de la experiencia"
-      />
-
-      <label htmlFor="experience_geography">Geografía de la experiencia:</label>
-      <input
-        id="experience_geography"
-        name="experience_geography"
-        type="text"
-        value={formData.experience_geography}
-        onChange={handleChange}
-        placeholder="Geografía de la experiencia"
-      />
-
-      <label htmlFor="experience_demand_level">Nivel de demanda de la experiencia:</label>
-      <input
-        id="experience_demand_level"
-        name="experience_demand_level"
-        type="text"
-        value={formData.experience_demand_level}
-        onChange={handleChange}
-        placeholder="Nivel de demanda de la experiencia"
-      />
-
-      <label htmlFor="experience_price">Precio de la experiencia:</label>
-      <input
-        id="experience_price"
-        name="experience_price"
-        type="number"
-        value={formData.experience_price}
-        onChange={handleChange}
-        placeholder="Precio de la experiencia"
-      />
-
-      <label htmlFor="experience_instructor">Instructor de la experiencia:</label>
-      <input
-        id="experience_instructor"
-        name="experience_instructor"
-        type="text"
-        value={formData.experience_instructor}
-        onChange={handleChange}
-        placeholder="Instructor de la experiencia"
-      />
-
-      <label htmlFor="experience_instructor_type">Tipo de instructor:</label>
-      <input
-        id="experience_instructor_type"
-        name="experience_instructor_type"
-        type="text"
-        value={formData.experience_instructor_type}
-        onChange={handleChange}
-        placeholder="Tipo de instructor"
-      />
-
-      <label htmlFor="card_img_1">Imagen de la tarjeta 1:</label>
-      <input
-        id="card_img_1"
-        name="card_img_1"
-        type="text"
-        value={formData.card_img_1}
-        onChange={handleChange}
-        placeholder="URL de la imagen 1"
-      />
-
-      <label htmlFor="card_img_2">Imagen de la tarjeta 2:</label>
-      <input
-        id="card_img_2"
-        name="card_img_2"
-        type="text"
-        value={formData.card_img_2}
-        onChange={handleChange}
-        placeholder="URL de la imagen 2"
-      />
-
-      <label htmlFor="card_img_3">Imagen de la tarjeta 3:</label>
-      <input
-        id="card_img_3"
-        name="card_img_3"
-        type="text"
-        value={formData.card_img_3}
-        onChange={handleChange}
-        placeholder="URL de la imagen 3"
-      />
-
-      <label htmlFor="card_img_4">Imagen de la tarjeta 4:</label>
-      <input
-        id="card_img_4"
-        name="card_img_4"
-        type="text"
-        value={formData.card_img_4}
-        onChange={handleChange}
-        placeholder="URL de la imagen 4"
-      />
-
-      <label htmlFor="experience_included_description">Descripción incluida de la experiencia:</label>
-      <textarea
-        id="experience_included_description"
-        name="experience_included_description"
-        value={formData.experience_included_description}
-        onChange={handleChange}
-        placeholder="Descripción incluida de la experiencia"
-      />
-
-      <label htmlFor="instructor_profile_img">Imagen de perfil del instructor:</label>
-      <input
-        id="instructor_profile_img"
-        name="instructor_profile_img"
-        type="text"
-        value={formData.instructor_profile_img}
-        onChange={handleChange}
-        placeholder="URL de la imagen de perfil del instructor"
-      />
 
       <button type="submit">Crear Experiencia</button>
     </form>

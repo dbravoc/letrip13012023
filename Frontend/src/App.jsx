@@ -34,8 +34,9 @@ const App = () => {
 
       <Route path="/create" element={
           <>
-            <div className="bg-white mx-auto w-full sm:px-6 px-8">
-              <div className="flex flex-col justify-between flex-wrap"><ExperienceForm /></div>
+            <div className="mx-auto w-full sm:px-6 px-8">
+              <div className="flex flex-col justify-between flex-wrap"><Inicio /></div>
+              <div className="pt-36 px-12 flex flex-col justify-between flex-wrap relative z-10"><ExperienceForm /></div>
             </div>
           </>
         } />  
