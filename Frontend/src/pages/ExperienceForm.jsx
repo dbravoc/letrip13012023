@@ -55,7 +55,7 @@ const ExperienceForm = () => {
     uploadData.append('image', file);
   
     try {
-      const response = await fetch('https://letrip13012023-backend-lawitec.vercel.app', {
+      const response = await fetch('https://letrip13012023-backend-lawitec.vercel.app/upload', {
         method: 'POST',
         body: uploadData,
       });
@@ -82,7 +82,7 @@ const ExperienceForm = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch('https://letrip13012023-backend-lawitec.vercel.app/upload', {
+      const response = await fetch('https://letrip13012023-backend-lawitec.vercel.app/experiences', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -180,7 +180,6 @@ const ExperienceForm = () => {
         <option value="Escalada">Otros</option>
       </select>
 
-
       <label className='text-gray-700 text-sm' htmlFor="experience_type">Tipo de experiencia</label>
       <select
         id="experience_type"
@@ -226,7 +225,6 @@ const ExperienceForm = () => {
           <option value="Selva">Selva</option>
           <option value="Bosque">Bosque</option>
         </select>
-
 
       <label className='text-gray-700 text-sm' htmlFor="experience_country">País de la experiencia</label>
       <input
