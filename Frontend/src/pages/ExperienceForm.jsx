@@ -147,7 +147,7 @@ const ExperienceForm = () => {
   };
 
   return (
-    <form className='flex flex-col' onSubmit={handleSubmit}>
+    <form className='flex flex-col px-auto sm:px-72 gap-y-2' onSubmit={handleSubmit}>
 
 <h3 className="mb-10 text-2xl font-bold tracking-tight text-gray-900">Datos generales</h3>
 
@@ -246,7 +246,7 @@ const ExperienceForm = () => {
         className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
       />
 
-      <label className='text-gray-700 text-sm' htmlFor="experience_instructor">Anfitrión y/o instructor de la experiencia</label>
+      <label className='text-gray-700 text-sm' htmlFor="experience_instructor">Anfitrión de la experiencia</label>
       <input
         id="experience_instructor"
         name="experience_instructor"
@@ -256,7 +256,7 @@ const ExperienceForm = () => {
         className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
       />
 
-      <label className='text-gray-700 text-sm' htmlFor="experience_instructor">Anfitrión de la experiencia</label>
+      <label className='text-gray-700 text-sm' htmlFor="experience_instructor">Tipo de anfitrión</label>
       <select
         id="experience_instructor"
         name="experience_instructor"
@@ -271,15 +271,6 @@ const ExperienceForm = () => {
         <option value="Anfitrión">Anfitrión</option>
       </select>
 
-
-      <label className='text-gray-700 text-sm' htmlFor="certified_instructor">Instructor certificado:</label>
-      <input
-        id="certified_instructor"
-        name="certified_instructor"
-        type="checkbox"
-        checked={formData.certified_instructor}
-        onChange={handleChange}
-      />
 
       <label className='text-gray-700 text-sm' htmlFor="experience_instructor_message">Mensaje del instructor. <span className='text-xs italic'> (Invita mediante un mensaje cautivante a la persona que está visitando la experiencia. Dirígete en primera persona hacia un "tu")</span></label>
       <textarea
@@ -415,6 +406,17 @@ const ExperienceForm = () => {
 
 
 <h3 className="my-10 text-2xl font-bold tracking-tight text-gray-900">Equipo</h3>
+      <li className='flex justify-between list-none ring-1 ring-gray-300 rounded-md p-2'>
+      <label className='text-gray-700 text-sm' htmlFor="included_equipment_rental">Alquiler de equipos incluido:</label>
+      <input
+        id="included_equipment_rental"
+        name="included_equipment_rental"
+        type="checkbox"
+        checked={formData.included_equipment_rental}
+        onChange={handleChange}
+      />
+      </li>
+
       <label className='text-gray-700 text-sm' htmlFor="equipment_required">Equipo requerido</label>
       <input
         id="equipment_required"
@@ -423,15 +425,6 @@ const ExperienceForm = () => {
         value={formData.equipment_required}
         onChange={handleChange}
         className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
-      />
-
-      <label className='text-gray-700 text-sm' htmlFor="included_equipment_rental">Alquiler de equipos incluido:</label>
-      <input
-        id="included_equipment_rental"
-        name="included_equipment_rental"
-        type="checkbox"
-        checked={formData.included_equipment_rental}
-        onChange={handleChange}
       />
 
 <h3 className="my-10 text-2xl font-bold tracking-tight text-gray-900">Entrenamiento</h3>
@@ -588,7 +581,17 @@ const ExperienceForm = () => {
         onChange={handleChange}
       />
 
-<h3 className="mb-10 text-2xl font-bold tracking-tight text-gray-900">Seguridad</h3>
+<h3 className="my-10 text-2xl font-bold tracking-tight text-gray-900">Seguridad</h3>
+
+      <label className='text-gray-700 text-sm' htmlFor="certified_instructor">Instructor certificado:</label>
+      <input
+        id="certified_instructor"
+        name="certified_instructor"
+        type="checkbox"
+        checked={formData.certified_instructor}
+        onChange={handleChange}
+      />
+
       <label className='text-gray-700 text-sm' htmlFor="included_accident_insurance">Seguro de accidentes incluido</label>
       <input
         id="included_accident_insurance"
@@ -598,13 +601,13 @@ const ExperienceForm = () => {
         onChange={handleChange}
       />
       
-      <label className='text-gray-700 text-sm' htmlFor="accident_insurance_file">Poliza del seguro</label>
+      <label className='text-gray-700 text-sm' htmlFor="accident_insurance_file">Póliza del seguro</label>
       <input
         id="accident_insurance_file"
         name="accident_insurance_file"
-        type="text"
-        value={formData.accident_insurance_file}
-        onChange={handleChange}
+        type="file" // Cambiado a tipo "file"
+        accept=".pdf, .doc, .docx" // Aceptar solo formatos de archivo específicos, ajustar según sea necesario
+        onChange={handleImageUpload} // Cambiar esto si tienes un método específico para manejar la carga de archivos que no sean imágenes
         className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
       />
 
