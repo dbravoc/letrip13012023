@@ -303,7 +303,7 @@ const ExperienceForm = () => {
         className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
       />
 
-      <label className='text-gray-700 text-sm' htmlFor="experience_price">Valor de la experiencia:</label>
+      <label className='text-gray-700 text-sm' htmlFor="experience_price">Valor de la experiencia (USD)</label>
       <input
         id="experience_price"
         name="experience_price"
@@ -377,7 +377,7 @@ const ExperienceForm = () => {
 
 <h3 className="my-10 text-2xl font-bold tracking-tight text-gray-900">Restricciones</h3>
 
-      <label className='text-gray-700 text-sm' htmlFor="target_audience_restrictions">Restricciones de la experiencia.<span className='text-xs italic'> (Menciona las restricciones que pueden haber en una experiencia, tales como estado de salud, condición física, entre otros. Escribe algo breve y específico) </span></label>
+      <label className='text-gray-700 text-sm' htmlFor="target_audience_restrictions">Restricciones de la experiencia<span className='text-xs italic'> (Menciona las restricciones que pueden haber en una experiencia, tales como estado de salud, condición física, entre otros. Escribe algo breve y específico) </span></label>
       <input
         id="target_audience_restrictions"
         name="target_audience_restrictions"
@@ -387,7 +387,7 @@ const ExperienceForm = () => {
         className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
       />
 
-      <label className='text-gray-700 text-sm' htmlFor="minimum_age">Edad mínima:</label>
+      <label className='text-gray-700 text-sm' htmlFor="minimum_age">Edad mínima</label>
       <input
         id="minimum_age"
         name="minimum_age"
@@ -397,7 +397,7 @@ const ExperienceForm = () => {
         className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
       />
 
-      <label className='text-gray-700 text-sm' htmlFor="minimum_group_size">Tamaño mínimo del grupo</label>
+      <label className='text-gray-700 text-sm' htmlFor="minimum_group_size">Cantidad mínima del grupo</label>
       <input
         id="minimum_group_size"
         name="minimum_group_size"
@@ -409,7 +409,7 @@ const ExperienceForm = () => {
 
 
 <h3 className="my-10 text-2xl font-bold tracking-tight text-gray-900">Equipo</h3>
-      <li className='flex justify-between list-none ring-1 ring-gray-300 rounded-md p-2'>
+      <li className='grid grid-cols-2 list-none pb-5'>
       <label className='text-gray-700 text-sm' htmlFor="included_equipment_rental">Alquiler de equipos incluido:</label>
       <input
         id="included_equipment_rental"
@@ -431,7 +431,8 @@ const ExperienceForm = () => {
       />
 
 <h3 className="my-10 text-2xl font-bold tracking-tight text-gray-900">Entrenamiento</h3>
-
+      
+      <li className='grid grid-cols-2 list-none pb-5 gap-y-5'>
       <label className='text-gray-700 text-sm' htmlFor="included_practical_lessons">Lecciones prácticas incluidas:</label>
       <input
         id="included_practical_lessons"
@@ -440,7 +441,6 @@ const ExperienceForm = () => {
         checked={formData.included_practical_lessons}
         onChange={handleChange}
       />
-
       <label className='text-gray-700 text-sm' htmlFor="included_theoretical_lessons">Lecciones teóricas incluidas:</label>
       <input
         id="included_theoretical_lessons"
@@ -468,6 +468,8 @@ const ExperienceForm = () => {
         onChange={handleChange}
       />
 
+      </li>
+
 
 
 
@@ -479,7 +481,7 @@ const ExperienceForm = () => {
   name="experience_accommodation"
   value={formData.experience_accommodation}
   onChange={handleChange}
-  className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
+  className="text-sm block w-full mt-1 p-2 mb-5 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
 >
   <option value=""></option>
   <option value="Hotel">Hotel</option>
@@ -494,9 +496,9 @@ const ExperienceForm = () => {
   <option value="No incluido">No incluido</option>
 </select>
 
+      <li className='grid grid-cols-2 list-none pb-5 gap-y-5'>
 
-
-      <label className='text-gray-700 text-sm' htmlFor="meal_breakfast">Desayuno incluido</label>
+      <label className='text-gray-700 text-sm' htmlFor="meal_breakfast">Desayuno incluido:</label>
       <input
         id="meal_breakfast"
         name="meal_breakfast"
@@ -505,7 +507,7 @@ const ExperienceForm = () => {
         onChange={handleChange}
       />
 
-      <label className='text-gray-700 text-sm' htmlFor="meal_lunch">Almuerzo incluido</label>
+      <label className='text-gray-700 text-sm' htmlFor="meal_lunch">Almuerzo incluido:</label>
       <input
         id="meal_lunch"
         name="meal_lunch"
@@ -514,7 +516,7 @@ const ExperienceForm = () => {
         onChange={handleChange}
       />
 
-      <label className='text-gray-700 text-sm' htmlFor="meal_dinner">Cena incluida</label>
+      <label className='text-gray-700 text-sm' htmlFor="meal_dinner">Cena incluida:</label>
       <input
         id="meal_dinner"
         name="meal_dinner"
@@ -523,7 +525,7 @@ const ExperienceForm = () => {
         onChange={handleChange}
       />
 
-      <label className='text-gray-700 text-sm' htmlFor="meal_snacks_and_drinks">Aperitivos y bebidas incluidos</label>
+      <label className='text-gray-700 text-sm' htmlFor="meal_snacks_and_drinks">Aperitivos y bebidas incluidos:</label>
       <input
         id="meal_snacks_and_drinks"
         name="meal_snacks_and_drinks"
@@ -531,10 +533,11 @@ const ExperienceForm = () => {
         checked={formData.meal_snacks_and_drinks}
         onChange={handleChange}
       />
-
+      </li>   
 
 <h3 className="my-10 text-2xl font-bold tracking-tight text-gray-900">Transporte </h3>
 
+      <li className='grid grid-cols-2 list-none pb-5 gap-y-5'>
       <label className='text-gray-700 text-sm' htmlFor="transport_airport">Transporte desde el aeropuerto incluido</label>
       <input
         id="transport_airport"
@@ -552,9 +555,6 @@ const ExperienceForm = () => {
         checked={formData.transport_during_experience}
         onChange={handleChange}
       />
-
-
-      
 
       <label className='text-gray-700 text-sm' htmlFor="included_experience_video">Video de la experiencia incluido:</label>
       <input
@@ -583,8 +583,11 @@ const ExperienceForm = () => {
         checked={formData.included_lift_ticket}
         onChange={handleChange}
       />
+    </li>
 
 <h3 className="my-10 text-2xl font-bold tracking-tight text-gray-900">Seguridad</h3>
+      
+      <li className='grid grid-cols-2 list-none pb-5 gap-y-5'>
 
       <label className='text-gray-700 text-sm' htmlFor="certified_instructor">Instructor certificado:</label>
       <input
@@ -595,7 +598,7 @@ const ExperienceForm = () => {
         onChange={handleChange}
       />
 
-      <label className='text-gray-700 text-sm' htmlFor="included_accident_insurance">Seguro de accidentes incluido</label>
+      <label className='text-gray-700 text-sm' htmlFor="included_accident_insurance">Seguro de accidentes incluido:</label>
       <input
         id="included_accident_insurance"
         name="included_accident_insurance"
@@ -603,7 +606,7 @@ const ExperienceForm = () => {
         checked={formData.included_accident_insurance}
         onChange={handleChange}
       />
-      
+      </li>
       <label className='text-gray-700 text-sm' htmlFor="accident_insurance_file">Póliza del seguro</label>
       <input
         id="accident_insurance_file"
@@ -615,7 +618,9 @@ const ExperienceForm = () => {
       />
 
 
-      <button type="submit">Crear Experiencia</button>
+      <button  type="submit" className="block w-full rounded-md bg-letrip my-10 px-3 py-5 text-center text-xl font-semibold text-gray-900 shadow-sm hover:bg-yellow-400">
+        Crear Experiencia
+        </button>
     </form>
   );
 };

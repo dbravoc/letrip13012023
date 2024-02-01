@@ -4,7 +4,7 @@ import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faWhatsapp } from '@fortawesome/free-brands-svg-icons';
-import { faBicycle, faFish, faPersonSkiing, faMountainSun, faSwimmer, faSpa, faWater,faPersonHiking } from '@fortawesome/free-solid-svg-icons';
+import { faBicycle, faFish, faPersonSkiing, faMountainSun, faSwimmer, faSpa, faWater,faPersonHiking, faEarthAmericas } from '@fortawesome/free-solid-svg-icons';
 import logo from '/public/img/letrip logo.png';
 
 const navigation = [
@@ -54,9 +54,12 @@ export default function Inicio() {
               </a>
             ))}
           </div>
-          <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-            <a href="https://wa.me/12028125753" className="text-xs sm:leading-6 text-black">
-            <span className='pr-2'>Conversemos</span> <FontAwesomeIcon icon={faWhatsapp} className='text-3xl text-black' />
+          <div className="hidden sm:grid  sm:flex-1 gap-y-2 text-end sm:justify-end">
+            <Link to='/create'>
+            <span className='pr-2 text-xs text-gray-700'>Registra tu experiencia</span> <FontAwesomeIcon icon={faEarthAmericas} className='text-xl text-gray-700' />
+            </Link>
+            <a href="https://wa.me/12028125753" className="text-xs sm:leading-6 text-gray-700">
+            <span className='pr-2'>Conversemos</span> <FontAwesomeIcon icon={faWhatsapp} className='text-2xl text-text-gray-700' />
             </a>
           </div>
         </nav>
