@@ -188,18 +188,17 @@ function UpdateExperienceForm() {
         className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
       />
 
-      <label className='text-gray-700 text-sm' htmlFor="experience_instructor">Tipo de anfitrión</label>
+      <label className='text-gray-700 text-sm' htmlFor="experience_instructor_type">Tipo de anfitrión</label>
       <select
-        id="experience_instructor"
-        name="experience_instructor"
+        id="experience_instructor_type"
+        name="experience_instructor_type"
         value={formData.experience_instructor}
         onChange={handleChange}
         className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
       >
-        <option value="Instructor"></option>
         <option value="Instructor">Instructor</option>
-        <option value="Anfitrión">Guía</option>
-        <option value="Anfitrión">Especialista</option>
+        <option value="Guía">Guía</option>
+        <option value="Especialista">Especialista</option>
         <option value="Anfitrión">Anfitrión</option>
       </select>
 

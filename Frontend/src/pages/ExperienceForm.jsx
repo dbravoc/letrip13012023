@@ -267,7 +267,6 @@ const ExperienceForm = () => {
         onChange={handleChange}
         className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
       >
-        <option value="Instructor"></option>
         <option value="Instructor">Instructor</option>
         <option value="Guía">Guía</option>
         <option value="Especialista">Especialista</option>
