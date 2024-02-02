@@ -269,8 +269,8 @@ const ExperienceForm = () => {
       >
         <option value="Instructor"></option>
         <option value="Instructor">Instructor</option>
-        <option value="Anfitrión">Guía</option>
-        <option value="Anfitrión">Especialista</option>
+        <option value="Guía">Guía</option>
+        <option value="Especialista">Especialista</option>
         <option value="Anfitrión">Anfitrión</option>
       </select>
 
