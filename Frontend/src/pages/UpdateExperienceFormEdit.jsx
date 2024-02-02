@@ -1,131 +1,57 @@
-import React, { useState, useEffect } from 'react';
+// Importaciones necesarias
+import React, { useEffect, useState } from 'react';
 
-const ExperienceFormEdit = () => {
+function UpdateExperienceForm() {
   const [experiences, setExperiences] = useState([]);
-  const [selectedExperienceId, setSelectedExperienceId] = useState('');
+  const [selectedExperience, setSelectedExperience] = useState(null);
+  const [formData, setFormData] = useState({});
 
-
-  // Cargar las experiencias al cargar el componente
+  // Cargar experiencias al montar el componente
   useEffect(() => {
-    const fetchExperiences = async () => {
-      const response = await fetch('https://letrip13012023-backend-lawitec.vercel.app/experiences');
-      if (response.ok) {
-        const data = await response.json();
-        setExperiences(data); // Asegúrate de que esto coincida con el formato de tu respuesta
-      }
-    };
-
-    fetchExperiences();
+    fetch('https://letrip13012023-backend-lawitec.vercel.app/experiences')
+      .then(response => response.json())
+      .then(data => setExperiences(data));
   }, []);
 
-
-  // Cargar los datos de la experiencia seleccionada
-  useEffect(() => {
-    if (!selectedExperienceId) return;
-
-    const selectedExperience = experiences.find(experience => experience.uuid === selectedExperienceId);
-    if (selectedExperience) {
-      setFormData({
-        ...selectedExperience,
-        // Asegúrate de que la estructura de selectedExperience coincida con el estado del formulario
-      });
-    }
-  }, [selectedExperienceId, experiences]);
-
-  const handleImageUpload = async (e) => {
-    const file = e.target.files[0];
-    if (!file) return;
-
-    const formData = new FormData();
-    formData.append('file', file);
-
-    try {
-        const response = await fetch('https://letrip13012023-backend-lawitec.vercel.app/upload', {
-            method: 'POST',
-            body: formData,
-        });
-
-        if (!response.ok) throw new Error('Error al subir la imagen');
-
-        const result = await response.json();
-        if (result.url) {
-            setFormData({ ...formData, [e.target.name]: result.url });
-        } else {
-            console.error('Error en la respuesta del servidor:', result);
-        }
-    } catch (error) {
-        console.error('Error al subir la imagen:', error);
-    }
-};
-
-
-const handleExperienceChange = (e) => {
-  setSelectedExperienceId(e.target.value);
-};
-
-const handleChange = (e) => {
-  const { name, value, type, checked } = e.target;
-  setFormData((prevData) => ({
-    ...prevData,
-    [name]: type === 'checkbox' ? checked : value,
-  }));
-};
-const handleSubmit = async (e) => {
-  e.preventDefault();
-
-    try {
-      const response = await fetch(`https://letrip13012023-backend-lawitec.vercel.app/experiences/${selectedExperienceId}`, {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
-
-      if (!response.ok) {
-        throw new Error('Error al actualizar la experiencia');
-      }
-
-      const result = await response.json();
-      console.log('Experiencia actualizada:', result);
-      // Aquí puedes resetear el formulario o manejar la actualización exitosa
-    } catch (error) {
-      console.error('Error al actualizar experiencia:', error);
-    }
+  // Función para manejar la selección de una experiencia
+  const handleExperienceChange = (e) => {
+    const uuid = e.target.value;
+    const experience = experiences.find(exp => exp.experience_uuid === uuid);
+    setSelectedExperience(uuid);
+    setFormData(experience || {});
   };
 
-  
+  // Función para manejar cambios en el formulario
+  const handleChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: type === 'checkbox' ? checked : value
+    }));
+  };
+
+  // Función para manejar la actualización de la experiencia
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Implementa la lógica de actualización aquí
+  };
+
   return (
     <form className='flex flex-col px-auto sm:px-72 gap-y-2' onSubmit={handleSubmit}>
 
 <h3 className="mb-10 text-2xl font-bold tracking-tight text-gray-900">Datos generales</h3>
 
-      <select
-        id="experience_name"
-        name="experience_name"
-        type="text"
-        value={selectedExperienceId}
-        onChange={handleExperienceChange}
-        className="text-sm block w-full mt-1  mb-10 p-2 rounded-md border bg-letrip border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
-      >
-        <option value="">Selecciona una experiencia</option>
-        {experiences.map((experience) => (
-          <option key={experience.uuid} value={experience.uuid}>
-            {experience.experience_name}
+      <select className='text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none' 
+      onChange={handleExperienceChange} 
+      value={selectedExperience || ''}>
+        <option value="">Seleccione una experiencia</option>
+        {experiences.map((exp) => (
+          <option key={exp.experience_uuid} value={exp.experience_uuid}>
+            {exp.experience_name}
           </option>
         ))}
       </select>
 
-      <label className='text-gray-700 text-sm' htmlFor="experience_name" >Título de la experiencia. <span className='text-xs italic'> (Escribe algo simple, breve y persuasivo para los visitantes de Le Trip)</span></label>
-      <input
-        id="experience_name"
-        name="experience_name"
-        type="text"
-        value={selectedExperienceId}
-        onChange={handleChange}
-        className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
-      />
-      
       <label className='text-gray-700 text-sm' htmlFor="experience_main_discipline">Disciplina principal</label>
       <select
         id="experience_main_discipline"
@@ -329,6 +255,13 @@ const handleSubmit = async (e) => {
          onChange={handleImageUpload} // Manejar la carga de imágenes en una función
          className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
        />
+
+
+
+
+
+
+
 
 <h3 className="my-10 text-2xl font-bold tracking-tight text-gray-900">Restricciones</h3>
 
@@ -574,10 +507,11 @@ const handleSubmit = async (e) => {
 
 
       <button  type="submit" className="block w-full rounded-md bg-letrip my-10 px-3 py-5 text-center text-xl font-semibold text-gray-900 shadow-sm hover:bg-yellow-400">
-        Actualizar experiencia
+        Crear Experiencia
         </button>
     </form>
   );
 };
 
-export default ExperienceFormEdit;
+export default UpdateExperienceForm;
+

@@ -5,7 +5,7 @@ import Experiencias from './components/Experiencias';
 import Tarjeta from './pages/Tarjeta';
 import FormularioPago from './pages/EstadoPago';
 import ExperienceForm from './pages/ExperienceForm';
-import ExperienceFormEdit from './pages/ExperienceFormEdit';
+import ExperienceFormEdit from './pages/UpdateExperienceFormEdit';
 
 import IncludedNotIncluded from './components/IncludedNotIncluded';
 import AvailablesExperiences from './components/AvailablesExperiences';

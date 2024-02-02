@@ -208,3 +208,109 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 });
+
+
+app.put('/experiences/:uuid', async (req, res) => {
+    const { uuid } = req.params;
+    const {
+        experience_name,
+        experience_duration,
+        experience_location,
+        target_audience_restrictions,
+        minimum_age,
+        minimum_group_size,
+        group_restrictions,
+        equipment_required,
+        certified_instructor,
+        included_practical_lessons,
+        included_theoretical_lessons,
+        included_yoga,
+        included_training,
+        included_experience_video,
+        included_accident_insurance,
+        included_equipment_rental,
+        included_entry_fees,
+        included_lift_ticket,
+        experience_accommodation,
+        meal_breakfast,
+        meal_lunch,
+        meal_dinner,
+        meal_snacks_and_drinks,
+        transport_airport,
+        transport_during_experience,
+        experience_type,
+        experience_country,
+        experience_instructor_message,
+        experience_main_discipline,
+        experience_geography,
+        experience_demand_level,
+        experience_price,
+        experience_instructor,
+        experience_instructor_type,
+        card_img_1,
+        card_img_2,
+        card_img_3,
+        card_img_4,
+        experience_included_description,
+        instructor_profile_img,
+        accident_insurance_file,
+    } = req.body;
+
+    try {
+        const { data, error } = await supabase
+            .from('experiences')
+            .update({
+                experience_name,
+                experience_duration,
+                experience_location,
+                target_audience_restrictions,
+                minimum_age,
+                minimum_group_size,
+                group_restrictions,
+                equipment_required,
+                certified_instructor,
+                included_practical_lessons,
+                included_theoretical_lessons,
+                included_yoga,
+                included_training,
+                included_experience_video,
+                included_accident_insurance,
+                included_equipment_rental,
+                included_entry_fees,
+                included_lift_ticket,
+                experience_accommodation,
+                meal_breakfast,
+                meal_lunch,
+                meal_dinner,
+                meal_snacks_and_drinks,
+                transport_airport,
+                transport_during_experience,
+                experience_type,
+                experience_country,
+                experience_instructor_message,
+                experience_main_discipline,
+                experience_geography,
+                experience_demand_level,
+                experience_price,
+                experience_instructor,
+                experience_instructor_type,
+                card_img_1,
+                card_img_2,
+                card_img_3,
+                card_img_4,
+                experience_included_description,
+                instructor_profile_img,
+                accident_insurance_file,
+            })
+            .eq('experience_uuid', uuid)
+            .select();
+
+        if (error) throw error;
+
+        res.json(data);
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server Error');
+    }
+});
+
