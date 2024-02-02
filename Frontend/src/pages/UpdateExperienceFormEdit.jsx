@@ -33,8 +33,49 @@ function UpdateExperienceForm() {
   // Función para manejar la actualización de la experiencia
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Implementa la lógica de actualización aquí
+    fetch(`https://letrip13012023-backend-lawitec.vercel.app/experiences/${selectedExperience}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(formData),
+    })
+      .then(response => response.json())
+      .then(data => {
+        // Manejar respuesta. Por ejemplo, mostrar un mensaje de éxito o recargar las experiencias.
+        console.log('Experiencia actualizada:', data);
+      })
+      .catch(error => {
+        // Manejar el error
+        console.error('Error al actualizar la experiencia:', error);
+      });
   };
+// función para cargar imagenes
+  const handleImageUpload = async (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+  
+    const uploadData = new FormData();
+    uploadData.append('image', file);
+  
+    try {
+      const response = await fetch('https://letrip13012023-backend-lawitec.vercel.app/upload', {
+        method: 'POST',
+        body: uploadData,
+      });
+  
+      const result = await response.json();
+      if (result.url) {
+        setFormData({ ...formData, [e.target.name]: result.url });
+      } else {
+        console.error('Error en la respuesta del servidor:', result);
+      }
+    } catch (error) {
+      console.error('Error al subir la imagen:', error);
+    }
+  };
+  
+  
 
   return (
     <form className='flex flex-col px-auto sm:px-72 gap-y-2' onSubmit={handleSubmit}>
