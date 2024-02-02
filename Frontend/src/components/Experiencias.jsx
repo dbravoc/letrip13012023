@@ -19,7 +19,7 @@ const Experiencias = ({ experienceCard }) => {
                     {experienceCard.map(experience => (
                         <div key={experience.experience_uuid} className="flex flex-col justify-center mb-10 md:flex-row rounded-lg overflow-hidden px-0">
                             <div className="flex max-w-[350px] flex-col justify-between leading-normal">
-                                <img src={experience.card_img_1}></img>
+                                <img src={experience.card_img_1} className="w-full h-48 object-cover"></img>
                                 <p className="text-gray-900 pt-4 font-bold text-l">{experience.experience_name}</p>
                                 <div className="mt-1">
                                     {/* Etiquetas de la experiencia */}
