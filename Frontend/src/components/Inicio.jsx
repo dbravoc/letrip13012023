@@ -56,7 +56,10 @@ export default function Inicio() {
           </div>
           <div className="hidden sm:grid  sm:flex-1 gap-y-2 text-end sm:justify-end">
             <Link to='/create'>
-            <span className='pr-2 text-xs text-gray-700'>Registra tu experiencia</span> <FontAwesomeIcon icon={faEarthAmericas} className='text-xl text-gray-700' />
+            <span className='pr-2 text-xs text-gray-700'>Crea una experiencia</span> <FontAwesomeIcon icon={faEarthAmericas} className='text-xl text-gray-700' />
+            </Link>
+            <Link to='/edit'>
+            <span className='pr-2 text-xs text-gray-700'>Edita tus experiencias</span> <FontAwesomeIcon icon={faEarthAmericas} className='text-xl text-gray-700' />
             </Link>
             <a href="https://wa.me/12028125753" className="text-xs sm:leading-6 text-gray-700">
             <span className='pr-2'>Conversemos</span> <FontAwesomeIcon icon={faWhatsapp} className='text-2xl text-text-gray-700' />
