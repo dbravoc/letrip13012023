@@ -61,6 +61,7 @@ const ExperienceFormEdit = () => {
     fetchExperiences();
   }, []);
 
+
   // Cargar los datos de la experiencia seleccionada
   useEffect(() => {
     if (!selectedExperienceId) return;
@@ -69,11 +70,9 @@ const ExperienceFormEdit = () => {
     if (selectedExperience) {
       setFormData({
         ...selectedExperience,
-        // Aquí debes asegurarte de que la estructura de selectedExperience coincida con el estado del formulario
+        // Asegúrate de que la estructura de selectedExperience coincida con el estado del formulario
       });
     }
-
-    fetchExperienceDetails();
   }, [selectedExperienceId, experiences]);
 
   const handleImageUpload = async (e) => {
@@ -103,21 +102,19 @@ const ExperienceFormEdit = () => {
 };
 
 
-    const handleExperienceChange = (e) => {
-      const { value } = e.target;
-      setSelectedExperienceId(value);
-    };
+const handleExperienceChange = (e) => {
+  setSelectedExperienceId(e.target.value);
+};
 
-  const handleChange = (e) => {
-    const { name, value, type, checked } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: type === 'checkbox' ? checked : value,
-    }));
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+const handleChange = (e) => {
+  const { name, value, type, checked } = e.target;
+  setFormData((prevData) => ({
+    ...prevData,
+    [name]: type === 'checkbox' ? checked : value,
+  }));
+};
+const handleSubmit = async (e) => {
+  e.preventDefault();
 
     try {
       const response = await fetch(`https://letrip13012023-backend-lawitec.vercel.app/experiences/${selectedExperienceId}`, {
@@ -134,12 +131,13 @@ const ExperienceFormEdit = () => {
 
       const result = await response.json();
       console.log('Experiencia actualizada:', result);
-      // Restablecer el formulario o manejar la actualización exitosa aquí
+      // Aquí puedes resetear el formulario o manejar la actualización exitosa
     } catch (error) {
       console.error('Error al actualizar experiencia:', error);
     }
   };
 
+  
   return (
     <form className='flex flex-col px-auto sm:px-72 gap-y-2' onSubmit={handleSubmit}>
 
