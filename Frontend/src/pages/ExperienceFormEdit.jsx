@@ -4,7 +4,48 @@ const ExperienceFormEdit = () => {
   const [experiences, setExperiences] = useState([]);
   const [selectedExperienceId, setSelectedExperienceId] = useState('');
   const [formData, setFormData] = useState({
-    // Inicialmente vacío hasta que se seleccione una experiencia
+    experience_name: '',
+    experience_duration: '',
+    experience_location: '',
+    target_audience_restrictions: '',
+    minimum_age: '',
+    minimum_group_size: '',
+    group_restrictions: '',
+    equipment_required: '',
+    certified_instructor: false,
+    included_practical_lessons: false,
+    included_theoretical_lessons: false,
+    included_yoga: false,
+    included_training: false,
+    included_experience_video: false,
+    included_accident_insurance: false,
+    included_equipment_rental: false,
+    included_entry_fees: false,
+    included_lift_ticket: false,
+    experience_accommodation: '',
+    meal_breakfast: false,
+    meal_lunch: false,
+    meal_dinner: false,
+    meal_snacks_and_drinks: false,
+    transport_airport: false,
+    transport_during_experience: false,
+    experience_type: '',
+    experience_country: '',
+    experience_instructor_message: '',
+    experience_main_discipline: '',
+    experience_geography: '',
+    experience_demand_level: '',
+    experience_price: '',
+    experience_instructor: '',
+    experience_instructor_type: '',
+    card_img_1: '',
+    card_img_2: '',
+    card_img_3: '',
+    card_img_4: '',
+    experience_included_description: '',
+    instructor_profile_img: '',
+    accident_insurance_file: '',  
+  
   });
 
   // Cargar las experiencias al cargar el componente
@@ -24,16 +65,16 @@ const ExperienceFormEdit = () => {
   useEffect(() => {
     if (!selectedExperienceId) return;
 
-    const fetchExperienceDetails = async () => {
-      const response = await fetch(`https://letrip13012023-backend-lawitec.vercel.app/experiences/${selectedExperienceId}`);
-      if (response.ok) {
-        const data = await response.json();
-        setFormData(data); // Asegúrate de que esto coincida con el formato de tu experiencia
-      }
-    };
+    const selectedExperience = experiences.find(experience => experience.uuid === selectedExperienceId);
+    if (selectedExperience) {
+      setFormData({
+        ...selectedExperience,
+        // Aquí debes asegurarte de que la estructura de selectedExperience coincida con el estado del formulario
+      });
+    }
 
     fetchExperienceDetails();
-  }, [selectedExperienceId]);
+  }, [selectedExperienceId, experiences]);
 
   const handleImageUpload = async (e) => {
     const file = e.target.files[0];
@@ -62,9 +103,10 @@ const ExperienceFormEdit = () => {
 };
 
 
-  const handleExperienceChange = (e) => {
-    setSelectedExperienceId(e.target.value);
-  };
+    const handleExperienceChange = (e) => {
+      const { value } = e.target;
+      setSelectedExperienceId(value);
+    };
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -92,7 +134,7 @@ const ExperienceFormEdit = () => {
 
       const result = await response.json();
       console.log('Experiencia actualizada:', result);
-      // Aquí puedes resetear el formulario o redirigir al usuario
+      // Restablecer el formulario o manejar la actualización exitosa aquí
     } catch (error) {
       console.error('Error al actualizar experiencia:', error);
     }
@@ -106,8 +148,9 @@ const ExperienceFormEdit = () => {
       <select
         id="experience_name"
         name="experience_name"
-        value={formData.experience_name} // Asegúrate de que esto refleje un valor que exista en las opciones o sea un identificador único de la experiencia seleccionada
-        onChange={handleChange}
+        type="text"
+        value={selectedExperienceId}
+        onChange={handleExperienceChange}
         className="text-sm block w-full mt-1  mb-10 p-2 rounded-md border bg-letrip border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
       >
         <option value="">Selecciona una experiencia</option>
@@ -123,7 +166,7 @@ const ExperienceFormEdit = () => {
         id="experience_name"
         name="experience_name"
         type="text"
-        value={formData.experience_name}
+        value={selectedExperienceId}
         onChange={handleChange}
         className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
       />
