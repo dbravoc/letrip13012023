@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 
-const EditExperienceForm = () => {
+const ExperienceFormEdit = () => {
   const [experiences, setExperiences] = useState([]);
   const [selectedExperienceId, setSelectedExperienceId] = useState('');
   const [formData, setFormData] = useState({
@@ -290,13 +290,6 @@ const EditExperienceForm = () => {
          onChange={handleImageUpload} // Manejar la carga de imágenes en una función
          className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
        />
-
-
-
-
-
-
-
 
 <h3 className="my-10 text-2xl font-bold tracking-tight text-gray-900">Restricciones</h3>
 
