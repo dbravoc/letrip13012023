@@ -3,50 +3,7 @@ import React, { useState, useEffect } from 'react';
 const ExperienceFormEdit = () => {
   const [experiences, setExperiences] = useState([]);
   const [selectedExperienceId, setSelectedExperienceId] = useState('');
-  const [formData, setFormData] = useState({
-    experience_name: '',
-    experience_duration: '',
-    experience_location: '',
-    target_audience_restrictions: '',
-    minimum_age: '',
-    minimum_group_size: '',
-    group_restrictions: '',
-    equipment_required: '',
-    certified_instructor: false,
-    included_practical_lessons: false,
-    included_theoretical_lessons: false,
-    included_yoga: false,
-    included_training: false,
-    included_experience_video: false,
-    included_accident_insurance: false,
-    included_equipment_rental: false,
-    included_entry_fees: false,
-    included_lift_ticket: false,
-    experience_accommodation: '',
-    meal_breakfast: false,
-    meal_lunch: false,
-    meal_dinner: false,
-    meal_snacks_and_drinks: false,
-    transport_airport: false,
-    transport_during_experience: false,
-    experience_type: '',
-    experience_country: '',
-    experience_instructor_message: '',
-    experience_main_discipline: '',
-    experience_geography: '',
-    experience_demand_level: '',
-    experience_price: '',
-    experience_instructor: '',
-    experience_instructor_type: '',
-    card_img_1: '',
-    card_img_2: '',
-    card_img_3: '',
-    card_img_4: '',
-    experience_included_description: '',
-    instructor_profile_img: '',
-    accident_insurance_file: '',  
-  
-  });
+
 
   // Cargar las experiencias al cargar el componente
   useEffect(() => {
@@ -173,7 +130,7 @@ const handleSubmit = async (e) => {
       <select
         id="experience_main_discipline"
         name="experience_main_discipline"
-        value={selectedExperienceId.experience_main_discipline}
+        value={formData.experience_main_discipline}
         onChange={handleChange}
         className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
       >
