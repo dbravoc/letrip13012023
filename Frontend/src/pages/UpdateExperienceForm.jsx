@@ -192,7 +192,7 @@ function UpdateExperienceForm() {
       <select
         id="experience_instructor_type"
         name="experience_instructor_type"
-        value={formData.experience_instructor}
+        value={formData.experience_instructor_type}
         onChange={handleChange}
         className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
       >
