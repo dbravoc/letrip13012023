@@ -259,11 +259,11 @@ const ExperienceForm = () => {
         className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
       />
 
-      <label className='text-gray-700 text-sm' htmlFor="experience_instructor">Tipo de anfitrión</label>
+      <label className='text-gray-700 text-sm' htmlFor="experience_instructor_type">Tipo de anfitrión</label>
       <select
-        id="experience_instructor"
-        name="experience_instructor"
-        value={formData.experience_instructor}
+        id="experience_instructor_type"
+        name="experience_instructor_type"
+        value={formData.experience_instructor_type}
         onChange={handleChange}
         className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
       >
