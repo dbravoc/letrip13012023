@@ -173,7 +173,7 @@ const handleSubmit = async (e) => {
       <select
         id="experience_main_discipline"
         name="experience_main_discipline"
-        value={formData.experience_main_discipline}
+        value={selectedExperienceId.experience_main_discipline}
         onChange={handleChange}
         className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
       >
