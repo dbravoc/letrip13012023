@@ -5,6 +5,8 @@ import Experiencias from './components/Experiencias';
 import Tarjeta from './pages/Tarjeta';
 import FormularioPago from './pages/EstadoPago';
 import ExperienceForm from './pages/ExperienceForm';
+import ExperienceFormEdit from './pages/ExperienceFormEdit';
+
 import IncludedNotIncluded from './components/IncludedNotIncluded';
 import AvailablesExperiences from './components/AvailablesExperiences';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
@@ -40,6 +42,16 @@ const App = () => {
             </div>
           </>
         } />  
+
+      <Route path="/edit" element={
+          <>
+            <div className="mx-auto w-full sm:px-6 px-8">
+              <div className="flex flex-col justify-between flex-wrap"><Inicio /></div>
+              <div className="pt-36 px-12 flex flex-col justify-between flex-wrap relative z-10"><ExperienceFormEdit /></div>
+            </div>
+          </>
+        } />  
+
 
         
         <Route path="/tarjeta/:id" element={
