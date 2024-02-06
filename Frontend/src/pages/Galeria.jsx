@@ -29,11 +29,13 @@ const Galeria = ({ experienceCard }) => {
   return ( //GRID: seccion fotos, seccion informacion + invitacion anfitrion, reserva
 
 
-    <div className='mx-6'>
-      {imagenes.map((imagen, index) => (
-        <img key={index} src={imagen} alt={`Experience Image ${index + 1}`} className="object-cover rounded-3xl w-auto h-auto m-2" />
-      ))}
-    </div>  
+<div className='mx-6'>
+  {imagenes.map((imagen, index) => (
+    imagen ? (
+      <img key={index} src={imagen} alt={`Experience Image ${index + 1}`} className="object-cover rounded-3xl w-auto h-auto m-2" />
+    ) : null
+  ))}
+</div>
 
   );
   
