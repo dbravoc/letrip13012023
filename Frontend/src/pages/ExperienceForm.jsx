@@ -148,16 +148,7 @@ const ExperienceForm = () => {
       });
 
        // Mostrar notificación de éxito
-       toast.success('Experiencia creada con éxito', {
-        className: 'toast-custom-background',
-        position: "bottom-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-      });
+       toast.success('Experiencia creada con éxito');
       
     } catch (error) {
       console.error('Error al crear experiencia:', error);
@@ -647,7 +638,7 @@ const ExperienceForm = () => {
         Crear Experiencia
         </button>
 
-    <ToastContainer />
+      <ToastContainer position="bottom-right" />
     </form>
   );
 };
