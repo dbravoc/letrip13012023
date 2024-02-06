@@ -28,7 +28,7 @@ const Tarjeta = ({ experienceCard }) => {
       
   <div className="flex px-0 mx-0">
    
-    <div className="mx-0 grid sm:grid-cols-2 grid-cols-1 items-center gap-x-8 gap-y-8 sm:px-6 sm:py-8"> 
+    <div className="mx-0 flex items-center gap-x-8 gap-y-8 sm:px-6 sm:py-8"> 
 
       <div>
         <h2 className="text-3xl font-bold tracking-tight text-gray-900 mb-4">{selectedExperience.experience_name}</h2>
@@ -66,7 +66,7 @@ const Tarjeta = ({ experienceCard }) => {
             ))}
           </dl>
         </div>
-        </div>
+      </div>
 
     </div>
   
