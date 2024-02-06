@@ -67,7 +67,7 @@ const Tarjeta = ({ experienceCard }) => {
   <div className="flex flex-col items-center justify-center align-top px-20">
         <div className="flex overflow-x-auto scroll-smooth snap-x snap-mandatory gap-4 p-4 mt-4">
             {imagenes.map((imagen, index) => (
-              <div key={index} className="snap-start shrink-0 w-full max-h-60 object-cover">
+              <div key={index} className="snap-start w-auto max-h-60 object-cover">
                 <img src={imagen} alt={`Experience Image ${index + 1}`} className="w-full h-auto object-cover" />
               </div>
             ))}
