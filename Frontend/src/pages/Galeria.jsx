@@ -24,7 +24,7 @@ const Galeria = ({ experienceCard }) => {
 
     <div className='mx-6'>
       {imagenes.map((imagen, index) => (
-        <img key={index} src={imagen} alt={`Experience Image ${index + 1}`} className="object-cover rounded-md w-auto h-auto p-6" />
+        <img key={index} src={imagen} alt={`Experience Image ${index + 1}`} className="object-cover rounded-3xl w-auto h-auto p-6" />
       ))}
     </div>  
 
