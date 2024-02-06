@@ -59,11 +59,7 @@ const Tarjeta = ({ experienceCard }) => {
   return ( //GRID: seccion fotos, seccion informacion + invitacion anfitrion, reserva
       
   <div className="grid grid-cols-2 px-0 mx-0">
-
-      {imagenes.map((imagen, index) => (
-        <img key={index} src={imagen} alt={`Experience Image ${index + 1}`} className="object-cover w-full h-64" />
-      ))}
-
+   
     <div className="mx-0 grid sm:grid-cols-2 grid-cols-1 items-center gap-x-8 gap-y-8 sm:px-6 sm:py-8"> 
 
       <div>
@@ -105,6 +101,13 @@ const Tarjeta = ({ experienceCard }) => {
         </div>
 
     </div>
+
+    <div>
+      {imagenes.map((imagen, index) => (
+        <img key={index} src={imagen} alt={`Experience Image ${index + 1}`} className="object-cover w-full h-64" />
+      ))}
+    </div>
+  
 
   </div>
   
