@@ -3,6 +3,7 @@ import './App.css';
 import Inicio from './components/Inicio';
 import Experiencias from './components/Experiencias';
 import Tarjeta from './pages/Tarjeta';
+import Galeria from './pages/Galeria';
 import FormularioPago from './pages/EstadoPago';
 import ExperienceForm from './pages/ExperienceForm';
 import ExperienceFormEdit from './pages/UpdateExperienceForm';
@@ -57,9 +58,17 @@ const App = () => {
           <>
           <div className="bg-white mx-auto w-full">
             <div className="flex flex-col justify-between flex-wrap"><Inicio /></div>
-            <div className='pt-36'><Tarjeta experienceCard={experienceCard} /></div>
-            <div className='pt-20'><IncludedNotIncluded experienceCard={experienceCard} /></div>
-            <div className='pt-20'><AvailablesExperiences experienceCard={experienceCard} /></div>
+            <div grid grid-cols-2>
+              <div>
+                  <div className='pt-36'><Tarjeta experienceCard={experienceCard} /></div>
+                  <div className='pt-20'><IncludedNotIncluded experienceCard={experienceCard} /></div>
+                  <div className='pt-20'><AvailablesExperiences experienceCard={experienceCard} /></div>
+              </div>
+              <div>
+                  <div className='pt-36'><Galeria experienceCard={experienceCard} /></div>
+              </div>
+            </div>
+
           </div>
           </>
         } />

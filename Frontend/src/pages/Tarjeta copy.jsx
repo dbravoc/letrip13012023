@@ -1,16 +1,26 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
 
 
 const Tarjeta = ({ experienceCard }) => {
   const { id } = useParams(); // Obtiene el ID de la URL
+  const navigate = useNavigate();
   const selectedExperience = experienceCard.find(e => e.experience_uuid === id);
 
   if (!selectedExperience) {
     return <div>No se encontró la experiencia</div>;
   }
+
+  // Las URLs de las imágenes se obtienen directamente del selectedExperience
+  const imagenes = [
+    selectedExperience.card_img_1,
+    selectedExperience.card_img_2,
+    selectedExperience.card_img_3,
+    selectedExperience.card_img_4,
+    // Añade más URLs como necesites
+  ];
 
   const features = [
     { name: 'Tipo', description: selectedExperience.experience_type },
@@ -22,6 +32,28 @@ const Tarjeta = ({ experienceCard }) => {
     { name: 'Precio Desde', description: `${selectedExperience.experience_price} USD` },
   ];
 
+  const included = [
+    {name: 'Clase práctica', value: selectedExperience.included_practical_lessons},
+    {name: 'Clase teórica', value: selectedExperience.included_theoretical_lessons},
+    {name: 'Yoga', value: selectedExperience.included_yoga},
+    {name: 'Entrenamiento', value: selectedExperience.included_training},
+    {name: 'Video experiencia', value: selectedExperience.included_experience_video},
+    {name: 'Seguro accidentes', value: selectedExperience.included_accident_insurance},
+    {name: 'Arriendo equipos', value: selectedExperience.included_equipment_rental},
+    {name: 'Entrada a parques y eventos', value: selectedExperience.included_entry_fees},
+    {name: 'Ticket de Andarivel', value: selectedExperience.included_lift_ticket},
+  ]
+  const includedList = included.filter(feature => feature.value === true);
+  const notIncludedList = included.filter(feature => feature.value === false);
+
+
+  const handlePayment = () => {
+    // Redireccionar a la nueva ruta
+    navigate(`/formulariopago/${selectedExperience.experience_uuid}`);
+
+    // Abrir el link de pago en una nueva pestaña
+    window.open('https://mpago.la/1yqEPhC', '_blank', 'noopener,noreferrer');
+  }
 
 
   return ( //GRID: seccion fotos, seccion informacion + invitacion anfitrion, reserva
@@ -68,6 +100,12 @@ const Tarjeta = ({ experienceCard }) => {
         </div>
         </div>
 
+    </div>
+
+    <div>
+      {imagenes.map((imagen, index) => (
+        <img key={index} src={imagen} alt={`Experience Image ${index + 1}`} className="object-cover w-full h-64" />
+      ))}
     </div>
   
 
