@@ -70,24 +70,23 @@ const Tarjeta = ({ experienceCard }) => {
       
   <div className="flex flex-col items-center justify-center align-top px-0 mx-0">
         <Swiper
-        spaceBetween={50}
-        slidesPerView={1}
-        navigation
-        pagination={{ clickable: true }}
-        scrollbar={{ draggable: true }}
-        loop={true}
-        autoplay={{
-          delay: 2500,
-          disableOnInteraction: false,
-        }}
-        className="w-full"
-      >
-        {imagenes.map((imagen, index) => (
-          <SwiperSlide key={index}>
-            <img src={imagen} alt={`Experience Image ${index + 1}`} className="object-cover w-full h-64" />
-          </SwiperSlide>
-        ))}
-      </Swiper>
+          spaceBetween={0}
+          slidesPerView={1}
+          navigation
+          pagination={{ clickable: true }}
+          loop={true}
+          autoplay={{
+            delay: 2500,
+            disableOnInteraction: false,
+          }}
+          className="w-full"
+        >
+          {imagenes.map((imagen, index) => (
+            <SwiperSlide key={index}>
+              <img src={imagen} alt={`Experience Image ${index + 1}`} className="object-cover w-full h-64" />
+            </SwiperSlide>
+          ))}
+        </Swiper>
     <div className="mx-0 grid sm:grid-cols-2 grid-cols-1 items-center gap-x-8 gap-y-8 sm:px-6 sm:py-8"> 
 
       <div>
