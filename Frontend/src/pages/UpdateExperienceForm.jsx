@@ -1,5 +1,8 @@
 // Importaciones necesarias
 import React, { useEffect, useState } from 'react';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 function UpdateExperienceForm() {
   const [experiences, setExperiences] = useState([]);
@@ -67,6 +70,16 @@ function UpdateExperienceForm() {
       const result = await response.json();
       if (result.url) {
         setFormData({ ...formData, [e.target.name]: result.url });
+        toast.success('Experiencia creada con éxito!', {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+        
       } else {
         console.error('Error en la respuesta del servidor:', result);
       }
@@ -76,6 +89,7 @@ function UpdateExperienceForm() {
   };
   
   
+<ToastContainer />
 
   return (
     <form className='flex flex-col px-auto sm:px-72 gap-y-2' onSubmit={handleSubmit}>
