@@ -62,6 +62,8 @@ function UpdateExperienceForm() {
       toast.error('Error al actualizar la experiencia.');
     });
 
+  };
+
 
 // función para cargar imagenes
   const handleImageUpload = async (e) => {
@@ -88,7 +90,7 @@ function UpdateExperienceForm() {
     }
   };
 
-}
+
   
   
 
@@ -316,10 +318,6 @@ function UpdateExperienceForm() {
          onChange={handleImageUpload} // Manejar la carga de imágenes en una función
          className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
        />
-
-
-
-
 
 
 
@@ -575,6 +573,7 @@ function UpdateExperienceForm() {
 
     </form>
   );
+
 };
 
 export default UpdateExperienceForm;
