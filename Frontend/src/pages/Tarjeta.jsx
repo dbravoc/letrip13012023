@@ -1,13 +1,17 @@
-
 import React from 'react';
-import { useParams } from 'react-router-dom';
-import { CheckIcon } from '@heroicons/react/20/solid'
-import { Link } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/scrollbar';
+import SwiperCore, { Navigation, Pagination, Scrollbar, A11y, Autoplay } from 'swiper';
 
 
+// Configura Swiper para usar los módulos necesarios
+SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, Autoplay]);
 
 
 const Tarjeta = ({ experienceCard }) => {
@@ -65,13 +69,25 @@ const Tarjeta = ({ experienceCard }) => {
   return ( //GRID: seccion fotos, seccion informacion + invitacion anfitrion, reserva
       
   <div className="flex flex-col items-center justify-center align-top px-0 mx-0">
-       <div className="flex overflow-x-auto scroll-smooth snap-x snap-mandatory gap-4 p-4 mt-4">
+        <Swiper
+        spaceBetween={50}
+        slidesPerView={1}
+        navigation
+        pagination={{ clickable: true }}
+        scrollbar={{ draggable: true }}
+        loop={true}
+        autoplay={{
+          delay: 2500,
+          disableOnInteraction: false,
+        }}
+        className="w-full"
+      >
         {imagenes.map((imagen, index) => (
-          <div key={index} className="snap-start flex-shrink-0 h-64 w-auto">
-            <img src={imagen} alt={`Experience Image ${index + 1}`} className="h-full w-full object-cover" />
-          </div>
+          <SwiperSlide key={index}>
+            <img src={imagen} alt={`Experience Image ${index + 1}`} className="object-cover w-full h-64" />
+          </SwiperSlide>
         ))}
-      </div>
+      </Swiper>
     <div className="mx-0 grid sm:grid-cols-2 grid-cols-1 items-center gap-x-8 gap-y-8 sm:px-6 sm:py-8"> 
 
       <div>
