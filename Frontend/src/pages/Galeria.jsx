@@ -22,7 +22,7 @@ const Galeria = ({ experienceCard }) => {
   return ( //GRID: seccion fotos, seccion informacion + invitacion anfitrion, reserva
 
 
-    <div>
+    <div className='mx-0'>
       {imagenes.map((imagen, index) => (
         <img key={index} src={imagen} alt={`Experience Image ${index + 1}`} className="object-cover w-auto h-100" />
       ))}

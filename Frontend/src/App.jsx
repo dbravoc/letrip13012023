@@ -59,12 +59,12 @@ const App = () => {
           <div className="bg-white mx-auto w-full">
             <div className="flex flex-col justify-between flex-wrap"><Inicio /></div>
             <div className='grid grid-cols-2'>
-              <div>
+              <div className='justify-self-start'>
                   <div className='pt-36'><Tarjeta experienceCard={experienceCard} /></div>
                   <div className='pt-20'><IncludedNotIncluded experienceCard={experienceCard} /></div>
                   <div className='pt-20'><AvailablesExperiences experienceCard={experienceCard} /></div>
               </div>
-              <div>
+              <div className='justify-self-end'>
                   <div className='pt-36'><Galeria experienceCard={experienceCard} /></div>
               </div>
             </div>

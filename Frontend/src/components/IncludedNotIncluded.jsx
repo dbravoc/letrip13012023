@@ -25,7 +25,7 @@ const IncludedNotIncluded = ({ experienceCard }) => {
   const notIncludedList = features.filter(feature => !feature.value);
 
   return (
-    <div className='px-20'>
+    <div className='mx-0 sm:px-6 sm:py-8'>
       <h3 className="mb-10 text-2xl font-bold tracking-tight text-gray-900">Qué incluye la experiencia?</h3>
       <h2 className="text-s tracking-tight text-gray-700 mb-4">{selectedExperience.experience_included_description}</h2>
       <div className="flex flex-col justify-between">
