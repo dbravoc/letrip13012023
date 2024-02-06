@@ -26,7 +26,7 @@ const Tarjeta = ({ experienceCard }) => {
 
   return ( //GRID: seccion fotos, seccion informacion + invitacion anfitrion, reserva
       
-  <div className="grid grid-cols-2 px-0 mx-0">
+  <div className="flex px-0 mx-0">
    
     <div className="mx-0 grid sm:grid-cols-2 grid-cols-1 items-center gap-x-8 gap-y-8 sm:px-6 sm:py-8"> 
 

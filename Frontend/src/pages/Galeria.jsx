@@ -24,7 +24,7 @@ const Galeria = ({ experienceCard }) => {
 
     <div>
       {imagenes.map((imagen, index) => (
-        <img key={index} src={imagen} alt={`Experience Image ${index + 1}`} className="object-cover w-full h-64" />
+        <img key={index} src={imagen} alt={`Experience Image ${index + 1}`} className="object-cover w-auto h-100" />
       ))}
     </div>  
 
