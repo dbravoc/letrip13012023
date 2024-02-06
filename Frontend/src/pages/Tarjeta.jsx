@@ -2,16 +2,6 @@ import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
-import 'swiper/css/scrollbar';
-import SwiperCore, { Navigation, Pagination, Scrollbar, A11y, Autoplay } from 'swiper';
-
-
-// Configura Swiper para usar los módulos necesarios
-SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, Autoplay]);
 
 
 const Tarjeta = ({ experienceCard }) => {
@@ -68,25 +58,12 @@ const Tarjeta = ({ experienceCard }) => {
 
   return ( //GRID: seccion fotos, seccion informacion + invitacion anfitrion, reserva
       
-  <div className="flex flex-col items-center justify-center align-top px-0 mx-0">
-        <Swiper
-          spaceBetween={0}
-          slidesPerView={1}
-          navigation
-          pagination={{ clickable: true }}
-          loop={true}
-          autoplay={{
-            delay: 2500,
-            disableOnInteraction: false,
-          }}
-          className="w-full"
-        >
-          {imagenes.map((imagen, index) => (
-            <SwiperSlide key={index}>
-              <img src={imagen} alt={`Experience Image ${index + 1}`} className="object-cover w-full h-64" />
-            </SwiperSlide>
-          ))}
-        </Swiper>
+  <div className="grid grid-cols-2 px-0 mx-0">
+
+      {imagenes.map((imagen, index) => (
+        <img key={index} src={imagen} alt={`Experience Image ${index + 1}`} className="object-cover w-full h-64" />
+      ))}
+
     <div className="mx-0 grid sm:grid-cols-2 grid-cols-1 items-center gap-x-8 gap-y-8 sm:px-6 sm:py-8"> 
 
       <div>
