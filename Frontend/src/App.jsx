@@ -56,7 +56,7 @@ const App = () => {
         
         <Route path="/tarjeta/:id" element={
           <>
-          <div className="bg-white mx-auto w-full">
+          <div className="bg-white mx-auto w-full px-2">
             <div className="flex flex-col justify-between flex-wrap"><Inicio /></div>
             <div className='grid grid-cols-1 sm:grid-cols-2'>
               <div className='justify-self-center'>
