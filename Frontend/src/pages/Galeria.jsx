@@ -16,6 +16,13 @@ const Galeria = ({ experienceCard }) => {
     selectedExperience.card_img_2,
     selectedExperience.card_img_3,
     selectedExperience.card_img_4,
+    selectedExperience.card_img_5,
+    selectedExperience.card_img_6,
+    selectedExperience.card_img_7,
+    selectedExperience.card_img_8,
+    selectedExperience.card_img_9,
+    selectedExperience.card_img_10,
+
     // Añade más URLs como necesites
   ];
 

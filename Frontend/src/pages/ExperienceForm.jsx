@@ -373,6 +373,66 @@ const ExperienceForm = () => {
          className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
        />
 
+      <label className='text-gray-700 text-sm' htmlFor="card_img_4">Imagen de experiencia 5:</label>
+      <input
+         id="card_img_5"
+         name="card_img_5"
+         type="file" // Cambiamos el tipo de entrada a "file"
+         accept=".jpg, .jpeg, .png"
+         onChange={handleImageUpload} // Manejar la carga de imágenes en una función
+         className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
+       />
+
+      <label className='text-gray-700 text-sm' htmlFor="card_img_4">Imagen de experiencia 6:</label>
+      <input
+         id="card_img_6"
+         name="card_img_6"
+         type="file" // Cambiamos el tipo de entrada a "file"
+         accept=".jpg, .jpeg, .png"
+         onChange={handleImageUpload} // Manejar la carga de imágenes en una función
+         className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
+       />
+
+      <label className='text-gray-700 text-sm' htmlFor="card_img_4">Imagen de experiencia 7:</label>
+      <input
+         id="card_img_7"
+         name="card_img_7"
+         type="file" // Cambiamos el tipo de entrada a "file"
+         accept=".jpg, .jpeg, .png"
+         onChange={handleImageUpload} // Manejar la carga de imágenes en una función
+         className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
+       />
+
+      <label className='text-gray-700 text-sm' htmlFor="card_img_4">Imagen de experiencia 8:</label>
+      <input
+         id="card_img_8"
+         name="card_img_8"
+         type="file" // Cambiamos el tipo de entrada a "file"
+         accept=".jpg, .jpeg, .png"
+         onChange={handleImageUpload} // Manejar la carga de imágenes en una función
+         className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
+       />
+
+      <label className='text-gray-700 text-sm' htmlFor="card_img_4">Imagen de experiencia 9:</label>
+      <input
+         id="card_img_9"
+         name="card_img_9"
+         type="file" // Cambiamos el tipo de entrada a "file"
+         accept=".jpg, .jpeg, .png"
+         onChange={handleImageUpload} // Manejar la carga de imágenes en una función
+         className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
+       />
+
+      <label className='text-gray-700 text-sm' htmlFor="card_img_4">Imagen de experiencia 10:</label>
+      <input
+         id="card_img_10"
+         name="card_img_10"
+         type="file" // Cambiamos el tipo de entrada a "file"
+         accept=".jpg, .jpeg, .png"
+         onChange={handleImageUpload} // Manejar la carga de imágenes en una función
+         className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
+       />
+
 
       <label className='text-gray-700 text-sm' htmlFor="instructor_profile_img">Imagen de perfil del anfitrión</label>
       <input
