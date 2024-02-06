@@ -19,6 +19,14 @@ const Tarjeta = ({ experienceCard }) => {
     return <div>No se encontró la experiencia</div>;
   }
 
+  // Las URLs de las imágenes se obtienen directamente del selectedExperience
+  const imagenes = [
+    selectedExperience.card_img_1,
+    selectedExperience.card_img_2,
+    selectedExperience.card_img_3,
+    selectedExperience.card_img_4,
+    // Añade más URLs como necesites
+  ];
 
   const features = [
     { name: 'Tipo', description: selectedExperience.experience_type },
@@ -104,6 +112,14 @@ const Tarjeta = ({ experienceCard }) => {
           <img src={selectedExperience.card_img_2} alt="Experience Image 2" className="w-full h-full object-cover" />
           <img src={selectedExperience.card_img_3} alt="Experience Image 3" className="w-full h-full object-cover" />
           <img src={selectedExperience.card_img_4} alt="Experience Image 4" className="w-full h-full object-cover" />
+        </div>
+
+        <div className="flex overflow-x-auto scroll-smooth snap-x snap-mandatory gap-4 p-4 mt-4">
+            {imagenes.map((imagen, index) => (
+              <div key={index} className="snap-start shrink-0">
+                <img src={imagen} alt={`Experience Image ${index + 1}`} className="w-full h-auto object-cover" />
+              </div>
+            ))}
         </div>
 
     </div>

@@ -6,7 +6,6 @@ import Tarjeta from './pages/Tarjeta';
 import FormularioPago from './pages/EstadoPago';
 import ExperienceForm from './pages/ExperienceForm';
 import ExperienceFormEdit from './pages/UpdateExperienceForm';
-
 import IncludedNotIncluded from './components/IncludedNotIncluded';
 import AvailablesExperiences from './components/AvailablesExperiences';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
