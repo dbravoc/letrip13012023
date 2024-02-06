@@ -29,7 +29,7 @@ const AvailablesExperiences = () => {
     };
 
     return (
-        <div className="px-20 p-8 rounded-lg">
+        <div className="mx-0 sm:px-6 sm:py-8 rounded-lg">
             <h3 className="mb-10 text-2xl font-bold tracking-tight text-gray-900">Compra tu experiencia</h3>
             <h4 className="flex-none text-lg font-semibold leading-6 text-yellow-500">Elige una fecha</h4>
 

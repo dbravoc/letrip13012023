@@ -58,7 +58,7 @@ const App = () => {
           <>
           <div className="bg-white mx-auto w-full">
             <div className="flex flex-col justify-between flex-wrap"><Inicio /></div>
-            <div grid grid-cols-2>
+            <div className='grid grid-cols-2'>
               <div>
                   <div className='pt-36'><Tarjeta experienceCard={experienceCard} /></div>
                   <div className='pt-20'><IncludedNotIncluded experienceCard={experienceCard} /></div>
