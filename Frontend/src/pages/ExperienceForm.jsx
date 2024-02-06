@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const ExperienceForm = () => {
@@ -144,8 +146,14 @@ const ExperienceForm = () => {
         accident_insurance_file: '',
 
       });
+
+       // Mostrar notificación de éxito
+    toast.success('Experiencia creada con éxito');
+
     } catch (error) {
       console.error('Error al crear experiencia:', error);
+      // Mostrar notificación de error
+    toast.error('Error al crear la experiencia.');
     }
   };
 
@@ -629,6 +637,8 @@ const ExperienceForm = () => {
       <button  type="submit" className="block w-full rounded-md bg-letrip my-10 px-3 py-5 text-center text-xl font-semibold text-gray-900 shadow-sm hover:bg-yellow-400">
         Crear Experiencia
         </button>
+
+    <ToastContainer />
     </form>
   );
 };
