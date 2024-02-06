@@ -25,7 +25,7 @@ export default function Inicio() {
   return (
     <div className="bg-white">
       <header className="absolute inset-x-0 top-0 z-50">
-        <nav className="flex items-center justify-between py-10" aria-label="Global">
+        <nav className="flex items-center justify-between px-2 py-10" aria-label="Global">
         <div className="flex lg:flex-1">
           <Link to="/">
             <img
