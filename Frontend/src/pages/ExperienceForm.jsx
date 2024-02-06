@@ -150,7 +150,7 @@ const ExperienceForm = () => {
        // Mostrar notificación de éxito
        toast.success('Experiencia creada con éxito', {
         className: 'toast-custom-background',
-        position: "down-right",
+        position: "bottom-right",
         autoClose: 5000,
         hideProgressBar: false,
         closeOnClick: true,
