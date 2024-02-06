@@ -148,8 +148,17 @@ const ExperienceForm = () => {
       });
 
        // Mostrar notificación de éxito
-    toast.success('Experiencia creada con éxito');
-
+       toast.success('Experiencia creada con éxito', {
+        className: 'toast-custom-background',
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+      
     } catch (error) {
       console.error('Error al crear experiencia:', error);
       // Mostrar notificación de error
