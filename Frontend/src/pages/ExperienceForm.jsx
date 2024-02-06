@@ -192,9 +192,12 @@ const ExperienceForm = () => {
         className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
       >
         <option value=''></option>
-        <option value='Surftrip'>Surftrip</option>
-        <option value='Surfweek'>Surfweek</option>
-        <option value='Surflessons'>Surflessons</option>
+        <option value='Curso'>Curso</option>
+        <option value='Campamento formativo'>Campamento formativo</option>
+        <option value='Viaje de un fin de semana'>Viaje de un fin de semana</option>
+        <option value='Viaje de una semana'>Viaje de una semana</option>
+        <option value='Viaje de una semana o más'>Viaje de una semana o más</option>
+
 
         </select>
 
@@ -212,6 +215,8 @@ const ExperienceForm = () => {
           <option value="Intermedio">Intermedio</option>
           <option value="Avanzado">Avanzado</option>
           <option value="Experto">Experto</option>
+          <option value="Todos los niveles">Todos los niveles</option>
+
         </select>
 
         <label className='text-gray-700 text-sm' htmlFor="experience_geography">Tipo de geografía</label>
@@ -227,6 +232,10 @@ const ExperienceForm = () => {
           <option value="Montaña">Montaña</option>
           <option value="Selva">Selva</option>
           <option value="Bosque">Bosque</option>
+          <option value="Río">Río</option>
+          <option value="Desierto">Desierto</option>
+
+
         </select>
 
       <label className='text-gray-700 text-sm' htmlFor="experience_country">País de la experiencia</label>
@@ -574,7 +583,7 @@ const ExperienceForm = () => {
         onChange={handleChange}
       />
 
-      <label className='text-gray-700 text-sm' htmlFor="included_lift_ticket">Boleto de ascensor incluido:</label>
+      <label className='text-gray-700 text-sm' htmlFor="included_lift_ticket">Ticket de andarivel incluido:</label>
       <input
         id="included_lift_ticket"
         name="included_lift_ticket"
