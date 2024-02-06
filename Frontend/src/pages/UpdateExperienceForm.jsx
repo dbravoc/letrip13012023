@@ -1,5 +1,8 @@
 // Importaciones necesarias
 import React, { useEffect, useState } from 'react';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 
 
@@ -42,16 +45,24 @@ function UpdateExperienceForm() {
       },
       body: JSON.stringify(formData),
     })
-      .then(response => response.json())
-      .then(data => {
-        // Manejar respuesta. Por ejemplo, mostrar un mensaje de éxito o recargar las experiencias.
-        console.log('Experiencia actualizada:', data);
-      })
-      .catch(error => {
-        // Manejar el error
-        console.error('Error al actualizar la experiencia:', error);
-      });
-  };
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Error en la actualización de la experiencia');
+      }
+      return response.json();
+    })
+    .then(data => {
+      // Manejar respuesta. Por ejemplo, mostrar un mensaje de éxito o recargar las experiencias.
+      console.log('Experiencia actualizada:', data);
+      toast.success('Experiencia actualizada con éxito');
+    })
+    .catch(error => {
+      // Manejar el error
+      console.error('Error al actualizar la experiencia:', error);
+      toast.error('Error al actualizar la experiencia.');
+    });
+
+
 // función para cargar imagenes
   const handleImageUpload = async (e) => {
     const file = e.target.files[0];
@@ -76,6 +87,8 @@ function UpdateExperienceForm() {
       console.error('Error al subir la imagen:', error);
     }
   };
+
+}
   
   
 
@@ -557,6 +570,9 @@ function UpdateExperienceForm() {
       <button  type="submit" className="block w-full rounded-md bg-letrip my-10 px-3 py-5 text-center text-xl font-semibold text-gray-900 shadow-sm hover:bg-yellow-400">
         Actualizar Experiencia
         </button>
+
+  <ToastContainer position="bottom-right" />
+
     </form>
   );
 };
