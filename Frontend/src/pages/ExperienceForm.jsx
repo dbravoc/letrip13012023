@@ -2,6 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+import { DateRangePicker } from 'react-date-range';
+import 'react-date-range/dist/styles.css'; // Estilos principales
+import 'react-date-range/dist/theme/default.css'; // Tema por defecto
+import { format } from 'date-fns';
+
+
+
 
 const ExperienceForm = () => {
   const [formData, setFormData] = useState({
@@ -49,6 +56,31 @@ const ExperienceForm = () => {
 
   });
 
+  const [dateRanges, setDateRanges] = useState([]);
+const [currentRange, setCurrentRange] = useState([
+  {
+    startDate: new Date(),
+    endDate: new Date(),
+    key: 'selection',
+  },
+]);
+
+const addRange = () => {
+  const formattedRange = {
+    ...currentRange[0],
+    startDate: format(currentRange[0].startDate, 'dd/MM/yyyy'),
+    endDate: format(currentRange[0].endDate, 'dd/MM/yyyy'),
+  };
+  setDateRanges([...dateRanges, formattedRange]);
+};
+
+const removeRange = (index) => {
+  const newRanges = [...dateRanges];
+  newRanges.splice(index, 1);
+  setDateRanges(newRanges);
+};
+
+
   const handleImageUpload = async (e) => {
     const file = e.target.files[0];
     if (!file) return;
@@ -83,7 +115,7 @@ const ExperienceForm = () => {
     }));
   };
 
-  const handleSubmit = async (e) => {
+    const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
@@ -156,6 +188,7 @@ const ExperienceForm = () => {
     toast.error('Error al crear la experiencia.');
     }
   };
+
 
   return (
     <form className='flex flex-col px-auto sm:px-72 gap-y-2' onSubmit={handleSubmit}>
@@ -447,7 +480,26 @@ const ExperienceForm = () => {
 
 
 
+<h3 className="my-10 text-2xl font-bold tracking-tight text-gray-900">Fechas disponibles</h3>
+<>
+  <DateRangePicker
+    onChange={item => setCurrentRange([item.selection])}
+    showSelectionPreview={true}
+    moveRangeOnFirstSelection={false}
+    months={2}
+    ranges={currentRange}
+    direction="horizontal"
+  />
+  <button className='block rounded-md bg-letrip px-1 py-1 text-center text-sm font-semibold text-gray-900 shadow-sm hover:bg-yellow-400' type="button" onClick={addRange}>Agregar disponibilidad</button>
+  <p className="mt-10 text-lg font-bold tracking-tight text-gray-900">Fechas seleccionadas</p>
 
+  {dateRanges.map((range, index) => (
+    <div className='flex justify-between border-b-2' key={index}>
+      <p className='text-sm'>Desde <span className='font-semibold text-yellow-600'>{range.startDate}</span> hasta <span className='font-semibold text-yellow-600'>{range.endDate}</span></p>
+      <button className='block rounded-md bg-red-200 px-1 py-1 text-center text-sm font-semibold text-gray-900 shadow-sm hover:bg-yellow-400' type="button" onClick={() => removeRange(index)}>Eliminar</button>
+    </div>
+  ))}
+</>
 
 
 
@@ -700,7 +752,6 @@ const ExperienceForm = () => {
 
       <ToastContainer position="bottom-right" />
     </form>
-  );
-};
-
+  )
+;}
 export default ExperienceForm;
