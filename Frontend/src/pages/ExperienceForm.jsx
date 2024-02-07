@@ -495,7 +495,7 @@ const removeRange = (index) => {
 
   {dateRanges.map((range, index) => (
     <div className='flex justify-between border-b-2' key={index}>
-      <p className='text-sm'>Desde <span className='font-semibold text-yellow-600'>{range.startDate}</span> hasta <span className='font-semibold text-yellow-600'>{range.endDate}</span></p>
+      <p className='text-sm'>Desde <span className='font-semibold text-blue-500'>{range.startDate}</span> hasta <span className='font-semibold text-blue-500'>{range.endDate}</span></p>
       <button className='block rounded-md bg-red-200 px-1 py-1 text-center text-sm font-semibold text-gray-900 shadow-sm hover:bg-yellow-400' type="button" onClick={() => removeRange(index)}>Eliminar</button>
     </div>
   ))}
