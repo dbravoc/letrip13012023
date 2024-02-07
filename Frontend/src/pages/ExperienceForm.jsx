@@ -69,8 +69,8 @@ const ExperienceForm = () => {
 const addRange = () => {
   const formattedRange = {
     ...currentRange[0],
-    startDate: format(currentRange[0].startDate, 'dd/MM/yyyy'),
-    endDate: format(currentRange[0].endDate, 'dd/MM/yyyy'),
+    startDate: format(currentRange[0].startDate, 'yyyy/MM/dd'),
+    endDate: format(currentRange[0].endDate, 'yyyy/MM/dd'),
   };
   setDateRanges([...dateRanges, formattedRange]);
 };
@@ -129,7 +129,7 @@ const removeRange = (index) => {
    // Actualizar formData con las fechas disponibles
    const submissionData = {
     ...formData,
-    available_dates: availableDates,
+    available_dates: formattedDates,
   };
 
     try {
@@ -138,7 +138,7 @@ const removeRange = (index) => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(submissionData),
       });
 
       if (!response.ok) {
