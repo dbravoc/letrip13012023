@@ -120,7 +120,7 @@ const removeRange = (index) => {
     e.preventDefault();
 
       // Convertir las fechas a formato ISO o mantener el formato deseado
-      const availableDates = dateRanges.map(range => ({
+      const preparedDates = dateRanges.map(range => ({
         startDate: format(new Date(range.startDate), 'yyyy-MM-dd'),
         endDate: format(new Date(range.endDate), 'yyyy-MM-dd'),
       }));
