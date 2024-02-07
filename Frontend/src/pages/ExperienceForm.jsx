@@ -129,7 +129,7 @@ const removeRange = (index) => {
    // Actualizar formData con las fechas disponibles
    const submissionData = {
     ...formData,
-    available_dates: formattedDates,
+    available_dates: availableDates,
   };
 
     try {
