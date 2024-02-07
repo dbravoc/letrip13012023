@@ -67,12 +67,12 @@ const ExperienceForm = () => {
 ]);
 
 const addRange = () => {
-  const preparedDates = {
+  const updatedAvailableDates = {
     ...currentRange[0],
     startDate: format(currentRange[0].startDate, 'yyyy/MM/dd'),
     endDate: format(currentRange[0].endDate, 'yyyy/MM/dd'),
   };
-  setDateRanges([...dateRanges, preparedDates]);
+  setDateRanges([...dateRanges, updatedAvailableDates]);
 };
 
 const removeRange = (index) => {
@@ -120,16 +120,16 @@ const removeRange = (index) => {
     e.preventDefault();
 
       // Convertir las fechas a formato ISO o mantener el formato deseado
-      const preparedDates = dateRanges.map(range => ({
+      const updatedAvailableDates = dateRanges.map(range => ({
         startDate: format(new Date(range.startDate), 'yyyy-MM-dd'),
         endDate: format(new Date(range.endDate), 'yyyy-MM-dd'),
       }));
     
 
    // Actualizar formData con las fechas disponibles
-   const submissionData = {
+   const updatedFormData = {
     ...formData,
-    available_dates: [preparedDates], // Asegúrate de que este campo coincide con lo que espera tu base de datos.
+    available_dates: updatedAvailableDates, // Asegúrate de que este campo coincide con lo que espera tu base de datos.
   };
 
     try {
@@ -138,7 +138,7 @@ const removeRange = (index) => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(submissionData),
+        body: JSON.stringify(updatedFormData),
       });
 
       if (!response.ok) {
