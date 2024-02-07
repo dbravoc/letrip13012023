@@ -67,12 +67,12 @@ const ExperienceForm = () => {
 ]);
 
 const addRange = () => {
-  const formattedRange = {
+  const preparedDates = {
     ...currentRange[0],
     startDate: format(currentRange[0].startDate, 'yyyy/MM/dd'),
     endDate: format(currentRange[0].endDate, 'yyyy/MM/dd'),
   };
-  setDateRanges([...dateRanges, formattedRange]);
+  setDateRanges([...dateRanges, preparedDates]);
 };
 
 const removeRange = (index) => {
