@@ -53,11 +53,12 @@ const ExperienceForm = () => {
     experience_included_description: '',
     instructor_profile_img: '',
     accident_insurance_file: '',
+    available_dates: []
 
   });
 
   const [dateRanges, setDateRanges] = useState([]);
-const [currentRange, setCurrentRange] = useState([
+  const [currentRange, setCurrentRange] = useState([
   {
     startDate: new Date(),
     endDate: new Date(),
@@ -118,6 +119,19 @@ const removeRange = (index) => {
     const handleSubmit = async (e) => {
     e.preventDefault();
 
+      // Convertir las fechas a formato ISO o mantener el formato deseado
+      const availableDates = dateRanges.map(range => ({
+        startDate: format(new Date(range.startDate), 'yyyy-MM-dd'),
+        endDate: format(new Date(range.endDate), 'yyyy-MM-dd'),
+      }));
+    
+
+   // Actualizar formData con las fechas disponibles
+   const submissionData = {
+    ...formData,
+    available_dates: availableDates,
+  };
+
     try {
       const response = await fetch('https://letrip13012023-backend-lawitec.vercel.app/experiences', {
         method: 'POST',
@@ -176,6 +190,7 @@ const removeRange = (index) => {
         experience_included_description: '',
         instructor_profile_img: '',
         accident_insurance_file: '',
+        available_dates: [],
 
       });
 
@@ -490,13 +505,13 @@ const removeRange = (index) => {
     ranges={currentRange}
     direction="horizontal"
   />
-  <button className='block rounded-md bg-letrip px-1 py-1 text-center text-sm font-semibold text-gray-900 shadow-sm hover:bg-yellow-400' type="button" onClick={addRange}>Agregar disponibilidad</button>
+  <button className='block rounded-md bg-gray-900 px-1 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-gray-700' type="button" onClick={addRange}>Agregar disponibilidad</button>
   <p className="mt-10 text-lg font-bold tracking-tight text-gray-900">Fechas seleccionadas</p>
 
   {dateRanges.map((range, index) => (
     <div className='flex justify-between border-b-2' key={index}>
-      <p className='text-sm'>Desde <span className='font-semibold text-blue-500'>{range.startDate}</span> hasta <span className='font-semibold text-blue-500'>{range.endDate}</span></p>
-      <button className='block rounded-md bg-red-200 px-1 py-1 text-center text-sm font-semibold text-gray-900 shadow-sm hover:bg-yellow-400' type="button" onClick={() => removeRange(index)}>Eliminar</button>
+      <p className='text-sm flex items-center'> <span className='font-semibold text-blue-500 py-0'> {range.startDate}</span> - <span className='font-semibold text-blue-500'>{range.endDate}</span></p>
+      <button className='block rounded-md px-1 py-2 text-center text-sm font-semibold text-red-400 hover:text-red-500 shadow-sm' type="button" onClick={() => removeRange(index)}>Eliminar</button>
     </div>
   ))}
 </>
