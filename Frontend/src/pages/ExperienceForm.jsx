@@ -119,6 +119,9 @@ const removeRange = (index) => {
     const handleSubmit = async (e) => {
     e.preventDefault(); 
 
+    console.log("dateRanges antes de enviar:", dateRanges); // Verificar el contenido de dateRanges
+
+
    // Actualizar formData con las fechas disponibles
    const updatedFormData = {
     ...formData,
