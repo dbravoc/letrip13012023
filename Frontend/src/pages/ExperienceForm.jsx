@@ -2,10 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+import { format } from 'date-fns';
 import { DateRangePicker } from 'react-date-range';
 import 'react-date-range/dist/styles.css'; // Estilos principales
 import 'react-date-range/dist/theme/default.css'; // Tema por defecto
-import { format } from 'date-fns';
 
 
 
@@ -72,7 +72,7 @@ const addRange = () => {
     startDate: format(currentRange[0].startDate, 'yyyy/MM/dd'),
     endDate: format(currentRange[0].endDate, 'yyyy/MM/dd'),
   };
-  setDateRanges([...dateRanges, updatedAvailableDates]);
+  setDateRanges([...dateRanges, updatedRange]);
 };
 
 const removeRange = (index) => {
@@ -117,19 +117,12 @@ const removeRange = (index) => {
   };
 
     const handleSubmit = async (e) => {
-    e.preventDefault();
-
-      // Convertir las fechas a formato ISO o mantener el formato deseado
-      const updatedAvailableDates = dateRanges.map(range => ({
-        startDate: format(new Date(range.startDate), 'yyyy-MM-dd'),
-        endDate: format(new Date(range.endDate), 'yyyy-MM-dd'),
-      }));
-    
+    e.preventDefault(); 
 
    // Actualizar formData con las fechas disponibles
    const updatedFormData = {
     ...formData,
-    available_dates: updatedAvailableDates, // Asegúrate de que este campo coincide con lo que espera tu base de datos.
+    available_dates: dateRanges, // Asegúrate de que este campo coincide con lo que espera tu base de datos.
   };
 
     try {
@@ -147,6 +140,7 @@ const removeRange = (index) => {
 
       const result = await response.json();
       console.log('Experiencia creada:', result);
+      
       // Resetear el formulario
       setFormData({
         experience_name: '',
@@ -193,6 +187,7 @@ const removeRange = (index) => {
         available_dates: [],
 
       });
+      setDateRanges([]); // Limpiar las fechas seleccionadas
 
        // Mostrar notificación de éxito
        toast.success('Experiencia creada con éxito');
@@ -510,7 +505,7 @@ const removeRange = (index) => {
 
   {dateRanges.map((range, index) => (
     <div className='flex justify-between border-b-2' key={index}>
-      <p className='text-sm flex items-center'> <span className='font-semibold text-blue-500 py-0'> {range.startDate}</span> - <span className='font-semibold text-blue-500'>{range.endDate}</span></p>
+      <p className='text-sm flex items-center'> <span className='font-semibold text-black  py-0'> {range.startDate}</span> - <span className='font-semibold text-blue-500'>{range.endDate}</span></p>
       <button className='block rounded-md px-1 py-2 text-center text-sm font-semibold text-red-400 hover:text-red-500 shadow-sm' type="button" onClick={() => removeRange(index)}>Eliminar</button>
     </div>
   ))}
