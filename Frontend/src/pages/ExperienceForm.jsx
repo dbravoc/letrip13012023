@@ -53,7 +53,7 @@ const ExperienceForm = () => {
     experience_included_description: '',
     instructor_profile_img: '',
     accident_insurance_file: '',
-    available_dates: []
+    available_dates: ''
 
   });
 
@@ -132,7 +132,7 @@ const removeRange = (index) => {
    // Actualizar formData con las fechas disponibles
   const updatedFormData = {
     ...formData,
-    available_dates: availableDates,
+    available_dates: dateRanges,
   };
 
     try {
@@ -194,7 +194,7 @@ const removeRange = (index) => {
         experience_included_description: '',
         instructor_profile_img: '',
         accident_insurance_file: '',
-        available_dates: [],
+        available_dates: '',
 
       });
       setDateRanges([]); // Limpiar las fechas seleccionadas
