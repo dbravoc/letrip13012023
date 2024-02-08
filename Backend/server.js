@@ -23,39 +23,28 @@ app.use((err, req, res, next) => {
     res.status(500).json({ error: err.message });
   });
 
-// Endpoint para obtener experiencias con fechas disponibles
+
+  
+// Endpoint para obtener experiencias
 app.get('/experiences', async (req, res) => {
     try {
-        // Obtener experiencias
+        // Obtener experiencias directamente sin combinar con otra tabla
         const { data: experiencesData, error: experiencesError } = await supabase
             .from('experiences')
             .select('*');
 
-        if (experiencesError) throw experiencesError;
+        if (experiencesError) {
+            throw experiencesError;
+        }
 
-        // Obtener fechas disponibles
-        const { data: availableDatesData, error: availableDatesError } = await supabase
-            .from('available_experiences')
-            .select('*');
-
-        if (availableDatesError) throw availableDatesError;
-
-        // Combinar fechas con experiencias
-        const combinedData = experiencesData.map(exp => {
-            return {
-                ...exp,
-                available_dates: availableDatesData
-                    .filter(date => date.experience_uuid === exp.experience_uuid)
-                    .map(date => date.available_date)
-            };
-        });
-
-        res.json(combinedData);
+        // Devolver directamente los datos de experiencias sin combinarlos con otra tabla
+        res.json(experiencesData);
     } catch (err) {
         console.error(err.message);
         res.status(500).send('Server Error');
     }
 });
+
 
 // Endpoint para crear una nueva experiencia
 app.post('/experiences', async (req, res) => {
