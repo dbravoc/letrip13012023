@@ -53,7 +53,7 @@ const ExperienceForm = () => {
     experience_included_description: '',
     instructor_profile_img: '',
     accident_insurance_file: '',
-    available_dates: [],
+    available_dates: {},
 
   });
 
@@ -130,10 +130,11 @@ const removeRange = (index) => {
    // Actualizar formData con las fechas disponibles
   const updatedFormData = {
     ...formData,
-    available_dates: JSON.stringify(dateRanges),
+    available_dates: JSON.stringify([{ startDate: "2024-02-01", endDate: "2024-02-29" }]),
   };
 
     try {
+      console.log("Enviando formData:", JSON.stringify(updatedFormData));
       const response = await fetch('https://letrip13012023-backend-lawitec.vercel.app/experiences', {
         method: 'POST',
         headers: {
@@ -192,7 +193,7 @@ const removeRange = (index) => {
         experience_included_description: '',
         instructor_profile_img: '',
         accident_insurance_file: '',
-        available_dates: [],
+        available_dates: {},
 
       });
       setDateRanges([]); // Limpiar las fechas seleccionadas
