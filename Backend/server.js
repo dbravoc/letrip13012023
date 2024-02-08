@@ -101,6 +101,8 @@ app.post('/experiences', async (req, res) => {
                 experience_included_description,
                 instructor_profile_img,
                 accident_insurance_file,
+                available_dates,
+
         
          } = req.body;
 
@@ -149,6 +151,8 @@ app.post('/experiences', async (req, res) => {
                     experience_included_description,
                     instructor_profile_img,
                     accident_insurance_file,
+                    available_dates,
+
                 },
             ])
             .select();
@@ -254,6 +258,8 @@ app.put('/experiences/:uuid', async (req, res) => {
         experience_included_description,
         instructor_profile_img,
         accident_insurance_file,
+        available_dates,
+
     } = req.body;
 
     try {
@@ -301,6 +307,7 @@ app.put('/experiences/:uuid', async (req, res) => {
                 experience_included_description,
                 instructor_profile_img,
                 accident_insurance_file,
+                available_dates,
             })
             .eq('experience_uuid', uuid)
             .select();
