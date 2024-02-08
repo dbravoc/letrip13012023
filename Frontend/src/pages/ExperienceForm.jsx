@@ -68,9 +68,8 @@ const ExperienceForm = () => {
 
 const addRange = () => {
   const updatedRange = {
-   // ...currentRange[0],
-    startDate: format(currentRange[0].startDate, 'yyyy/MM/dd'),
-    endDate: format(currentRange[0].endDate, 'yyyy/MM/dd'),
+    startDate: format(currentRange[0].startDate, 'yyyy-MM-dd'),
+    endDate: format(currentRange[0].endDate, 'yyyy-MM-dd'),
   };
   setDateRanges([...dateRanges, updatedRange]);
 };
@@ -117,8 +116,9 @@ const removeRange = (index) => {
   };
 
     const handleSubmit = async (e) => {
-    e.preventDefault(); 
+    e.preventDefault();
 
+    
     console.log("dateRanges antes de enviar:", dateRanges); // Verificar el contenido de dateRanges
 
 
@@ -508,7 +508,7 @@ const removeRange = (index) => {
 
   {dateRanges.map((range, index) => (
     <div className='flex justify-between border-b-2' key={index}>
-      <p className='text-sm flex items-center'> <span className='font-semibold text-black  py-0'> {range.startDate}</span> - <span className='font-semibold text-blue-500'>{range.endDate}</span></p>
+      <p className='text-sm flex items-center'> <span className='font-semibold text-black  py-0'> {range.startDate}</span> - <span className='font-semibold text-black'>{range.endDate}</span></p>
       <button className='block rounded-md px-1 py-2 text-center text-sm font-semibold text-red-400 hover:text-red-500 shadow-sm' type="button" onClick={() => removeRange(index)}>Eliminar</button>
     </div>
   ))}
