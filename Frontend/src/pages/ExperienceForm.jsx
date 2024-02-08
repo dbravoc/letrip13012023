@@ -361,6 +361,16 @@ const removeRange = (index) => {
         className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
       />
 
+      <label className='text-gray-700 text-sm' htmlFor="experience_duration">Duración (en días):</label>
+      <input
+        id="experience_duration"
+        name="experience_duration"
+        type="number"
+        value={formData.experience_duration}
+        onChange={handleChange}
+        className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
+      />
+
       <label className='text-gray-700 text-sm' htmlFor="experience_price">Valor de la experiencia (USD)</label>
       <input
         id="experience_price"
