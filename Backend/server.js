@@ -24,38 +24,38 @@ app.use((err, req, res, next) => {
   });
 
 // Endpoint para obtener experiencias con fechas disponibles
-app.get('/experiences', async (req, res) => {
-    try {
+// app.get('/experiences', async (req, res) => {
+//    try {
         // Obtener experiencias
-        const { data: experiencesData, error: experiencesError } = await supabase
-            .from('experiences')
-            .select('*');
+ //       const { data: experiencesData, error: experiencesError } = await supabase
+  //          .from('experiences')
+  //          .select('*');
 
-        if (experiencesError) throw experiencesError;
+  //      if (experiencesError) throw experiencesError;
 
         // Obtener fechas disponibles
-        const { data: availableDatesData, error: availableDatesError } = await supabase
-            .from('available_experiences')
-            .select('*');
+       // const { data: availableDatesData, error: availableDatesError } = await supabase
+         //   .from('available_experiences')
+           // .select('*');
 
-        if (availableDatesError) throw availableDatesError;
+      //  if (availableDatesError) throw availableDatesError;
 
         // Combinar fechas con experiencias
-        const combinedData = experiencesData.map(exp => {
-            return {
-                ...exp,
-                available_dates: availableDatesData
-                    .filter(date => date.experience_uuid === exp.experience_uuid)
-                    .map(date => date.available_date)
-            };
-        });
+     //   const combinedData = experiencesData.map(exp => {
+     //       return {
+      //          ...exp,
+      //          available_dates: availableDatesData
+       //             .filter(date => date.experience_uuid === exp.experience_uuid)
+       //             .map(date => date.available_date)
+ //       };
+   //   });
 
-        res.json(combinedData);
-    } catch (err) {
-        console.error(err.message);
-        res.status(500).send('Server Error');
-    }
-});
+   //   res.json(combinedData);
+ //   catch (err) {
+   //   console.error(err.message);
+     //  res.status(500).send('Server Error');
+// }
+// });
 
 // Endpoint para crear una nueva experiencia
 app.post('/experiences', async (req, res) => {
@@ -101,6 +101,7 @@ app.post('/experiences', async (req, res) => {
                 experience_included_description,
                 instructor_profile_img,
                 accident_insurance_file,
+                available_dates,
         
          } = req.body;
 
@@ -149,6 +150,7 @@ app.post('/experiences', async (req, res) => {
                     experience_included_description,
                     instructor_profile_img,
                     accident_insurance_file,
+                    available_dates,
                 },
             ])
             .select();
@@ -254,6 +256,8 @@ app.put('/experiences/:uuid', async (req, res) => {
         experience_included_description,
         instructor_profile_img,
         accident_insurance_file,
+        available_dates,
+
     } = req.body;
 
     try {
@@ -301,6 +305,8 @@ app.put('/experiences/:uuid', async (req, res) => {
                 experience_included_description,
                 instructor_profile_img,
                 accident_insurance_file,
+                available_dates,
+
             })
             .eq('experience_uuid', uuid)
             .select();

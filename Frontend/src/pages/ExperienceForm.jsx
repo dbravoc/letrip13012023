@@ -130,7 +130,7 @@ const removeRange = (index) => {
    // Actualizar formData con las fechas disponibles
   const updatedFormData = {
     ...formData,
-    available_dates: JSON.stringify([{ startDate: "2024-02-01", endDate: "2024-02-29" }]),
+    available_dates: JSON.stringify(dateRanges), // Convierte directamente dateRanges a JSON
   };
 
     try {
