@@ -121,7 +121,7 @@ const removeRange = (index) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     onSubmit(formData);
-    
+
       // Construir un arreglo de fechas disponibles a partir de currentRange
   const availableDates = currentRange.map(range => ({
     startDate: format(range.startDate, 'dd-MM-yyyy'),
@@ -138,10 +138,18 @@ const removeRange = (index) => {
     available_dates: JSON.stringify(dateRanges), // Convierte directamente dateRanges a JSON
   };
 
+  const url = mode === 'create' 
+  ? 'https://letrip13012023-backend-lawitec.vercel.app/experiences' 
+  : `https://letrip13012023-backend-lawitec.vercel.app/experiences/${formData.experience_uuid}`;
+
+const method = mode === 'create' ? 'POST' : 'PUT';
+
+// Asegúrate de incluir formData.experience_uuid en los datos de inicialización si es 'update'
+
     try {
       console.log("Enviando formData:", JSON.stringify(updatedFormData));
       const response = await fetch('https://letrip13012023-backend-lawitec.vercel.app/experiences', {
-        method: 'POST',
+        method: method,
         headers: {
           'Content-Type': 'application/json',
         },
