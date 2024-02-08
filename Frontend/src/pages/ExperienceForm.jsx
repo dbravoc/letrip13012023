@@ -126,7 +126,7 @@ const removeRange = (index) => {
   }));
 
 
-    console.log("dateRanges antes de enviar:", dateRanges); // Verificar el contenido de dateRanges
+    console.log("dateRanges antes de enviar:", availableDates); // Verificar el contenido de dateRanges
 
 
    // Actualizar formData con las fechas disponibles
