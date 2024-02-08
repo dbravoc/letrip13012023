@@ -72,14 +72,15 @@ const addRange = () => {
     endDate: format(currentRange[0].endDate, 'yyyy-MM-dd'),
   };
   setDateRanges([...dateRanges, updatedRange]);
-};
+  setFormData({ ...formData, available_dates: [...dateRanges, updatedRange] });
+}
 
 const removeRange = (index) => {
   const newRanges = [...dateRanges];
   newRanges.splice(index, 1);
   setDateRanges(newRanges);
+  setFormData({ ...formData, available_dates: newRanges });
 };
-
 
   const handleImageUpload = async (e) => {
     const file = e.target.files[0];
