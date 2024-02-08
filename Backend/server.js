@@ -23,39 +23,39 @@ app.use((err, req, res, next) => {
     res.status(500).json({ error: err.message });
   });
 
-// Endpoint para obtener experiencias con fechas disponibles
-// app.get('/experiences', async (req, res) => {
-//    try {
+Endpoint para obtener experiencias con fechas disponibles
+app.get('/experiences', async (req, res) => {
+try {
         // Obtener experiencias
- //       const { data: experiencesData, error: experiencesError } = await supabase
-  //          .from('experiences')
-  //          .select('*');
+const { data: experiencesData, error: experiencesError } = await supabase
+.from('experiences')
+.select('*');
 
-  //      if (experiencesError) throw experiencesError;
+if (experiencesError) throw experiencesError;
 
-        // Obtener fechas disponibles
-       // const { data: availableDatesData, error: availableDatesError } = await supabase
-         //   .from('available_experiences')
-           // .select('*');
+// Obtener fechas disponibles
+const { data: availableDatesData, error: availableDatesError } = await supabase
+.from('available_experiences')
+.select('*');
 
-      //  if (availableDatesError) throw availableDatesError;
+if (availableDatesError) throw availableDatesError;
 
-        // Combinar fechas con experiencias
-     //   const combinedData = experiencesData.map(exp => {
-     //       return {
-      //          ...exp,
-      //          available_dates: availableDatesData
-       //             .filter(date => date.experience_uuid === exp.experience_uuid)
-       //             .map(date => date.available_date)
- //       };
-   //   });
+// Combinar fechas con experiencias
+const combinedData = experiencesData.map(exp => {
+return {
+ ...exp,
+ available_dates: availableDatesData
+.filter(date => date.experience_uuid === exp.experience_uuid)
+.map(date => date.available_date)
+};
+});
 
-   //   res.json(combinedData);
- //   catch (err) {
-   //   console.error(err.message);
-     //  res.status(500).send('Server Error');
-// }
-// });
+      res.json(combinedData);
+   catch (err) {
+    console.error(err.message);
+      res.status(500).send('Server Error');
+ }
+ });
 
 // Endpoint para crear una nueva experiencia
 app.post('/experiences', async (req, res) => {
