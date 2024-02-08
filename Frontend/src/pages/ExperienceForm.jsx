@@ -119,14 +119,20 @@ const removeRange = (index) => {
     const handleSubmit = async (e) => {
     e.preventDefault();
 
-    
+      // Construir un arreglo de fechas disponibles a partir de currentRange
+  const availableDates = currentRange.map(range => ({
+    startDate: format(range.startDate, 'yyyy-MM-dd'),
+    endDate: format(range.endDate, 'yyyy-MM-dd'),
+  }));
+
+
     console.log("dateRanges antes de enviar:", dateRanges); // Verificar el contenido de dateRanges
 
 
    // Actualizar formData con las fechas disponibles
-   const updatedFormData = {
+  const updatedFormData = {
     ...formData,
-    available_dates: dateRanges, // Asegúrate de que este campo coincide con lo que espera tu base de datos.
+    available_dates: availableDates,
   };
 
     try {
