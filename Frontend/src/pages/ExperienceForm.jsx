@@ -68,8 +68,8 @@ const ExperienceForm = () => {
 
 const addRange = () => {
   const updatedRange = {
-    startDate: format(currentRange[0].startDate, 'yyyy-MM-dd'),
-    endDate: format(currentRange[0].endDate, 'yyyy-MM-dd'),
+    startDate: format(currentRange[0].startDate, 'dd-MM-yyyy'),
+    endDate: format(currentRange[0].endDate, 'dd-MM-yyyy'),
   };
   setDateRanges([...dateRanges, updatedRange]);
 }
@@ -119,8 +119,8 @@ const removeRange = (index) => {
 
       // Construir un arreglo de fechas disponibles a partir de currentRange
   const availableDates = currentRange.map(range => ({
-    startDate: format(range.startDate, 'yyyy-MM-dd'),
-    endDate: format(range.endDate, 'yyyy-MM-dd'),
+    startDate: format(range.startDate, 'dd-MM-yyyy'),
+    endDate: format(range.endDate, 'dd-MM-yyyy'),
   }));
 
 
