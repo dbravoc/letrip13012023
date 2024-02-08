@@ -67,8 +67,8 @@ const ExperienceForm = () => {
 ]);
 
 const addRange = () => {
-  const updatedAvailableDates = {
-    ...currentRange[0],
+  const updatedRange = {
+   // ...currentRange[0],
     startDate: format(currentRange[0].startDate, 'yyyy/MM/dd'),
     endDate: format(currentRange[0].endDate, 'yyyy/MM/dd'),
   };
@@ -759,7 +759,6 @@ const removeRange = (index) => {
       <button  type="submit" className="block w-full rounded-md bg-letrip my-10 px-3 py-5 text-center text-xl font-semibold text-gray-900 shadow-sm hover:bg-yellow-400">
         Crear Experiencia
         </button>
-
       <ToastContainer position="bottom-right" />
     </form>
   )
