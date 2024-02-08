@@ -53,7 +53,7 @@ const ExperienceForm = () => {
     experience_included_description: '',
     instructor_profile_img: '',
     accident_insurance_file: '',
-    available_dates: ''
+    available_dates: [],
 
   });
 
@@ -72,14 +72,12 @@ const addRange = () => {
     endDate: format(currentRange[0].endDate, 'yyyy-MM-dd'),
   };
   setDateRanges([...dateRanges, updatedRange]);
-  setFormData({ ...formData, available_dates: [...dateRanges, updatedRange] });
 }
 
 const removeRange = (index) => {
   const newRanges = [...dateRanges];
   newRanges.splice(index, 1);
   setDateRanges(newRanges);
-  setFormData({ ...formData, available_dates: newRanges });
 };
 
   const handleImageUpload = async (e) => {
@@ -132,7 +130,7 @@ const removeRange = (index) => {
    // Actualizar formData con las fechas disponibles
   const updatedFormData = {
     ...formData,
-    available_dates: dateRanges,
+    available_dates: JSON.stringify(dateRanges),
   };
 
     try {
@@ -194,7 +192,7 @@ const removeRange = (index) => {
         experience_included_description: '',
         instructor_profile_img: '',
         accident_insurance_file: '',
-        available_dates: '',
+        available_dates: [],
 
       });
       setDateRanges([]); // Limpiar las fechas seleccionadas
