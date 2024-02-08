@@ -1,4 +1,4 @@
-const UpdateExperience = ({ selectedExperienceData }) => {
+const UpdateExperienceForm = ({ selectedExperienceData }) => {
   const handleSubmit = (formData) => {
     // Lógica para actualizar la experiencia
   };
@@ -7,3 +7,6 @@ const UpdateExperience = ({ selectedExperienceData }) => {
     <ExperienceForm mode="update" initialData={selectedExperienceData} onSubmit={handleSubmit} />
   );
 };
+
+export default UpdateExperienceForm;
+

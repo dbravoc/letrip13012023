@@ -1,4 +1,4 @@
-const CreateExperience = () => {
+const CreateExperienceForm = () => {
   const handleSubmit = (formData) => {
     // Lógica para crear la experiencia
   };
@@ -7,3 +7,5 @@ const CreateExperience = () => {
     <ExperienceForm mode="create" onSubmit={handleSubmit} />
   );
 };
+
+export default CreateExperienceForm;

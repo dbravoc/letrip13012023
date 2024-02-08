@@ -5,8 +5,8 @@ import Experiencias from './components/Experiencias';
 import Tarjeta from './pages/Tarjeta';
 import Galeria from './pages/Galeria';
 import FormularioPago from './pages/EstadoPago';
-import ExperienceForm from './pages/ExperienceForm';
-import ExperienceFormEdit from './pages/UpdateExperienceForm';
+import CreateExperienceForm from './pages/CreateExperienceForm';
+import UpdateExperienceForm from './pages/UpdateExperienceForm';
 import IncludedNotIncluded from './components/IncludedNotIncluded';
 import AvailablesExperiences from './components/AvailablesExperiences';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
@@ -38,7 +38,7 @@ const App = () => {
           <>
             <div className="mx-auto w-full sm:px-6 px-8">
               <div className="flex flex-col justify-between flex-wrap"><Inicio /></div>
-              <div className="pt-36 px-12 flex flex-col justify-between flex-wrap relative z-10"><ExperienceForm /></div>
+              <div className="pt-36 px-12 flex flex-col justify-between flex-wrap relative z-10"><CreateExperienceForm /></div>
             </div>
           </>
         } />  
@@ -47,7 +47,7 @@ const App = () => {
           <>
             <div className="mx-auto w-full sm:px-6 px-8">
               <div className="flex flex-col justify-between flex-wrap"><Inicio /></div>
-              <div className="pt-36 px-12 flex flex-col justify-between flex-wrap relative z-10"><ExperienceFormEdit /></div>
+              <div className="pt-36 px-12 flex flex-col justify-between flex-wrap relative z-10"><UpdateExperienceForm /></div>
             </div>
           </>
         } />  
