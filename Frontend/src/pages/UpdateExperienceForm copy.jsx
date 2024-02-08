@@ -1,85 +1,71 @@
-import React, { useState, useEffect } from 'react';
+// Importaciones necesarias
+import React, { useEffect, useState } from 'react';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-import { format } from 'date-fns';
-import { DateRangePicker } from 'react-date-range';
-import 'react-date-range/dist/styles.css'; // Estilos principales
-import 'react-date-range/dist/theme/default.css'; // Tema por defecto
 
 
 
+function UpdateExperienceForm() {
+  const [experiences, setExperiences] = useState([]);
+  const [selectedExperience, setSelectedExperience] = useState(null);
+  const [formData, setFormData] = useState({});
 
-const ExperienceForm = ({ mode, initialData, onSubmit }) => {
-  const [formData, setFormData] = useState({
-    experience_name: '',
-    experience_duration: '',
-    experience_location: '',
-    target_audience_restrictions: '',
-    minimum_age: '',
-    minimum_group_size: '',
-    group_restrictions: '',
-    equipment_required: '',
-    certified_instructor: false,
-    included_practical_lessons: false,
-    included_theoretical_lessons: false,
-    included_yoga: false,
-    included_training: false,
-    included_experience_video: false,
-    included_accident_insurance: false,
-    included_equipment_rental: false,
-    included_entry_fees: false,
-    included_lift_ticket: false,
-    experience_accommodation: '',
-    meal_breakfast: false,
-    meal_lunch: false,
-    meal_dinner: false,
-    meal_snacks_and_drinks: false,
-    transport_airport: false,
-    transport_during_experience: false,
-    experience_type: '',
-    experience_country: '',
-    experience_instructor_message: '',
-    experience_main_discipline: '',
-    experience_geography: '',
-    experience_demand_level: '',
-    experience_price: '',
-    experience_instructor: '',
-    experience_instructor_type: '',
-    card_img_1: '',
-    card_img_2: '',
-    card_img_3: '',
-    card_img_4: '',
-    experience_included_description: '',
-    instructor_profile_img: '',
-    accident_insurance_file: '',
-    available_dates: {},
+  // Cargar experiencias al montar el componente
+  useEffect(() => {
+    fetch('https://letrip13012023-backend-lawitec.vercel.app/experiences')
+      .then(response => response.json())
+      .then(data => setExperiences(data));
+  }, []);
 
-  });
-
-  const [dateRanges, setDateRanges] = useState([]);
-  const [currentRange, setCurrentRange] = useState([
-  {
-    startDate: new Date(),
-    endDate: new Date(),
-    key: 'selection',
-  },
-]);
-
-const addRange = () => {
-  const updatedRange = {
-    startDate: format(currentRange[0].startDate, 'dd-MM-yyyy'),
-    endDate: format(currentRange[0].endDate, 'dd-MM-yyyy'),
+  // Función para manejar la selección de una experiencia
+  const handleExperienceChange = (e) => {
+    const uuid = e.target.value;
+    const experience = experiences.find(exp => exp.experience_uuid === uuid);
+    setSelectedExperience(uuid);
+    setFormData(experience || {});
   };
-  setDateRanges([...dateRanges, updatedRange]);
-}
 
-const removeRange = (index) => {
-  const newRanges = [...dateRanges];
-  newRanges.splice(index, 1);
-  setDateRanges(newRanges);
-};
+  // Función para manejar cambios en el formulario
+  const handleChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: type === 'checkbox' ? checked : value
+    }));
+  };
 
+  // Función para manejar la actualización de la experiencia
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    fetch(`https://letrip13012023-backend-lawitec.vercel.app/experiences/${selectedExperience}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(formData),
+    })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Error en la actualización de la experiencia');
+      }
+      return response.json();
+    })
+    .then(data => {
+      // Manejar respuesta. Por ejemplo, mostrar un mensaje de éxito o recargar las experiencias.
+      console.log('Experiencia actualizada:', data);
+      toast.success('Experiencia actualizada con éxito');
+    })
+    .catch(error => {
+      // Manejar el error
+      console.error('Error al actualizar la experiencia:', error);
+      toast.error('Error al actualizar la experiencia.');
+    });
+
+  };
+
+
+// función para cargar imagenes
   const handleImageUpload = async (e) => {
     const file = e.target.files[0];
     if (!file) return;
@@ -103,131 +89,26 @@ const removeRange = (index) => {
       console.error('Error al subir la imagen:', error);
     }
   };
+
+
   
-  useEffect(() => {
-    if (mode === 'update' && initialData) {
-      setFormData(initialData);
-    }
-  }, [mode, initialData]);
-
-  const handleChange = (e) => {
-    const { name, value, type, checked } = e.target;
-    setFormData(prevData => ({
-      ...prevData,
-      [name]: type === 'checkbox' ? checked : value,
-    }));
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    onSubmit(formData);
-    
-      // Construir un arreglo de fechas disponibles a partir de currentRange
-  const availableDates = currentRange.map(range => ({
-    startDate: format(range.startDate, 'dd-MM-yyyy'),
-    endDate: format(range.endDate, 'dd-MM-yyyy'),
-  }));
-
-
-    console.log("dateRanges antes de enviar:", availableDates); // Verificar el contenido de dateRanges
-
-
-   // Actualizar formData con las fechas disponibles
-  const updatedFormData = {
-    ...formData,
-    available_dates: JSON.stringify(dateRanges), // Convierte directamente dateRanges a JSON
-  };
-
-    try {
-      console.log("Enviando formData:", JSON.stringify(updatedFormData));
-      const response = await fetch('https://letrip13012023-backend-lawitec.vercel.app/experiences', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(updatedFormData),
-      });
-
-      if (!response.ok) {
-        throw new Error('Error en la solicitud');
-      }
-
-      const result = await response.json();
-      console.log('Experiencia creada:', result);
-      
-      // Resetear el formulario
-      setFormData({
-        experience_name: '',
-        experience_duration: '',
-        experience_location: '',
-        target_audience_restrictions: '',
-        minimum_age: '',
-        minimum_group_size: '',
-        group_restrictions: '',
-        equipment_required: '',
-        certified_instructor: false,
-        included_practical_lessons: false,
-        included_theoretical_lessons: false,
-        included_yoga: false,
-        included_training: false,
-        included_experience_video: false,
-        included_accident_insurance: false,
-        included_equipment_rental: false,
-        included_entry_fees: false,
-        included_lift_ticket: false,
-        experience_accommodation: '',
-        meal_breakfast: false,
-        meal_lunch: false,
-        meal_dinner: false,
-        meal_snacks_and_drinks: false,
-        transport_airport: false,
-        transport_during_experience: false,
-        experience_type: '',
-        experience_country: '',
-        experience_instructor_message: '',
-        experience_main_discipline: '',
-        experience_geography: '',
-        experience_demand_level: '',
-        experience_price: '',
-        experience_instructor: '',
-        experience_instructor_type: '',
-        card_img_1: '',
-        card_img_2: '',
-        card_img_3: '',
-        card_img_4: '',
-        experience_included_description: '',
-        instructor_profile_img: '',
-        accident_insurance_file: '',
-        available_dates: {},
-
-      });
-      setDateRanges([]); // Limpiar las fechas seleccionadas
-
-       // Mostrar notificación de éxito
-       toast.success('Experiencia creada con éxito');
-      
-    } catch (error) {
-      console.error('Error al crear experiencia:', error);
-      // Mostrar notificación de error
-    toast.error('Error al crear la experiencia.');
-    }
-  };
-
+  
 
   return (
     <form className='flex flex-col px-auto sm:px-72 gap-y-2' onSubmit={handleSubmit}>
 
-<h3 className="mb-10 text-2xl font-bold tracking-tight text-gray-900">Datos generales</h3>
+    <h3 className="mb-10 text-2xl font-bold tracking-tight text-gray-900">Datos generales</h3>
 
-      <label className='text-gray-700 text-sm' htmlFor="experience_name" >Título de la experiencia. <span className='text-xs italic'> (Escribe algo simple, breve y persuasivo para los visitantes de Le Trip)</span></label>
-      <input
-        id="experience_name"
-        name="experience_name"
-        type="text"
-        value={formData.experience_name}
-        onChange={handleChange}
-        className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
-      />
+      <select className='text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none' 
+      onChange={handleExperienceChange} 
+      value={selectedExperience || ''}>
+        <option value="">Seleccione una experiencia</option>
+        {experiences.map((exp) => (
+          <option key={exp.experience_uuid} value={exp.experience_uuid}>
+            {exp.experience_name}
+          </option>
+        ))}
+      </select>
 
       <label className='text-gray-700 text-sm' htmlFor="experience_main_discipline">Disciplina principal</label>
       <select
@@ -262,7 +143,6 @@ const removeRange = (index) => {
         <option value='Viaje de un fin de semana'>Viaje de un fin de semana</option>
         <option value='Viaje de una semana'>Viaje de una semana</option>
         <option value='Viaje de una semana o más'>Viaje de una semana o más</option>
-
 
         </select>
 
@@ -299,8 +179,6 @@ const removeRange = (index) => {
           <option value="Bosque">Bosque</option>
           <option value="Río">Río</option>
           <option value="Desierto">Desierto</option>
-
-
         </select>
 
       <label className='text-gray-700 text-sm' htmlFor="experience_country">País de la experiencia</label>
@@ -429,8 +307,7 @@ const removeRange = (index) => {
          onChange={handleImageUpload} // Manejar la carga de imágenes en una función
          className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
        />
-
-      <label className='text-gray-700 text-sm' htmlFor="card_img_4">Imagen de experiencia 5:</label>
+<label className='text-gray-700 text-sm' htmlFor="card_img_4">Imagen de experiencia 5:</label>
       <input
          id="card_img_5"
          name="card_img_5"
@@ -490,7 +367,6 @@ const removeRange = (index) => {
          className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
        />
 
-
       <label className='text-gray-700 text-sm' htmlFor="instructor_profile_img">Imagen de perfil del anfitrión</label>
       <input
          id="instructor_profile_img"
@@ -501,29 +377,6 @@ const removeRange = (index) => {
          className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
        />
 
-
-
-
-<h3 className="my-10 text-2xl font-bold tracking-tight text-gray-900">Fechas disponibles</h3>
-<>
-  <DateRangePicker
-    onChange={item => setCurrentRange([item.selection])}
-    showSelectionPreview={true}
-    moveRangeOnFirstSelection={false}
-    months={2}
-    ranges={currentRange}
-    direction="horizontal"
-  />
-  <button className='block rounded-md bg-gray-900 px-1 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-gray-700' type="button" onClick={addRange}>Agregar disponibilidad</button>
-  <p className="mt-10 text-lg font-bold tracking-tight text-gray-900">Fechas seleccionadas</p>
-
-  {dateRanges.map((range, index) => (
-    <div className='flex justify-between border-b-2' key={index}>
-      <p className='text-sm flex items-center'> <span className='font-semibold text-black  py-0'> {range.startDate}</span> - <span className='font-semibold text-black'>{range.endDate}</span></p>
-      <button className='block rounded-md px-1 py-2 text-center text-sm font-semibold text-red-400 hover:text-red-500 shadow-sm' type="button" onClick={() => removeRange(index)}>Eliminar</button>
-    </div>
-  ))}
-</>
 
 
 
@@ -771,11 +624,15 @@ const removeRange = (index) => {
 
 
       <button  type="submit" className="block w-full rounded-md bg-letrip my-10 px-3 py-5 text-center text-xl font-semibold text-gray-900 shadow-sm hover:bg-yellow-400">
-        Crear Experiencia
+        Actualizar Experiencia
         </button>
-      <ToastContainer position="bottom-right" />
+
+  <ToastContainer position="bottom-right" />
+
     </form>
   );
+
 };
 
-export default ExperienceForm;
+export default UpdateExperienceForm;
+

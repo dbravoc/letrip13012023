@@ -10,7 +10,7 @@ import 'react-date-range/dist/theme/default.css'; // Tema por defecto
 
 
 
-const ExperienceForm = ({ mode, initialData, onSubmit }) => {
+const ExperienceForm = () => {
   const [formData, setFormData] = useState({
     experience_name: '',
     experience_duration: '',
@@ -104,24 +104,19 @@ const removeRange = (index) => {
     }
   };
   
-  useEffect(() => {
-    if (mode === 'update' && initialData) {
-      setFormData(initialData);
-    }
-  }, [mode, initialData]);
+
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
-    setFormData(prevData => ({
+    setFormData((prevData) => ({
       ...prevData,
       [name]: type === 'checkbox' ? checked : value,
     }));
   };
 
-  const handleSubmit = async (e) => {
+    const handleSubmit = async (e) => {
     e.preventDefault();
-    onSubmit(formData);
-    
+
       // Construir un arreglo de fechas disponibles a partir de currentRange
   const availableDates = currentRange.map(range => ({
     startDate: format(range.startDate, 'dd-MM-yyyy'),
@@ -775,7 +770,6 @@ const removeRange = (index) => {
         </button>
       <ToastContainer position="bottom-right" />
     </form>
-  );
-};
-
+  )
+;}
 export default ExperienceForm;

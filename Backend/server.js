@@ -24,7 +24,6 @@ app.use((err, req, res, next) => {
   });
 
 
-  
 // Endpoint para obtener experiencias
 app.get('/experiences', async (req, res) => {
     try {
