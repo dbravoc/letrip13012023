@@ -12,6 +12,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import SelectAvailableDates from './components/SelectAvailableDates'; // Asegúrate de importar correctamente
 import SelectPlayers from './components/SelectPlayers';
 import PriceExperience from './components/PriceExperience';
+import TotalPrice from './components/TotalPrice';
 
 
 const App = () => {
@@ -68,6 +69,8 @@ const App = () => {
                   <div className='pt-10'><PriceExperience experienceCard={experienceCard}/></div>
                   <div className='pt-10'><SelectAvailableDates experienceCard={experienceCard}/></div>
                   <div className='pt-10'><SelectPlayers experienceCard={experienceCard}/></div>
+                  <div className='pt-10'><TotalPrice experienceCard={experienceCard}/></div>
+
               </div>
               <div className='justify-self-center'>
                   <div className='pt-36'><Galeria experienceCard={experienceCard} /></div>
