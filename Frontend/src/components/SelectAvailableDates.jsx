@@ -21,7 +21,7 @@ const SelectAvailableDates = ({ experienceCard }) => {
           {dates.map((date, index) => (
             <button
               key={index}
-              className={`px-4 py-2 rounded-md text-white font-medium ${selectedDate === `${date.startDate}-${date.endDate}` ? 'bg-gray-700' : 'bg-gray-400 hover:bg-gray-500'}`}
+              className={`px-4 py-2 rounded-md text-letrip font-medium ${selectedDate === `${date.startDate}-${date.endDate}` ? 'bg-black' : 'bg-gray-500 hover:bg-gray-700'}`}
               onClick={() => setSelectedDate(`${date.startDate}-${date.endDate}`)}
             >
               Desde: {date.startDate}, Hasta: {date.endDate}
