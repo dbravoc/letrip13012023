@@ -43,9 +43,13 @@ const TotalPrice = ({ experienceCard }) => {
           </div>
           <div className='mt-35 tracking-tight'>
           <h3 className="text-2xl font-bold mb-4">Valor total de la experiencia</h3>
-            <p className="text-lg bg-letrip text-black py-2 text-center w-full block">
-            <span className="font-semibold text-2xl">US${totalPrice}</span> en total
-            </p>
+            <p className='text-sm text-black font-semibold'>Haz clic para confirmar tu compra y proceder con el pago a través de nuestras opciones de pago seguras.</p>
+            <button>
+                <p className="text-lg bg-letrip text-black py-4 rounded-md text-center w-full block">
+                <span className="font-semibold text-2xl">
+                    US${totalPrice} </span>
+                en total </p>
+            </button>
           </div>
         </>
       )}
