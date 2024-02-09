@@ -1,36 +1,24 @@
-import React, { useState, useEffect } from 'react';
-import Select from 'react-select';
+import React from 'react';
 import { format, parseISO } from 'date-fns';
 
 const SelectAvailableDates = ({ experienceCard }) => {
-  const [selectedDate, setSelectedDate] = useState(null);
-  const [options, setOptions] = useState([]);
-
-  useEffect(() => {
-    if (experienceCard && experienceCard.available_dates) {
-      const dates = JSON.parse(experienceCard.available_dates);
-      const formattedOptions = dates.map(date => ({
-        value: `${date.startDate} to ${date.endDate}`,
-        label: `${format(parseISO(date.startDate), 'dd-MM-yyyy')} to ${format(parseISO(date.endDate), 'dd-MM-yyyy')}`,
-      }));
-      setOptions(formattedOptions);
-    }
-  }, [experienceCard]);
-
-  const handleChange = selectedOption => {
-    setSelectedDate(selectedOption);
-    // Aquí podrías hacer algo con la fecha seleccionada, como actualizar el estado de un formulario
-  };
+  // Asumiendo que experienceCard es un objeto que contiene una propiedad available_dates,
+  // que es un array de objetos con startDate y endDate en formato ISO 8601 (YYYY-MM-DD)
+  const availableDates = experienceCard.available_dates.map(dates => ({
+    startDate: format(parseISO(dates.startDate), 'dd-MM-yyyy'),
+    endDate: format(parseISO(dates.endDate), 'dd-MM-yyyy'),
+  }));
 
   return (
     <div>
-      <Select
-        value={selectedDate}
-        onChange={handleChange}
-        options={options}
-        placeholder="Select available dates"
-        isClearable
-      />
+      <label htmlFor="availableDates">Seleccione una fecha disponible:</label>
+      <select id="availableDates" name="availableDates">
+        {availableDates.map((date, index) => (
+          <option key={index} value={`${date.startDate} to ${date.endDate}`}>
+            {date.startDate} to {date.endDate}
+          </option>
+        ))}
+      </select>
     </div>
   );
 };
