@@ -21,7 +21,7 @@ const SelectAvailableDates = ({ experienceCard }) => {
           {dates.map((date, index) => (
             <button
                 key={index}
-                className={`block text-left w-full py-2 rounded-md font-medium border-b-2 border-b-letrip text-gray-900 ${selectedDate === `${date.startDate}-${date.endDate}` ? 'bg-letrip text-black' : ''}`}
+                className={`block w-full text-2xl py-2 font-medium border-b-2 border-b-letrip text-gray-700 ${selectedDate === `${date.startDate}-${date.endDate}` ? 'bg-letrip text-black' : ''}`}
                 onClick={() => setSelectedDate(`${date.startDate}-${date.endDate}`)}
             >
                 Desde: {date.startDate}, Hasta: {date.endDate}
@@ -36,7 +36,7 @@ const SelectAvailableDates = ({ experienceCard }) => {
 
   return (
     <div className="mx-0 sm:px-6 sm:py-8 mb-10 tracking-tight text-gray-900">
-      <h3 className="text-2xl font-bold">Selecciona una fecha disponible</h3>
+      <h3 className="text-2xl font-bold mb-10">Selecciona una fecha disponible</h3>
       {experienceCard.length > 0 ? (
         experienceCard.map((experience, index) => (
           <div key={index} className="mb-4">
