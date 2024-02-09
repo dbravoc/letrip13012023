@@ -4,17 +4,16 @@ const SelectAvailableDates = ({ experienceCard }) => {
   const renderDatesForExperience = (experience) => {
     // Podrías incluir aquí algún identificador de la experiencia si está disponible
     if (!experience.available_dates || experience.available_dates.trim() === '') {
-      return <><p>{experienceTitle}</p><p>No hay fechas disponibles.</p></>;
+      return <p>No hay fechas disponibles.</p>;
     }
 
     try {
       const dates = JSON.parse(experience.available_dates);
       if (dates.length === 0) {
-        return <><p>{experienceTitle}</p><p>No hay fechas disponibles.</p></>;
+        return <p>No hay fechas disponibles.</p>;
       }
       return (
         <>
-          <p>{experienceTitle}</p>
           <ul>
             {dates.map((date, index) => (
               <li key={index}>{`Desde: ${date.startDate}, Hasta: ${date.endDate}`}</li>
