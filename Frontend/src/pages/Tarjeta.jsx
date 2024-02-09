@@ -2,6 +2,7 @@ import React from 'react';
 import { useParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
+import SelectAvailableDates from '../components/SelectAvailableDates'; // Asegúrate de importar correctamente
 
 
 const Tarjeta = ({ experienceCard }) => {
