@@ -1,65 +1,42 @@
 import React, { useState, useEffect } from 'react';
-import ExperienceForm from './ExperienceForm';
-import { toast } from 'react-toastify';
+import ExperienceForm from './ExperienceForm'; // Asegúrate de que la ruta sea correcta
 
-
-function UpdateExperienceForm() {
-  const [experiences, setExperiences] = useState([]);
-  const [selectedExperience, setSelectedExperience] = useState(null);
+const UpdateExperienceForm = ({ experienceId }) => {
+  const [initialData, setInitialData] = useState(null);
 
   useEffect(() => {
-    // Llamada a la API para obtener la lista de experiencias
-    fetch('https://letrip13012023-backend-lawitec.vercel.app/experiences')
-      .then(response => response.json())
-      .then(data => setExperiences(data));
-  }, []);
-
-  const handleSelectChange = (e) => {
-    const selectedId = e.target.value;
-    const experience = experiences.find(exp => exp.experience_uuid === selectedId);
-    setSelectedExperience(experience);
-  };
-
-  const handleSubmit = async (updatedData) => {
-    // Asegúrate de que la URL y el método sean correctos para tu API
-    const url = `https://letrip13012023-backend-lawitec.vercel.app/experiences/${updatedData.experience_uuid}`;
-    try {
-      const response = await fetch(url, {
-        method: 'PUT', // O 'PATCH' si solo actualizas parcialmente la entidad
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(updatedData),
-      });
-
-      if (!response.ok) {
-        throw new Error('Error al actualizar la experiencia');
+    // Aquí debes cargar los datos de la experiencia que quieres editar.
+    // Esto normalmente implicaría hacer una llamada a la API para obtener los datos de la experiencia por su ID.
+    const fetchExperienceData = async () => {
+      try {
+        const response = await fetch(`https://letrip13012023-backend-lawitec.vercel.app/experiences/${experienceId}`);
+        if (!response.ok) throw new Error('No se pudo cargar la experiencia');
+        const data = await response.json();
+        setInitialData(data); // Suponiendo que la API devuelve los datos de la experiencia directamente.
+      } catch (error) {
+        console.error('Error al cargar la experiencia:', error);
+        // Aquí podrías manejar el error, por ejemplo, mostrando un mensaje al usuario.
       }
+    };
 
-      const result = await response.json();
-      console.log('Experiencia actualizada con éxito:', result);
+    fetchExperienceData();
+  }, [experienceId]);
 
-      // Actualiza la lista de experiencias o notifica al usuario
-      toast.success('Experiencia actualizada con éxito');
-      // Opcional: recargar la lista de experiencias o realizar alguna otra acción
-    } catch (error) {
-      console.error('Error al actualizar la experiencia:', error);
-      toast.error('Error al actualizar la experiencia.');
-    }
+  const handleSubmit = (formData) => {
+    // Aquí implementas cómo manejar la actualización de la experiencia.
+    // Esto puede involucrar llamar a una API y manejar la respuesta.
+    // Asegúrate de usar el método PUT para actualizar la experiencia.
   };
 
   return (
     <div>
-      <select value={selectedExperience?.experience_uuid || ''} onChange={handleSelectChange}>
-        <option value="">Seleccione una experiencia</option>
-        {experiences.map(exp => (
-          <option key={exp.experience_uuid} value={exp.experience_uuid}>{exp.experience_name}</option>
-        ))}
-      </select>
-      {selectedExperience && (
-        <ExperienceForm mode="update" initialData={selectedExperience} onSubmit={handleSubmit} />
+      {initialData ? (
+        <ExperienceForm mode="update" initialData={initialData} onSubmit={handleSubmit} />
+      ) : (
+        <p>Cargando datos de la experiencia...</p>
       )}
     </div>
   );
-}
+};
+
 export default UpdateExperienceForm;
