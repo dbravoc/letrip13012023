@@ -21,10 +21,17 @@ const SelectAvailableDates = ({ experienceCard }) => {
           {dates.map((date, index) => (
             <button
                 key={index}
-                className={`block w-full text-2xl py-2 font-medium border-b-2 border-b-letrip text-gray-700 ${selectedDate === `${date.startDate}-${date.endDate}` ? 'bg-letrip text-black' : ''}`}
+                className={`block w-full text-xs py-2 font-medium border-b-2 border-b-letrip text-gray-700 ${selectedDate === `${date.startDate}-${date.endDate}` ? 'bg-letrip text-black' : ''}`}
                 onClick={() => setSelectedDate(`${date.startDate}-${date.endDate}`)}
             >
-                Desde: {date.startDate}, Hasta: {date.endDate}
+               <ul>
+                <li>Check-in</li>
+                <li>{date.startDate}</li>
+               </ul>
+               <ul>
+                <li>Check-out</li>
+                <li>{date.endDate}</li>
+               </ul>
             </button>
 
           ))}
