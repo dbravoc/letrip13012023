@@ -2,24 +2,32 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 const SelectAvailableDates = () => {
-  const { id: uuid } = useParams(); // Obtiene el UUID desde el URL
+  const { id: uuid } = useParams();
   const [experience, setExperience] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Aquí deberías obtener los datos de la experiencia por UUID.
-    // Esto podría ser desde un estado global o realizando una solicitud a tu servidor/API.
-    // Este es un ejemplo de cómo podrías realizar una solicitud al servidor.
-    fetch('https://letrip13012023-backend-lawitec.vercel.app/experiences') // Asegúrate de usar la URL correcta de tu servidor
-      .then(response => response.json())
-      .then(data => {
-        setExperience(data);
-        setLoading(false);
-      })
-      .catch(error => {
+    const fetchExperienceData = async () => {
+      try {
+        // Suponiendo que tu API soporte obtener una experiencia específica por su ID/UUID
+        const response = await fetch(`https://letrip13012023-backend-lawitec.vercel.app/experiences/${uuid}`);
+        const data = await response.json();
+        
+        // Verificar si la experiencia tiene fechas disponibles
+        if (data && data.available_dates) {
+          setExperience(data);
+        } else {
+          setExperience(null); // Asegúrate de manejar la ausencia de datos adecuadamente
+        }
+      } catch (error) {
         console.error('Error al obtener la experiencia:', error);
+        setExperience(null);
+      } finally {
         setLoading(false);
-      });
+      }
+    };
+
+    fetchExperienceData();
   }, [uuid]);
 
   if (loading) {
@@ -30,7 +38,8 @@ const SelectAvailableDates = () => {
     return <p>No hay fechas disponibles.</p>;
   }
 
-  const dates = JSON.parse(experience.available_dates);
+  // Asumiendo que 'available_dates' es un array y no necesita ser parseado
+  const dates = experience.available_dates;
   return (
     <div>
       <h3 className="mb-10 text-2xl font-bold tracking-tight text-gray-900">Selecciona una fecha disponible</h3>
