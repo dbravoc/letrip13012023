@@ -19,11 +19,11 @@ const SelectAvailableDates = ({ experienceCard }) => {
     const dates = tryParseDates(experience.available_dates);
     if (dates && dates.length > 0) {
       return (
-        <div className="flex flex-wrap gap-2">
+        <div className="flex flex-wrap gap-x-2">
           {dates.map((date, index) => (
             <button
               key={index}
-              className={`block w-full text-xl py-2 border-b-2 border-b-letrip text-gray-500 ${selectedDate === `${date.startDate}-${date.endDate}` ? 'bg-letrip text-black' : ''}`}
+              className={`block w-full text-xl py-2 border-b-2 border-b-letrip text-black ${selectedDate === `${date.startDate}-${date.endDate}` ? 'bg-letrip' : ''}`}
               onClick={() => handleDateClick(`${date.startDate}-${date.endDate}`)}
             >
               <div className='flex justify-center gap-x-10'>
