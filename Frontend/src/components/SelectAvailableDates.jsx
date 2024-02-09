@@ -52,7 +52,7 @@ const SelectAvailableDates = ({ experienceCard }) => {
   };
 
   return (
-    <div className="mx-0 sm:px-6 sm:py-8 mb-10 tracking-tight text-gray-900">
+    <div className="mx-0 sm:px-6 mb-10 tracking-tight text-gray-900">
       <h3 className="text-2xl font-bold mb-10">Selecciona una fecha disponible</h3>
       {experienceCard.length > 0 ? (
         experienceCard.map((experience, index) => (

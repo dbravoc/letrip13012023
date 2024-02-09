@@ -64,10 +64,10 @@ const App = () => {
             <div className='grid grid-cols-1 sm:grid-cols-2'>
               <div className='justify-self-center'>
                   <div className='pt-36'><Tarjeta experienceCard={experienceCard} /></div>
-                  <div className='pt-15'><IncludedNotIncluded experienceCard={experienceCard} /></div>
-                  <div className='pt-15'><PriceExperience experienceCard={experienceCard}/></div>
-                  <div className='pt-15'><SelectAvailableDates experienceCard={experienceCard}/></div>
-                  <div className='pt-15'><SelectPlayers experienceCard={experienceCard}/></div>
+                  <div className='pt-10'><IncludedNotIncluded experienceCard={experienceCard} /></div>
+                  <div className='pt-10'><PriceExperience experienceCard={experienceCard}/></div>
+                  <div className='pt-10'><SelectAvailableDates experienceCard={experienceCard}/></div>
+                  <div className='pt-10'><SelectPlayers experienceCard={experienceCard}/></div>
               </div>
               <div className='justify-self-center'>
                   <div className='pt-36'><Galeria experienceCard={experienceCard} /></div>

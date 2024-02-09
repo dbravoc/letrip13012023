@@ -10,7 +10,7 @@ const SelectPlayers = ({ experienceCard }) => {
   };
 
   return (
-    <div className="mx-0 sm:px-6 sm:py-8 mb-10 tracking-tight text-gray-900">
+    <div className="mx-0 sm:px-6 mb-10 tracking-tight text-gray-900">
       <h3 className="text-2xl font-bold mb-10">Número de personas </h3>
 
       {experienceCard && (
@@ -23,7 +23,7 @@ const SelectPlayers = ({ experienceCard }) => {
             min={experienceCard.minimum_group_size}
             max={experienceCard.max_group_size}
             onChange={handlePlayerChange}
-            className="block w-auto font-semibold text-2xl outline-none border-b-2 border-r-2 border-b-letrip border-r-letrip py-2"
+            className="block w-auto font-semibold text-xl outline-none border-b-2 border-r-2 border-b-letrip border-r-letrip py-2"
           />
         </div>
       )}
