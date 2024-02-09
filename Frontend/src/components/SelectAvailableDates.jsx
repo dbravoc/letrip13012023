@@ -1,14 +1,22 @@
 import React from 'react';
 
 const SelectAvailableDates = ({ experienceCard }) => {
-  // Esta función se encarga de renderizar las fechas para una experiencia específica.
-  const renderDatesForExperience = (experience) => {
+  // Función para intentar parsear las fechas disponibles de una experiencia.
+  // Devuelve null si el parseo falla, evitando mostrar un mensaje de error en la UI.
+  const tryParseDates = (datesString) => {
     try {
-      const dates = JSON.parse(experience.available_dates);
-      if (dates.length === 0) {
-        // No devuelve nada si no hay fechas disponibles.
-        return null;
-      }
+      return JSON.parse(datesString);
+    } catch (error) {
+      console.error('Error parsing dates:', error);
+      // Devuelve null para indicar fallo en el parseo.
+      return null;
+    }
+  };
+
+  // Función para renderizar las fechas para una experiencia específica.
+  const renderDatesForExperience = (experience) => {
+    const dates = tryParseDates(experience.available_dates);
+    if (dates && dates.length > 0) {
       return (
         <ul>
           {dates.map((date, index) => (
@@ -16,36 +24,30 @@ const SelectAvailableDates = ({ experienceCard }) => {
           ))}
         </ul>
       );
-    } catch (error) {
-      console.error('Error parsing dates:', error);
-      // En caso de error al parsear, devuelve un mensaje general de error.
-      return <p>Error al procesar las fechas disponibles.</p>;
     }
+    // No devuelve nada si el parseo falla o si no hay fechas disponibles.
+    return null;
   };
 
-  // Verifica si alguna experiencia tiene fechas disponibles.
-  const anyDatesAvailable = experienceCard.some(experience => {
-    try {
-      const dates = JSON.parse(experience.available_dates);
-      return dates.length > 0;
-    } catch (error) {
-      return false;
-    }
+  // Verifica si al menos una experiencia tiene fechas válidas para mostrar.
+  const anyValidDates = experienceCard.some(experience => {
+    const dates = tryParseDates(experience.available_dates);
+    return dates && dates.length > 0;
   });
 
   return (
     <div className="mx-0 sm:px-6 sm:py-8 mb-10 tracking-tight text-gray-900">
       <h3 className="text-2xl font-bold">Selecciona una fecha disponible</h3>
       {experienceCard.length > 0 ? (
-        anyDatesAvailable ? (
+        anyValidDates ? (
           experienceCard.map((experience, index) => (
             <div key={index}>
-              {renderDatesForExperience(experience) || null}
+              {renderDatesForExperience(experience)}
             </div>
           ))
         ) : (
-          // Solo muestra este mensaje si ninguna experiencia tiene fechas disponibles.
-          <p>No hay fechas disponibles.</p>
+          // Solo muestra este mensaje si ninguna experiencia tiene fechas válidas después del intento de parseo.
+          <p>Error al procesar las fechas disponibles.</p>
         )
       ) : (
         // Mensaje mostrado si no hay experiencias disponibles en absoluto.
