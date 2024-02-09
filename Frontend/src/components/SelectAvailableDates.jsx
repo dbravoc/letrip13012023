@@ -21,10 +21,10 @@ const SelectAvailableDates = ({ experienceCard }) => {
           {dates.map((date, index) => (
             <button
               key={index}
-              className={`block w-full text-2xl py-2 font-medium border-b-2 border-b-letrip text-gray-700 ${selectedDate === `${date.startDate}-${date.endDate}` ? 'bg-letrip text-black' : ''}`}
+              className={`block w-full text-xl py-2 border-b-2 border-b-letrip text-gray-500 ${selectedDate === `${date.startDate}-${date.endDate}` ? 'bg-letrip text-black' : ''}`}
               onClick={() => handleDateClick(`${date.startDate}-${date.endDate}`)}
             >
-              <div className='flex justify-center gap-x-5'>
+              <div className='flex justify-center gap-x-10'>
                 <ul>
                   <li>Check-in</li>
                   <li>{date.startDate}</li>
