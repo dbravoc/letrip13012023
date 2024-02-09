@@ -20,25 +20,30 @@ const SelectAvailableDates = ({ experienceCard }) => {
         <div className="flex flex-wrap gap-2">
           {dates.map((date, index) => (
             <button
-                key={index}
-                className={`block w-full text-xs py-2 font-medium border-b-2 border-b-letrip text-gray-700 ${selectedDate === `${date.startDate}-${date.endDate}` ? 'bg-letrip text-black' : ''}`}
-                onClick={() => setSelectedDate(`${date.startDate}-${date.endDate}`)}
+              key={index}
+              className={`block w-full text-xs py-2 font-medium border-b-2 border-b-letrip text-gray-700 ${selectedDate === `${date.startDate}-${date.endDate}` ? 'bg-letrip text-black' : ''}`}
+              onClick={() => handleDateClick(`${date.startDate}-${date.endDate}`)}
             >
-               <ul>
-                <li>Check-in</li>
-                <li>{date.startDate}</li>
-               </ul>
-               <ul>
-                <li>Check-out</li>
-                <li>{date.endDate}</li>
-               </ul>
+              <div className='grid grid-cols-2'>
+                <ul>
+                  <li>Check-in</li>
+                  <li>{date.startDate}</li>
+                </ul>
+                <ul>
+                  <li>Check-out</li>
+                  <li>{date.endDate}</li>
+                </ul>
+              </div>
             </button>
-
           ))}
         </div>
       );
     }
     return null;
+  };
+
+  const handleDateClick = (date) => {
+    setSelectedDate(prevDate => prevDate === date ? null : date);
   };
 
   return (
