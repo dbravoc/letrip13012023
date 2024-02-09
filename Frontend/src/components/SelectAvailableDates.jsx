@@ -28,15 +28,15 @@ const SelectAvailableDates = ({ experienceCard }) => {
             >
               <div className='flex justify-center gap-x-10'>
                 <ul>
-                  <li>Check-in</li>
-                  <li>{date.startDate}</li>
+                  <li className='text-sm'>Check-in</li>
+                  <li className='font-semibold'>{date.startDate}</li>
                 </ul>
                 <ul>
                   <li><FontAwesomeIcon icon={faCircleRight} /></li>
                 </ul>
                 <ul>
-                  <li>Check-out</li>
-                  <li>{date.endDate}</li>
+                  <li className='text-sm'>Check-out</li>
+                  <li className='font-semibold'>{date.endDate}</li>
                 </ul>
               </div>
             </button>
