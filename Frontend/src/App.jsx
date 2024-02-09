@@ -63,9 +63,9 @@ const App = () => {
             <div className='grid grid-cols-1 sm:grid-cols-2'>
               <div className='justify-self-center'>
                   <div className='pt-36'><Tarjeta experienceCard={experienceCard} /></div>
-                  <div className='pt-20'><IncludedNotIncluded experienceCard={experienceCard} /></div>
-                  <div className='pt-36'><SelectAvailableDates experienceCard={experienceCard}/></div>
-                  <div className='pt-36'><SelectPlayers experienceCard={experienceCard}/></div>
+                  <div className='pt-15'><IncludedNotIncluded experienceCard={experienceCard} /></div>
+                  <div className='pt-15'><SelectAvailableDates experienceCard={experienceCard}/></div>
+                  <div className='pt-15'><SelectPlayers experienceCard={experienceCard}/></div>
 
               </div>
               <div className='justify-self-center'>
