@@ -11,10 +11,12 @@ const SelectPlayers = ({ experienceCard }) => {
 
   return (
     <div className="mx-0 sm:px-6 sm:py-8 mb-10 tracking-tight text-gray-900">
-      <h3 className="text-2xl font-bold">Selecciona el número de jugadores</h3>
-      {experienceCard.length > 0 ? (
+      <h3 className="text-2xl font-bold">Selecciona la cantidad de personas </h3>
+      <p>Mínimo permitido: {experienceCard.minimum_group_size} personas</p>
+      <p>Máximo permitido: {experienceCard.max_group_size} personas</p>
+
+      {experienceCard && (
         <div className="mb-4">
-          <label htmlFor="players" className="block mb-2">Número de jugadores:</label>
           <input
             type="number"
             id="players"
@@ -25,11 +27,9 @@ const SelectPlayers = ({ experienceCard }) => {
             className="border border-gray-400 rounded-md px-4 py-2"
           />
           {selectedPlayers && (
-            <p className="mt-2">Has seleccionado {selectedPlayers} jugadores.</p>
+            <p>Has seleccionado {selectedPlayers} personas.</p>
           )}
         </div>
-      ) : (
-        <p>No hay experiencias disponibles.</p>
       )}
     </div>
   );
