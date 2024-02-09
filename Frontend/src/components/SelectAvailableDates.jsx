@@ -32,6 +32,7 @@ const SelectAvailableDates = ({ experienceCard }) => {
                   <li className='font-semibold'>{date.startDate}</li>
                 </ul>
                 <ul>
+                  <li></li>
                   <li><FontAwesomeIcon icon={faCircleRight} /></li>
                 </ul>
                 <ul>
