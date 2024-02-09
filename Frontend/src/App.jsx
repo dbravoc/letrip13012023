@@ -8,7 +8,6 @@ import FormularioPago from './pages/EstadoPago';
 import CreateExperienceForm from './pages/CreateExperienceForm';
 import UpdateExperienceForm from './pages/UpdateExperienceForm';
 import IncludedNotIncluded from './components/IncludedNotIncluded';
-import AvailablesExperiences from './components/AvailablesExperiences';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import SelectAvailableDates from './components/SelectAvailableDates'; // Asegúrate de importar correctamente
 
@@ -64,7 +63,7 @@ const App = () => {
               <div className='justify-self-center'>
                   <div className='pt-36'><Tarjeta experienceCard={experienceCard} /></div>
                   <div className='pt-20'><IncludedNotIncluded experienceCard={experienceCard} /></div>
-                  <div className='pt-36'><SelectAvailableDates experience={experienceCard} /></div>
+                  <div className='pt-36'><SelectAvailableDates experienceCard={experienceCard} /></div>
               </div>
               <div className='justify-self-center'>
                   <div className='pt-36'><Galeria experienceCard={experienceCard} /></div>
