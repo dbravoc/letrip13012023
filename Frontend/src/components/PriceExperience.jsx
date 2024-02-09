@@ -1,19 +1,19 @@
 import React from 'react';
+import { useParams } from 'react-router-dom';
 
 const PriceExperience = ({ experienceCard }) => {
-  // Asumiendo que quieres mostrar el precio de la primera experiencia
-  // O asegúrate de seleccionar la experiencia correcta de alguna manera
-  const experiencePrice = experienceCard.experiences?.[0]?.experience_price;
+  const { id } = useParams(); // Obtiene el ID de la URL
+  const selectedExperience = experienceCard.find(e => e.experience_uuid === id);
 
   return (
-    <div className="price-container">
+    <div className="flex px-0 mx-0">
       <h3 className="text-2xl font-bold mb-4">Precio de la Experiencia</h3>
-      {experiencePrice ? (
-        <p className="text-lg">
-          $US<span className="font-semibold">{experiencePrice}</span> por persona
-        </p>
+      {selectedExperience ? (
+        <div className=" pt-2">
+          <p>US${selectedExperience.experience_price} por persona</p>
+        </div>
       ) : (
-        <p className="text-lg">Precio no disponible</p>
+        <div>Precio no disponible</div>
       )}
     </div>
   );
