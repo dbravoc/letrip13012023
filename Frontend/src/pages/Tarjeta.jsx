@@ -2,6 +2,7 @@ import React from 'react';
 import { useParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
+import SelectAvailableDates from '../components/SelectAvailableDates'; // Asegúrate de importar correctamente
 
 
 const Tarjeta = ({ experienceCard }) => {
@@ -21,8 +22,6 @@ const Tarjeta = ({ experienceCard }) => {
     { name: 'Nivel de exigencia', description: selectedExperience.experience_demand_level },
     { name: 'Precio Desde', description: `${selectedExperience.experience_price} USD` },
   ];
-
-
 
   return ( //GRID: seccion fotos, seccion informacion + invitacion anfitrion, reserva
       
@@ -67,6 +66,9 @@ const Tarjeta = ({ experienceCard }) => {
           </dl>
         </div>
       </div>
+
+      <SelectAvailableDates experience={selectedExperience} />
+
 
     </div>
   
