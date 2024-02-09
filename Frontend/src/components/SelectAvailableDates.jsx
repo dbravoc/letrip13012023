@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCircleRight } from '@fortawesome/free-solid-svg-icons';
 
 const SelectAvailableDates = ({ experienceCard }) => {
   // Estado para rastrear la fecha seleccionada.
@@ -28,6 +30,9 @@ const SelectAvailableDates = ({ experienceCard }) => {
                 <ul>
                   <li>Check-in</li>
                   <li>{date.startDate}</li>
+                </ul>
+                <ul>
+                  <li><FontAwesomeIcon icon={faCircleRight} /></li>
                 </ul>
                 <ul>
                   <li>Check-out</li>
