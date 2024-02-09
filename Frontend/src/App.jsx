@@ -68,7 +68,6 @@ const App = () => {
                   <div className='pt-10'><IncludedNotIncluded experienceCard={experienceCard} /></div>
                   <div className='pt-10'><PriceExperience experienceCard={experienceCard}/></div>
                   <div className='pt-10'><SelectAvailableDates experienceCard={experienceCard}/></div>
-                  <div className='pt-10'><SelectPlayers experienceCard={experienceCard}/></div>
                   <div className='pt-10'><TotalPrice experienceCard={experienceCard}/></div>
 
               </div>

@@ -25,9 +25,6 @@ const TotalPrice = ({ experienceCard }) => {
       {selectedExperience && (
         <>
           <div className="mb-4">
-            <label htmlFor="players" className="block mb-2 text-sm font-bold text-gray-700">
-              Número de personas:
-            </label>
             <input
               type="number"
               placeholder="¿Cuántos?"
@@ -45,8 +42,9 @@ const TotalPrice = ({ experienceCard }) => {
             <p>Máximo permitido: <span className='font-semibold'>{experienceCard.max_group_size}</span> personas</p>
           </div>
           <div>
+          <h3 className="text-2xl font-bold mb-4">Valor total de la experiencia</h3>
             <p className="text-lg">
-              Precio total: <span className="font-semibold">${totalPrice}</span> por {selectedPlayers} persona(s)
+            <span className="font-semibold text-2xl">US${totalPrice}</span> por {selectedPlayers} personas
             </p>
           </div>
         </>
