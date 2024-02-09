@@ -21,7 +21,7 @@ const TotalPrice = ({ experienceCard }) => {
 
   return (
     <div className="mx-0 sm:px-6 mb-10 tracking-tight text-gray-900">
-      <h3 className="text-2xl font-bold mb-4">Número de personas</h3>
+      <h3 className="text-2xl font-bold mb-10">Número de personas</h3>
       {selectedExperience && (
         <>
           <div className="mb-4">
@@ -43,7 +43,7 @@ const TotalPrice = ({ experienceCard }) => {
           </div>
           <div className='pt-24'>
           <h3 className="text-2xl font-bold mb-4">Valor total de la experiencia</h3>
-            <p className='text-sm text-black font-semibold'>Copia el valor total y haz clic para confirmar tu compra. A continuación, procede con el pago utilizando nuestras opciones seguras y, por último, ingresa el valor total confirmado.</p>
+            <p className='text-sm text-black py-5'>Copia el valor total y haz clic para confirmar tu compra. A continuación, procede con el pago utilizando nuestras opciones seguras y, por último, ingresa el valor total confirmado.</p>
             <a href='link.mercadopago.cl/letriplab' className="text-lg hover:bg-black hover:text-letrip bg-letrip text-black py-4 rounded-md text-center w-full block">
                 <span className="font-semibold text-2xl">
                     US${totalPrice} </span>
