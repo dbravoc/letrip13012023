@@ -31,7 +31,7 @@ const Experiencias = ({ experienceCard }) => {
                                 {/* Link a la tarjeta de la experiencia */}
                                 <Link 
                                     to={`/tarjeta/${experience.experience_uuid}`}
-                                    className="mt-1 bg-black text-letrip hover:bg-letrip hover:text-black focus:ring-offset-2 rounded-lg px-4 py-1 ease-in-out duration-50 text-center"
+                                    className="mt-1 hover:bg-black hover:text-letrip bg-letrip text-black focus:ring-offset-2 rounded-lg px-4 py-1 ease-in-out duration-50 text-center"
                                     style={{ position: 'relative', zIndex: 2 }}
                                 >
                                     <strong>{experience.experience_price}<span> USD por persona</span></strong>
