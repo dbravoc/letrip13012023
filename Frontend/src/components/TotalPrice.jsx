@@ -42,7 +42,7 @@ const TotalPrice = ({ experienceCard }) => {
             <p>Máximo permitido: <span className='font-semibold'>{experienceCard.max_group_size}</span> personas</p>
           </div>
           <div>
-          <h3 className="text-2xl mt-25 font-bold mb-4">Valor total de la experiencia</h3>
+          <h3 className="text-2xl pt-25 font-bold mb-4">Valor total de la experiencia</h3>
             <p className='text-sm text-black font-semibold'>Haz clic para confirmar tu compra y proceder con el pago a través de nuestras opciones de pago seguras.</p>
             <button className="text-lg bg-letrip text-black py-4 rounded-md text-center w-full block">
                 <span className="font-semibold text-2xl">
