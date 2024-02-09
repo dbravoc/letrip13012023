@@ -21,7 +21,7 @@ const TotalPrice = ({ experienceCard }) => {
 
   return (
     <div className="mx-0 sm:px-6 mb-10 tracking-tight text-gray-900">
-      <h3 className="text-2xl font-bold mb-4">Calculadora de Precio Total</h3>
+      <h3 className="text-2xl font-bold mb-4">Número de personas</h3>
       {selectedExperience && (
         <>
           <div className="mb-4">
@@ -41,7 +41,7 @@ const TotalPrice = ({ experienceCard }) => {
             <p>Mínimo permitido: <span className='font-semibold'>{experienceCard.minimum_group_size}</span> personas</p>
             <p>Máximo permitido: <span className='font-semibold'>{experienceCard.max_group_size}</span> personas</p>
           </div>
-          <div>
+          <div className='mx-0 sm:px-6 mt-10 tracking-tight'>
           <h3 className="text-2xl font-bold mb-4">Valor total de la experiencia</h3>
             <p className="text-lg">
             <span className="font-semibold text-2xl">US${totalPrice}</span> por {selectedPlayers} personas
