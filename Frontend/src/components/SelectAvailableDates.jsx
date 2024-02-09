@@ -3,17 +3,8 @@ import React from 'react';
 const SelectAvailableDates = ({ experienceCard }) => {
   // Función para renderizar las fechas de una experiencia específica
   const renderDatesForExperience = (experience) => {
-    if (!experience.available_dates) {
-      // Solo devuelve "No hay fechas disponibles" si realmente no hay datos.
-      return <p>No hay fechas disponibles.</p>;
-    }
-
     try {
       const dates = JSON.parse(experience.available_dates);
-      if (dates.length === 0) {
-        // Si el array parseado está vacío, también indica que no hay fechas disponibles.
-        return <p>No hay fechas disponibles.</p>;
-      }
       return (
         <ul>
           {dates.map((date, index) => (
@@ -34,7 +25,6 @@ const SelectAvailableDates = ({ experienceCard }) => {
       {experienceCard.length > 0 ? (
         experienceCard.map((experience, index) => (
           <div key={index}>
-            <h3 className="font-medium">{experience.name || 'Experiencia'}</h3>
             {renderDatesForExperience(experience)}
           </div>
         ))
