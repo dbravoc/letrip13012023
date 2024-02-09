@@ -10,7 +10,7 @@ const SelectAvailableDates = () => {
     // Aquí deberías obtener los datos de la experiencia por UUID.
     // Esto podría ser desde un estado global o realizando una solicitud a tu servidor/API.
     // Este es un ejemplo de cómo podrías realizar una solicitud al servidor.
-    fetch(`https://tuapi.com/experiences/${uuid}`) // Asegúrate de reemplazar esto con la URL correcta de tu API
+    fetch('https://letrip13012023-backend-lawitec.vercel.app/experiences') // Asegúrate de usar la URL correcta de tu servidor
       .then(response => response.json())
       .then(data => {
         setExperience(data);
