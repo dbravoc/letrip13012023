@@ -17,13 +17,13 @@ const SelectPlayers = ({ experienceCard }) => {
         <div className="mb-4">
           <input
             type="number"
-            placeholder='¿Cuántas personas son?'
+            placeholder='¿Cuántos son?'
             id="players"
             name="players"
             min={experienceCard.minimum_group_size}
             max={experienceCard.max_group_size}
             onChange={handlePlayerChange}
-            className="block w-auto font-semibold outline-none border-b-yellow-500 px-4 py-2"
+            className="block w-auto font-semibold outline-none border border-b-yellow-500 px-4 py-2"
           />
         </div>
       )}
