@@ -20,12 +20,13 @@ const SelectAvailableDates = ({ experienceCard }) => {
         <div className="flex flex-wrap gap-2">
           {dates.map((date, index) => (
             <button
-              key={index}
-              className={`block w-full py-2 rounded-md font-medium hover:bg-black hover:text-letrip border-b-2 border-b-letrip text-black ${selectedDate === `${date.startDate}-${date.endDate}`}`}
-              onClick={() => setSelectedDate(`${date.startDate}-${date.endDate}`)}
+                key={index}
+                className={`block text-left w-full py-2 rounded-md font-medium border-b-2 border-b-letrip text-gray-900 ${selectedDate === `${date.startDate}-${date.endDate}` ? 'bg-letrip text-black' : ''}`}
+                onClick={() => setSelectedDate(`${date.startDate}-${date.endDate}`)}
             >
-              Desde: {date.startDate}, Hasta: {date.endDate}
+                Desde: {date.startDate}, Hasta: {date.endDate}
             </button>
+
           ))}
         </div>
       );
