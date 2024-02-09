@@ -778,7 +778,7 @@ const method = mode === 'create' ? 'POST' : 'PUT';
       />
 
 
-      <button  type="submit" className="block w-full rounded-md bg-letrip my-10 px-3 py-5 text-center text-xl font-semibold text-gray-900 shadow-sm hover:bg-yellow-400">
+      <button  type="submit" className="block w-full rounded-md my-10 px-3 py-5 text-center text-xl font-semibold shadow-sm bg-black text-letrip hover:bg-letrip hover:text-black">
         Crear Experiencia
         </button>
       <ToastContainer position="bottom-right" />
