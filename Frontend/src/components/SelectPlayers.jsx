@@ -23,7 +23,7 @@ const SelectPlayers = ({ experienceCard }) => {
             min={experienceCard.minimum_group_size}
             max={experienceCard.max_group_size}
             onChange={handlePlayerChange}
-            className="block w-1/2 font-semibold outline-none border border-gray-400 rounded-md px-4 py-2"
+            className="block w-auto font-semibold outline-none border-b-yellow-500 px-4 py-2"
           />
         </div>
       )}
