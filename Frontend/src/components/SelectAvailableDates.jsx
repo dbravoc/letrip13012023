@@ -1,15 +1,19 @@
 import React from 'react';
 
 const SelectAvailableDates = ({ experienceCard }) => {
-  // Esta función itera sobre cada experiencia y muestra sus fechas disponibles
+  // Función para renderizar las fechas de una experiencia específica
   const renderDatesForExperience = (experience) => {
-    // Comprobación de seguridad para asegurarse de que existen fechas disponibles
-    if (!experience || !experience.available_dates) {
+    if (!experience.available_dates) {
+      // Solo devuelve "No hay fechas disponibles" si realmente no hay datos.
       return <p>No hay fechas disponibles.</p>;
     }
 
     try {
       const dates = JSON.parse(experience.available_dates);
+      if (dates.length === 0) {
+        // Si el array parseado está vacío, también indica que no hay fechas disponibles.
+        return <p>No hay fechas disponibles.</p>;
+      }
       return (
         <ul>
           {dates.map((date, index) => (
@@ -19,13 +23,14 @@ const SelectAvailableDates = ({ experienceCard }) => {
       );
     } catch (error) {
       console.error('Error parsing dates:', error);
+      // Retorna un mensaje de error en caso de fallo al parsear.
       return <p>Error al procesar las fechas.</p>;
     }
   };
 
   return (
     <div>
-      <h2 className="text-lg font-semibold">Fechas Disponibles</h2>
+      <h3 className="mb-10 text-2xl font-bold tracking-tight text-gray-900">Selecciona una fecha disponible</h3>
       {experienceCard.length > 0 ? (
         experienceCard.map((experience, index) => (
           <div key={index}>
@@ -34,6 +39,7 @@ const SelectAvailableDates = ({ experienceCard }) => {
           </div>
         ))
       ) : (
+        // Si no hay experiencias, muestra un mensaje general una sola vez.
         <p>No hay experiencias disponibles.</p>
       )}
     </div>
