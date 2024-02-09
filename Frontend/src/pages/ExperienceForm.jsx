@@ -106,9 +106,11 @@ const removeRange = (index) => {
   
   useEffect(() => {
     if (mode === 'update' && initialData) {
-      setFormData(initialData);
+      setFormData({ ...initialData });
+      // Aquí también deberías convertir las fechas y URLs de imágenes de `initialData` para que se muestren correctamente.
     }
   }, [mode, initialData]);
+  
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
