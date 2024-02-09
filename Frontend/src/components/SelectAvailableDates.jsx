@@ -1,25 +1,36 @@
-import React from 'react';
-import { format } from 'date-fns';
+import React, { useState, useEffect } from 'react';
+import Select from 'react-select';
+import { format, parseISO } from 'date-fns';
 
 const SelectAvailableDates = ({ experienceCard }) => {
-  // Asumiendo que experienceCard es un objeto que contiene un array de available_dates
-  // Y que cada elemento en available_dates es un objeto con startDate y endDate
-  
-  const handleChange = (e) => {
-    console.log("Fecha seleccionada:", e.target.value);
-    // Aquí puedes manejar la fecha seleccionada, por ejemplo, actualizar el estado o enviarla a otro componente
+  const [selectedDate, setSelectedDate] = useState(null);
+  const [options, setOptions] = useState([]);
+
+  useEffect(() => {
+    if (experienceCard && experienceCard.available_dates) {
+      const dates = JSON.parse(experienceCard.available_dates);
+      const formattedOptions = dates.map(date => ({
+        value: `${date.startDate} to ${date.endDate}`,
+        label: `${format(parseISO(date.startDate), 'dd-MM-yyyy')} to ${format(parseISO(date.endDate), 'dd-MM-yyyy')}`,
+      }));
+      setOptions(formattedOptions);
+    }
+  }, [experienceCard]);
+
+  const handleChange = selectedOption => {
+    setSelectedDate(selectedOption);
+    // Aquí podrías hacer algo con la fecha seleccionada, como actualizar el estado de un formulario
   };
 
   return (
     <div>
-      <label htmlFor="availableDates">Seleccione una fecha disponible:</label>
-      <select id="availableDates" onChange={handleChange}>
-        {experienceCard.available_dates?.map((dateRange, index) => (
-          <option key={index} value={format(new Date(dateRange.startDate), 'dd-MM-yyyy')}>
-            {format(new Date(dateRange.startDate), 'dd-MM-yyyy')} - {format(new Date(dateRange.endDate), 'dd-MM-yyyy')}
-          </option>
-        ))}
-      </select>
+      <Select
+        value={selectedDate}
+        onChange={handleChange}
+        options={options}
+        placeholder="Select available dates"
+        isClearable
+      />
     </div>
   );
 };
