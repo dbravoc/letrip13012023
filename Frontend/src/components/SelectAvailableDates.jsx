@@ -1,19 +1,29 @@
 import React from 'react';
 
 const SelectAvailableDates = ({ experienceCard }) => {
-  // Asumiendo que experienceCard es un objeto que contiene el campo available_dates
-  // en formato JSON string. Si experienceCard es un array, necesitarás ajustar este código.
-  
-  // Parsear las fechas disponibles desde la cadena JSON
-  const availableDates = experienceCard.available_dates ? JSON.parse(experienceCard.available_dates) : [];
+  // Función para parsear el JSON de las fechas disponibles
+  const parseDates = (dates) => {
+    try {
+      return JSON.parse(dates);
+    } catch (error) {
+      console.error('Error parsing dates:', error);
+      return [];
+    }
+  };
 
   return (
-    <div className="available-dates-container">
-      <h2>Fechas Disponibles</h2>
-      <ul>
-        {availableDates.map((dateRange, index) => (
+    <div>
+      <h2 className="text-lg font-semibold">Fechas Disponibles</h2>
+      <ul className="list-disc pl-5">
+        {experienceCard.length > 0 && experienceCard.map((experience, index) => (
           <li key={index}>
-            Desde {dateRange.startDate} hasta {dateRange.endDate}
+            <p className="font-medium">{experience.name}</p> {/* Asumiendo que cada experiencia tiene un nombre */}
+            {parseDates(experience.available_dates).map((dateRange, idx) => (
+              <div key={idx} className="text-sm">
+                <p>Inicio: {dateRange.startDate}</p>
+                <p>Fin: {dateRange.endDate}</p>
+              </div>
+            ))}
           </li>
         ))}
       </ul>
