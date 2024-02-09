@@ -10,7 +10,10 @@ const SelectAvailableDates = ({ experienceCard }) => {
       return [];
     }
   };
-
+  // Verificar que experienceCard no sea null y tenga elementos
+  if (!experienceCard || experienceCard.length === 0) {
+    return <div>No hay fechas disponibles.</div>;
+  }
   return (
     <div>
       <h2 className="text-lg font-semibold">Fechas Disponibles</h2>
