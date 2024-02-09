@@ -3,7 +3,6 @@ import React from 'react';
 const SelectAvailableDates = ({ experienceCard }) => {
   // Función para renderizar las fechas de una experiencia específica
   const renderDatesForExperience = (experience) => {
-    try {
       const dates = JSON.parse(experience.available_dates);
       return (
         <ul>
@@ -12,11 +11,7 @@ const SelectAvailableDates = ({ experienceCard }) => {
           ))}
         </ul>
       );
-    } catch (error) {
-      console.error('Error parsing dates:', error);
-      // Retorna un mensaje de error en caso de fallo al parsear.
-      return <p>Error al procesar las fechas.</p>;
-    }
+    
   };
 
   return (
