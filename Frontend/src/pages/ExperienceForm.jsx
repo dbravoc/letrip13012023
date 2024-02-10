@@ -118,12 +118,41 @@ const removeRange = (index) => {
   };
 
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Lógica para enviar el formulario, incluyendo conversión de las fechas a JSON si es necesario
+  
+    // Convertir las fechas a JSON si es necesario
     const updatedFormData = { ...formData, available_dates: JSON.stringify(dateRanges) };
-    onSubmit(updatedFormData); // onSubmit manejará la creación o actualización
+  
+    const url = mode === 'create'
+      ? 'https://letrip13012023-backend-lawitec.vercel.app/experiences'
+      : `https://letrip13012023-backend-lawitec.vercel.app/experiences/${formData.experience_uuid}`; // Asegúrate de tener experience_uuid en tu formData para modo update
+  
+    const method = mode === 'create' ? 'POST' : 'PUT';
+  
+    try {
+      const response = await fetch(url, {
+        method: method,
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(updatedFormData),
+      });
+  
+      if (!response.ok) {
+        throw new Error('Error en la solicitud');
+      }
+  
+      const result = await response.json();
+      console.log('Resultado de la operación:', result);
+      toast.success(`Experiencia ${mode === 'create' ? 'creada' : 'actualizada'} con éxito`);
+      // Resetear el formulario o redirigir al usuario
+    } catch (error) {
+      console.error('Error al realizar la operación:', error);
+      toast.error(`Error al ${mode === 'create' ? 'crear' : 'actualizar'} la experiencia.`);
+    }
   };
+  
 
 ole.log('Experiencia creada:', result);
       

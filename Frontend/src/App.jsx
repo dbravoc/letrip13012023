@@ -10,7 +10,6 @@ import UpdateExperienceForm from './pages/UpdateExperienceForm';
 import IncludedNotIncluded from './components/IncludedNotIncluded';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import SelectAvailableDates from './components/SelectAvailableDates'; // Asegúrate de importar correctamente
-import SelectPlayers from './components/SelectPlayers';
 import PriceExperience from './components/PriceExperience';
 import TotalPrice from './components/TotalPrice';
 
