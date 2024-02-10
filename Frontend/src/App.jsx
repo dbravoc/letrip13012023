@@ -47,7 +47,7 @@ const App = () => {
           </>
         } />  
 
-      <Route path="/edit" element={
+      <Route path="/upload" element={
           <>
             <div className="mx-auto w-full sm:px-6 px-8">
               <div className="flex flex-col justify-between flex-wrap"><Inicio /></div>

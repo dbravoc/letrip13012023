@@ -110,6 +110,7 @@ const removeRange = (index) => {
       console.error('Error al subir la imagen:', error);
     }
   };
+  };
   
 
   const handleChange = (e) => {
@@ -697,7 +698,7 @@ ole.log('Experiencia creada:', result);
       />
     </li>
 
-  <h3 className="my-10 text-2xl font-bold tracking-tight text-gray-900">Seguridad</h3>
+<h3 className="my-10 text-2xl font-bold tracking-tight text-gray-900">Seguridad</h3>
       
       <li className='grid grid-cols-2 list-none pb-5 gap-y-5'>
 
