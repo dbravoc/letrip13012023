@@ -1,18 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
 import { format } from 'date-fns';
 import { DateRangePicker } from 'react-date-range';
-import 'react-date-range/dist/styles.css'; // Estilos principales
-import 'react-date-range/dist/theme/default.css'; // Tema por defecto
-
-
-
+import 'react-date-range/dist/styles.css'; // Main style file
+import 'react-date-range/dist/theme/default.css'; // Theme CSS
 
 const ExperienceForm = ({ mode, initialData, onSubmit }) => {
   const initialState = {
-
     experience_name: '',
     experience_duration: '',
     experience_location: '',
@@ -55,106 +50,86 @@ const ExperienceForm = ({ mode, initialData, onSubmit }) => {
     instructor_profile_img: '',
     accident_insurance_file: '',
     available_dates: {},
+    experience_uuid: mode === 'update' ? initialData.experience_uuid : undefined,
+  };
 
-  }
   const [formData, setFormData] = useState(initialState);
-
-    // Actualiza el estado inicial con los datos de la experiencia existente cuando se actualiza
-    useEffect(() => {
-      if (mode === 'update' && initialData) {
-        setFormData({ ...initialData });
-        // Si hay fechas disponibles, también debes manejar la conversión aquí
-      }
-    }, [mode, initialData]);
-  
-
   const [dateRanges, setDateRanges] = useState([]);
-  const [currentRange, setCurrentRange] = useState([
-  {
+  const [currentRange, setCurrentRange] = useState([{
     startDate: new Date(),
     endDate: new Date(),
     key: 'selection',
-  },
-]);
+  }]);
 
-const addRange = () => {
-  const updatedRange = {
-    startDate: format(currentRange[0].startDate, 'dd-MM-yyyy'),
-    endDate: format(currentRange[0].endDate, 'dd-MM-yyyy'),
-  };
-  setDateRanges([...dateRanges, updatedRange]);
-}
-
-const removeRange = (index) => {
-  const newRanges = [...dateRanges];
-  newRanges.splice(index, 1);
-  setDateRanges(newRanges);
-};
+  useEffect(() => {
+    if (mode === 'update' && initialData) {
+      setFormData({ ...initialData });
+    }
+  }, [mode, initialData]);
 
   const handleImageUpload = async (e) => {
     const file = e.target.files[0];
     if (!file) return;
-  
+
     const uploadData = new FormData();
     uploadData.append('image', file);
-  
+
     try {
-      const response = await fetch('https://letrip13012023-backend-lawitec.vercel.app/upload', { method: 'POST', body: uploadData });
+      const response = await fetch('https://letrip13012023-backend-lawitec.vercel.app/upload', {
+        method: 'POST',
+        body: uploadData,
+      });
       const result = await response.json();
       if (result.url) {
         setFormData({ ...formData, [e.target.name]: result.url });
       } else {
-        console.error('Error en la respuesta del servidor:', result);
+        toast.error('Error al subir imagen');
       }
     } catch (error) {
-      console.error('Error al subir la imagen:', error);
+      toast.error('Error al subir imagen');
     }
   };
-  
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
-    setFormData((prevData) => ({ ...prevData, [name]: type === 'checkbox' ? checked : value }));
+    setFormData(prevData => ({ ...prevData, [name]: type === 'checkbox' ? checked : value }));
   };
-
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
-    // Convertir las fechas a JSON si es necesario
     const updatedFormData = { ...formData, available_dates: JSON.stringify(dateRanges) };
-  
-    const url = mode === 'create'
-      ? 'https://letrip13012023-backend-lawitec.vercel.app/experiences'
-      : `https://letrip13012023-backend-lawitec.vercel.app/experiences/${formData.experience_uuid}`; // Asegúrate de tener experience_uuid en tu formData para modo update
-  
-    const method = mode === 'create' ? 'POST' : 'PUT';
-  
+    const url = mode === 'create' ? 'https://letrip13012023-backend-lawitec.vercel.app/experiences' : `https://letrip13012023-backend-lawitec.vercel.app/experiences/${formData.experience_uuid}`;
+
     try {
       const response = await fetch(url, {
-        method: method,
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        method: mode === 'create' ? 'POST' : 'PUT',
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(updatedFormData),
       });
-  
-      if (!response.ok) {
-        throw new Error('Error en la solicitud');
-      }
-  
-      const result = await response.json();
-      console.log('Resultado de la operación:', result);
-      toast.success(`Experiencia ${mode === 'create' ? 'creada' : 'actualizada'} con éxito`);
-      // Resetear el formulario o redirigir al usuario
+
+      if (!response.ok) throw new Error('Error en la solicitud');
+      toast.success(`Experiencia ${mode === 'create' ? 'creada' : 'actualizada'} con éxito.`);
     } catch (error) {
-      console.error('Error al realizar la operación:', error);
       toast.error(`Error al ${mode === 'create' ? 'crear' : 'actualizar'} la experiencia.`);
     }
   };
-  
 
-console.log('Experiencia creada:', result);
+  const addRange = () => {
+    const updatedRange = {
+      startDate: format(currentRange[0].startDate, 'dd-MM-yyyy'),
+      endDate: format(currentRange[0].endDate, 'dd-MM-yyyy'),
+    };
+    setDateRanges([...dateRanges, updatedRange]);
+  };
+
+  const removeRange = (index) => {
+    const newRanges = [...dateRanges];
+    newRanges.splice(index, 1);
+    setDateRanges(newRanges);
+  };
+
+  // Aquí continúa el código para renderizar el formulario
+  // No olvides retornar tu JSX aquí
       
       // Resetear el formulario
       setFormData({
