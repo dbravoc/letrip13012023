@@ -1,40 +1,55 @@
 import React, { useState, useEffect } from 'react';
-import ExperienceForm from './ExperienceForm'; // Asegúrate de que la ruta sea correcta
+import ExperienceForm from './ExperienceForm'; // Asegúrate de tener la ruta correcta
 
-const UpdateExperienceForm = ({ experienceId }) => {
+const UpdateExperienceForm = () => {
+  const [experiences, setExperiences] = useState([]);
+  const [selectedExperience, setSelectedExperience] = useState('');
   const [initialData, setInitialData] = useState(null);
 
+  // Cargar experiencias disponibles al montar el componente
   useEffect(() => {
-    // Aquí debes cargar los datos de la experiencia que quieres editar.
-    // Esto normalmente implicaría hacer una llamada a la API para obtener los datos de la experiencia por su ID.
-    const fetchExperienceData = async () => {
+    const fetchExperiences = async () => {
       try {
-        const response = await fetch(`https://letrip13012023-backend-lawitec.vercel.app/experiences/${experienceId}`);
-        if (!response.ok) throw new Error('No se pudo cargar la experiencia');
+        const response = await fetch('https://letrip13012023-backend-lawitec.vercel.app/experiences');
         const data = await response.json();
-        setInitialData(data); // Suponiendo que la API devuelve los datos de la experiencia directamente.
+        setExperiences(data);
       } catch (error) {
-        console.error('Error al cargar la experiencia:', error);
-        // Aquí podrías manejar el error, por ejemplo, mostrando un mensaje al usuario.
+        console.error('Error fetching experiences:', error);
       }
     };
 
-    fetchExperienceData();
-  }, [experienceId]);
+    fetchExperiences();
+  }, []);
 
-  const handleSubmit = (formData) => {
-    // Aquí implementas cómo manejar la actualización de la experiencia.
-    // Esto puede involucrar llamar a una API y manejar la respuesta.
-    // Asegúrate de usar el método PUT para actualizar la experiencia.
+  // Cargar los datos de la experiencia seleccionada
+  useEffect(() => {
+    if (selectedExperience) {
+      const experience = experiences.find(exp => exp.experience_name === selectedExperience);
+      setInitialData(experience);
+    }
+  }, [selectedExperience, experiences]);
+
+  const handleExperienceChange = (e) => {
+    setSelectedExperience(e.target.value);
+  };
+
+  const handleSubmit = (updatedFormData) => {
+    console.log('Datos actualizados:', updatedFormData);
+    // Aquí puedes implementar la lógica para enviar los datos actualizados al servidor
   };
 
   return (
     <div>
-      {initialData ? (
-        <ExperienceForm mode="update" initialData={initialData} onSubmit={handleSubmit} />
-      ) : (
-        <p>Cargando datos de la experiencia...</p>
-      )}
+      <h2>Editar Experiencia</h2>
+      <select onChange={handleExperienceChange} value={selectedExperience} className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none">
+        <option>Selecciona una experiencia</option>
+        {experiences.map((experience) => (
+          <option key={experience.id} value={experience.experience_name}>
+            {experience.experience_name}
+          </option>
+        ))}
+      </select>
+      {initialData && <ExperienceForm mode="update" initialData={initialData} onSubmit={handleSubmit} />}
     </div>
   );
 };
