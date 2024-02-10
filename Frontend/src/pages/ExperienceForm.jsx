@@ -154,7 +154,7 @@ const removeRange = (index) => {
   };
   
 
-ole.log('Experiencia creada:', result);
+console.log('Experiencia creada:', result);
       
       // Resetear el formulario
       setFormData({
