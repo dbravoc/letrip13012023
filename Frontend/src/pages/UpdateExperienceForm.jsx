@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import ExperienceForm from './ExperienceForm'; // Asegúrate de tener la ruta correcta
+import { toast } from 'react-toastify';
 
 const UpdateExperienceForm = () => {
   const [experiences, setExperiences] = useState([]);
