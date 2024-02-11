@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import ExperienceForm from './ExperienceForm'; // Asume que el componente original se llama así
-import { toast } from 'react-toastify';
+import { toast, ToastContainer } from 'react-toastify';
 
 const UpdateExperienceForm = () => {
   const [experiences, setExperiences] = useState([]);
@@ -44,6 +44,8 @@ const UpdateExperienceForm = () => {
       {selectedExperience && (
         <ExperienceForm mode="update" initialData={selectedExperience} />
       )}
+
+      <ToastContainer /> {/* Aquí agregamos el ToastContainer */}
     </div>
   );
 };
