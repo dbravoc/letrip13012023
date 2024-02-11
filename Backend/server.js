@@ -312,7 +312,7 @@ app.put('/experiences/:uuid', async (req, res) => {
 });
 
 // Endpoint para insertar un nuevo registro en public.sold_experiences
-app.post('/sold-experiences', async (req, res) => {
+app.post('/sold_experiences', async (req, res) => {
     const { customer_name, customer_identification, customer_phone, customer_email, customer_address, approved_terms_and_conditions } = req.body;
 
     try {

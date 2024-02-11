@@ -71,9 +71,6 @@ const TotalPrice = ({ experienceCard }) => {
     }
   };
 
-  // Aquí continúa el resto de tu componente...
-
-
   return (
     <div className="mx-0 sm:px-6 mb-10 tracking-tight text-gray-900">
       <h3 className="text-2xl font-bold mb-10">Número de personas</h3>
@@ -109,12 +106,12 @@ const TotalPrice = ({ experienceCard }) => {
 
           <div className='pt-10'>
           <h3 className="text-2xl font-bold  mb-6">Comprar experiencia</h3>
-            <ol className='text-sm text-gray-500 py-4'>
+            <ul className='text-sm text-gray-500 py-4'>
               <li>1. Ingresa tus datos de contacto.</li>
               <li>2. Copia el valor total y haz clic en el botón para confirmar tu compra. </li>
               <li>3. Procede con el pago utilizando nuestras opciones seguras e ingresa el valor total de la experiencia.</li>
               <li>4. Te contactaremos para confirmar la commpra y entregarte toda la información de la experiencia.</li>
-            </ol>
+            </ul>
 
           <form className='gap-y-2 mb-10' onSubmit={handleSubmit}>
 {/* Nombre del Cliente */}
@@ -162,7 +159,7 @@ const TotalPrice = ({ experienceCard }) => {
 />
 
 {/* Dirección del Cliente */}
-<label className='text-gray-700 text-sm' htmlFor="customer_address" >Dirección completa, incluyendo Ciudad y País</label>
+<label className='text-gray-700 text-sm' htmlFor="customer_address" >Dirección completa, incluyendo Ciudad y País:</label>
 <input
   id="customer_address"
   name="customer_address"
