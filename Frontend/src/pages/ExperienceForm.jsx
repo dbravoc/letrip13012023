@@ -104,18 +104,22 @@ const removeRange = (index) => {
   
   useEffect(() => {
     if (mode === 'update' && initialData) {
-      // Aquí se asume que `initialData.available_dates` es un string JSON o un objeto que necesita ser parseado o transformado.
-      const parsedDates = initialData.available_dates ? JSON.parse(initialData.available_dates) : [];
-      const formattedDates = parsedDates.map(date => ({
+      // Aquí se asume que `initialData` ya es un objeto con los datos de la experiencia
+      // No es necesario parsear `initialData.available_dates` si ya se espera que sea un array
+      const formattedDates = initialData.available_dates ? initialData.available_dates.map(date => ({
         startDate: new Date(date.startDate),
         endDate: new Date(date.endDate),
         key: 'selection'
-      }));
+      })) : [];
+  
+      // Actualiza el rango de fechas con los valores formateados
       setCurrentRange(formattedDates);
-      setFormData({ ...formattedDates });
+  
+      // Actualiza el estado del formulario con todos los datos de `initialData`
+      // Asegúrate de que `initialData` contiene todas las propiedades esperadas por el formulario
+      setFormData({ ...initialData, available_dates: formattedDates });
     }
   }, [mode, initialData]);
-  
   
   
   const handleChange = (e) => {
