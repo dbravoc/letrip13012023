@@ -96,10 +96,18 @@ const removeRange = (index) => {
   
   useEffect(() => {
     if (mode === 'update' && initialData) {
+      // Aquí se asume que `initialData.available_dates` es un string JSON o un objeto que necesita ser parseado o transformado.
+      const parsedDates = initialData.available_dates ? JSON.parse(initialData.available_dates) : [];
+      const formattedDates = parsedDates.map(date => ({
+        startDate: new Date(date.startDate),
+        endDate: new Date(date.endDate),
+        key: 'selection'
+      }));
+      setCurrentRange(formattedDates);
       setFormData({ ...initialData });
-      // Aquí también deberías convertir las fechas y URLs de imágenes de `initialData` para que se muestren correctamente.
     }
   }, [mode, initialData]);
+  
   
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
