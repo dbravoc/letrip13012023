@@ -32,15 +32,20 @@ const UpdateExperienceForm = () => {
        },
        body: JSON.stringify(formData),
      })
-     .then(response => response.json())
-     .then(data => {
+     .then(response => {
+      if (!response.ok) {
+        throw new Error('Respuesta de red no es ok');
+      }
+      return response.json();
+    })
+    .then(data => {
       console.log('Experiencia actualizada con éxito', data);
-       toast.success('Experiencia actualizada con éxito');
-     })
-     .catch((error) => {
-       console.error('Error al actualizar experiencia:', error);
-       toast.error('Error al actualizar la experiencia.');
-     });
+      toast.success('Experiencia actualizada con éxito');
+    })
+    .catch((error) => {
+      console.error('Error al actualizar experiencia:', error);
+      toast.error('Error al actualizar la experiencia.');
+    });
     
     console.log('Form Data:', formData); // Placeholder para tu lógica de envío
   };

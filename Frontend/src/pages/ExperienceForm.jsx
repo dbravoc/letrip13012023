@@ -459,13 +459,21 @@ const method = mode === 'create' ? 'POST' : 'PUT';
 <h3 className="my-10 text-2xl font-bold tracking-tight text-gray-900">Fechas disponibles</h3>
 <>
   <DateRangePicker
-    onChange={item => setCurrentRange([item.selection])}
-    showSelectionPreview={true}
-    moveRangeOnFirstSelection={false}
-    months={2}
-    ranges={currentRange}
-    direction="horizontal"
+  onChange={item => {
+    const newRange = {
+      startDate: item.selection.startDate,
+      endDate: item.selection.endDate,
+      key: 'selection',
+    };
+    setCurrentRange([newRange]); // Asegurarse de actualizar el estado con el nuevo rango
+  }}
+  showSelectionPreview={true}
+  moveRangeOnFirstSelection={false}
+  months={2}
+  ranges={currentRange}
+  direction="horizontal"
   />
+  
   <button className='block rounded-md bg-gray-900 px-1 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-gray-700' type="button" onClick={addRange}>Agregar disponibilidad</button>
   <p className="mt-10 text-lg font-bold tracking-tight text-gray-900">Fechas seleccionadas</p>
 
