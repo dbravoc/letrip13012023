@@ -1,6 +1,10 @@
 
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMoneyBills } from '@fortawesome/free-solid-svg-icons';
+
+
 
 const TotalPrice = ({ experienceCard }) => {
   const [selectedPlayers, setSelectedPlayers] = useState(1);
@@ -85,7 +89,7 @@ const TotalPrice = ({ experienceCard }) => {
               max={experienceCard.max_group_size}
               value={selectedPlayers}
               onChange={handlePlayerChange}
-              className="block w-auto font-semibold text-xl outline-none border-b-2 border-r-2 border-b-letrip border-r-letrip py-2"
+              className="block w-1/2 font-semibold text-xl outline-none border-b-2 border-r-2 border-b-letrip border-r-letrip py-2"
             />
           </div>
           <div className='text-xs text-gray-500 mb-4'>
@@ -93,25 +97,26 @@ const TotalPrice = ({ experienceCard }) => {
             <p>Máximo permitido: <span className='font-semibold'>{experienceCard.max_group_size}</span> personas</p>
           </div>
           <div className='pt-10'>
-          <h3 className="text-2xl font-bold">Valor total de la experiencia</h3>
-            <p className="block w-auto font-semibold text-xl outline-none border-b-2 border-r-2 border-b-letrip border-r-letrip py-2"
+          <h3 className="text-2xl font-bold  mb-10">Valor total de la experiencia</h3>
+            <p className="block w-1/2 font-semibold text-sm outline-none border-b-2 border-r-2 border-b-letrip border-r-letrip py-2"
 >
                 <span className="font-semibold text-2xl">
-                {totalPrice.toLocaleString('de-DE')} USD
-                    </span> en total
+                <FontAwesomeIcon className='text-green-700' icon={faMoneyBills} />
+                {totalPrice.toLocaleString('de-DE')}
+                    </span> USD en total
             </p>
           </div>
 
           <div className='pt-10'>
-          <h3 className="text-2xl font-bold">Comprar experiencia</h3>
-            <ul className='text-sm text-black py-4'>
+          <h3 className="text-2xl font-bold  mb-10">Comprar experiencia</h3>
+            <ol className='text-sm text-gray-500 py-4 mb-10'>
               <li>Ingresa tus datos de contacto</li>
               <li>Copia el valor total y haz clic en el botón para confirmar tu compra. </li>
               <li>Procede con el pago utilizando nuestras opciones seguras e ingresa el valor total de la experiencia.</li>
               <li>Te contactaremos para confirmar la commpra y entregarte toda la información de la experiencia</li>
-            </ul>
+            </ol>
 
-          <form onSubmit={handleSubmit}>
+          <form className='gap-y-2 mb-10' onSubmit={handleSubmit}>
 {/* Nombre del Cliente */}
 <label className='text-gray-700 text-sm' htmlFor="customer_name" >Nombres y Apellidos:</label>
 <input
@@ -188,8 +193,7 @@ const TotalPrice = ({ experienceCard }) => {
 
             <button type="submit"  className="text-lg hover:bg-black hover:text-letrip bg-letrip text-black py-4 rounded-md text-center w-full block">
                 <span className="font-semibold text-2xl">
-                    US${totalPrice} </span>
-                en total
+                    Comprar experiencia </span>
             </button>
           </div>
         </>
