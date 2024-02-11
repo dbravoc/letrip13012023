@@ -183,15 +183,13 @@ const TotalPrice = ({ experienceCard }) => {
     Acepto los términos y condiciones
   </label>
 </div>
+          
 
-
-
-          </form>
-
-            <button type="submit"  className="text-lg hover:bg-black hover:text-letrip bg-letrip text-black py-4 rounded-md text-center w-full block">
-                <span className="font-semibold text-2xl">
-                    Comprar experiencia </span>
-            </button>
+<button type="submit"  className="text-lg hover:bg-black hover:text-letrip bg-letrip text-black py-4 rounded-md text-center w-full block">
+<span className="font-semibold text-2xl">
+ Comprar experiencia </span>
+</button>
+</form>
           </div>
         </>
       )}
