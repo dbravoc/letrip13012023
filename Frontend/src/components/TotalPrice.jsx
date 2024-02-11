@@ -40,8 +40,8 @@ const TotalPrice = ({ experienceCard }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     
-    // Asegúrate de que la URL del endpoint coincida con la configurada en el servidor
-    const apiUrl = '/sold-experiences'; // Cambiado para que coincida con el servidor
+    // Actualizado para que coincida con el servidor desplegado
+    const apiUrl = 'https://letrip13012023-backend-lawitec.vercel.app/sold_experiences';
 
     try {
       const response = await fetch(apiUrl, {
@@ -70,6 +70,9 @@ const TotalPrice = ({ experienceCard }) => {
       alert('Error al guardar los datos: ' + error.message);
     }
   };
+
+  // Aquí continúa el resto de tu componente...
+
 
   return (
     <div className="mx-0 sm:px-6 mb-10 tracking-tight text-gray-900">
@@ -159,7 +162,7 @@ const TotalPrice = ({ experienceCard }) => {
 />
 
 {/* Dirección del Cliente */}
-<label className='text-gray-700 text-sm' htmlFor="customer_address" >Dirección:</label>
+<label className='text-gray-700 text-sm' htmlFor="customer_address" >Dirección completa, incluyendo Ciudad y País</label>
 <input
   id="customer_address"
   name="customer_address"
