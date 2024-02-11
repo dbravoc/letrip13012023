@@ -60,11 +60,18 @@ const ExperienceForm = ({ mode, initialData, onSubmit }) => {
 ]);
 
 const addRange = () => {
-  const updatedRange = {
-    startDate: format(currentRange[0].startDate, 'dd-MM-yyyy'),
-    endDate: format(currentRange[0].endDate, 'dd-MM-yyyy'),
-  };
-  setDateRanges([...dateRanges, updatedRange]);
+  // Verificar si las fechas son válidas antes de intentar formatearlas y agregarlas
+  if (currentRange[0].startDate && currentRange[0].endDate && 
+      !isNaN(currentRange[0].startDate) && !isNaN(currentRange[0].endDate)) {
+    const updatedRange = {
+      startDate: format(currentRange[0].startDate, 'dd-MM-yyyy'),
+      endDate: format(currentRange[0].endDate, 'dd-MM-yyyy'),
+    };
+    setDateRanges([...dateRanges, updatedRange]);
+  } else {
+    // Opcional: Mostrar algún mensaje de error o manejo cuando las fechas no son válidas
+    console.log('Las fechas seleccionadas no son válidas.');
+  }
 }
 const removeRange = (index) => {
   const newRanges = [...dateRanges];
@@ -120,6 +127,12 @@ const removeRange = (index) => {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+      // Filtrar solo rangos de fechas válidos antes de enviar
+  const validDateRanges = dateRanges.filter(range => 
+    range.startDate && range.endDate && !isNaN(new Date(range.startDate)) && !isNaN(new Date(range.endDate))
+  );
+
     onSubmit(formData);
       // Construir un arreglo de fechas disponibles a partir de currentRange
   const availableDates = currentRange.map(range => ({
@@ -130,7 +143,7 @@ const removeRange = (index) => {
    // Actualizar formData con las fechas disponibles
   const updatedFormData = {
     ...formData,
-    available_dates: JSON.stringify(dateRanges), // Convierte directamente dateRanges a JSON
+    available_dates: validDateRanges.length > 0 ? JSON.stringify(validDateRanges) : undefined, // Envía las fechas solo si son válidas
   };
   const url = mode === 'create' 
   ? 'https://letrip13012023-backend-lawitec.vercel.app/experiences' 
