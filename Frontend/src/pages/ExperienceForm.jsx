@@ -58,6 +58,7 @@ const ExperienceForm = ({ mode, initialData, onSubmit }) => {
     key: 'selection',
   },
 ]);
+
 const addRange = () => {
   const updatedRange = {
     startDate: format(currentRange[0].startDate, 'dd-MM-yyyy'),
@@ -104,9 +105,10 @@ const removeRange = (index) => {
         key: 'selection'
       }));
       setCurrentRange(formattedDates);
-      setFormData({ ...initialData });
+      setFormData({ ...formattedDates });
     }
   }, [mode, initialData]);
+  
   
   
   const handleChange = (e) => {
@@ -197,14 +199,17 @@ const method = mode === 'create' ? 'POST' : 'PUT';
       });
       setDateRanges([]); // Limpiar las fechas seleccionadas
        // Mostrar notificación de éxito
-       toast.success('Experiencia creada con éxito');
+       // toast.success('Experiencia creada con éxito');
       
     } catch (error) {
       console.error('Error al crear experiencia:', error);
       // Mostrar notificación de error
-    toast.error('Error al crear la experiencia.');
+   // toast.error('Error al crear la experiencia.');
     }
   };
+  
+
+
   return (
     <form className='flex flex-col px-auto sm:px-72 gap-y-2' onSubmit={handleSubmit}>
 <h3 className="mb-10 text-2xl font-bold tracking-tight text-gray-900">Datos generales</h3>
