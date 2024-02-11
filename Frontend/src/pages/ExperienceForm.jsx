@@ -3,11 +3,12 @@ import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { format } from 'date-fns';
 import { DateRangePicker } from 'react-date-range';
-import 'react-date-range/dist/styles.css'; // Main style file
-import 'react-date-range/dist/theme/default.css'; // Theme CSS
+import 'react-date-range/dist/styles.css'; // Main styles
+import 'react-date-range/dist/theme/default.css'; // Default theme
 
-const ExperienceForm = ({ mode, initialData, onSubmit }) => {
-  const initialState = {
+const ExperienceForm = ({ mode, initialData }) => {
+  // Define el estado inicial del formulario basado en si estamos creando o actualizando una experiencia
+  const getInitialState = () => ({
     experience_name: '',
     experience_duration: '',
     experience_location: '',
@@ -50,10 +51,10 @@ const ExperienceForm = ({ mode, initialData, onSubmit }) => {
     instructor_profile_img: '',
     accident_insurance_file: '',
     available_dates: {},
-    experience_uuid: mode === 'update' ? initialData.experience_uuid : undefined,
-  };
+    experience_uuid: mode === 'update' && initialData ? initialData.experience_uuid : undefined,
+  });
 
-  const [formData, setFormData] = useState(initialState);
+  const [formData, setFormData] = useState(getInitialState);
   const [dateRanges, setDateRanges] = useState([]);
   const [currentRange, setCurrentRange] = useState([{
     startDate: new Date(),
@@ -63,10 +64,11 @@ const ExperienceForm = ({ mode, initialData, onSubmit }) => {
 
   useEffect(() => {
     if (mode === 'update' && initialData) {
-      setFormData({ ...initialData });
+      setFormData(initialData);
     }
   }, [mode, initialData]);
 
+  
   const handleImageUpload = async (e) => {
     const file = e.target.files[0];
     if (!file) return;
