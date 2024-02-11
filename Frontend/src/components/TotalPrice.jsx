@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMoneyBillWave } from '@fortawesome/free-solid-svg-icons';
+import { faMoneyBills } from '@fortawesome/free-solid-svg-icons';
 
 const TotalPrice = ({ experienceCard }) => {
   const [selectedPlayers, setSelectedPlayers] = useState(1);
