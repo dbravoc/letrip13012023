@@ -109,11 +109,11 @@ const TotalPrice = ({ experienceCard }) => {
 
           <div className='pt-10'>
           <h3 className="text-2xl font-bold  mb-10">Comprar experiencia</h3>
-            <ol className='text-sm text-gray-500 py-4 mb-10'>
-              <li>Ingresa tus datos de contacto</li>
-              <li>Copia el valor total y haz clic en el botón para confirmar tu compra. </li>
-              <li>Procede con el pago utilizando nuestras opciones seguras e ingresa el valor total de la experiencia.</li>
-              <li>Te contactaremos para confirmar la commpra y entregarte toda la información de la experiencia</li>
+            <ol className='text-sm text-gray-500 py-4'>
+              <li>1. Ingresa tus datos de contacto.</li>
+              <li>2. Copia el valor total y haz clic en el botón para confirmar tu compra. </li>
+              <li>3. Procede con el pago utilizando nuestras opciones seguras e ingresa el valor total de la experiencia.</li>
+              <li>4. Te contactaremos para confirmar la commpra y entregarte toda la información de la experiencia.</li>
             </ol>
 
           <form className='gap-y-2 mb-10' onSubmit={handleSubmit}>
