@@ -61,7 +61,7 @@ const TotalPrice = ({ experienceCard }) => {
       }
 
       const data = await response.json();
-      alert('Compra realizada con éxito. Nos pondremos en contacto contigo.');
+      alert('Serás redirigido a la plataforma de pago. Activa la ventana emergente. ¡Nos pondremos en contacto contigo!');
       console.log('Datos guardados:', data);
 
       // Abre la nueva pestaña solo después de un éxito
