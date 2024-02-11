@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import ExperienceForm from './ExperienceForm'; // Asume que el componente original se llama así
+import ExperienceForm from './ExperienceForm';
 import { toast, ToastContainer } from 'react-toastify';
 
 const UpdateExperienceForm = () => {
@@ -7,7 +7,6 @@ const UpdateExperienceForm = () => {
   const [selectedExperience, setSelectedExperience] = useState(null);
 
   useEffect(() => {
-    // Función para cargar las experiencias desde tu backend
     const fetchExperiences = async () => {
       try {
         const response = await fetch('https://letrip13012023-backend-lawitec.vercel.app/experiences');
@@ -18,16 +17,33 @@ const UpdateExperienceForm = () => {
         console.error('Error al cargar experiencias:', error);
         toast.error('Error al cargar experiencias.');
       }
-
-      const handleSubmit = async (e) => {
-        e.preventDefault();    
-        console.log(formData); // Imprime los datos del formulario para verificar
-        onSubmit && onSubmit(updatedFormData); // Asegúrate de que onSubmit es llamado correctamente
-      };
     };
 
     fetchExperiences();
   }, []);
+
+  const handleSubmit = async (formData) => {
+    // Aquí implementarías la llamada al API para actualizar la experiencia
+    // Por ejemplo: 
+    fetch(`https://letrip13012023-backend-lawitec.vercel.app/experiences/${formData.experience_uuid}`, {
+    method: 'PUT',
+    headers: {
+    'Content-Type': 'application/json',
+       },
+       body: JSON.stringify(formData),
+     })
+     .then(response => response.json())
+     .then(data => {
+      console.log('Experiencia actualizada con éxito', data);
+       toast.success('Experiencia actualizada con éxito');
+     })
+     .catch((error) => {
+       console.error('Error al actualizar experiencia:', error);
+       toast.error('Error al actualizar la experiencia.');
+     });
+    
+    console.log('Form Data:', formData); // Placeholder para tu lógica de envío
+  };
 
   const handleExperienceChange = (e) => {
     const experienceId = e.target.value;
@@ -49,9 +65,9 @@ const UpdateExperienceForm = () => {
       
       {selectedExperience && (
         <ExperienceForm mode="update" initialData={selectedExperience} onSubmit={handleSubmit} />
-        )}
+      )}
 
-      <ToastContainer /> {/* Aquí agregamos el ToastContainer */}
+      <ToastContainer />
     </div>
   );
 };
