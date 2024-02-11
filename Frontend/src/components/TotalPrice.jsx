@@ -1,7 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { supabase } from 'Backend/server.js'// Asegúrate de importar el cliente de Supabase
 
 const TotalPrice = ({ experienceCard }) => {
   const [selectedPlayers, setSelectedPlayers] = useState(1);
@@ -40,22 +39,36 @@ const TotalPrice = ({ experienceCard }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Aquí agregas la lógica para enviar los datos a Supabase
-    const { data, error } = await supabase
-      .from('public.sold_experiences')
-      .insert([
-        { ...formData, experience_uuid: id, customer_phone: parseFloat(formData.customer_phone) }
-      ]);
+    // Define la URL de tu endpoint en el servidor
+    const apiUrl = '/api/sold-experiences'; // Asegúrate de ajustar esto a tu configuración real
 
-    if (error) {
-      alert('Error al guardar los datos: ' + error.message);
-    } else {
-      alert('Compra realizada con éxito. Nos pondremos en contacto contigo.');
-      console.log('Datos guardados:', data);
-          // Si no hay error, abre la nueva pestaña con el enlace deseado
-    window.open('https://cobros.global66.com/DAVBRA654', '_blank');
-  }
-    };
+    try {
+        const response = await fetch(apiUrl, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                ...formData,
+                experience_uuid: id,
+                customer_phone: parseFloat(formData.customer_phone),
+            }),
+        });
+
+        if (!response.ok) {
+            throw new Error('Error en la respuesta del servidor');
+        }
+
+        const data = await response.json();
+        alert('Compra realizada con éxito. Nos pondremos en contacto contigo.');
+        console.log('Datos guardados:', data);
+
+        // Abre la nueva pestaña solo después de un éxito
+        window.open('https://cobros.global66.com/DAVBRA654', '_blank');
+    } catch (error) {
+        alert('Error al guardar los datos: ' + error.message);
+    }
+};
 
   return (
     <div className="mx-0 sm:px-6 mb-10 tracking-tight text-gray-900">
