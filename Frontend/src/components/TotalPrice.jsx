@@ -1,10 +1,7 @@
-
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMoneyBills } from '@fortawesome/free-solid-svg-icons';
-
-
+import { faMoneyBillWave } from '@fortawesome/free-solid-svg-icons';
 
 const TotalPrice = ({ experienceCard }) => {
   const [selectedPlayers, setSelectedPlayers] = useState(1);
@@ -21,6 +18,12 @@ const TotalPrice = ({ experienceCard }) => {
     approved_terms_and_conditions: false,
   });
 
+  useEffect(() => {
+    if (selectedExperience) {
+      setTotalPrice(selectedPlayers * selectedExperience.experience_price);
+    }
+  }, [selectedPlayers, selectedExperience]);
+
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
     setFormData(prevData => ({
@@ -29,12 +32,6 @@ const TotalPrice = ({ experienceCard }) => {
     }));
   };
 
-  useEffect(() => {
-    if (selectedExperience) {
-      setTotalPrice(selectedPlayers * selectedExperience.experience_price);
-    }
-  }, [selectedPlayers, selectedExperience]);
-
   const handlePlayerChange = (e) => {
     const numPlayers = parseInt(e.target.value, 10);
     setSelectedPlayers(numPlayers);
@@ -42,37 +39,37 @@ const TotalPrice = ({ experienceCard }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    // Define la URL de tu endpoint en el servidor
-    const apiUrl = '/api/sold-experiences'; // Asegúrate de ajustar esto a tu configuración real
+    
+    // Asegúrate de que la URL del endpoint coincida con la configurada en el servidor
+    const apiUrl = '/sold-experiences'; // Cambiado para que coincida con el servidor
 
     try {
-        const response = await fetch(apiUrl, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                ...formData,
-                experience_uuid: id,
-                customer_phone: parseFloat(formData.customer_phone),
-            }),
-        });
+      const response = await fetch(apiUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          ...formData,
+          experience_uuid: id,
+          customer_phone: parseFloat(formData.customer_phone),
+        }),
+      });
 
-        if (!response.ok) {
-            throw new Error('Error en la respuesta del servidor');
-        }
+      if (!response.ok) {
+        throw new Error('Error en la respuesta del servidor');
+      }
 
-        const data = await response.json();
-        alert('Compra realizada con éxito. Nos pondremos en contacto contigo.');
-        console.log('Datos guardados:', data);
+      const data = await response.json();
+      alert('Compra realizada con éxito. Nos pondremos en contacto contigo.');
+      console.log('Datos guardados:', data);
 
-        // Abre la nueva pestaña solo después de un éxito
-        window.open('https://cobros.global66.com/DAVBRA654', '_blank');
+      // Abre la nueva pestaña solo después de un éxito
+      window.open('https://cobros.global66.com/DAVBRA654', '_blank');
     } catch (error) {
-        alert('Error al guardar los datos: ' + error.message);
+      alert('Error al guardar los datos: ' + error.message);
     }
-};
+  };
 
   return (
     <div className="mx-0 sm:px-6 mb-10 tracking-tight text-gray-900">
@@ -108,7 +105,7 @@ const TotalPrice = ({ experienceCard }) => {
           </div>
 
           <div className='pt-10'>
-          <h3 className="text-2xl font-bold  mb-10">Comprar experiencia</h3>
+          <h3 className="text-2xl font-bold  mb-6">Comprar experiencia</h3>
             <ol className='text-sm text-gray-500 py-4'>
               <li>1. Ingresa tus datos de contacto.</li>
               <li>2. Copia el valor total y haz clic en el botón para confirmar tu compra. </li>
