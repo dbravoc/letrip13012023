@@ -307,5 +307,33 @@ app.put('/experiences/:uuid', async (req, res) => {
         console.error(err.message);
         res.status(500).send('Server Error');
     }
+
+    
 });
 
+// Endpoint para insertar un nuevo registro en public.sold_experiences
+app.post('/sold-experiences', async (req, res) => {
+    const { customer_name, customer_identification, customer_phone, customer_email, customer_address, approved_terms_and_conditions } = req.body;
+
+    try {
+        const { data, error } = await supabase
+            .from('sold_experiences')
+            .insert([
+                {
+                    customer_name,
+                    customer_identification,
+                    customer_phone,
+                    customer_email,
+                    customer_address,
+                    approved_terms_and_conditions
+                }
+            ]);
+
+        if (error) throw error;
+
+        res.status(201).json(data);
+    } catch (error) {
+        console.error('Error al insertar en sold_experiences:', error.message);
+        res.status(500).send('Server Error');
+    }
+});
