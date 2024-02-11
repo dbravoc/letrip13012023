@@ -18,6 +18,12 @@ const UpdateExperienceForm = () => {
         console.error('Error al cargar experiencias:', error);
         toast.error('Error al cargar experiencias.');
       }
+
+      const handleSubmit = async (e) => {
+        e.preventDefault();    
+        console.log(formData); // Imprime los datos del formulario para verificar
+        onSubmit && onSubmit(updatedFormData); // Asegúrate de que onSubmit es llamado correctamente
+      };
     };
 
     fetchExperiences();
@@ -42,8 +48,8 @@ const UpdateExperienceForm = () => {
       </select>
       
       {selectedExperience && (
-        <ExperienceForm mode="update" initialData={selectedExperience} />
-      )}
+        <ExperienceForm mode="update" initialData={selectedExperience} onSubmit={handleSubmit} />
+        )}
 
       <ToastContainer /> {/* Aquí agregamos el ToastContainer */}
     </div>
