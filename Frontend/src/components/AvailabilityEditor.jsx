@@ -72,8 +72,8 @@ const AvailabilityExperienceForm = () => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ available_dates: updatedDates }),
-      });
+        body: JSON.stringify({ available_dates: JSON.stringify(updatedDates) }),
+    });
       if (!response.ok) throw new Error('Network response was not ok.');
 
       toast.success('Fechas actualizadas con éxito');
