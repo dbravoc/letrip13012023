@@ -13,7 +13,7 @@ import SelectAvailableDates from './components/SelectAvailableDates'; // Asegúr
 import PriceExperience from './components/PriceExperience';
 import TotalPrice from './components/TotalPrice';
 import MenuCard from './components/MenuCard';
-import AvailabilityEditor from './components/AvailabilityEditor';
+import AvailabilityEditor from './pages/AvailabilityEditor';
 
 
 const App = () => {
