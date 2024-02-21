@@ -10,7 +10,7 @@ const PriceExperience = ({ experienceCard }) => {
 
   return (
     <div className="mx-0 sm:px-6 sm:py-8 mb-10 tracking-tight text-gray-900">
-      <h3 className="text-2xl font-bold mb-10">Precio de la Experiencia</h3>
+      <h3 className="text-2xl font-bold mb-10">Valor de la Experiencia</h3>
       {selectedExperience ? (
         <div className="mb-4">
           <p className='text-sm'> <FontAwesomeIcon className='text-green-700' icon={faMoneyBills} /> US$ <span className='text-2xl font-semibold'> {selectedExperience.experience_price.toLocaleString('de-DE')} </span>por persona</p>

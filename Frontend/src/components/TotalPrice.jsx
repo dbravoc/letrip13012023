@@ -105,7 +105,7 @@ const TotalPrice = ({ experienceCard }) => {
           </div>
 
           <div className='pt-10'>
-          <h3 className="text-2xl font-bold  mb-6">Comprar experiencia</h3>
+          <h3 className="text-2xl font-bold  mb-6">Reservar experiencia</h3>
             <ul className='text-sm text-gray-500 py-4'>
               <li>1. Ingresa tus datos de contacto.</li>
               <li>2. Copia el valor total y haz clic en el botón para confirmar tu compra. </li>
@@ -179,15 +179,15 @@ const TotalPrice = ({ experienceCard }) => {
     onChange={handleChange}
     className="h-4 w-4 text-yellow-600 focus:ring-yellow-500 border-gray-300 rounded"
   />
-  <label htmlFor="approved_terms_and_conditions" className="ml-2 text-sm text-gray-700">
-    Acepto los términos y condiciones
+  <label htmlFor="approved_terms_and_conditions" className="ml-2 text-sm text-gray-700 mb-10">
+    Acepto los <a className='font-semibold'>términos y condiciones</a>
   </label>
 </div>
           
 
 <button type="submit"  className="text-lg hover:bg-black hover:text-letrip bg-letrip text-black py-4 rounded-md text-center w-full block">
 <span className="font-semibold text-2xl">
- Comprar experiencia </span>
+ Reservar experiencia </span>
 </button>
 </form>
           </div>
