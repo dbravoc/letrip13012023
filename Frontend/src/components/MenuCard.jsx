@@ -1,6 +1,9 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 
+const MenuCard = () => {
+    return (
 <div>
     <div className="mx-auto flex justify-center">
         <div className="grid sm:grid-cols-3 grid-cols-1 sm:gap-6 gap-0">
@@ -35,5 +38,7 @@ import React from 'react';
         </div>
     </div>
 </div>
+  );
+};
 
 export default MenuCard;
