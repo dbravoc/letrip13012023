@@ -391,7 +391,7 @@ const method = mode === 'create' ? 'POST' : 'PUT';
         className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
       />
 
-<h3 className="mb-10 text-2xl font-bold tracking-tight text-gray-900">Fotos e imágenes <span className='text-xs italic'> (Todas las imagenes son requeridas para mejorar la experiencia en Le Trip)</span></h3>
+<h3 className=" my-10 mb-10 text-2xl font-bold tracking-tight text-gray-900">Fotos e imágenes <span className='text-xs italic'> (Todas las imagenes son requeridas para mejorar la experiencia en Le Trip)</span></h3>
 
 
       <label className='text-gray-700 text-sm' htmlFor="card_img_1">Imagen de experiencia 1:</label>
