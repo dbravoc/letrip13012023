@@ -1,92 +1,68 @@
 import React, { useState, useEffect } from 'react';
-import { DateRangePicker } from 'react-date-range';
-import { format, parseISO } from 'date-fns';
+import ExperienceForm from './ExperienceForm';
 import { toast, ToastContainer } from 'react-toastify';
 
-const AvailabilityExperienceForm = () => {
+const UpdateExperienceForm = () => {
   const [experiences, setExperiences] = useState([]);
-  const [selectedExperienceId, setSelectedExperienceId] = useState('');
-  const [dateRanges, setDateRanges] = useState([]);
-  const [currentRange, setCurrentRange] = useState({
-    startDate: new Date(),
-    endDate: new Date(),
-    key: 'selection',
-  });
+  const [selectedExperience, setSelectedExperience] = useState(null);
 
   useEffect(() => {
-    // Carga inicial de experiencias
+    const fetchExperiences = async () => {
+      try {
+        const response = await fetch('https://letrip13012023-backend-lawitec.vercel.app/experiences');
+        if (!response.ok) throw new Error('Respuesta de red no ok');
+        const data = await response.json();
+        setExperiences(data); // Asumiendo que la respuesta es un array de experiencias
+      } catch (error) {
+        console.error('Error al cargar experiencias:', error);
+        toast.error('Error al cargar experiencias.');
+      }
+    };
+
     fetchExperiences();
   }, []);
 
-  const fetchExperiences = async () => {
-    try {
-      const response = await fetch('https://letrip13012023-backend-lawitec.vercel.app/experiences');
-      if (!response.ok) throw new Error('Respuesta de red no ok');
-      const data = await response.json();
-      setExperiences(data);
-    } catch (error) {
-      console.error('Error al cargar experiencias:', error);
-      toast.error('Error al cargar experiencias.');
-    }
+  const handleSubmit = async (formData) => {
+    // Aquí implementarías la llamada al API para actualizar la experiencia
+    // Por ejemplo: 
+    fetch(`https://letrip13012023-backend-lawitec.vercel.app/experiences/${formData.experience_uuid}`, {
+    method: 'PUT',
+    headers: {
+    'Content-Type': 'application/json',
+       },
+       body: JSON.stringify(formData),
+     })
+     .then(response => {
+      if (!response.ok) {
+        throw new Error('Respuesta de red no es ok');
+      }
+      return response.json();
+    })
+    .then(data => {
+      console.log('Experiencia actualizada con éxito', data);
+      toast.success('Experiencia actualizada con éxito');
+    })
+    .catch((error) => {
+      console.error('Error al actualizar experiencia:', error);
+      toast.error('Error al actualizar la experiencia.');
+    });
+    
+    console.log('Form Data:', formData); // Placeholder para tu lógica de envío
   };
-
-  useEffect(() => {
-    // Cargar las fechas disponibles cuando se selecciona una experiencia
-    if (!selectedExperienceId) return;
-    const selectedExperience = experiences.find(exp => exp.experience_uuid === selectedExperienceId);
-    if (selectedExperience && selectedExperience.available_dates) {
-      const formattedDates = selectedExperience.available_dates.map(dateRange => ({
-        startDate: parseISO(dateRange.startDate),
-        endDate: parseISO(dateRange.endDate),
-        key: 'selection',
-      }));
-      setDateRanges(formattedDates);
-    } else {
-      setDateRanges([]);
-    }
-  }, [selectedExperienceId, experiences]);
 
   const handleExperienceChange = (e) => {
-    setSelectedExperienceId(e.target.value);
-  };
-
-  const addRange = () => {
-    setDateRanges([...dateRanges, currentRange]);
-  };
-
-  const removeRange = (index) => {
-    const newRanges = [...dateRanges];
-    newRanges.splice(index, 1);
-    setDateRanges(newRanges);
-  };
-
-  const saveChanges = async () => {
-    const updatedDates = dateRanges.map(range => ({
-        startDate: format(currentRange[0].startDate, 'dd-MM-yyyy'),
-        endDate: format(currentRange[0].endDate, 'dd-MM-yyyy'),
-       }));
-
-    try {
-      const response = await fetch(`https://letrip13012023-backend-lawitec.vercel.app/experiences/${selectedExperienceId}`, {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ available_dates: JSON.stringify(updatedDates) }),
-    });
-      if (!response.ok) throw new Error('Network response was not ok.');
-
-      toast.success('Fechas actualizadas con éxito');
-    } catch (error) {
-      console.error('Error al actualizar las fechas:', error);
-      toast.error('Error al actualizar las fechas.');
-    }
+    const experienceId = e.target.value;
+    const experience = experiences.find(exp => exp.experience_uuid === experienceId);
+    setSelectedExperience(experience);
   };
 
   return (
     <>
-      <h3 className="mb-10 text-2xl text-center font-bold tracking-tight text-gray-900">Gestionar Disponibilidad</h3>
-      <select onChange={handleExperienceChange} value={selectedExperienceId || ''}>
+    <h3 className="mb-10 text-2xl text-center font-bold tracking-tight text-gray-900">Actualizar Experiencia</h3>
+    <div className='flex flex-col px-auto sm:px-72 gap-y-2 mb-20'>
+      <select onChange={handleExperienceChange} value={selectedExperience?.experience_uuid || ''}
+        className="block text-sm w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
+        >
         <option value="">Seleccione una experiencia</option>
         {experiences.map((experience) => (
           <option key={experience.experience_uuid} value={experience.experience_uuid}>
@@ -94,26 +70,17 @@ const AvailabilityExperienceForm = () => {
           </option>
         ))}
       </select>
+    </div>
+    
+    <div>
+      {selectedExperience && (
+        <ExperienceForm mode="availability" initialData={selectedExperience} onSubmit={handleSubmit} />
+      )}
 
-      <DateRangePicker
-        onChange={item => setCurrentRange(item.selection)}
-        showSelectionPreview={true}
-        moveRangeOnFirstSelection={false}
-        months={2}
-        ranges={[currentRange]}
-        direction="horizontal"
-      />
-      <button onClick={addRange}>Agregar Fecha</button>
-      {dateRanges.map((range, index) => (
-        <div key={index}>
-          {format(parseISO(range.startDate), 'yyyy-MM-dd')} - {format(parseISO(range.endDate), 'yyyy-MM-dd')}
-          <button onClick={() => removeRange(index)}>Eliminar</button>
-        </div>
-      ))}
-      <button onClick={saveChanges}>Guardar Cambios</button>
       <ToastContainer />
+    </div>
     </>
   );
 };
 
-export default AvailabilityExperienceForm;
+export default UpdateExperienceForm;

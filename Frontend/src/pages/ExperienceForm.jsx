@@ -512,7 +512,7 @@ const method = mode === 'create' ? 'POST' : 'PUT';
 )}
 
 
-{mode !== 'update' && (
+{(mode === 'availability' || mode !== 'update') && (
         <>
           <h3 className="my-10 text-2xl font-bold tracking-tight text-gray-900">Fechas disponibles <span className='text-xs italic'> (Agregar al menos una fecha o rango de fecha)</span></h3>
           <DateRangePicker
