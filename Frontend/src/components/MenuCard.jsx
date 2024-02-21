@@ -1,3 +1,4 @@
+import { faCalendarCheck, faImage, faPenToSquare, faSquarePlus } from '@fortawesome/free-solid-svg-icons';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
@@ -10,26 +11,50 @@ const MenuCard = () => {
             {/* Opción para Crear nueva experiencia */}
             <div className="flex flex-col justify-center mb-10 md:flex-row rounded-lg overflow-hidden px-0">
                 <div className="flex max-w-[350px] flex-col justify-between leading-normal">
-                    <FontAwesomeIcon className="text-gray-900 pt-4 font-bold text-l" icon={faPlus} />
+                    <FontAwesomeIcon className="text-gray-900 pt-4 font-bold text-l" icon={faSquarePlus} />
                     <Link 
                         to="/create"
                         className="mt-1 hover:bg-black hover:text-letrip bg-letrip text-black focus:ring-offset-2 rounded-lg px-4 py-1 ease-in-out duration-50 text-center"
                         style={{ position: 'relative', zIndex: 2 }}
                     >
-                        <strong>Crear una nueva experiencia</strong>
+                        <strong>Crear una   nueva experiencia</strong>
                     </Link>
                 </div>
             </div>
             {/* Opción para Editar información general */}
             <div className="flex flex-col justify-center mb-10 md:flex-row rounded-lg overflow-hidden px-0">
                 <div className="flex max-w-[350px] flex-col justify-between leading-normal">
-                    <FontAwesomeIcon className="text-gray-900 pt-4 font-bold text-l" icon={faPlus} />
+                    <FontAwesomeIcon className="text-gray-900 pt-4 font-bold text-l" icon={faPenToSquare} />
                     <Link 
                         to="/update-info"
                         className="mt-1 hover:bg-black hover:text-letrip bg-letrip text-black focus:ring-offset-2 rounded-lg px-4 py-1 ease-in-out duration-50 text-center"
                         style={{ position: 'relative', zIndex: 2 }}
                     >
                         <strong>Editar información de una experiencia</strong>
+                    </Link>
+                </div>
+            </div>
+            <div className="flex flex-col justify-center mb-10 md:flex-row rounded-lg overflow-hidden px-0">
+                <div className="flex max-w-[350px] flex-col justify-between leading-normal">
+                    <FontAwesomeIcon className="text-gray-900 pt-4 font-bold text-l" icon={faImage} />
+                    <Link 
+                        to="/update-info"
+                        className="mt-1 hover:bg-black hover:text-letrip bg-letrip text-black focus:ring-offset-2 rounded-lg px-4 py-1 ease-in-out duration-50 text-center"
+                        style={{ position: 'relative', zIndex: 2 }}
+                    >
+                        <strong>Editar imágenes de una experiencia</strong>
+                    </Link>
+                </div>
+            </div>
+            <div className="flex flex-col justify-center mb-10 md:flex-row rounded-lg overflow-hidden px-0">
+                <div className="flex max-w-[350px] flex-col justify-between leading-normal">
+                    <FontAwesomeIcon className="text-gray-900 pt-4 font-bold text-l" icon={faCalendarCheck} />
+                    <Link 
+                        to="/update-info"
+                        className="mt-1 hover:bg-black hover:text-letrip bg-letrip text-black focus:ring-offset-2 rounded-lg px-4 py-1 ease-in-out duration-50 text-center"
+                        style={{ position: 'relative', zIndex: 2 }}
+                    >
+                        <strong>Editar disponibilidad de una experiencia</strong>
                     </Link>
                 </div>
             </div>
