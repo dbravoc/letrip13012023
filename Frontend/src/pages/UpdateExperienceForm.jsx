@@ -59,7 +59,9 @@ const UpdateExperienceForm = () => {
   return (
     <div>
       <h2>Actualizar Experiencia</h2>
-      <select onChange={handleExperienceChange} value={selectedExperience?.experience_uuid || ''}>
+      <select onChange={handleExperienceChange} value={selectedExperience?.experience_uuid || ''}
+        className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
+        >
         <option value="">Seleccione una experiencia</option>
         {experiences.map((experience) => (
           <option key={experience.experience_uuid} value={experience.experience_uuid}>
