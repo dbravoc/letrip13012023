@@ -415,9 +415,9 @@ const removeRange = (index) => {
       />
 
 
-{mode !== 'update' && (
+{(mode !== 'update' || mode !== 'create') && (
   <>
-<h3 className=" my-10 mb-10 text-2xl font-bold tracking-tight text-gray-900">Fotos e imágenes <span className='text-xs italic'> (Todas las imagenes son requeridas para mejorar la experiencia en Le Trip)</span></h3>
+  <h3 className=" my-10 mb-10 text-2xl font-bold tracking-tight text-gray-900">Fotos e imágenes <span className='text-xs italic'> (Todas las imagenes son requeridas para mejorar la experiencia en Le Trip)</span></h3>
 
 
       <label className='text-gray-700 text-sm' htmlFor="card_img_1">Imagen de experiencia 1:</label>
@@ -534,8 +534,7 @@ const removeRange = (index) => {
   </>
 )}
 
-
-{(mode !== 'update' || mode === 'availability')  && (
+{mode !== 'update'  && (
         <>
           <h3 className="my-10 text-2xl font-bold tracking-tight text-gray-900">Fechas disponibles <span className='text-xs italic'> (Agregar al menos una fecha o rango de fecha)</span></h3>
           <DateRangePicker
