@@ -229,7 +229,7 @@ const method = mode === 'create' ? 'POST' : 'PUT';
 
   return (
     <form className='flex flex-col px-auto sm:px-72 gap-y-2' onSubmit={handleSubmit}>
-<h3 className="mb-10 text-2xl font-bold tracking-tight text-gray-900">Datos generales</h3>
+<h3 className="mb-10 text-2xl font-bold tracking-tight text-gray-900">Datos generales <span className='text-xs italic'> (Todos los campos son requeridos)</span></h3>
       <label className='text-gray-700 text-sm' htmlFor="experience_name" >Título de la experiencia. <span className='text-xs italic'> (Escribe algo simple, breve y persuasivo para los visitantes de Le Trip)</span></label>
       <input
         id="experience_name"
@@ -390,6 +390,10 @@ const method = mode === 'create' ? 'POST' : 'PUT';
         onChange={handleChange}
         className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
       />
+
+<h3 className="mb-10 text-2xl font-bold tracking-tight text-gray-900">Fotos e imágenes <span className='text-xs italic'> (Todas las imagenes son requeridas para mejorar la experiencia en Le Trip)</span></h3>
+
+
       <label className='text-gray-700 text-sm' htmlFor="card_img_1">Imagen de experiencia 1:</label>
       <input
         id="card_img_1"
@@ -505,7 +509,7 @@ const method = mode === 'create' ? 'POST' : 'PUT';
 
 {mode !== 'update' && (
         <>
-          <h3 className="my-10 text-2xl font-bold tracking-tight text-gray-900">Fechas disponibles</h3>
+          <h3 className="my-10 text-2xl font-bold tracking-tight text-gray-900">Fechas disponibles <span className='text-xs italic'> (Agregar al menos una fecha o rango de fecha)</span></h3>
           <DateRangePicker
             onChange={item => {
               const newRange = {
@@ -533,7 +537,7 @@ const method = mode === 'create' ? 'POST' : 'PUT';
           ))}
         </>
       )}
-<h3 className="my-10 text-2xl font-bold tracking-tight text-gray-900">Restricciones</h3>
+<h3 className="my-10 text-2xl font-bold tracking-tight text-gray-900">Restricciones <span className='text-xs italic'> (Todos los campos son requeridos)</span></h3>
       <label className='text-gray-700 text-sm' htmlFor="target_audience_restrictions">Restricciones de la experiencia<span className='text-xs italic'> (Menciona las restricciones que pueden haber en una experiencia, tales como estado de salud, condición física, entre otros. Escribe algo breve y específico) </span></label>
       <input
         id="target_audience_restrictions"
@@ -575,7 +579,7 @@ const method = mode === 'create' ? 'POST' : 'PUT';
         onChange={handleChange}
       />
       </li>
-      <label className='text-gray-700 text-sm' htmlFor="equipment_required">Equipo requerido</label>
+      <label className='text-gray-700 text-sm' htmlFor="equipment_required">Equipo requerido <span className='text-xs italic'> (Campo requerido)</span></label>
       <input
         id="equipment_required"
         name="equipment_required"
@@ -622,7 +626,7 @@ const method = mode === 'create' ? 'POST' : 'PUT';
       />
       </li>
 <h3 className="my-10 text-2xl font-bold tracking-tight text-gray-900">Alojamiento</h3>
-<label className='text-gray-700 text-sm' htmlFor="experience_accommodation">Tipo de alojamiento</label>
+<label className='text-gray-700 text-sm' htmlFor="experience_accommodation">Tipo de alojamiento <span className='text-xs italic'> (Campo requerido)</span></label>
 <select
   required
   id="experience_accommodation"
