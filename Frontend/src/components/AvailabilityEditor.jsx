@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import ExperienceForm from './ExperienceForm';
 import { toast, ToastContainer } from 'react-toastify';
 
-const UpdateExperienceForm = () => {
+const AvailabilityEditor = () => {
   const [experiences, setExperiences] = useState([]);
   const [selectedExperience, setSelectedExperience] = useState(null);
 
@@ -83,4 +83,4 @@ const UpdateExperienceForm = () => {
   );
 };
 
-export default UpdateExperienceForm;
+export default AvailabilityEditor;
