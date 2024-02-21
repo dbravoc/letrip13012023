@@ -235,12 +235,15 @@ const method = mode === 'create' ? 'POST' : 'PUT';
         id="experience_name"
         name="experience_name"
         type="text"
+        required
         value={formData.experience_name}
         onChange={handleChange}
         className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
+              
       />
       <label className='text-gray-700 text-sm' htmlFor="experience_main_discipline">Disciplina principal</label>
       <select
+        required
         id="experience_main_discipline"
         name="experience_main_discipline"
         value={formData.experience_main_discipline}
@@ -259,6 +262,7 @@ const method = mode === 'create' ? 'POST' : 'PUT';
       </select>
       <label className='text-gray-700 text-sm' htmlFor="experience_type">Tipo de experiencia</label>
       <select
+        required
         id="experience_type"
         name="experience_type"
         value={formData.experience_type}
@@ -274,6 +278,7 @@ const method = mode === 'create' ? 'POST' : 'PUT';
         </select>
         <label className='text-gray-700 text-sm' htmlFor="experience_demand_level">Nivel de exigencia</label>
         <select
+          required
           id="experience_demand_level"
           name="experience_demand_level"
           value={formData.experience_demand_level}
@@ -290,6 +295,7 @@ const method = mode === 'create' ? 'POST' : 'PUT';
         </select>
         <label className='text-gray-700 text-sm' htmlFor="experience_geography">Tipo de geografía</label>
         <select
+          required
           id="experience_geography"
           name="experience_geography"
           value={formData.experience_geography}
@@ -309,6 +315,7 @@ const method = mode === 'create' ? 'POST' : 'PUT';
         id="experience_country"
         name="experience_country"
         type="text"
+        required
         value={formData.experience_country}
         onChange={handleChange}
         className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
@@ -318,6 +325,7 @@ const method = mode === 'create' ? 'POST' : 'PUT';
         id="experience_location"
         name="experience_location"
         type="text"
+        required
         value={formData.experience_location}
         onChange={handleChange}
         className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
@@ -327,12 +335,14 @@ const method = mode === 'create' ? 'POST' : 'PUT';
         id="experience_instructor"
         name="experience_instructor"
         type="text"
+        required
         value={formData.experience_instructor}
         onChange={handleChange}
         className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
       />
       <label className='text-gray-700 text-sm' htmlFor="experience_instructor_type">Tipo de anfitrión</label>
       <select
+        required
         id="experience_instructor_type"
         name="experience_instructor_type"
         value={formData.experience_instructor_type}
@@ -365,6 +375,7 @@ const method = mode === 'create' ? 'POST' : 'PUT';
         id="experience_duration"
         name="experience_duration"
         type="number"
+        required
         value={formData.experience_duration}
         onChange={handleChange}
         className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
@@ -374,6 +385,7 @@ const method = mode === 'create' ? 'POST' : 'PUT';
         id="experience_price"
         name="experience_price"
         type="number"
+        required
         value={formData.experience_price}
         onChange={handleChange}
         className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
@@ -382,7 +394,8 @@ const method = mode === 'create' ? 'POST' : 'PUT';
       <input
         id="card_img_1"
         name="card_img_1"
-        type="file" // Cambiamos el tipo de entrada a "file"
+        type="file"
+        required // Cambiamos el tipo de entrada a "file"
         accept=".jpg, .jpeg, .png"
         onChange={handleImageUpload} // Manejar la carga de imágenes en una función
         className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
@@ -392,7 +405,8 @@ const method = mode === 'create' ? 'POST' : 'PUT';
       <input
         id="card_img_2"
         name="card_img_2"
-        type="file" // Cambiamos el tipo de entrada a "file"
+        type="file"
+        required // Cambiamos el tipo de entrada a "file"
         accept=".jpg, .jpeg, .png"
         onChange={handleImageUpload} // Manejar la carga de imágenes en una función
         className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
@@ -401,7 +415,8 @@ const method = mode === 'create' ? 'POST' : 'PUT';
       <input
         id="card_img_3"
         name="card_img_3"
-        type="file" // Cambiamos el tipo de entrada a "file"
+        type="file"
+        required // Cambiamos el tipo de entrada a "file"
         accept=".jpg, .jpeg, .png"
         onChange={handleImageUpload} // Manejar la carga de imágenes en una función
         className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
@@ -410,7 +425,8 @@ const method = mode === 'create' ? 'POST' : 'PUT';
       <input
          id="card_img_4"
          name="card_img_4"
-         type="file" // Cambiamos el tipo de entrada a "file"
+         type="file"
+        required // Cambiamos el tipo de entrada a "file"
          accept=".jpg, .jpeg, .png"
          onChange={handleImageUpload} // Manejar la carga de imágenes en una función
          className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
@@ -419,7 +435,8 @@ const method = mode === 'create' ? 'POST' : 'PUT';
       <input
          id="card_img_5"
          name="card_img_5"
-         type="file" // Cambiamos el tipo de entrada a "file"
+         type="file"
+        required // Cambiamos el tipo de entrada a "file"
          accept=".jpg, .jpeg, .png"
          onChange={handleImageUpload} // Manejar la carga de imágenes en una función
          className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
@@ -428,7 +445,8 @@ const method = mode === 'create' ? 'POST' : 'PUT';
       <input
          id="card_img_6"
          name="card_img_6"
-         type="file" // Cambiamos el tipo de entrada a "file"
+         type="file"
+        required // Cambiamos el tipo de entrada a "file"
          accept=".jpg, .jpeg, .png"
          onChange={handleImageUpload} // Manejar la carga de imágenes en una función
          className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
@@ -437,7 +455,8 @@ const method = mode === 'create' ? 'POST' : 'PUT';
       <input
          id="card_img_7"
          name="card_img_7"
-         type="file" // Cambiamos el tipo de entrada a "file"
+         type="file"
+        required // Cambiamos el tipo de entrada a "file"
          accept=".jpg, .jpeg, .png"
          onChange={handleImageUpload} // Manejar la carga de imágenes en una función
          className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
@@ -446,7 +465,8 @@ const method = mode === 'create' ? 'POST' : 'PUT';
       <input
          id="card_img_8"
          name="card_img_8"
-         type="file" // Cambiamos el tipo de entrada a "file"
+         type="file"
+        required // Cambiamos el tipo de entrada a "file"
          accept=".jpg, .jpeg, .png"
          onChange={handleImageUpload} // Manejar la carga de imágenes en una función
          className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
@@ -455,7 +475,8 @@ const method = mode === 'create' ? 'POST' : 'PUT';
       <input
          id="card_img_9"
          name="card_img_9"
-         type="file" // Cambiamos el tipo de entrada a "file"
+         type="file"
+        required // Cambiamos el tipo de entrada a "file"
          accept=".jpg, .jpeg, .png"
          onChange={handleImageUpload} // Manejar la carga de imágenes en una función
          className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
@@ -464,7 +485,8 @@ const method = mode === 'create' ? 'POST' : 'PUT';
       <input
          id="card_img_10"
          name="card_img_10"
-         type="file" // Cambiamos el tipo de entrada a "file"
+         type="file"
+        required // Cambiamos el tipo de entrada a "file"
          accept=".jpg, .jpeg, .png"
          onChange={handleImageUpload} // Manejar la carga de imágenes en una función
          className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
@@ -473,7 +495,8 @@ const method = mode === 'create' ? 'POST' : 'PUT';
       <input
          id="instructor_profile_img"
          name="instructor_profile_img"
-         type="file" // Cambiamos el tipo de entrada a "file"
+         type="file"
+        required // Cambiamos el tipo de entrada a "file"
          accept=".jpg, .jpeg, .png"
          onChange={handleImageUpload} // Manejar la carga de imágenes en una función
          className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
@@ -516,6 +539,7 @@ const method = mode === 'create' ? 'POST' : 'PUT';
         id="target_audience_restrictions"
         name="target_audience_restrictions"
         type="text"
+        required
         value={formData.target_audience_restrictions}
         onChange={handleChange}
         className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
@@ -525,6 +549,7 @@ const method = mode === 'create' ? 'POST' : 'PUT';
         id="minimum_age"
         name="minimum_age"
         type="number"
+        required
         value={formData.minimum_age}
         onChange={handleChange}
         className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
@@ -534,6 +559,7 @@ const method = mode === 'create' ? 'POST' : 'PUT';
         id="minimum_group_size"
         name="minimum_group_size"
         type="number"
+        required
         value={formData.minimum_group_size}
         onChange={handleChange}
         className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
@@ -554,6 +580,7 @@ const method = mode === 'create' ? 'POST' : 'PUT';
         id="equipment_required"
         name="equipment_required"
         type="text"
+        required
         value={formData.equipment_required}
         onChange={handleChange}
         className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
@@ -597,6 +624,7 @@ const method = mode === 'create' ? 'POST' : 'PUT';
 <h3 className="my-10 text-2xl font-bold tracking-tight text-gray-900">Alojamiento</h3>
 <label className='text-gray-700 text-sm' htmlFor="experience_accommodation">Tipo de alojamiento</label>
 <select
+  required
   id="experience_accommodation"
   name="experience_accommodation"
   value={formData.experience_accommodation}
