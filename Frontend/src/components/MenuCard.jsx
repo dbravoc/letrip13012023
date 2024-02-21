@@ -22,7 +22,7 @@ const MenuCard = () => {
 
             <div className="flex justify-start rounded-lg overflow-hidden p-4">
                     <Link 
-                        to="/create"
+                        to="/update-info"
                         className="w-full flex items-center  hover:bg-black hover:text-letrip bg-letrip text-black focus:ring-offset-2 rounded-lg px-4 py-1 ease-in-out duration-50 text-center"
                         style={{ position: 'relative', zIndex: 2 }}
                     > 
@@ -33,7 +33,7 @@ const MenuCard = () => {
 
             <div className="flex justify-start rounded-lg overflow-hidden  p-4">
                     <Link 
-                        to="/create"
+                        to="/update-image"
                         className="w-full flex items-center  hover:bg-black hover:text-letrip bg-letrip text-black focus:ring-offset-2 rounded-lg px-4 py-1 ease-in-out duration-50 text-center"
                         style={{ position: 'relative', zIndex: 2 }}
                     > 
@@ -44,7 +44,7 @@ const MenuCard = () => {
 
             <div className="flex justify-start rounded-lg overflow-hidden  p-4">
                     <Link 
-                        to="/create"
+                        to="/update-availability"
                         className="w-full flex items-center  hover:bg-black hover:text-letrip bg-letrip text-black focus:ring-offset-2 rounded-lg px-4 py-1 ease-in-out duration-50 text-center"
                         style={{ position: 'relative', zIndex: 2 }}
                     > 

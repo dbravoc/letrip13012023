@@ -58,7 +58,7 @@ const UpdateExperienceForm = () => {
 
   return (
     <>
-    <h3 className="mb-10 text-2xl font-bold tracking-tight text-gray-900">Actualizar Experiencia</h3>
+    <h3 className="mb-10 text-2xl text-center font-bold tracking-tight text-gray-900">Actualizar Experiencia</h3>
     <div className='flex flex-col px-auto sm:px-72 gap-y-2 mb-20'>
       <select onChange={handleExperienceChange} value={selectedExperience?.experience_uuid || ''}
         className="block text-sm w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
