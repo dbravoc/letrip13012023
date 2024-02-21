@@ -7,10 +7,9 @@ import React from 'react';
             {/* Opción para Crear nueva experiencia */}
             <div className="flex flex-col justify-center mb-10 md:flex-row rounded-lg overflow-hidden px-0">
                 <div className="flex max-w-[350px] flex-col justify-between leading-normal">
-                    <img src="URL_IMAGEN_OPCION" className="w-full h-48 object-cover"></img>
                     <p className="text-gray-900 pt-4 font-bold text-l">Crear nueva experiencia</p>
                     <Link 
-                        to="/admin/crear-nueva-experiencia"
+                        to="/create"
                         className="mt-1 hover:bg-black hover:text-letrip bg-letrip text-black focus:ring-offset-2 rounded-lg px-4 py-1 ease-in-out duration-50 text-center"
                         style={{ position: 'relative', zIndex: 2 }}
                     >
@@ -21,10 +20,9 @@ import React from 'react';
             {/* Opción para Editar información general */}
             <div className="flex flex-col justify-center mb-10 md:flex-row rounded-lg overflow-hidden px-0">
                 <div className="flex max-w-[350px] flex-col justify-between leading-normal">
-                    <img src="URL_IMAGEN_OPCION" className="w-full h-48 object-cover"></img>
                     <p className="text-gray-900 pt-4 font-bold text-l">Editar información general</p>
                     <Link 
-                        to="/admin/editar-informacion-general"
+                        to="/update"
                         className="mt-1 hover:bg-black hover:text-letrip bg-letrip text-black focus:ring-offset-2 rounded-lg px-4 py-1 ease-in-out duration-50 text-center"
                         style={{ position: 'relative', zIndex: 2 }}
                     >
