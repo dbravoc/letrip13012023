@@ -297,6 +297,10 @@ app.put('/experiences/:uuid', async (req, res) => {
                 accident_insurance_file,
                 available_dates,
             })
+            .availability({
+                available_dates
+            })
+
             .eq('experience_uuid', uuid)
             .select();
 

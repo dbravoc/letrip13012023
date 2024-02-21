@@ -74,7 +74,7 @@ const AvailabilityEditor = () => {
     
     <div>
       {selectedExperience && (
-        <ExperienceForm mode="update" initialData={selectedExperience} onSubmit={handleSubmit} />
+        <ExperienceForm mode="availability" initialData={selectedExperience} onSubmit={handleSubmit} />
       )}
 
       <ToastContainer />
