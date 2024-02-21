@@ -47,7 +47,7 @@ const App = () => {
           </>
         } />  
 
-      <Route path="/update" element={
+      <Route path="/update-info" element={
           <>
             <div className="mx-auto w-full sm:px-6 px-8">
               <div className="flex flex-col justify-between flex-wrap"><Inicio /></div>
