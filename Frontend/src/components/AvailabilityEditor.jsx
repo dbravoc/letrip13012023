@@ -62,9 +62,9 @@ const AvailabilityExperienceForm = () => {
 
   const saveChanges = async () => {
     const updatedDates = dateRanges.map(range => ({
-      startDate: format(range.startDate, 'yyyy-MM-dd'),
-      endDate: format(range.endDate, 'yyyy-MM-dd'),
-    }));
+        startDate: format(currentRange[0].startDate, 'dd-MM-yyyy'),
+        endDate: format(currentRange[0].endDate, 'dd-MM-yyyy'),
+       }));
 
     try {
       const response = await fetch(`https://letrip13012023-backend-lawitec.vercel.app/experiences/${selectedExperienceId}`, {
