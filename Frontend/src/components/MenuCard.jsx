@@ -8,15 +8,15 @@ const MenuCard = () => {
     return (
 <div>
     <div className="mx-auto flex flex-col justify-center">
-    <h3 className="mb-10 text-2xl font-bold tracking-tight text-gray-900">Panel de administración</h3>
-        <div className="grid grid-cols-1 gap-4">
-            <div className="flex w-3/4 align-middle mb-10 rounded-lg overflow-hidden px-0">
+    <h3 className="flex justify-center mb-10 text-2xl font-bold tracking-tight text-gray-900">Panel de administración</h3>
+        <div className="grid grid-cols-1 justify-center gap-4">
+            <div className="flex align-middle mb-10 rounded-lg overflow-hidden px-0">
                     <Link 
                         to="/create"
-                        className="justify-start hover:bg-black hover:text-letrip bg-letrip text-black focus:ring-offset-2 rounded-lg px-4 py-1 ease-in-out duration-50 text-center"
+                        className="justify-start w-full hover:bg-black hover:text-letrip bg-letrip text-black focus:ring-offset-2 rounded-lg px-4 py-1 ease-in-out duration-50 text-center"
                         style={{ position: 'relative', zIndex: 2 }}
                     > 
-                    <FontAwesomeIcon className="text-gray-900 mx-2 font-bold text-5xl" icon={faSquarePlus} />
+                    <FontAwesomeIcon className="text-gray-900 mx-1 font-bold text-5xl" icon={faSquarePlus} />
                         <strong>Crear una nueva experiencia</strong>
                     </Link>
             </div>
