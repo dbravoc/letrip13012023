@@ -13,6 +13,7 @@ import SelectAvailableDates from './components/SelectAvailableDates'; // Asegúr
 import PriceExperience from './components/PriceExperience';
 import TotalPrice from './components/TotalPrice';
 import MenuCard from './components/MenuCard';
+import AvailabilityEditor from './components/AvailabilityEditor';
 
 
 const App = () => {
@@ -61,6 +62,15 @@ const App = () => {
             <div className="mx-auto w-full sm:px-6 px-8">
               <div className="flex flex-col justify-between flex-wrap"><Inicio /></div>
               <div className="pt-36 px-12 flex flex-col justify-between flex-wrap relative z-10"><MenuCard /></div>
+            </div>
+          </>
+        } />  
+
+      <Route path="/update-availability" element={
+          <>
+            <div className="mx-auto w-full sm:px-6 px-8">
+              <div className="flex flex-col justify-between flex-wrap"><Inicio /></div>
+              <div className="pt-36 px-12 flex flex-col justify-between flex-wrap relative z-10"><AvailabilityEditor /></div>
             </div>
           </>
         } />  
