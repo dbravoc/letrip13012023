@@ -5,6 +5,7 @@ import { format } from 'date-fns';
 import { DateRangePicker } from 'react-date-range';
 import 'react-date-range/dist/styles.css'; // Estilos principales
 import 'react-date-range/dist/theme/default.css'; // Tema por defecto
+
 const ExperienceForm = ({ mode, initialData, onSubmit }) => {
   const [formData, setFormData] = useState({
     experience_name: '',
