@@ -119,6 +119,20 @@ const removeRange = (index) => {
       // Asegúrate de que `initialData` contiene todas las propiedades esperadas por el formulario
       setFormData({ ...initialData, available_dates: formattedDates });
     }
+    else if (mode === 'availability' && initialData) {
+      // Lógica específica para el modo 'availability'
+      // Supongamos que 'initialData' contiene un campo 'available_dates'
+      // que es un array de objetos con las fechas de disponibilidad
+      const availabilityDates = initialData.available_dates ? initialData.available_dates.map(date => ({
+        startDate: new Date(date.startDate),
+        endDate: new Date(date.endDate),
+        key: 'selection' // Asumiendo que necesitas una clave 'key' para tu componente de rango de fechas
+      })) : [];
+  
+      // Aquí podrías querer hacer algo específico con estas fechas,
+      // como establecerlas en el estado para que tu componente las muestre
+      setDateRanges(availabilityDates);
+    }
   }, [mode, initialData]);
   
   
@@ -149,10 +163,18 @@ const removeRange = (index) => {
     ...formData,
     available_dates: validDateRanges.length > 0 ? JSON.stringify(validDateRanges) : undefined, // Envía las fechas solo si son válidas
   };
-  const url = mode === 'create' 
-  ? 'https://letrip13012023-backend-lawitec.vercel.app/experiences' 
-  : `https://letrip13012023-backend-lawitec.vercel.app/experiences/${formData.experience_uuid}`;
-const method = mode === 'create' ? 'POST' : 'PUT';
+  let url, method;
+  if (mode === 'create') {
+    url = 'https://letrip13012023-backend-lawitec.vercel.app/experiences';
+    method = 'POST';
+  } else if (mode === 'update') {
+    url = `https://letrip13012023-backend-lawitec.vercel.app/experiences/${formData.experience_uuid}`;
+    method = 'PUT';
+  } else if (mode === 'availability') {
+    // Define la URL y el método para el modo 'availability'
+    url = `https://letrip13012023-backend-lawitec.vercel.app/experiences/availability/${formData.experience_uuid}`; // Asumiendo una URL específica para actualizar disponibilidad
+    method = 'PATCH'; // Usar PATCH si solo estás actualizando parcialmente los datos, o PUT según sea necesario
+  }
 // Asegúrate de incluir formData.experience_uuid en los datos de inicialización si es 'update'
     try {
       console.log("Enviando formData:", JSON.stringify(updatedFormData));
