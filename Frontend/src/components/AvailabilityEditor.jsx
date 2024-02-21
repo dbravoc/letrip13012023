@@ -1,64 +1,93 @@
-import React, { useState } from 'react';
-import { DateRangePicker } from 'react-date-range';
-import { format } from 'date-fns';
-import 'react-date-range/dist/styles.css'; // main css file
-import 'react-date-range/dist/theme/default.css'; // theme css file
+import React, { useState, useEffect } from 'react';
+import AvailabilityEditor from './AvailabilityEditor'; // Asegúrate de tener este componente
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
-// Función para formatear rangos de fecha para el estado inicial
-const formatInitialRanges = (initialRanges) => {
-  return initialRanges.map((range) => ({
-    ...range,
-    startDate: new Date(range.startDate),
-    endDate: new Date(range.endDate),
-    key: 'selection',
-  }));
-};
+const UpdateAvailabilityForm = () => {
+  const [experiences, setExperiences] = useState([]);
+  const [selectedExperience, setSelectedExperience] = useState(null);
 
-const AvailabilityEditor = ({ initialRanges, onSave }) => {
-  const [ranges, setRanges] = useState(formatInitialRanges(initialRanges || []));
+  useEffect(() => {
+    const fetchExperiences = async () => {
+      try {
+        const response = await fetch('https://letrip13012023-backend-lawitec.vercel.app/experiences');
+        if (!response.ok) throw new Error('Respuesta de red no ok');
+        const data = await response.json();
+        setExperiences(data); // Asumiendo que la respuesta es un array de experiencias
+      } catch (error) {
+        console.error('Error al cargar experiencias:', error);
+        toast.error('Error al cargar experiencias.');
+      }
+    };
 
-  const handleSelectRanges = (ranges) => {
-    // La librería devuelve un objeto con una propiedad por cada rango. Aquí tomamos solo el valor de 'selection'.
-    setRanges([ranges.selection]);
+    fetchExperiences();
+  }, []);
+
+  const handleUpdateAvailability = async (updatedRanges) => {
+    if (selectedExperience) {
+      const updatedExperience = {
+        ...selectedExperience,
+        available_dates: updatedRanges
+      };
+
+      fetch(`https://letrip13012023-backend-lawitec.vercel.app/experiences/${selectedExperience.experience_uuid}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(updatedExperience),
+      })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .then(data => {
+        console.log('Availability updated successfully', data);
+        toast.success('Availability updated successfully');
+      })
+      .catch((error) => {
+        console.error('Error updating availability:', error);
+        toast.error('Error updating availability.');
+      });
+    }
   };
 
-  const addNewRange = () => {
-    setRanges([
-      ...ranges,
-      { startDate: new Date(), endDate: new Date(), key: `selection-${ranges.length}` },
-    ]);
-  };
-
-  const removeRange = (indexToRemove) => {
-    setRanges(ranges.filter((_, index) => index !== indexToRemove));
-  };
-
-  const saveRanges = () => {
-    // Aquí podrías formatear las fechas como desees antes de enviarlas
-    const formattedRanges = ranges.map((range) => ({
-      startDate: format(range.startDate, 'yyyy-MM-dd'),
-      endDate: format(range.endDate, 'yyyy-MM-dd'),
-    }));
-    onSave(formattedRanges);
+  const handleExperienceChange = (e) => {
+    const experienceId = e.target.value;
+    const experience = experiences.find(exp => exp.experience_uuid === experienceId);
+    setSelectedExperience(experience);
   };
 
   return (
-    <div>
-      {ranges.map((range, index) => (
-        <div key={index}>
-          <DateRangePicker
-            ranges={[range]}
-            onChange={handleSelectRanges}
-            moveRangeOnFirstSelection={false}
-            rangeColors={['#3d91ff']}
+    <>
+      <h3 className="mb-10 text-2xl text-center font-bold tracking-tight text-gray-900">Actualizar Disponibilidad</h3>
+      <div className='flex flex-col px-auto sm:px-72 gap-y-2 mb-20'>
+        <select onChange={handleExperienceChange} value={selectedExperience?.experience_uuid || ''}
+          className="block text-sm w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
+          >
+          <option value="">Seleccione una experiencia</option>
+          {experiences.map((experience) => (
+            <option key={experience.experience_uuid} value={experience.experience_uuid}>
+              {experience.experience_name}
+            </option>
+          ))}
+        </select>
+      </div>
+      
+      <div>
+        {selectedExperience && (
+          <AvailabilityEditor
+            initialRanges={selectedExperience.available_dates || []}
+            onSave={handleUpdateAvailability}
           />
-          <button onClick={() => removeRange(index)}>Remove This Range</button>
-        </div>
-      ))}
-      <button onClick={addNewRange}>Add New Range</button>
-      <button onClick={saveRanges}>Save Changes</button>
-    </div>
+        )}
+
+        <ToastContainer />
+      </div>
+    </>
   );
 };
 
-export default AvailabilityEditor;
+export default UpdateAvailabilityForm;
