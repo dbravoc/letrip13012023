@@ -415,7 +415,7 @@ const removeRange = (index) => {
       />
 
 
-{(mode !== 'update' || mode !== 'create') && (
+{(mode !== 'update' && mode !== 'create') && (
   <>
   <h3 className=" my-10 mb-10 text-2xl font-bold tracking-tight text-gray-900">Fotos e imágenes <span className='text-xs italic'> (Todas las imagenes son requeridas para mejorar la experiencia en Le Trip)</span></h3>
 
