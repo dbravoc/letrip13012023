@@ -10,7 +10,7 @@ export default function Footer() {
           <Link 
             to='/request'
             className="relative z-10 flex font-semibold  justify-center items-center mt-1 hover:bg-yellow-100 bg-letrip text-black focus:ring-offset-2 rounded-lg px-4 py-2 ease-in-out duration-50 text-center"
-            >Solicítanos publicar tu experiencia
+            >Publica tu experiencia con nosotros
 
           </Link>
           </div>
