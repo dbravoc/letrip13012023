@@ -14,7 +14,7 @@ import MenuCard from './components/MenuCard';
 import { ExperienceFormProvider } from './context/ExperienceFormContext';
 import 'react-toastify/dist/ReactToastify.css';
 import BasicsCreate from './components/Form/BasicsCreate';
-
+import Footer from './components/Footer'
 
 
 
@@ -38,6 +38,8 @@ const App = () => {
             <div className="bg-white mx-auto w-full sm:px-6 px-8">
               <div className="flex flex-col justify-between flex-wrap"><Inicio /></div>
               <div className='pt-36 pb-12'><Experiencias experienceCard={experienceCard} /></div>
+              <div className='flex flex-col justify-between flex-wrap'><Footer /></div>
+
             </div>
           </>
         } />

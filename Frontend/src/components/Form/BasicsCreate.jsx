@@ -15,30 +15,6 @@ const BasicsCreate = () => {
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleImageUpload = async (e) => {
-    const file = e.target.files[0];
-    if (!file) return;
-  
-    const uploadData = new FormData();
-    uploadData.append('image', file);
-  
-    try {
-      const response = await fetch('https://letrip13012023-backend-lawitec.vercel.app/upload', {
-        method: 'POST',
-        body: uploadData,
-      });
-  
-      const result = await response.json();
-      if (result.url) {
-        setFormData({ ...formData, [e.target.name]: result.url });
-      } else {
-        console.error('Error en la respuesta del servidor:', result);
-      }
-    } catch (error) {
-      console.error('Error al subir la imagen:', error);
-    }
-  };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -254,16 +230,6 @@ const BasicsCreate = () => {
         className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
       />
         
-        <label className='text-gray-700 text-sm' htmlFor="card_img_1">Imagen principal de la experiencia</label>
-        <input
-        id="card_img_1"
-        name="card_img_1"
-        type="file"
-        required
-        accept=".jpg, .jpeg, .png"
-        onChange={handleImageUpload} // Manejar la carga de imágenes en una función
-        className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
-        />
 
       <button  type="submit" className="block w-full rounded-md my-10 px-3 py-4 text-center text-xl font-semibold shadow-sm hover:bg-black hover:text-letrip bg-letrip text-black">
         Solicitar publicación
