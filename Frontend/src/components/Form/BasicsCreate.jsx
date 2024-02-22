@@ -13,13 +13,27 @@ const BasicsCreate = () => {
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleImageUpload = (e) => {
-    const { name, files } = e.target;
-    if (files.length > 0) {
-      // Actualizar formData con el archivo seleccionado
-      // Nota: Esto asume que quieres almacenar el archivo directamente en el estado.
-      // Si necesitas cargar el archivo a un servidor, este paso sería diferente.
-      setFormData({ ...formData, [name]: files[0] });
+  const handleImageUpload = async (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+  
+    const uploadData = new FormData();
+    uploadData.append('image', file);
+  
+    try {
+      const response = await fetch('https://letrip13012023-backend-lawitec.vercel.app/upload', {
+        method: 'POST',
+        body: uploadData,
+      });
+  
+      const result = await response.json();
+      if (result.url) {
+        setFormData({ ...formData, [e.target.name]: result.url });
+      } else {
+        console.error('Error en la respuesta del servidor:', result);
+      }
+    } catch (error) {
+      console.error('Error al subir la imagen:', error);
     }
   };
 
@@ -44,6 +58,7 @@ const BasicsCreate = () => {
         <li className='font-bold mt-3'>Operador Le Trip</li>
         <li className='text-xs'>Acordámos términos y condiciones y te conviertes en operador Le Trip.</li>
     </ul>
+    
     <ul className=''>
         <li><FontAwesomeIcon className='text-5xl text-black' icon={faMagnifyingGlass} /></li>
         <li className='font-bold mt-3'>Research</li>
