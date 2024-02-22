@@ -14,6 +14,8 @@ import PriceExperience from './components/PriceExperience';
 import TotalPrice from './components/TotalPrice';
 import MenuCard from './components/MenuCard';
 import AvailabilityEditor from './pages/AvailabilityEditor';
+import { ExperienceFormProvider } from './ExperienceFormContext';
+
 
 
 const App = () => {
@@ -28,6 +30,7 @@ const App = () => {
   }, []);
 
   return (
+    <ExperienceFormProvider>
     <Router>
       <Routes>
         <Route path="/" element={
@@ -109,6 +112,7 @@ const App = () => {
         } />
       </Routes>
     </Router>
+    </ExperienceFormProvider>
   );
 };
 

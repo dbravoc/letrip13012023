@@ -1,44 +1,142 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { format } from 'date-fns';
 import { DateRangePicker } from 'react-date-range';
 import 'react-date-range/dist/styles.css'; // Estilos principales
 import 'react-date-range/dist/theme/default.css'; // Tema por defecto
-import { ExperienceFormContext } from './ExperienceFormContext'; // Asegúrate de que la ruta de importación sea correcta
 
 const ExperienceForm = ({ mode, initialData, onSubmit }) => {
-  const {
-    formData,
-    setFormData,
-    dateRanges,
-    setDateRanges,
-    currentRange,
-    setCurrentRange,
-    handleImageUpload, // Asegúrate de que esta función esté definida en tu contexto si es necesario
-    addRange,
-    removeRange,
-  } = useContext(ExperienceFormContext);
+  const [formData, setFormData] = useState({
+    experience_name: '',
+    experience_duration: '',
+    experience_location: '',
+    target_audience_restrictions: '',
+    minimum_age: '',
+    minimum_group_size: '',
+    group_restrictions: '',
+    equipment_required: '',
+    certified_instructor: false,
+    included_practical_lessons: false,
+    included_theoretical_lessons: false,
+    included_yoga: false,
+    included_training: false,
+    included_experience_video: false,
+    included_accident_insurance: false,
+    included_equipment_rental: false,
+    included_entry_fees: false,
+    included_lift_ticket: false,
+    experience_accommodation: '',
+    meal_breakfast: false,
+    meal_lunch: false,
+    meal_dinner: false,
+    meal_snacks_and_drinks: false,
+    transport_airport: false,
+    transport_during_experience: false,
+    experience_type: '',
+    experience_country: '',
+    experience_instructor_message: '',
+    experience_main_discipline: '',
+    experience_geography: '',
+    experience_demand_level: '',
+    experience_price: '',
+    experience_instructor: '',
+    experience_instructor_type: '',
+    card_img_1: '',
+    card_img_2: '',
+    card_img_3: '',
+    card_img_4: '',
+    experience_included_description: '',
+    instructor_profile_img: '',
+    accident_insurance_file: '',
+    available_dates: {},
+  });
+  const [dateRanges, setDateRanges] = useState([]);
+  const [currentRange, setCurrentRange] = useState([
+  {
+    startDate: new Date(),
+    endDate: new Date(),
+    key: 'selection',
+  },
+]);
 
+const addRange = () => {
+  // Verificar si las fechas son válidas antes de intentar formatearlas y agregarlas
+  if (currentRange[0].startDate && currentRange[0].endDate && 
+      !isNaN(currentRange[0].startDate) && !isNaN(currentRange[0].endDate)) {
+    const updatedRange = {
+      startDate: format(currentRange[0].startDate, 'dd-MM-yyyy'),
+      endDate: format(currentRange[0].endDate, 'dd-MM-yyyy'),
+    };
+    setDateRanges([...dateRanges, updatedRange]);
+  } else {
+    // Opcional: Mostrar algún mensaje de error o manejo cuando las fechas no son válidas
+    console.log('Las fechas seleccionadas no son válidas.');
+  }
+}
+const removeRange = (index) => {
+  const newRanges = [...dateRanges];
+  newRanges.splice(index, 1);
+  setDateRanges(newRanges);
+};
+  const handleImageUpload = async (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+  
+    const uploadData = new FormData();
+    uploadData.append('image', file);
+  
+    try {
+      const response = await fetch('https://letrip13012023-backend-lawitec.vercel.app/upload', {
+        method: 'POST',
+        body: uploadData,
+      });
+  
+      const result = await response.json();
+      if (result.url) {
+        setFormData({ ...formData, [e.target.name]: result.url });
+      } else {
+        console.error('Error en la respuesta del servidor:', result);
+      }
+    } catch (error) {
+      console.error('Error al subir la imagen:', error);
+    }
+  };
+  
   useEffect(() => {
     if (mode === 'update' && initialData) {
+      // Aquí se asume que `initialData` ya es un objeto con los datos de la experiencia
+      // No es necesario parsear `initialData.available_dates` si ya se espera que sea un array
       const formattedDates = initialData.available_dates ? initialData.available_dates.map(date => ({
         startDate: new Date(date.startDate),
         endDate: new Date(date.endDate),
-        key: 'selection',
+        key: 'selection'
       })) : [];
+  
+      // Actualiza el rango de fechas con los valores formateados
       setCurrentRange(formattedDates);
+  
+      // Actualiza el estado del formulario con todos los datos de `initialData`
+      // Asegúrate de que `initialData` contiene todas las propiedades esperadas por el formulario
       setFormData({ ...initialData, available_dates: formattedDates });
-    } else if (mode === 'availability' && initialData) {
+    }
+    else if (mode === 'availability' && initialData) {
+      // Lógica específica para el modo 'availability'
+      // Supongamos que 'initialData' contiene un campo 'available_dates'
+      // que es un array de objetos con las fechas de disponibilidad
       const availabilityDates = initialData.available_dates ? initialData.available_dates.map(date => ({
         startDate: new Date(date.startDate),
         endDate: new Date(date.endDate),
-        key: 'selection',
+        key: 'selection' // Asumiendo que necesitas una clave 'key' para tu componente de rango de fechas
       })) : [];
+  
+      // Aquí podrías querer hacer algo específico con estas fechas,
+      // como establecerlas en el estado para que tu componente las muestre
       setDateRanges(availabilityDates);
     }
-  }, [mode, initialData, setCurrentRange, setDateRanges, setFormData]);
-
+  }, [mode, initialData]);
+  
+  
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
     setFormData(prevData => ({
@@ -46,25 +144,39 @@ const ExperienceForm = ({ mode, initialData, onSubmit }) => {
       [name]: type === 'checkbox' ? checked : value,
     }));
   };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Filtrar solo rangos de fechas válidos antes de enviar
-    const validDateRanges = dateRanges.filter(range => 
-      range.startDate && range.endDate && !isNaN(new Date(range.startDate).getTime()) && !isNaN(new Date(range.endDate).getTime())
-    );
+      // Filtrar solo rangos de fechas válidos antes de enviar
+  const validDateRanges = dateRanges.filter(range => 
+    range.startDate && range.endDate && !isNaN(new Date(range.startDate)) && !isNaN(new Date(range.endDate))
+  );
 
-    // Actualizar formData con las fechas disponibles
-    const updatedFormData = {
-      ...formData,
-      available_dates: validDateRanges.length > 0 ? JSON.stringify(validDateRanges.map(range => ({
-        startDate: format(range.startDate, 'yyyy-MM-dd'),
-        endDate: format(range.endDate, 'yyyy-MM-dd'),
-      }))) : undefined,
-    };
-
-    // Lógica de envío adaptada al contexto
+    onSubmit(formData);
+      // Construir un arreglo de fechas disponibles a partir de currentRange
+  const availableDates = currentRange.map(range => ({
+    startDate: format(range.startDate, 'dd-MM-yyyy'),
+    endDate: format(range.endDate, 'dd-MM-yyyy'),
+  }));
+    console.log("dateRanges antes de enviar:", availableDates); // Verificar el contenido de dateRanges
+   // Actualizar formData con las fechas disponibles
+  const updatedFormData = {
+    ...formData,
+    available_dates: validDateRanges.length > 0 ? JSON.stringify(validDateRanges) : undefined, // Envía las fechas solo si son válidas
+  };
+  let url, method;
+  if (mode === 'create') {
+    url = 'https://letrip13012023-backend-lawitec.vercel.app/experiences';
+    method = 'POST';
+  } else if (mode === 'update') {
+    url = `https://letrip13012023-backend-lawitec.vercel.app/experiences/${formData.experience_uuid}`;
+    method = 'PUT';
+  } else if (mode === 'availability') {
+    // Define la URL y el método para el modo 'availability'
+    url = `https://letrip13012023-backend-lawitec.vercel.app/experiences/availability/${formData.experience_uuid}`; // Asumiendo una URL específica para actualizar disponibilidad
+    method = 'PATCH'; // Usar PATCH si solo estás actualizando parcialmente los datos, o PUT según sea necesario
+  }
+// Asegúrate de incluir formData.experience_uuid en los datos de inicialización si es 'update'
     try {
       console.log("Enviando formData:", JSON.stringify(updatedFormData));
       const response = await fetch('https://letrip13012023-backend-lawitec.vercel.app/experiences', {
