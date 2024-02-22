@@ -2,7 +2,9 @@ import React from 'react';
 import { useExperienceFormContext } from '../../context/ExperienceFormContext';
 import { faCircleCheck, faHeart, faList, faMagnifyingGlass, faUserPlus } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { toast } from 'react-toastify'; // Importar toast
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 
 const BasicsCreate = () => {
@@ -266,6 +268,7 @@ const BasicsCreate = () => {
       <button  type="submit" className="block w-full rounded-md my-10 px-3 py-4 text-center text-xl font-semibold shadow-sm hover:bg-black hover:text-letrip bg-letrip text-black">
         Solicitar publicación
     </button>
+    <ToastContainer position="bottom-right" />
 </form>
 </>
   )}
