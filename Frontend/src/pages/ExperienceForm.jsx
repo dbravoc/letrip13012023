@@ -5,7 +5,7 @@ import { format } from 'date-fns';
 import { DateRangePicker } from 'react-date-range';
 import 'react-date-range/dist/styles.css'; // Estilos principales
 import 'react-date-range/dist/theme/default.css'; // Tema por defecto
-import { ExperienceFormContext } from './context/ExperienceFormContext'; // Asegúrate de que la ruta de importación sea correcta
+import { ExperienceFormContext } from '../context/ExperienceFormContext'; // Asegúrate de que la ruta de importación sea correcta
 
 const ExperienceForm = ({ mode, initialData, onSubmit }) => {
   const {
