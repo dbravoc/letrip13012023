@@ -5,18 +5,17 @@ import Experiencias from './components/Experiencias';
 import Tarjeta from './pages/Tarjeta';
 import Galeria from './pages/Galeria';
 import FormularioPago from './pages/EstadoPago';
-import CreateExperienceForm from './pages/CreateExperienceForm';
-import UpdateExperienceForm from './pages/UpdateExperienceForm';
 import IncludedNotIncluded from './components/IncludedNotIncluded';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import SelectAvailableDates from './components/SelectAvailableDates'; // Asegúrate de importar correctamente
 import PriceExperience from './components/PriceExperience';
 import TotalPrice from './components/TotalPrice';
 import MenuCard from './components/MenuCard';
-import AvailabilityEditor from './pages/AvailabilityEditor';
 import { ExperienceFormProvider } from './context/ExperienceFormContext';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import BasicsCreate from './components/Form/BasicsCreate';
+
 
 
 
@@ -49,7 +48,16 @@ const App = () => {
           <>
             <div className="mx-auto w-full sm:px-6 px-8">
               <div className="flex flex-col justify-between flex-wrap"><Inicio /></div>
-              <div className="pt-36 px-12 flex flex-col justify-between flex-wrap relative z-10"><CreateExperienceForm /></div>
+              <div className="pt-36 px-12 flex flex-col justify-between flex-wrap relative z-10"></div>
+            </div>
+          </>
+        } /> 
+
+      <Route path="/request" element={
+          <>
+            <div className="mx-auto w-full sm:px-6 px-8">
+              <div className="flex flex-col justify-between flex-wrap"><Inicio /></div>
+              <div className="pt-36 px-12 flex flex-col justify-between flex-wrap relative z-10"><BasicsCreate /></div>
             </div>
           </>
         } />  
@@ -58,7 +66,7 @@ const App = () => {
           <>
             <div className="mx-auto w-full sm:px-6 px-8">
               <div className="flex flex-col justify-between flex-wrap"><Inicio /></div>
-              <div className="pt-36 px-12 flex flex-col justify-between flex-wrap relative z-10"><UpdateExperienceForm /></div>
+              <div className="pt-36 px-12 flex flex-col justify-between flex-wrap relative z-10"></div>
             </div>
           </>
         } />  
@@ -76,7 +84,7 @@ const App = () => {
           <>
             <div className="mx-auto w-full sm:px-6 px-8">
               <div className="flex flex-col justify-between flex-wrap"><Inicio /></div>
-              <div className="pt-36 px-12 flex flex-col justify-between flex-wrap relative z-10"><AvailabilityEditor /></div>
+              <div className="pt-36 px-12 flex flex-col justify-between flex-wrap relative z-10"></div>
             </div>
           </>
         } />  
