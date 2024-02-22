@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 
 export default function Footer() {
     return (
-      <div className="py-5 border-t-letrip border-t-2 bg-black pb-32 pt-12">
+      <div className="py-5 border-t-letrip border-t-2 bg-black mt-32 pb-32 pt-12">
           <h2 className="text-center text-lg font-semibold leading-8 text-yellow-100 pb-5">
           ¿Quiéres formar parte de Le trip?
           </h2>
