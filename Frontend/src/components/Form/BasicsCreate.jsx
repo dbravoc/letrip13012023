@@ -2,6 +2,8 @@ import React from 'react';
 import { useExperienceFormContext } from '../../context/ExperienceFormContext';
 import { faCircleCheck, faHeart, faList, faMagnifyingGlass, faUserPlus } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { toast } from 'react-toastify'; // Importar toast
+
 
 const BasicsCreate = () => {
   const { formData, setFormData, submitFormData } = useExperienceFormContext();
@@ -11,18 +13,32 @@ const BasicsCreate = () => {
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    // Llamada a la función submitFormData del contexto
-    await submitFormData(formData);
+  const handleImageUpload = (e) => {
+    const { name, files } = e.target;
+    if (files.length > 0) {
+      // Actualizar formData con el archivo seleccionado
+      // Nota: Esto asume que quieres almacenar el archivo directamente en el estado.
+      // Si necesitas cargar el archivo a un servidor, este paso sería diferente.
+      setFormData({ ...formData, [name]: files[0] });
+    }
   };
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+        await submitFormData(formData);
+        toast.success('Publicación solicitada con éxito!'); // Mostrar notificación de éxito
+        setFormData({}); // Resetear el formulario
+      } catch (error) {
+        toast.error('Error al solicitar la publicación'); // Mostrar notificación de error
+        console.error('Error:', error);
+      }
+    };
+
   return (
-    <form className='flex flex-col px-auto sm:px-72 gap-y-2' onSubmit={handleSubmit}>
-
-<h3 className="mb-10 text-2xl font-bold tracking-tight text-gray-900">Conoce nuestro proceso Le Trip</h3>
-
-<div className='grid grid-cols-5 gap-4 text-yellow-700 text-center mb-20'>
+    <>
+<h3 className="text-center mb-10 text-2xl font-bold tracking-tight text-gray-900">Conoce nuestro proceso Le Trip</h3>
+<div className='grid grid-cols-5 gap-8 text-gray-700 text-center mb-20'>
     <ul className=''>
         <li><FontAwesomeIcon className='text-5xl text-black' icon={faUserPlus} /></li>
         <li className='font-bold mt-3'>Operador Le Trip</li>
@@ -52,8 +68,10 @@ const BasicsCreate = () => {
 
 </div>
 
-<h3 className="mb-10 text-2xl font-bold tracking-tight text-gray-900">Solicita la publicación de una experiencia</h3>
-<h3 className="mb-10 text-md tracking-tight text-gray-900">Ingresa los datos básicos para solicitar la publicación de tu experiencia y continuar con el <strong>proceso Le Trip</strong>. Nuestro equipo estará en contacto contigo para ir apoyándote en el proceso.</h3>
+<form className='flex flex-col px-auto sm:mx-64 gap-y-2' onSubmit={handleSubmit}>
+
+<h3 className="text-center mb-5 text-2xl font-bold tracking-tight text-gray-900">Solicita la publicación de una experiencia</h3>
+<h3 className="text-center mb-10 text-md tracking-tight text-gray-700">Ingresa los datos básicos para solicitar la publicación de tu experiencia y continuar con el <strong>proceso Le Trip</strong>. Nuestro equipo estará en contacto contigo para ir apoyándote en el proceso.</h3>
 
       <label className='text-gray-700 text-sm' htmlFor="experience_name" >Título de la experiencia. <span className='text-xs italic'> (Escribe algo simple, breve y persuasivo para los visitantes de Le Trip)</span></label>
       <input
@@ -218,11 +236,23 @@ const BasicsCreate = () => {
         onChange={handleChange}
         className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
       />
+        
+        <label className='text-gray-700 text-sm' htmlFor="card_img_1">Imagen principal de la experiencia</label>
+        <input
+        id="card_img_1"
+        name="card_img_1"
+        type="file"
+        required
+        accept=".jpg, .jpeg, .png"
+        onChange={handleImageUpload} // Manejar la carga de imágenes en una función
+        className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
+        />
+
       <button  type="submit" className="block w-full rounded-md my-10 px-3 py-4 text-center text-xl font-semibold shadow-sm hover:bg-black hover:text-letrip bg-letrip text-black">
         Solicitar publicación
     </button>
 </form>
-
+</>
   )}
 
 
