@@ -29,32 +29,32 @@ const BasicsCreate = () => {
 
   return (
     <>
-<h3 className="text-center mb-10 text-2xl font-bold tracking-tight text-gray-900">Conoce nuestro proceso Le Trip</h3>
-<div className='grid grid-cols-5 gap-8 text-gray-700 text-center mb-20'>
+<h3 className="text-center mb-10 text-2xl font-bold tracking-tight text-gray-500">Conoce nuestro proceso Le Trip</h3>
+<div className='grid grid-cols-5 gap-8 text-gray-500 text-center mb-20'>
     <ul className=''>
-        <li><FontAwesomeIcon className='text-5xl text-black' icon={faUserPlus} /></li>
+        <li><FontAwesomeIcon className='text-5xl' icon={faUserPlus} /></li>
         <li className='font-bold mt-3'>Operador Le Trip</li>
         <li className='text-xs'>Acordámos términos y condiciones y te conviertes en operador Le Trip.</li>
     </ul>
     
     <ul className=''>
-        <li><FontAwesomeIcon className='text-5xl text-black' icon={faMagnifyingGlass} /></li>
+        <li><FontAwesomeIcon className='text-5xl' icon={faMagnifyingGlass} /></li>
         <li className='font-bold mt-3'>Research</li>
         <li className='text-xs'>Te ayudamos a definir precios y estrategia en nuestra plataforma.</li>
     </ul>
     <ul className=''>
-        <li><FontAwesomeIcon className='text-5xl text-black' icon={faHeart} /></li>
+        <li><FontAwesomeIcon className='text-5xl' icon={faHeart} /></li>
         <li className='font-bold mt-3'>Optimización</li>
         <li className='text-xs'>En conjunto optimizamos paquetes, precios y buscamos mejoras.</li>
     </ul>
     <ul className=''>
-        <li><FontAwesomeIcon className='text-5xl text-black' icon={faList} /></li>
+        <li><FontAwesomeIcon className='text-5xl' icon={faList} /></li>
         <li className='font-bold mt-3'>Listing</li>
         <li className='text-xs'>Creación de listings en nuestra plataforma.</li>
     </ul>
 
     <ul className=''>
-        <li><FontAwesomeIcon className='text-5xl text-black' icon={faCircleCheck} /></li>
+        <li><FontAwesomeIcon className='text-5xl' icon={faCircleCheck} /></li>
         <li className='font-bold mt-3'>Publica y vende</li>
         <li className='text-xs'>Una vez publicado, espera a que comiencen a caer tus primeras reservas</li>
     </ul>
