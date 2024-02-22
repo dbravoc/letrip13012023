@@ -1,88 +1,63 @@
-import React, { useState, useEffect } from 'react';
-import ExperienceForm from './ExperienceForm'; // Asegúrate de que la ruta sea correcta
-import { toast, ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+{mode !== 'update'  && (
+        <>
+          <h3 className="my-10 text-2xl font-bold tracking-tight text-gray-900">Fechas disponibles <span className='text-xs italic'> (Agregar al menos una fecha o rango de fecha)</span></h3>
+          <DateRangePicker
+            onChange={item => {
+              const newRange = {
+                startDate: item.selection.startDate,
+                endDate: item.selection.endDate,
+                key: 'selection',
+              };
+              setCurrentRange([newRange]); // Asegurarse de actualizar el estado con el nuevo rango
+            }}
+            showSelectionPreview={true}
+            moveRangeOnFirstSelection={false}
+            months={2}
+            ranges={currentRange}
+            direction="horizontal"
+          />
+          
+          <button className='block rounded-md bg-gray-900 px-1 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-gray-700' type="button" onClick={addRange}>Agregar disponibilidad</button>
+          <p className="mt-10 text-lg font-bold tracking-tight text-gray-900">Fechas seleccionadas</p>
 
-const AvailabilityEditor = () => {
-  const [experiences, setExperiences] = useState([]);
-  const [selectedExperience, setSelectedExperience] = useState(null);
-
-  useEffect(() => {
-    // Función para cargar las experiencias desde tu API o fuente de datos
-    const fetchExperiences = async () => {
-      try {
-        const response = await fetch('https://letrip13012023-backend-lawitec.vercel.app/experiences');
-        if (!response.ok) {
-          throw new Error('No se pudo cargar las experiencias');
-        }
-        const data = await response.json();
-        setExperiences(data);
-      } catch (error) {
-        console.error('Error al cargar experiencias:', error);
-        toast.error('Error al cargar experiencias.');
-      }
-    };
-
-    fetchExperiences();
-  }, []);
-
-  // Función para manejar el cambio de experiencia seleccionada
-  const handleExperienceChange = (e) => {
-    const experienceId = e.target.value;
-    const experience = experiences.find(exp => exp.experience_uuid === experienceId);
-    setSelectedExperience(experience);
-  };
-
-  // Función para manejar el envío del formulario de disponibilidad
-  const handleSubmit = async (formData) => {
-    // Aquí implementarías la llamada al API para actualizar la experiencia seleccionada con las nuevas fechas disponibles
-    console.log('Datos del formulario enviados:', formData);
-    // Ejemplo de llamada al API (ajusta según tu implementación)
-    try {
-      const response = await fetch(`https://letrip13012023-backend-lawitec.vercel.app/experiences/${formData.experience_uuid}`, {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ available_dates: formData.available_dates }),
-      });
-      if (!response.ok) {
-        throw new Error('Error al actualizar la experiencia');
-      }
-      const result = await response.json();
-      console.log('Experiencia actualizada con éxito:', result);
-      toast.success('Disponibilidad actualizada con éxito');
-    } catch (error) {
-      console.error('Error al actualizar la experiencia:', error);
-      toast.error('Error al actualizar la disponibilidad');
-    }
-  };
-
-  return (
-    <>
-      <h3 className="mb-10 text-2xl text-center font-bold tracking-tight text-gray-900">Actualizar Disponibilidad de Experiencia</h3>
-      <div className="flex flex-col px-auto sm:px-72 gap-y-2 mb-20">
-        <select
-          onChange={handleExperienceChange}
-          value={selectedExperience ? selectedExperience.experience_uuid : ''}
-          className="block text-sm w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
-        >
-          <option value="">Seleccione una experiencia</option>
-          {experiences.map((experience) => (
-            <option key={experience.experience_uuid} value={experience.experience_uuid}>
-              {experience.experience_name}
-            </option>
+          {dateRanges.map((range, index) => (
+            <div className='flex justify-between border-b-2' key={index}>
+              <p className='text-sm flex items-center'> <span className='font-semibold text-black  py-0'> {range.startDate}</span> <span className='px-2'>al</span> <span className='font-semibold text-black'>{range.endDate}</span></p>
+              <button className='block rounded-md px-1 py-2 text-center text-sm font-semibold text-red-400 hover:text-red-500 shadow-sm' type="button" onClick={() => removeRange(index)}>Eliminar</button>
+            </div>
           ))}
-        </select>
-      </div>
-
-      {selectedExperience && (
-        <ExperienceForm mode="availability" initialData={selectedExperience} onSubmit={handleSubmit} />
+        </>
       )}
 
-      <ToastContainer />
-    </>
-  );
-};
 
-export default AvailabilityEditor;
+
+      {mode !== 'update'  && (
+        <>
+          <h3 className="my-10 text-2xl font-bold tracking-tight text-gray-900">Fechas disponibles <span className='text-xs italic'> (Agregar al menos una fecha o rango de fecha)</span></h3>
+          <DateRangePicker
+            onChange={item => {
+              const newRange = {
+                startDate: item.selection.startDate,
+                endDate: item.selection.endDate,
+                key: 'selection',
+              };
+              setCurrentRange([newRange]); // Asegurarse de actualizar el estado con el nuevo rango
+            }}
+            showSelectionPreview={true}
+            moveRangeOnFirstSelection={false}
+            months={2}
+            ranges={currentRange}
+            direction="horizontal"
+          />
+          
+          <button className='block rounded-md bg-gray-900 px-1 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-gray-700' type="button" onClick={addRange}>Agregar disponibilidad</button>
+          <p className="mt-10 text-lg font-bold tracking-tight text-gray-900">Fechas seleccionadas</p>
+
+          {dateRanges.map((range, index) => (
+            <div className='flex justify-between border-b-2' key={index}>
+              <p className='text-sm flex items-center'> <span className='font-semibold text-black  py-0'> {range.startDate}</span> <span className='px-2'>al</span> <span className='font-semibold text-black'>{range.endDate}</span></p>
+              <button className='block rounded-md px-1 py-2 text-center text-sm font-semibold text-red-400 hover:text-red-500 shadow-sm' type="button" onClick={() => removeRange(index)}>Eliminar</button>
+            </div>
+          ))}
+        </>
+      )}
