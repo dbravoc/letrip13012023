@@ -14,7 +14,7 @@ import PriceExperience from './components/PriceExperience';
 import TotalPrice from './components/TotalPrice';
 import MenuCard from './components/MenuCard';
 import AvailabilityEditor from './pages/AvailabilityEditor';
-import { ExperienceFormProvider } from './ExperienceFormContext';
+import { ExperienceFormProvider } from './context/ExperienceFormContext';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
