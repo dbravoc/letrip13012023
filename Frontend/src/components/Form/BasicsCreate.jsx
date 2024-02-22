@@ -1,5 +1,5 @@
 import React from 'react';
-import { useExperienceFormContext } from './src/context/ExperienceFormContext.jsx'; // Asegúrate de que la ruta sea correcta
+import { useExperienceFormContext } from '../../context/ExperienceFormContext';
 
 const BasicsCreate = () => {
   const { formData, setFormData, submitFormData } = useExperienceFormContext();
