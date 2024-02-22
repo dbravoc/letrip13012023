@@ -16,7 +16,7 @@ import MenuCard from './components/MenuCard';
 import AvailabilityEditor from './pages/AvailabilityEditor';
 import { ExperienceFormProvider } from './ExperienceFormContext';
 import { ToastContainer } from 'react-toastify';
-
+import 'react-toastify/dist/ReactToastify.css';
 
 
 
@@ -33,6 +33,7 @@ const App = () => {
 
   return (
     <ExperienceFormProvider>
+    <ToastContainer>
     <Router>
       <Routes>
         <Route path="/" element={
@@ -114,6 +115,7 @@ const App = () => {
         } />
       </Routes>
     </Router>
+    </ToastContainer>
     </ExperienceFormProvider>
   );
 };

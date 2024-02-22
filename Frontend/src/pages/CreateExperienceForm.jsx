@@ -2,7 +2,6 @@ import React from 'react';
 import { toast } from 'react-toastify'; // Importa toast
 import 'react-toastify/dist/ReactToastify.css'; // Importa los estilos si aún no lo has hecho en tu aplicación
 import ExperienceForm from './ExperienceForm'; // Asegúrate de que la ruta sea correcta
-import { ToastContainer } from 'react-toastify';
 
 const CreateExperience = () => {
   const handleSubmit = async (formData) => {
