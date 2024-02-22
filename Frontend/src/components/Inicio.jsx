@@ -55,7 +55,7 @@ export default function Inicio() {
             ))}
           </div>
           <div className="hidden sm:grid  sm:flex-1 gap-y-2 text-end sm:justify-end">
-            <a href="https://wa.me/12028125753" className="sm:leading-6 relative z-10 flex font-semibold  justify-center items-center mt-1 hover:bg-black hover:text-letrip bg-letrip text-black focus:ring-offset-2 rounded-lg px-4 py-1 ease-in-out duration-50 text-center">
+            <a href="https://wa.me/12028125753" className="sm:leading-6 relative z-10 flex font-semibold  justify-center items-center mt-1 hover:bg-black hover:text-letrip bg-letrip text-black focus:ring-offset-2 rounded-lg px-4 py-2 ease-in-out duration-50 text-center">
             <span className='pr-2'>Conversemos</span> <FontAwesomeIcon icon={faWhatsapp} className='text-2xl text-text-gray-700' />
             </a>
           </div>
