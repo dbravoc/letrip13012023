@@ -35,7 +35,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={
           <>
-            <div className="bg-white mx-auto flex flex-col w-full min-h-screen">
+            <div className="bg-white mx-auto flex flex-col justify-between w-full min-h-screen">
               <div className="flex flex-col justify-between flex-wrap"><Inicio /></div>
               <div className='pt-36 pb-12'><Experiencias experienceCard={experienceCard} /></div>
               <div className='flex flex-col justify-between flex-wrap'><Footer /></div>
