@@ -2,8 +2,10 @@ import React from 'react';
 import { Link } from 'react-router-dom'; // Importar Link
 
 const Experiencias = ({ experienceCard }) => {
+    // Filtrar las experiencias activas
+    const experiencesToShow = experienceCard.filter(experience => experience.Active === true);
 
-    experienceCard.forEach(experience => {
+    experiencesToShow.forEach(experience => {
         experience.tags = [
             experience.experience_main_discipline,
             experience.experience_country,
@@ -16,7 +18,7 @@ const Experiencias = ({ experienceCard }) => {
         <div>
             <div className="mx-auto flex justify-center">
                 <div className="grid sm:grid-cols-3 grid-cols-1 sm:gap-6 gap-0">
-                    {experienceCard.map(experience => (
+                    {experiencesToShow.map(experience => (
                         <div key={experience.experience_uuid} className="flex flex-col justify-center mb-10 md:flex-row rounded-lg overflow-hidden px-0">
                             <div className="flex max-w-[350px] flex-col justify-between leading-normal">
                                 <img src={experience.card_img_1} className="w-full h-48 object-cover"></img>
