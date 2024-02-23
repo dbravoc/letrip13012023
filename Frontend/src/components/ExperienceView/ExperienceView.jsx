@@ -40,14 +40,11 @@ const ExperienceView = ({ experienceCard }) => {
 
             </div>
 
-            <div>
-                <p className=' text-xl font-semibold leading-6 text-gray-900'>{selectedExperience.experience_instructor_evaluation} <FontAwesomeIcon icon={faHeart} /></p>
-            </div>
-         </div>
-
          <div>
             <p className="text-sm py-5 leading-6 text-gray-900">{selectedExperience.experience_instructor_message}</p>
         </div>
+        </div>
+
 
   </div>
 
