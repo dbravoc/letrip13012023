@@ -109,8 +109,8 @@ const ExperienceView = ({ experienceCard }) => {
     <div className="flex flex-col p-10 mx-auto bg-white border-white border-2 rounded-2xl">
           <h2 className="text-3xl text-center font-bold tracking-tight text-gray-900 mb-4">Restricciones</h2>
           <p className="text-sm italic py-5 leading-6 text-gray-900">{selectedExperience.target_audience_restrictions}</p>
-          <p className="text-sm italic py-5 leading-6 text-gray-900">{selectedExperience.minimum_age}</p>
-          <p className="text-sm italic py-5 leading-6 text-gray-900">{selectedExperience.minimum_group_size}</p>
+          <p className="text-sm italic py-5 leading-6 text-gray-900"><span>Edad mínima: </span>{selectedExperience.minimum_age}</p>
+          <p className="text-sm italic py-5 leading-6 text-gray-900"><span>Mínimo de personas: </span>{selectedExperience.minimum_group_size}</p>
     
     </div>
 
