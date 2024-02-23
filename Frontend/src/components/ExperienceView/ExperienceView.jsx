@@ -23,7 +23,7 @@ const ExperienceView = ({ experienceCard }) => {
 
   return (
     <>
-  <div className='grid grid-cols-1 sm:grid-cols-3'>
+  <div className='grid grid-cols-1 sm:grid-cols-3 gap-10'>
     <div className="flex flex-col p-10 mx-auto bg-yellow-100 border-white border-2 rounded-2xl">
           <h2 className="text-3xl font-bold tracking-tight text-gray-900 mb-4">Nuestra invitación</h2>
           
