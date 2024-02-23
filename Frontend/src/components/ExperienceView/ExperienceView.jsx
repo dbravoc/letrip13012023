@@ -42,7 +42,7 @@ const ExperienceView = ({ experienceCard }) => {
 
   <div className='grid grid-cols-1 sm:grid-cols-3 gap-10'>
     <div className="flex flex-col p-10 mx-auto bg-white border-white border-2 rounded-2xl">
-          <h2 className="text-3xl font-bold tracking-tight text-gray-900 mb-4">Nuestra invitación</h2>
+          <h2 className="text-3xl text-center font-bold tracking-tight text-gray-900 mb-4">Nuestra invitación</h2>
           
               
             <div className="flex py-5 items-center min-w-0 gap-x-4">
@@ -76,12 +76,12 @@ const ExperienceView = ({ experienceCard }) => {
     </div>
 
     <div className="flex flex-col p-10 mx-auto bg-white border-white border-2 rounded-2xl">
-          <h2 className="text-3xl font-bold tracking-tight text-gray-900 mb-4">¿Qué incluye la experiencia?</h2>
+          <h2 className="text-3xl text-center font-bold tracking-tight text-gray-900 mb-4">¿Qué incluye la experiencia?</h2>
           <p className="text-sm italic py-5 leading-6 text-gray-900">{selectedExperience.experience_included_description}</p>
     </div>
 
     <div className="flex flex-col p-10 mx-auto bg-white border-white border-2 rounded-2xl">
-          <h2 className="text-3xl font-bold tracking-tight text-gray-900 mb-4">Lo que SI incluye</h2>
+          <h2 className="text-3xl text-center font-bold tracking-tight text-gray-900 mb-4">Lo que SI incluye</h2>
            <ul role="list" className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-x-20 gap-y-5 text-sm leading-6 text-yellow-700">
             {includedList.map((included, index) => (
               <li key={index} className="flex gap-x-4">
@@ -94,7 +94,7 @@ const ExperienceView = ({ experienceCard }) => {
     </div>
 
     <div className="flex flex-col p-10 mx-auto bg-white border-white border-2 rounded-2xl">
-          <h2 className="text-3xl font-bold tracking-tight text-gray-900 mb-4">Lo que NO incluye</h2>
+          <h2 className="text-3xl text-center font-bold tracking-tight text-gray-900 mb-4">Lo que NO incluye</h2>
            <ul role="list" className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-x-20 gap-y-5 text-sm leading-6 text-yellow-700">
             {notIncludedList.map((notincluded, index) => (
               <li key={index} className="flex gap-x-4">
