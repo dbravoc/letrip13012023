@@ -69,9 +69,7 @@ const ExperienceView = ({ experienceCard }) => {
 
   <div className='grid grid-cols-1 sm:grid-cols-4 gap-10'>
     <div className="flex flex-col p-10 mx-auto bg-white border-white border-2 rounded-2xl">
-          <h2 className="text-3xl text-center font-bold tracking-tight text-gray-900 mb-4">Nuestra invitación</h2>
-          
-              
+             
             <div className="flex py-5 items-center min-w-0 gap-x-4">
               <div className="flex flex-col items-center min-w-0 gap-x-4">
                 <div className="h-24 w-24 flex-none rounded-full overflow-hidden bg-gray-50">
@@ -91,7 +89,7 @@ const ExperienceView = ({ experienceCard }) => {
     </div>
 
     <div className="flex flex-col p-10 mx-auto bg-white border-white border-2 rounded-2xl">
-            <h2 className="text-3xl text-center font-bold tracking-tight text-gray-900 mb-4">Características de la experiencia</h2>
+            <h2 className="text-xl text-center font-bold tracking-tight text-gray-900 mb-4">Características de la experiencia</h2>
             <dl className="mt-0 grid grid-cols-1 gap-y-2 gap-x-6">
               {features.map((feature, index) => (
                 <div key={index} className="border-b border-gray-400 pt-2">
@@ -109,7 +107,7 @@ const ExperienceView = ({ experienceCard }) => {
 
     <div className="flex flex-col p-10 mx-auto bg-white border-white border-2 rounded-2xl">
           <h2 className="text-3xl text-center font-bold tracking-tight text-gray-900 mb-4">Lo que SI incluye</h2>
-           <ul role="list" className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-x-20 gap-y-5 text-sm leading-6 text-yellow-700">
+           <ul role="list" className="mt-8 grid grid-cols-1 gap-x-20 gap-y-5 text-sm leading-6 text-yellow-700">
             {includedList.map((included, index) => (
               <li key={index} className="flex gap-x-4">
                 <CheckIcon className="h-6 w-5 flex-none text-yellow-500 font-extrabold" aria-hidden="true" />
@@ -122,7 +120,7 @@ const ExperienceView = ({ experienceCard }) => {
 
     <div className="flex flex-col p-10 mx-auto bg-white border-white border-2 rounded-2xl">
           <h2 className="text-3xl text-center font-bold tracking-tight text-gray-900 mb-4">Lo que NO incluye</h2>
-           <ul role="list" className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-x-20 gap-y-5 text-sm leading-6 text-yellow-700">
+           <ul role="list" className="mt-8 grid grid-cols-1 gap-x-20 gap-y-5 text-sm leading-6 text-yellow-700">
             {notIncludedList.map((notincluded, index) => (
               <li key={index} className="flex gap-x-4">
                 <CheckIcon className="h-6 w-5 flex-none text-yellow-500 font-extrabold" aria-hidden="true" />
