@@ -51,6 +51,12 @@ const ExperienceView = ({ experienceCard }) => {
   ];
   const transportList = transport.filter(included => included.value);
 
+  const insurance = [
+    { name: 'Instructor certificado', value: selectedExperience.certified_instructor },
+    { name: 'Seguro de accidentes incluido', value: selectedExperience.included_accident_insurance},
+  ];
+  const insuranceList = insurance.filter(included => included.value);
+
 
 
 
@@ -165,6 +171,19 @@ const ExperienceView = ({ experienceCard }) => {
               <li key={index} className="flex gap-x-4">
                 <CheckIcon className="h-6 w-5 flex-none text-yellow-500 font-extrabold" aria-hidden="true" />
                 {transport.name}
+              </li>
+            ))}
+          </ul>
+
+    </div>
+
+    <div className="flex flex-col p-10 mx-auto bg-white border-white border-2 rounded-2xl">
+          <h2 className="text-3xl text-center font-bold tracking-tight text-gray-900 mb-4">Seguridad</h2>
+           <ul role="list" className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-x-20 gap-y-5 text-sm leading-6 text-yellow-700">
+            {insuranceList.map((insurance, index) => (
+              <li key={index} className="flex gap-x-4">
+                <CheckIcon className="h-6 w-5 flex-none text-yellow-500 font-extrabold" aria-hidden="true" />
+                {insurance.name}
               </li>
             ))}
           </ul>
