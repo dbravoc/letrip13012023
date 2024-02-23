@@ -24,7 +24,6 @@ const ExperienceView = ({ experienceCard }) => {
   return (
     <>
   <div className="flex flex-col p-10 mx-auto bg-yellow-100 border-white border-2 rounded-2xl">
-  <div>
         <h2 className="text-3xl font-bold tracking-tight text-gray-900 mb-4">{selectedExperience.experience_name}</h2>
         
             
@@ -62,7 +61,6 @@ const ExperienceView = ({ experienceCard }) => {
               </div>
             ))}
           </dl>
-  </div>
   </div>
 
   
