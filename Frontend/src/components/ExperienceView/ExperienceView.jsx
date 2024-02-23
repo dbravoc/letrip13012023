@@ -27,9 +27,9 @@ const ExperienceView = ({ experienceCard }) => {
   <div className="flex p-10 mx-auto bg-yellow-100 border-white border-2 rounded-2xl">
           <dl className="mt-0 grid grid-cols-1 gap-x-6 gap-y-2 sm:grid-cols-2 sm:gap-y-2">
             {features.map((feature, index) => (
-              <div key={index} className="border-t border-gray-700 pt-2">
-                <dt className=" text-sm text-gray-900">{feature.name}</dt>
-                <dd className="text-sm mt-2 font-semibold text-gray-600">{feature.description}</dd>
+              <div key={index} className="border-b border-gray-400 pt-2">
+                <dt className=" text-sm text-gray-700">{feature.name}</dt>
+                <dd className="text-sm mt-2 font-semibold text-black">{feature.description}</dd>
               </div>
             ))}
           </dl>
