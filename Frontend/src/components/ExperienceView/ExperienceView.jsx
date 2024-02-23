@@ -23,7 +23,7 @@ const ExperienceView = ({ experienceCard }) => {
 
   return (
     <>
-<h2 className="text-3xl font-bold tracking-tight text-gray-900 mb-4">{selectedExperience.experience_name}</h2>
+<h2 className="text-3xl text-center font-bold tracking-tight text-gray-900 mb-4">{selectedExperience.experience_name}</h2>
 
   <div className='grid grid-cols-1 sm:grid-cols-3 gap-10'>
     <div className="flex flex-col p-10 mx-auto bg-white border-white border-2 rounded-2xl">
@@ -49,7 +49,7 @@ const ExperienceView = ({ experienceCard }) => {
     </div>
 
     <div className="flex flex-col p-10 mx-auto bg-white border-white border-2 rounded-2xl">
-            <h2 className="text-3xl font-bold tracking-tight text-gray-900 mb-4">Características de la experiencia</h2>
+            <h2 className="text-3xl text-center font-bold tracking-tight text-gray-900 mb-4">Características de la experiencia</h2>
             <dl className="mt-0 grid grid-cols-1 gap-y-2 gap-x-6">
               {features.map((feature, index) => (
                 <div key={index} className="border-b border-gray-400 pt-2">
@@ -60,7 +60,13 @@ const ExperienceView = ({ experienceCard }) => {
             </dl>
     </div>
 
-</div>
+    <div className="flex flex-col p-10 mx-auto bg-white border-white border-2 rounded-2xl">
+          <h2 className="text-3xl font-bold tracking-tight text-gray-900 mb-4">¿Qué incluye la experiencia?</h2>
+          <p className="text-sm italic py-5 leading-6 text-gray-900">{selectedExperience.experience_included_description}</p>
+
+
+    </div>
+  </div>
   </>
 
   );
