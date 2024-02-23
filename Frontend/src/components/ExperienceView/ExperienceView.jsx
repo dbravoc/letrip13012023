@@ -78,11 +78,28 @@ const ExperienceView = ({ experienceCard }) => {
     <div className="flex flex-col p-10 mx-auto bg-white border-white border-2 rounded-2xl">
           <h2 className="text-3xl font-bold tracking-tight text-gray-900 mb-4">¿Qué incluye la experiencia?</h2>
           <p className="text-sm italic py-5 leading-6 text-gray-900">{selectedExperience.experience_included_description}</p>
-          <ul role="list" className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-x-20 gap-y-5 text-sm leading-6 text-yellow-700">
+    </div>
+
+    <div className="flex flex-col p-10 mx-auto bg-white border-white border-2 rounded-2xl">
+          <h2 className="text-3xl font-bold tracking-tight text-gray-900 mb-4">Lo que SI incluye</h2>
+           <ul role="list" className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-x-20 gap-y-5 text-sm leading-6 text-yellow-700">
             {includedList.map((included, index) => (
               <li key={index} className="flex gap-x-4">
                 <CheckIcon className="h-6 w-5 flex-none text-yellow-500 font-extrabold" aria-hidden="true" />
                 {included.name}
+              </li>
+            ))}
+          </ul>
+
+    </div>
+
+    <div className="flex flex-col p-10 mx-auto bg-white border-white border-2 rounded-2xl">
+          <h2 className="text-3xl font-bold tracking-tight text-gray-900 mb-4">Lo que NO incluye</h2>
+           <ul role="list" className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-x-20 gap-y-5 text-sm leading-6 text-yellow-700">
+            {notIncludedList.map((notincluded, index) => (
+              <li key={index} className="flex gap-x-4">
+                <CheckIcon className="h-6 w-5 flex-none text-yellow-500 font-extrabold" aria-hidden="true" />
+                {notincluded.name}
               </li>
             ))}
           </ul>
