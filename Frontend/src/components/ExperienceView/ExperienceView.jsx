@@ -25,16 +25,6 @@ const ExperienceView = ({ experienceCard }) => {
   return ( //GRID: seccion fotos, seccion informacion + invitacion anfitrion, reserva
       
   <div className="flex px-0 mx-0">
-    <div>
-      <img src={selectedExperience.instructor_profile_img} alt="" className='w-full h-full object-cover' />
-      <p className="text-base font-semibold leading-6 text-gray-900">{selectedExperience.experience_instructor}</p>
-      <p className="text-sm leading-6 text-gray-900">{selectedExperience.experience_instructor_type}</p>
-      <p className=' text-xl font-semibold leading-6 text-gray-900'>{selectedExperience.experience_instructor_evaluation} <FontAwesomeIcon icon={faHeart} /></p>
-      <p className="text-sm py-5 leading-6 text-gray-900">{selectedExperience.experience_instructor_message}</p>
-
-    </div>
-
-        <div>
           <dl className="mt-0 grid grid-cols-1 gap-x-6 gap-y-2 sm:grid-cols-2 sm:gap-y-2">
             {features.map((feature, index) => (
               <div key={index} className="border-t border-gray-700 pt-2">
@@ -43,7 +33,6 @@ const ExperienceView = ({ experienceCard }) => {
               </div>
             ))}
           </dl>
-        </div>
       </div>  
   
 
