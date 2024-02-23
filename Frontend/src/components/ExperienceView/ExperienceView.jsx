@@ -37,10 +37,9 @@ const ExperienceView = ({ experienceCard }) => {
                     <p className="text-base font-semibold leading-6 text-gray-900">{selectedExperience.experience_instructor}</p>
                     <p className="text-sm leading-6 text-gray-900">{selectedExperience.experience_instructor_type}</p>
               </div>
-
+              <p className="text-sm py-5 leading-6 text-gray-900">{selectedExperience.experience_instructor_message}</p>
             </div>
 
-            <p className="text-sm py-5 leading-6 text-gray-900">{selectedExperience.experience_instructor_message}</p>
         </div>
 
 
