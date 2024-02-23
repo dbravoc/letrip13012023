@@ -23,13 +23,15 @@ const ExperienceView = ({ experienceCard }) => {
 
   return (
     <>
+<h2 className="text-3xl font-bold tracking-tight text-gray-900 mb-4">{selectedExperience.experience_name}</h2>
+
   <div className='grid grid-cols-1 sm:grid-cols-3 gap-10'>
     <div className="flex flex-col p-10 mx-auto bg-yellow-100 border-white border-2 rounded-2xl">
           <h2 className="text-3xl font-bold tracking-tight text-gray-900 mb-4">Nuestra invitación</h2>
           
               
             <div className="flex py-5 items-center min-w-0 gap-x-4">
-              <div className="flex flex-cols items-center min-w-0 gap-x-4">
+              <div className="flex flex-col items-center min-w-0 gap-x-4">
                 <div className="h-24 w-24 flex-none rounded-full overflow-hidden bg-gray-50">
                   <img src={selectedExperience.instructor_profile_img} alt="" className='w-full h-full object-cover' />
                 </div>
