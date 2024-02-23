@@ -82,7 +82,7 @@ const ExperienceView = ({ experienceCard }) => {
             {includedList.map((included, index) => (
               <li key={index} className="flex gap-x-4">
                 <CheckIcon className="h-6 w-5 flex-none text-yellow-500 font-extrabold" aria-hidden="true" />
-                {feature.name}
+                {included.name}
               </li>
             ))}
           </ul>
