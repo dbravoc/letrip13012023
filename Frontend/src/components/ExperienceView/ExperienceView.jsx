@@ -24,6 +24,7 @@ const ExperienceView = ({ experienceCard }) => {
   const included = [
     { name: 'Clase práctica', value: selectedExperience.included_practical_lessons },
     { name: 'Clase teórica', value: selectedExperience.included_theoretical_lessons },
+    { name: 'Equipo', value: selectedExperience.included_equipment_rental},
     { name: 'Yoga', value: selectedExperience.included_yoga },
     { name: 'Entrenamiento', value: selectedExperience.included_training },
     { name: 'Video experiencia', value: selectedExperience.included_experience_video },
@@ -113,6 +114,13 @@ const ExperienceView = ({ experienceCard }) => {
           <p className="text-sm italic py-5 leading-6 text-gray-900"><span>Mínimo de personas: </span>{selectedExperience.minimum_group_size}</p>
     
     </div>
+
+    <div className="flex flex-col p-10 mx-auto bg-white border-white border-2 rounded-2xl">
+          <h2 className="text-3xl text-center font-bold tracking-tight text-gray-900 mb-4">Equipamiento</h2>
+          <p className="text-sm italic py-5 leading-6 text-gray-900">{selectedExperience.equipment_required}</p>
+    
+    </div>
+
 
 
   </div>
