@@ -26,7 +26,7 @@ const ExperienceView = ({ experienceCard }) => {
 <h2 className="text-3xl font-bold tracking-tight text-gray-900 mb-4">{selectedExperience.experience_name}</h2>
 
   <div className='grid grid-cols-1 sm:grid-cols-3 gap-10'>
-    <div className="flex flex-col p-10 mx-auto bg-yellow-100 border-white border-2 rounded-2xl">
+    <div className="flex flex-col p-10 mx-auto bg-white border-white border-2 rounded-2xl">
           <h2 className="text-3xl font-bold tracking-tight text-gray-900 mb-4">Nuestra invitación</h2>
           
               
@@ -37,10 +37,10 @@ const ExperienceView = ({ experienceCard }) => {
                 </div>
                 
                 <div>
-                      <p className="text-base font-semibold leading-6 text-gray-900">{selectedExperience.experience_instructor}</p>
-                      <p className="text-sm leading-6 text-gray-900">{selectedExperience.experience_instructor_type}</p>
+                      <p className="text-base text-center font-semibold leading-6 text-gray-900">{selectedExperience.experience_instructor}</p>
+                      <p className="text-sm text-center leading-6 text-gray-900">{selectedExperience.experience_instructor_type}</p>
                 </div>
-                <p className="text-sm py-5 leading-6 text-gray-900">{selectedExperience.experience_instructor_message}</p>
+                <p className="text-sm italic py-5 leading-6 text-gray-900">{selectedExperience.experience_instructor_message}</p>
               </div>
 
           </div>
@@ -48,12 +48,12 @@ const ExperienceView = ({ experienceCard }) => {
 
     </div>
 
-    <div className="flex flex-col p-10 mx-auto bg-yellow-100 border-white border-2 rounded-2xl">
+    <div className="flex flex-col p-10 mx-auto bg-white border-white border-2 rounded-2xl">
             <h2 className="text-3xl font-bold tracking-tight text-gray-900 mb-4">Características de la experiencia</h2>
-            <dl className="mt-0 grid grid-cols-1 sm:grid-cols-2 sm:gap-y-2 gap-x-6 gap-y-2">
+            <dl className="mt-0 grid grid-cols-1 gap-y-2 gap-x-6">
               {features.map((feature, index) => (
                 <div key={index} className="border-b border-gray-400 pt-2">
-                  <dt className=" text-sm text-gray-700">{feature.name}</dt>
+                  <dt className=" text-xs text-gray-700">{feature.name}</dt>
                   <dd className="text-sm mt-2 font-semibold text-black">{feature.description}</dd>
                 </div>
               ))}
