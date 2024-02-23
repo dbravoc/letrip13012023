@@ -27,7 +27,7 @@ const ExperienceView = ({ experienceCard }) => {
         <h2 className="text-3xl font-bold tracking-tight text-gray-900 mb-4">{selectedExperience.experience_name}</h2>
         
             
-          <div className="flex justify-between py-5 items-center min-w-0 gap-x-4">
+          <div className="flex py-5 items-center min-w-0 gap-x-4">
             <div className="flex items-center min-w-0 gap-x-4">
               <div className="h-24 w-24 flex-none rounded-full overflow-hidden bg-gray-50">
                 <img src={selectedExperience.instructor_profile_img} alt="" className='w-full h-full object-cover' />
@@ -40,9 +40,7 @@ const ExperienceView = ({ experienceCard }) => {
 
             </div>
 
-         <div>
             <p className="text-sm py-5 leading-6 text-gray-900">{selectedExperience.experience_instructor_message}</p>
-        </div>
         </div>
 
 
