@@ -24,8 +24,9 @@ const ExperienceView = ({ experienceCard }) => {
 
   return ( //GRID: seccion fotos, seccion informacion + invitacion anfitrion, reserva
       
-  <div className="flex p-10 mx-auto bg-yellow-100 border-white border-2 rounded-2xl">
-          <dl className="mt-0 grid grid-cols-1 gap-x-6 gap-y-2 sm:grid-cols-2 sm:gap-y-2">
+  <div className="flex flex-col p-10 mx-auto bg-yellow-100 border-white border-2 rounded-2xl">
+          <h2 className="text-3xl font-bold tracking-tight text-gray-900 mb-4">Características de la experiencia</h2>
+          <dl className="mt-0 grid grid-cols-1 sm:grid-cols-2 sm:gap-y-2 gap-x-6 gap-y-2">
             {features.map((feature, index) => (
               <div key={index} className="border-b border-gray-400 pt-2">
                 <dt className=" text-sm text-gray-700">{feature.name}</dt>
