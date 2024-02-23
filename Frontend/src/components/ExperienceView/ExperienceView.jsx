@@ -49,6 +49,7 @@ const ExperienceView = ({ experienceCard }) => {
     { name: 'Tarifas de entrada incluidas', value: selectedExperience.included_entry_fees },
     { name: 'Ticket de andarivel incluido', value: selectedExperience.included_lift_ticket },
   ];
+
   const transportList = transport.filter(included => included.value);
 
   const insurance = [
@@ -57,8 +58,10 @@ const ExperienceView = ({ experienceCard }) => {
   ];
   const insuranceList = insurance.filter(included => included.value);
 
-
-
+  const video = [
+    { name: 'Video de la experiencia incluido', value: selectedExperience.included_experience_video},
+  ];
+  const videoList = video.filter(included => included.value);
 
   return (
     <>
@@ -144,11 +147,6 @@ const ExperienceView = ({ experienceCard }) => {
     
     </div>
 
-    <div className="flex flex-col p-10 mx-auto bg-white border-white border-2 rounded-2xl">
-          <h2 className="text-3xl text-center font-bold tracking-tight text-gray-900 mb-4">Equipamiento</h2>
-          <p className="text-sm italic py-5 leading-6 text-gray-900">{selectedExperience.equipment_required}</p>
-    
-    </div>
 
     <div className="flex flex-col p-10 mx-auto bg-white border-white border-2 rounded-2xl">
           <h2 className="text-3xl text-center font-bold tracking-tight text-gray-900 mb-4">Alojamiento</h2>
@@ -162,6 +160,18 @@ const ExperienceView = ({ experienceCard }) => {
             ))}
           </ul>
 
+    </div>
+
+    <div className="flex flex-col p-10 mx-auto bg-white border-white border-2 rounded-2xl">
+          <h2 className="text-3xl text-center font-bold tracking-tight text-gray-900 mb-4">Video</h2>
+           <ul role="list" className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-x-20 gap-y-5 text-sm leading-6 text-yellow-700">
+            {videoList.map((video, index) => (
+              <li key={index} className="flex gap-x-4">
+                <CheckIcon className="h-6 w-5 flex-none text-yellow-500 font-extrabold" aria-hidden="true" />
+                {video.name}
+              </li>
+            ))}
+          </ul>
     </div>
 
     <div className="flex flex-col p-10 mx-auto bg-white border-white border-2 rounded-2xl">
@@ -187,7 +197,6 @@ const ExperienceView = ({ experienceCard }) => {
               </li>
             ))}
           </ul>
-
     </div>
 
 
