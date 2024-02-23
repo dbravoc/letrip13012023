@@ -41,8 +41,16 @@ const ExperienceView = ({ experienceCard }) => {
     { name: 'Cena incluida', value: selectedExperience.meal_dinner },
     { name: 'Aperitivos y bebidas incluidos', value: selectedExperience.meal_snacks_and_drinks },
   ];
-
   const accommodationList = accommodation.filter(meal => meal.value);
+
+  const transport = [
+    { name: 'Transporte desde el aeropuerto incluido', value: selectedExperience.transport_airport },
+    { name: 'Transporte durante la experiencia incluido', value: selectedExperience.transport_during_experience},
+    { name: 'Tarifas de entrada incluidas', value: selectedExperience.included_entry_fees },
+    { name: 'Ticket de andarivel incluido', value: selectedExperience.included_lift_ticket },
+  ];
+  const transportList = transport.filter(included => included.value);
+
 
 
 
@@ -138,13 +146,25 @@ const ExperienceView = ({ experienceCard }) => {
 
     <div className="flex flex-col p-10 mx-auto bg-white border-white border-2 rounded-2xl">
           <h2 className="text-3xl text-center font-bold tracking-tight text-gray-900 mb-4">Alojamiento</h2>
+          {selectedExperience.experience_accommodation}
            <ul role="list" className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-x-20 gap-y-5 text-sm leading-6 text-yellow-700">
-           <li>{selectedExperience.experience_accommodation}
-              </li>
             {accommodationList.map((accommodation, index) => (
               <li key={index} className="flex gap-x-4">
                 <CheckIcon className="h-6 w-5 flex-none text-yellow-500 font-extrabold" aria-hidden="true" />
                 {accommodation.name}
+              </li>
+            ))}
+          </ul>
+
+    </div>
+
+    <div className="flex flex-col p-10 mx-auto bg-white border-white border-2 rounded-2xl">
+          <h2 className="text-3xl text-center font-bold tracking-tight text-gray-900 mb-4">Transporte</h2>
+           <ul role="list" className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-x-20 gap-y-5 text-sm leading-6 text-yellow-700">
+            {transportList.map((transport, index) => (
+              <li key={index} className="flex gap-x-4">
+                <CheckIcon className="h-6 w-5 flex-none text-yellow-500 font-extrabold" aria-hidden="true" />
+                {transport.name}
               </li>
             ))}
           </ul>
