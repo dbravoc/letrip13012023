@@ -19,7 +19,6 @@ const ExperienceView = ({ experienceCard }) => {
     { name: 'Tipo de geografía', description: selectedExperience.experience_geography },
     { name: 'País de la experiencia', description: selectedExperience.experience_country },
     { name: 'Ciudad de la experiencia', description: selectedExperience.experience_location },
-    { name: 'Valor de la experiencia', description: `${selectedExperience.experience_price} USD` },
   ];
 
   return ( //GRID: seccion fotos, seccion informacion + invitacion anfitrion, reserva
