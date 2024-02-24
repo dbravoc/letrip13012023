@@ -70,8 +70,8 @@ const App = () => {
           <>
             <div className="mx-auto w-full sm:px-6 px-8">
               <div className="flex flex-col justify-between flex-wrap"><Inicio /></div>
-              <div className="pt-36 flex-wrap relative z-10"><Carousel experienceCard={experienceCard} /></div>
-              <div className=""><Info experienceCard={experienceCard} /></div>
+              <div className=" flex-wrap pt-44 relative z-10"><Carousel experienceCard={experienceCard} /></div>
+              <div className="pt-24"><Info experienceCard={experienceCard} /></div>
 
             </div>
           </>
