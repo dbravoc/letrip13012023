@@ -40,13 +40,11 @@ const Carousel = ({ experienceCard }) => {
         {imageUrls.length > 0 && (
           <div className="flex flex-col justify-center items-center">
             <div className="flex overflow-hidden gap-x-10">
+            <button onClick={prevImage} className="px-4 py-2  text-black font-bold transition duration-300"> <FontAwesomeIcon icon={faChevronLeft} /> </button>
               {displayedImages.map((url, index) => (
                 <img key={index} src={url} alt={`Imagen ${currentImageIndex + index + 1}`} className="w-1/3 h-full object-cover rounded-2xl" />
               ))}
-            </div>
-            <div className="flex justify-between w-full">
-              <button onClick={prevImage} className="px-4 py-2  text-black font-bold transition duration-300"> <FontAwesomeIcon icon={faChevronLeft} /> </button>
-              <button onClick={nextImage} className="px-4 py-2  text-black font-bold transition duration-300"> <FontAwesomeIcon icon={faChevronRight} /></button>
+            <button onClick={nextImage} className="px-4 py-2  text-black font-bold transition duration-300"> <FontAwesomeIcon icon={faChevronRight} /></button>
             </div>
           </div>
         )}
