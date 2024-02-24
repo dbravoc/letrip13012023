@@ -36,7 +36,7 @@ const Carousel = ({ experienceCard }) => {
       <h2 className="text-3xl text-center font-bold tracking-tight text-gray-900 mb-4">{selectedExperience.experience_name}</h2>
       <div className="carousel-container flex justify-center items-center flex-col">
         {imageUrls.length > 0 && (
-          <div className="flex justify-center items-center">
+          <div className="flex flex-col justify-center items-center">
             <div className="flex overflow-hidden">
               {displayedImages.map((url, index) => (
                 <img key={index} src={url} alt={`Imagen ${currentImageIndex + index + 1}`} className="w-1/3 h-full object-cover" />
