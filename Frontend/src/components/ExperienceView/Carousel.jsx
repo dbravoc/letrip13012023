@@ -1,5 +1,7 @@
+import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const Carousel = ({ experienceCard }) => {
   const { id } = useParams();
@@ -37,14 +39,14 @@ const Carousel = ({ experienceCard }) => {
       <div className="carousel-container flex justify-center items-center flex-col">
         {imageUrls.length > 0 && (
           <div className="flex flex-col justify-center items-center">
-            <div className="flex overflow-hidden">
+            <div className="flex overflow-hidden gap-x-10">
               {displayedImages.map((url, index) => (
-                <img key={index} src={url} alt={`Imagen ${currentImageIndex + index + 1}`} className="w-1/3 h-full object-cover" />
+                <img key={index} src={url} alt={`Imagen ${currentImageIndex + index + 1}`} className="w-1/3 h-full object-cover rounded-2xl" />
               ))}
             </div>
             <div className="flex justify-between w-full">
-              <button onClick={prevImage} className="px-4 py-2 bg-blue-500 text-white font-bold rounded hover:bg-blue-700 transition duration-300">Anterior</button>
-              <button onClick={nextImage} className="px-4 py-2 bg-blue-500 text-white font-bold rounded hover:bg-blue-700 transition duration-300">Siguiente</button>
+              <button onClick={prevImage} className="px-4 py-2  text-black font-bold transition duration-300"> <FontAwesomeIcon icon={faChevronLeft} /> </button>
+              <button onClick={nextImage} className="px-4 py-2  text-black font-bold transition duration-300"> <FontAwesomeIcon icon={faChevronRight} /></button>
             </div>
           </div>
         )}
