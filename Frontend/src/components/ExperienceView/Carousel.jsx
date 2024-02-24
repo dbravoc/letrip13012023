@@ -39,7 +39,7 @@ const Carousel = ({ experienceCard }) => {
           <div className="flex justify-center items-center">
             <div className="flex overflow-hidden">
               {displayedImages.map((url, index) => (
-                <img key={index} src={url} alt={`Imagen ${currentImageIndex + index + 1}`} className="w-full h-48 object-cover" />
+                <img key={index} src={url} alt={`Imagen ${currentImageIndex + index + 1}`} className="w-1/3 h-full object-cover" />
               ))}
             </div>
             <div className="flex justify-between w-full">
