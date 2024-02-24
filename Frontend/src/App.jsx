@@ -16,7 +16,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import BasicsCreate from './components/Form/BasicsCreate';
 import Footer from './components/Footer'
 import ExperienceForm from './pages/ExperienceForm copy 2'
-import ExperienceView from './components/ExperienceView/ExperienceView';
+import Info from './components/ExperienceView/Info';
 import Carousel from './components/ExperienceView/Carousel';
 
 
@@ -70,7 +70,9 @@ const App = () => {
           <>
             <div className="mx-auto w-full sm:px-6 px-8">
               <div className="flex flex-col justify-between flex-wrap"><Inicio /></div>
-              <div className="pt-36 px-12 flex flex-col justify-between flex-wrap relative z-10"><ExperienceView experienceCard={experienceCard} /></div>
+              <div className=""><Carousel experienceCard={experienceCard} /></div>
+              <div className=""><Info experienceCard={experienceCard} /></div>
+
             </div>
           </>
         } /> 
