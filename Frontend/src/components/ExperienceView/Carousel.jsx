@@ -35,7 +35,7 @@ const Carousel = ({ experienceCard }) => {
 
   return (
     <>
-    <h2 className="text-3xl text-center font-bold tracking-tight text-gray-900 mb-4">{selectedExperience.experience_name}</h2>
+    <h2 className="text-3xl text-left font-bold tracking-tight text-gray-900 mb-4">{selectedExperience.experience_name}</h2>
 
       <div className="carousel-container flex justify-center items-center flex-col">
         {imageUrls.length > 0 && (
