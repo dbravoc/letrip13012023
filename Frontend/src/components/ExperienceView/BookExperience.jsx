@@ -26,7 +26,7 @@ const BookExperience = ({ experienceCard }) => {
       setTotalPrice(players * selectedExperience.experience_price);
     }
     const loadAvailableDates = async () => {
-      const { data, error } = await apiURL
+      const { data, error } = await apiUrl
         .from('available_experiences')
         .select('available_date_start, available_date_end')
         .eq('experience_uuid', id); // Asegúrate de que este es el nombre correcto de tu columna de UUID
