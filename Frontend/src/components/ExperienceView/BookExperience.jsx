@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMoneyBills } from '@fortawesome/free-solid-svg-icons';
 
-const TotalPrice = ({ experienceCard }) => {
+const BookExperience = ({ experienceCard }) => {
   const [selectedPlayers, setSelectedPlayers] = useState(1);
   const { id } = useParams();
   const selectedExperience = experienceCard.find(e => e.experience_uuid === id);
@@ -20,7 +20,7 @@ const TotalPrice = ({ experienceCard }) => {
 
   useEffect(() => {
     if (selectedExperience) {
-      setTotalPrice(selectedPlayers * selectedExperience.experience_price);
+      setTotalPrice(players * selectedExperience.experience_price);
     }
   }, [selectedPlayers, selectedExperience]);
 
@@ -76,34 +76,6 @@ const TotalPrice = ({ experienceCard }) => {
       <h3 className="text-2xl font-bold mb-10">Número de personas</h3>
       {selectedExperience && (
         <>
-          <div className="mb-4">
-            <input
-              type="number"
-              placeholder="¿Cuántos?"
-              id="players"
-              name="players"
-              min={experienceCard.minimum_group_size}
-              max={experienceCard.max_group_size}
-              value={selectedPlayers}
-              onChange={handlePlayerChange}
-              className="block w-1/2 font-semibold text-xl outline-none border-b-2 border-r-2 border-b-letrip border-r-letrip py-2"
-            />
-          </div>
-          <div className='text-xs text-gray-500 mb-4'>
-            <p>Mínimo permitido: <span className='font-semibold'>{experienceCard.minimum_group_size}</span> personas</p>
-            <p>Máximo permitido: <span className='font-semibold'>{experienceCard.max_group_size}</span> personas</p>
-          </div>
-          <div className='pt-10'>
-          <h3 className="text-2xl font-bold  mb-10">Valor total de la experiencia</h3>
-            <p className="block w-1/2 font-semibold text-sm outline-none border-b-2 border-r-2 border-b-letrip border-r-letrip py-2"
->
-                <span className="font-semibold text-2xl">
-                <FontAwesomeIcon className='text-green-700' icon={faMoneyBills} />
-                {totalPrice.toLocaleString('de-DE')}
-                    </span> USD en total
-            </p>
-          </div>
-
           <div className='pt-10'>
           <h3 className="text-2xl font-bold  mb-6">Reservar experiencia</h3>
             <ul className='text-sm text-gray-500 py-4'>
@@ -169,6 +141,54 @@ const TotalPrice = ({ experienceCard }) => {
   className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
 />
 
+
+
+
+
+<label className='text-gray-700 text-sm' htmlFor="experience_package" >Elige la fecha de tu experiencia</label>
+<input
+  id="experience_package"
+  name="experience_package"
+  type="text"
+  value={formData.customer_address}
+  onChange={handleChange}
+  className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
+/>
+
+<label className='text-gray-700 text-sm' htmlFor="experience_package" >Número de personas</label>
+<input
+  id="players"
+  name="players"
+  type="number"
+  min={experienceCard.minimum_group_size}
+  max={experienceCard.max_group_size}
+  value={formData.players}
+  onChange={handleChange}
+  className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
+/>
+
+<label className='text-gray-700 text-sm' htmlFor="experience_package" >Valor total</label>
+<input
+  id="players"
+  name="players"
+  type="number"
+  min={experienceCard.minimum_group_size}
+  max={experienceCard.max_group_size}
+  value={formData.players}
+  onChange={handleChange}
+  className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
+/>
+
+<div className='pt-10'>
+          <h3 className="text-2xl font-bold  mb-10">Valor total de la experiencia</h3>
+            <p className="block w-1/2 font-semibold text-sm outline-none border-b-2 border-r-2 border-b-letrip border-r-letrip py-2">
+                <span className="font-semibold text-xl">
+                <FontAwesomeIcon className='text-green-700' icon={faMoneyBills} />
+                {totalPrice.toLocaleString('de-DE')}
+                    </span> USD en total
+            </p>
+</div>
+
 {/* Aceptación de Términos y Condiciones */}
 <div className="mt-4 flex ">
   <input
@@ -197,4 +217,4 @@ const TotalPrice = ({ experienceCard }) => {
   );
 };
 
-export default TotalPrice;
+export default BookExperience;

@@ -18,6 +18,7 @@ import Footer from './components/Footer'
 import ExperienceForm from './pages/ExperienceForm copy 2'
 import Info from './components/ExperienceView/Info';
 import Carousel from './components/ExperienceView/Carousel';
+import BookExperience from './components/ExperienceView/Carousel';
 
 
 
@@ -72,6 +73,8 @@ const App = () => {
               <div className="flex flex-col justify-between flex-wrap"><Inicio /></div>
               <div className=" flex-wrap pt-44 relative z-10"><Carousel experienceCard={experienceCard} /></div>
               <div className="pt-24 sm:px-32 "><Info experienceCard={experienceCard} /></div>
+              <div className="pt-24 sm:px-32 "><BookExperience experienceCard={experienceCard} /></div>
+
 
             </div>
           </>
