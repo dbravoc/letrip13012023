@@ -202,7 +202,7 @@ const ExperienceView = ({ experienceCard }) => {
           <h2 className="bg-letrip rounded-xl px-4 py-2 text-xl text-left font-bold tracking-tight text-gray-900 mb-4">Valor de la experiencia</h2>
           {selectedExperience ? (
         <div className="mb-4">
-          <p className='text-xl'> <FontAwesomeIcon className='text-green-700' icon={faMoneyBills} /> US$ <span className='text-xl font-semibold'> {selectedExperience.experience_price.toLocaleString('de-DE')} </span>por persona</p>
+          <p className='text-sm'> <FontAwesomeIcon className='text-green-700' icon={faMoneyBills} /> US$ <span className='text-xl font-semibold'> {selectedExperience.experience_price.toLocaleString('de-DE')} </span>por persona</p>
         </div>
       ) : (
         <div>Precio no disponible</div>
