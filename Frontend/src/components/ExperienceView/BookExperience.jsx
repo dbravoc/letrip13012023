@@ -32,7 +32,7 @@ const BookExperience = ({ experienceCard }) => {
         
         // Ajuste para definir el valor para cada opción
         const formattedDates = data.map((item) => ({
-          id: item.id, // Suponiendo que cada fecha tiene un identificador único
+          id: item.experience_uuid, // Suponiendo que cada fecha tiene un identificador único
           label: `${item.available_date_start} al ${item.available_date_end}`,
           value: `${item.available_date_start}_${item.available_date_end}`, // Concatenación de fechas como valor
         }));
