@@ -90,7 +90,7 @@ const ExperienceView = ({ experienceCard }) => {
 
 
     <div className="flex flex-col p-10 bg-white border-white border-2 rounded-2xl">
-            <h2 className="bg-letrip text-xl text-left font-bold tracking-tight text-gray-900 mb-4">Características de la experiencia</h2>
+            <h2 className="bg-letrip rounded-xl px-4 py-2  text-xl text-left font-bold tracking-tight text-gray-900 mb-4">Características de la experiencia</h2>
             <dl className="mt-0 grid grid-cols-1 sm:grid-cols-2 gap-y-2 gap-x-8">
               {features.map((feature, index) => (
                 <div key={index} className="border-b border-gray-400 pt-2">
@@ -102,12 +102,12 @@ const ExperienceView = ({ experienceCard }) => {
     </div>
 
     <div className="flex flex-col p-10  bg-white border-white border-2 rounded-2xl">
-          <h2 className="text-xl text-left font-bold tracking-tight text-gray-900 mb-4">¿Qué incluye la experiencia?</h2>
+          <h2 className="bg-letrip rounded-xl px-4 py-2 text-xl text-left font-bold tracking-tight text-gray-900 mb-4">¿Qué incluye la experiencia?</h2>
           <p className="text-sm italic py-5 leading-6 text-gray-900">{selectedExperience.experience_included_description}</p>
     </div>
 
     <div className="flex flex-col p-10  bg-white border-white border-2 rounded-2xl">
-          <h2 className="text-xl text-left font-bold tracking-tight text-gray-900 mb-4">Lo que SI incluye</h2>
+          <h2 className="bg-letrip rounded-xl px-4 py-2 text-xl text-left font-bold tracking-tight text-gray-900 mb-4">Lo que SI incluye</h2>
            <ul role="list" className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-5 text-sm leading-6 text-black">
             {includedList.map((included, index) => (
               <li key={index} className="flex gap-x-4">
@@ -120,7 +120,7 @@ const ExperienceView = ({ experienceCard }) => {
     </div>
 
     <div className="flex flex-col  p-10  bg-white border-white border-2 rounded-2xl">
-          <h2 className="text-xl text-left font-bold tracking-tight text-gray-900 mb-4">Lo que NO incluye</h2>
+          <h2 className="bg-letrip rounded-xl px-4 py-2 text-xl text-left font-bold tracking-tight text-gray-900 mb-4">Lo que NO incluye</h2>
            <ul role="list" className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-5 text-sm leading-6 text-black">
             {notIncludedList.map((notincluded, index) => (
               <li key={index} className="flex gap-x-4">
@@ -133,7 +133,7 @@ const ExperienceView = ({ experienceCard }) => {
     </div>
 
     <div className="flex flex-col  p-10  bg-white border-white border-2 rounded-2xl">
-          <h2 className="text-xl text-left font-bold tracking-tight text-gray-900 mb-4">Restricciones</h2>
+          <h2 className="bg-letrip rounded-xl px-4 py-2 text-xl text-left font-bold tracking-tight text-gray-900 mb-4">Restricciones</h2>
           <p className="text-sm italic py-1 leading-6 text-gray-900">{selectedExperience.target_audience_restrictions}</p>
           <p className="text-sm italic py-1 leading-6 text-gray-900"><span>Edad mínima: </span>{selectedExperience.minimum_age}</p>
           <p className="text-sm italic py-1 leading-6 text-gray-900"><span>Mínimo de personas: </span>{selectedExperience.minimum_group_size}</p>
@@ -141,14 +141,14 @@ const ExperienceView = ({ experienceCard }) => {
     </div>
 
     <div className="flex flex-col  p-10  bg-white border-white border-2 rounded-2xl">
-          <h2 className="text-xl text-left font-bold tracking-tight text-gray-900 mb-4">Equipamiento</h2>
+          <h2 className="bg-letrip rounded-xl px-4 py-2 text-xl text-left font-bold tracking-tight text-gray-900 mb-4">Equipamiento</h2>
           <p className="text-sm italic py-1 leading-6 text-gray-900">{selectedExperience.equipment_required}</p>
     
     </div>
 
 
     <div className="flex flex-col  p-10  bg-white border-white border-2 rounded-2xl">
-          <h2 className="text-xl text-left font-bold tracking-tight text-gray-900 mb-4">Alojamiento</h2>
+          <h2 className="bg-letrip rounded-xl px-4 py-2 text-xl text-left font-bold tracking-tight text-gray-900 mb-4">Alojamiento</h2>
           {selectedExperience.experience_accommodation}
            <ul role="list" className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-5 text-sm leading-6 text-black">
             {accommodationList.map((accommodation, index) => (
@@ -162,7 +162,7 @@ const ExperienceView = ({ experienceCard }) => {
     </div>
 
     <div className="flex flex-col  p-10  bg-white border-white border-2 rounded-2xl">
-          <h2 className="text-xl text-left font-bold tracking-tight text-gray-900 mb-4">Video</h2>
+          <h2 className="bg-letrip rounded-xl px-4 py-2 text-xl text-left font-bold tracking-tight text-gray-900 mb-4">Video</h2>
            <ul role="list" className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-5 text-sm leading-6 text-black">
             {videoList.map((video, index) => (
               <li key={index} className="flex gap-x-4">
@@ -174,7 +174,7 @@ const ExperienceView = ({ experienceCard }) => {
     </div>
 
     <div className="flex flex-col  p-10  bg-white border-white border-2 rounded-2xl">
-          <h2 className="text-xl text-left font-bold tracking-tight text-gray-900 mb-4">Transporte</h2>
+          <h2 className="bg-letrip rounded-xl px-4 py-2 text-xl text-left font-bold tracking-tight text-gray-900 mb-4">Transporte</h2>
            <ul role="list" className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-5 text-sm leading-6 text-black">
             {transportList.map((transport, index) => (
               <li key={index} className="flex gap-x-4">
@@ -187,7 +187,7 @@ const ExperienceView = ({ experienceCard }) => {
     </div>
 
     <div className="flex flex-col  p-10  bg-white border-white border-2 rounded-2xl">
-          <h2 className="text-xl text-left font-bold tracking-tight text-gray-900 mb-4">Seguridad</h2>
+          <h2 className="bg-letrip rounded-xl px-4 py-2 text-xl text-left font-bold tracking-tight text-gray-900 mb-4">Seguridad</h2>
            <ul role="list" className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-5 text-sm leading-6 text-black">
             {insuranceList.map((insurance, index) => (
               <li key={index} className="flex gap-x-4">
@@ -199,7 +199,7 @@ const ExperienceView = ({ experienceCard }) => {
     </div>
 
     <div className="flex flex-col  p-10  bg-white border-white border-2 rounded-2xl">
-          <h2 className="text-xl text-left font-bold tracking-tight text-gray-900 mb-4">Valor de la experiencia</h2>
+          <h2 className="bg-letrip rounded-xl px-4 py-2 text-xl text-left font-bold tracking-tight text-gray-900 mb-4">Valor de la experiencia</h2>
           {selectedExperience ? (
         <div className="mb-4">
           <p className='text-xl'> <FontAwesomeIcon className='text-green-700' icon={faMoneyBills} /> US$ <span className='text-xl font-semibold'> {selectedExperience.experience_price.toLocaleString('de-DE')} </span>por persona</p>
