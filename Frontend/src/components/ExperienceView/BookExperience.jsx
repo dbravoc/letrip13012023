@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMoneyBills } from '@fortawesome/free-solid-svg-icons';
 
 const BookExperience = ({ experienceCard }) => {
-  const [selectedPlayers, setSelectedPlayers] = useState(1);
+  const [players, setPlayers] = useState(1);
   const { id } = useParams();
   const selectedExperience = experienceCard.find(e => e.experience_uuid === id);
   const [totalPrice, setTotalPrice] = useState(0);
@@ -22,7 +22,7 @@ const BookExperience = ({ experienceCard }) => {
     if (selectedExperience) {
       setTotalPrice(players * selectedExperience.experience_price);
     }
-  }, [selectedPlayers, selectedExperience]);
+  }, [players, selectedExperience]);
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -34,7 +34,7 @@ const BookExperience = ({ experienceCard }) => {
 
   const handlePlayerChange = (e) => {
     const numPlayers = parseInt(e.target.value, 10);
-    setSelectedPlayers(numPlayers);
+    setPlayers(numPlayers);
   };
 
   const handleSubmit = async (e) => {
@@ -73,7 +73,6 @@ const BookExperience = ({ experienceCard }) => {
 
   return (
     <div className="mx-0 sm:px-6 mb-10 tracking-tight text-gray-900">
-      <h3 className="text-2xl font-bold mb-10">Número de personas</h3>
       {selectedExperience && (
         <>
           <div className='pt-10'>
