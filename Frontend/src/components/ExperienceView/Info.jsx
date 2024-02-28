@@ -1,7 +1,7 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
-import { faHeart, faMoneyBills } from '@fortawesome/free-solid-svg-icons';
-import { CheckIcon } from '@heroicons/react/24/outline';
+import { faMoneyBills } from '@fortawesome/free-solid-svg-icons';
+import { CheckIcon, XMarkIcon } from '@heroicons/react/24/outline';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 
@@ -124,7 +124,7 @@ const ExperienceView = ({ experienceCard }) => {
            <ul role="list" className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-5 text-sm leading-6 text-black">
             {notIncludedList.map((notincluded, index) => (
               <li key={index} className="flex gap-x-4">
-                <CheckIcon className="h-6 w-5 flex-none text-yellow-500 font-extrabold" aria-hidden="true" />
+                <XMarkIcon className="h-6 w-5 flex-none text-yellow-500 font-extrabold" aria-hidden="true" />
                 {notincluded.name}
               </li>
             ))}
@@ -159,18 +159,6 @@ const ExperienceView = ({ experienceCard }) => {
             ))}
           </ul>
 
-    </div>
-
-    <div className="flex flex-col  p-10  bg-white border-white border-2 rounded-2xl">
-          <h2 className="bg-letrip rounded-xl px-4 py-2 text-xl text-left font-bold tracking-tight text-gray-900 mb-4">Video</h2>
-           <ul role="list" className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-5 text-sm leading-6 text-black">
-            {videoList.map((video, index) => (
-              <li key={index} className="flex gap-x-4">
-                <CheckIcon className="h-6 w-5 flex-none text-yellow-500 font-extrabold" aria-hidden="true" />
-                {video.name}
-              </li>
-            ))}
-          </ul>
     </div>
 
     <div className="flex flex-col  p-10  bg-white border-white border-2 rounded-2xl">
