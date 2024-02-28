@@ -2,12 +2,16 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMoneyBills } from '@fortawesome/free-solid-svg-icons';
+import { supabase } from './supabaseClient'; // Asume que tienes un archivo supabaseClient.js con tu cliente Supabase configurado
+
 
 const BookExperience = ({ experienceCard }) => {
   const [players, setPlayers] = useState(1);
   const { id } = useParams();
   const selectedExperience = experienceCard.find(e => e.experience_uuid === id);
   const [totalPrice, setTotalPrice] = useState(0);
+  const [availableDates, setAvailableDates] = useState([]);
+
 
   const [formData, setFormData] = useState({
     customer_name: '',
@@ -23,7 +27,27 @@ const BookExperience = ({ experienceCard }) => {
     if (selectedExperience) {
       setTotalPrice(players * selectedExperience.experience_price);
     }
-  }, [players, selectedExperience]);
+    const loadAvailableDates = async () => {
+      const { data, error } = await supabase
+        .from('available_experiences')
+        .select('available_date_start, available_date_end')
+        .eq('experience_uuid', id); // Asegúrate de que este es el nombre correcto de tu columna de UUID
+
+      if (error) {
+        console.log('Error fetching available dates', error);
+      } else {
+        const formattedDates = data.map((item, index) => ({
+          id: index, // Suponiendo que no hay un ID único conveniente, usamos el índice. Mejor sería usar un ID único si está disponible.
+          label: `${item.available_date_start} al ${item.available_date_end}`,
+          value: `${item.available_date_start}_${item.available_date_end}`, // Necesitarás decidir cómo manejar este valor
+        }));
+        setAvailableDates(formattedDates);
+      }
+    };
+
+    loadAvailableDates();
+  }, [id, players, selectedExperience]);
+
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -132,7 +156,7 @@ const BookExperience = ({ experienceCard }) => {
               onChange={handleChange}
               className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
             />
-            
+
             <label className='text-gray-700 text-sm' htmlFor="experience_package">Elige la fecha de tu experiencia</label>
             <select
               id="experience_package"
