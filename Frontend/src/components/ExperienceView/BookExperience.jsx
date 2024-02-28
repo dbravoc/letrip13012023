@@ -9,7 +9,7 @@ const BookExperience = ({ experienceCard }) => {
   const selectedExperience = experienceCard.find(e => e.experience_uuid === id);
   const [totalPrice, setTotalPrice] = useState(0);
   const [availableDates, setAvailableDates] = useState([]);
-  const apiUrl = 'https://letrip13012023-backend-lawitec.vercel.app/available_exeperiences'
+  const apiUrl = 'https://letrip13012023-backend-lawitec.vercel.app/available_experiences';
 
   const [formData, setFormData] = useState({
     customer_name: '',
