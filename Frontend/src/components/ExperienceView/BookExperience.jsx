@@ -25,9 +25,9 @@ const BookExperience = ({ experienceCard }) => {
     const loadAvailableDates = async () => {
       try {
         // La URL base para las solicitudes API
-        const apiUrl = 'https://letrip13012023-backend-lawitec.vercel.app/available_experiences';
+        const apiUrl = 'https://letrip13012023-backend-lawitec.vercel.app';
         // Construye la URL con el parámetro de consulta para el UUID
-        const urlWithParams = `${apiUrl}?experience_uuid=${id}`;
+        const urlWithParams = `${apiUrl}/available_experiences?experience_uuid=${id}`;
         
         const response = await fetch(urlWithParams); // Usa la URL con el parámetro
         if (!response.ok) {
