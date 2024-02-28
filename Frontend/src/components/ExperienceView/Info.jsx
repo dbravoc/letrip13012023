@@ -67,7 +67,7 @@ const ExperienceView = ({ experienceCard }) => {
     <>
 <h2 className="text-3xl text-center font-bold tracking-tight text-gray-900 mb-4">{selectedExperience.experience_name}</h2>
 
-  <div className='grid grid-cols-1 sm:grid-cols-4 gap-10'>
+  <div className='grid grid-cols-1 sm:grid-cols-3 gap-10'>
     <div className="flex flex-col p-10 mx-auto bg-white border-white border-2 rounded-2xl">
              
             <div className="flex py-5 items-center min-w-0 gap-x-4">
