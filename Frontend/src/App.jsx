@@ -68,10 +68,10 @@ const App = () => {
 
             <Route path="/pruebas2/:id" element={
           <>
-            <div className="mx-auto w-full sm:px-60 px-8">
+            <div className="mx-auto w-full px-8">
               <div className="flex flex-col justify-between flex-wrap"><Inicio /></div>
               <div className=" flex-wrap pt-44 relative z-10"><Carousel experienceCard={experienceCard} /></div>
-              <div className="pt-24"><Info experienceCard={experienceCard} /></div>
+              <div className="pt-24 sm:px-60 "><Info experienceCard={experienceCard} /></div>
 
             </div>
           </>
