@@ -67,7 +67,7 @@ const ExperienceView = ({ experienceCard }) => {
     <>
 <div className="grid grid-cols-2 p-10 mx-auto bg-white border-white border-2 rounded-2xl">
         
-        <div className="flex col-span-1 py-5 items-center gap-x-4">
+        <div className="flex col-span-1/4 py-5 items-center gap-x-4">
           <div className="flex flex-col items-center min-w-0 gap-x-4">
             <div className="h-24 w-24 flex-none rounded-full overflow-hidden bg-gray-50">
               <img src={selectedExperience.instructor_profile_img} alt="" className='w-full h-full object-cover' />
@@ -80,7 +80,7 @@ const ExperienceView = ({ experienceCard }) => {
           </div>
         </div>
         
-        <div className='col-span-3'>
+        <div className='col-span-3/4'>
           <p className=" text-sm italic py-5 leading-6 text-gray-900">{selectedExperience.experience_instructor_message}</p>
         </div>
 
