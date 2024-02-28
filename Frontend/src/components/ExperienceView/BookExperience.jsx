@@ -22,53 +22,45 @@ const BookExperience = ({ experienceCard }) => {
 
   useEffect(() => {
     const loadAvailableDates = async () => {
+      const apiUrl = `https://letrip13012023-backend-lawitec.vercel.app/available_experiences?experience_uuid=${id}`;
       try {
-        // La URL base para las solicitudes API
-        const apiUrl = 'https://letrip13012023-backend-lawitec.vercel.app/available_experiences';
- 
-        const response = await fetch(apiUrl); // Usa la URL con el parámetro
+        const response = await fetch(apiUrl);
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
         const data = await response.json();
         
-        // Corrección en cómo definimos el valor para cada opción
-        const formattedDates = data.map((item, index) => ({
-          id: index, // Usar index como id si no hay un identificador único
+        // Ajuste para definir el valor para cada opción
+        const formattedDates = data.map((item) => ({
+          id: item.id, // Suponiendo que cada fecha tiene un identificador único
           label: `${item.available_date_start} al ${item.available_date_end}`,
-          value: `${item.available_date_start}_${item.available_date_end}`,
+          value: `${item.available_date_start}_${item.available_date_end}`, // Concatenación de fechas como valor
         }));
         
         setAvailableDates(formattedDates);
       } catch (error) {
-        console.error("Error fetching available dates:", error.message);
+        console.error("Error fetching available dates:", error);
       }
     };
   
-    if (id) {
-      loadAvailableDates();
-    }
-  }, [id]);
-
+    loadAvailableDates();
+  }, [id]); // Dependencia [id] para reaccionar a cambios en el ID seleccionado
 
   const handleChange = (e) => {
-    const { name, value, type, checked } = e.target;
+    const { name, value } = e.target;
     setFormData(prevData => ({
       ...prevData,
-      [name]: type === 'checkbox' ? checked : value,
+      [name]: value,
     }));
   };
 
   const handlePlayerChange = (e) => {
     const numPlayers = parseInt(e.target.value, 10);
-    if (!isNaN(numPlayers)) {
-      setPlayers(numPlayers);
-    }
+    setPlayers(numPlayers);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
     const apiUrl = 'https://letrip13012023-backend-lawitec.vercel.app/sold_experiences';
 
     try {
@@ -101,7 +93,8 @@ const BookExperience = ({ experienceCard }) => {
   return (
     <div className="mx-0 sm:px-6 mb-10 tracking-tight text-gray-900">
       {selectedExperience ? (
-        <div className='pt-10'>
+        <>
+          <div className='pt-10'>
           <h3 className="text-2xl font-bold mb-6">Reservar experiencia</h3>
           <form onSubmit={handleSubmit}>
             {/* Nombre del Cliente */}
@@ -159,7 +152,7 @@ const BookExperience = ({ experienceCard }) => {
               className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
             />
 
-            <label className='text-gray-700 text-sm' htmlFor="experience_package">Elige la fecha de tu experiencia</label>
+<label className='text-gray-700 text-sm' htmlFor="experience_package">Elige la fecha de tu experiencia</label>
             <select
               id="experience_package"
               name="experience_package"
@@ -169,7 +162,7 @@ const BookExperience = ({ experienceCard }) => {
             >
               <option value="">Selecciona una fecha</option>
               {availableDates.map((dateOption) => (
-                <option key={dateOption.id} value={dateOption.date}>
+                <option key={dateOption.id} value={dateOption.value}>
                   {dateOption.label}
                 </option>
               ))}
@@ -218,7 +211,8 @@ const BookExperience = ({ experienceCard }) => {
               </span>
             </button>
           </form>
-        </div>
+          </div>
+        </>
       ) : (
         <div>Precio no disponible</div>
       )}
