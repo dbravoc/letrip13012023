@@ -18,7 +18,7 @@ import Footer from './components/Footer'
 import ExperienceForm from './pages/ExperienceForm copy 2'
 import Info from './components/ExperienceView/Info';
 import Carousel from './components/ExperienceView/Carousel';
-import BookExperience from './components/ExperienceView/Carousel';
+import BookExperience from './components/ExperienceView/BookExperience';
 
 
 
