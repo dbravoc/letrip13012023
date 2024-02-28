@@ -78,8 +78,9 @@ const ExperienceView = ({ experienceCard }) => {
                   <p className="text-sm text-center leading-6 text-gray-900">{selectedExperience.experience_instructor_type}</p>
             </div>
           </div>
-          <p className="grid-span-3 text-sm italic py-5 leading-6 text-gray-900">{selectedExperience.experience_instructor_message}</p>
-
+          <div className='grid-span-3'>
+          <p className=" text-sm italic py-5 leading-6 text-gray-900">{selectedExperience.experience_instructor_message}</p>
+          </div>
       </div>
 
 </div>
