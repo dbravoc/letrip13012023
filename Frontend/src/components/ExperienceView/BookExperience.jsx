@@ -2,8 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMoneyBills } from '@fortawesome/free-solid-svg-icons';
-import { supabase } from './supabaseClient'; // Asume que tienes un archivo supabaseClient.js con tu cliente Supabase configurado
-
 
 const BookExperience = ({ experienceCard }) => {
   const [players, setPlayers] = useState(1);
@@ -11,7 +9,7 @@ const BookExperience = ({ experienceCard }) => {
   const selectedExperience = experienceCard.find(e => e.experience_uuid === id);
   const [totalPrice, setTotalPrice] = useState(0);
   const [availableDates, setAvailableDates] = useState([]);
-
+  const apiUrl = 'https://letrip13012023-backend-lawitec.vercel.app/available_exeperiences'
 
   const [formData, setFormData] = useState({
     customer_name: '',
@@ -28,7 +26,7 @@ const BookExperience = ({ experienceCard }) => {
       setTotalPrice(players * selectedExperience.experience_price);
     }
     const loadAvailableDates = async () => {
-      const { data, error } = await supabase
+      const { data, error } = await apiURL
         .from('available_experiences')
         .select('available_date_start, available_date_end')
         .eq('experience_uuid', id); // Asegúrate de que este es el nombre correcto de tu columna de UUID
