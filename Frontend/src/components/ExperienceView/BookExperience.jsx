@@ -22,29 +22,29 @@ const BookExperience = ({ experienceCard }) => {
   });
 
   useEffect(() => {
-    if (selectedExperience) {
-      setTotalPrice(players * selectedExperience.experience_price);
-    }
     const loadAvailableDates = async () => {
-      const { data, error } = await apiUrl
-        .from('available_experiences')
-        .select('available_date_start, available_date_end')
-        .eq('experience_uuid', id); // Asegúrate de que este es el nombre correcto de tu columna de UUID
-
-      if (error) {
-        console.log('Error fetching available dates', error);
-      } else {
+      try {
+        const response = await fetch(`${apiUrl}/?experience_uuid=${id}`); // Asegúrate de ajustar la URL según tu endpoint específico
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const data = await response.json();
         const formattedDates = data.map((item, index) => ({
-          id: index, // Suponiendo que no hay un ID único conveniente, usamos el índice. Mejor sería usar un ID único si está disponible.
+          id: index, // Es mejor si puedes usar un identificador único aquí
           label: `${item.available_date_start} al ${item.available_date_end}`,
-          value: `${item.available_date_start}_${item.available_date_end}`, // Necesitarás decidir cómo manejar este valor
+          value: `${item.available_date_start}_${item.available_date_end}`, // Decidir cómo manejar este valor
         }));
         setAvailableDates(formattedDates);
+      } catch (error) {
+        console.error("Error fetching available dates:", error);
       }
     };
-
-    loadAvailableDates();
-  }, [id, players, selectedExperience]);
+  
+    if (id) {
+      loadAvailableDates();
+    }
+  }, [id]); // La dependencia [id] asegura que este efecto se ejecute cada vez que el ID cambie
+  
 
 
   const handleChange = (e) => {
