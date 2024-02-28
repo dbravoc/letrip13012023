@@ -24,27 +24,34 @@ const BookExperience = ({ experienceCard }) => {
   useEffect(() => {
     const loadAvailableDates = async () => {
       try {
-        const response = await fetch(`${apiUrl}/?experience_uuid=${id}`); // Asegúrate de ajustar la URL según tu endpoint específico
+        // La URL base para las solicitudes API
+        const apiUrl = 'https://letrip13012023-backend-lawitec.vercel.app/available_experiences';
+        // Construye la URL con el parámetro de consulta para el UUID
+        const urlWithParams = `${apiUrl}?experience_uuid=${id}`;
+        
+        const response = await fetch(urlWithParams); // Usa la URL con el parámetro
         if (!response.ok) {
-          throw new Error('Network response was not ok');
+          throw new Error(`HTTP error! status: ${response.status}`);
         }
         const data = await response.json();
+        
+        // Corrección en cómo definimos el valor para cada opción
         const formattedDates = data.map((item, index) => ({
-          id: index, // Es mejor si puedes usar un identificador único aquí
+          id: index, // Usar index como id si no hay un identificador único
           label: `${item.available_date_start} al ${item.available_date_end}`,
-          value: `${item.available_date_start}_${item.available_date_end}`, // Decidir cómo manejar este valor
+          value: `${item.available_date_start}_${item.available_date_end}`,
         }));
+        
         setAvailableDates(formattedDates);
       } catch (error) {
-        console.error("Error fetching available dates:", error);
+        console.error("Error fetching available dates:", error.message);
       }
     };
   
     if (id) {
       loadAvailableDates();
     }
-  }, [id]); // La dependencia [id] asegura que este efecto se ejecute cada vez que el ID cambie
-  
+  }, [id]);
 
 
   const handleChange = (e) => {
