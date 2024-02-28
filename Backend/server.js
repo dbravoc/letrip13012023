@@ -342,19 +342,21 @@ app.post('/sold_experiences', async (req, res) => {
 
 app.get('/available_experiences', async (req, res) => {
     const { experience_uuid } = req.query; // Asume que pasas el UUID como parámetro de consulta
-    // Lógica para consultar la base de datos y obtener las fechas disponibles basadas en experience_uuid
-    // Por ejemplo, esto podría ser una consulta a tu base de datos Supabase
+  
     try {
       const { data, error } = await supabase
         .from('available_experiences')
         .select('available_date_start, available_date_end')
         .eq('experience_uuid', experience_uuid);
   
-      if (error) throw error;
+      if (error) {
+        console.error('Error:', error);
+        return res.status(400).json({ error: error.message });
+      }
   
       res.json(data);
     } catch (error) {
-      console.error('Error fetching available dates:', error);
+      console.error('Server Error:', error);
       res.status(500).send('Server Error');
     }
   });
