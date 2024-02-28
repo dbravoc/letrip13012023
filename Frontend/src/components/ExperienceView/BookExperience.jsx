@@ -24,11 +24,9 @@ const BookExperience = ({ experienceCard }) => {
     const loadAvailableDates = async () => {
       try {
         // La URL base para las solicitudes API
-        const apiUrl = 'https://letrip13012023-backend-lawitec.vercel.app';
-        // Construye la URL con el parámetro de consulta para el UUID
-        const urlWithParams = `${apiUrl}/available_experiences?experience_uuid=${id}`;
-        
-        const response = await fetch(urlWithParams); // Usa la URL con el parámetro
+        const apiUrl = 'https://letrip13012023-backend-lawitec.vercel.app/available_experiences';
+ 
+        const response = await fetch(apiUrl); // Usa la URL con el parámetro
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
