@@ -80,7 +80,7 @@ const ExperienceView = ({ experienceCard }) => {
           </div>
         </div>
         
-        <div className='col-span-4'>
+        <div className='col-span-3'>
           <p className=" text-sm italic py-5 leading-6 text-gray-900">{selectedExperience.experience_instructor_message}</p>
         </div>
 
