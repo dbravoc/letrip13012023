@@ -78,15 +78,76 @@ const BookExperience = ({ experienceCard }) => {
         <div className='pt-10'>
           <h3 className="text-2xl font-bold mb-6">Reservar experiencia</h3>
           <form onSubmit={handleSubmit}>
-            <label className='text-gray-700 text-sm' htmlFor="experience_package">Elige la fecha de tu experiencia</label>
+            {/* Nombre del Cliente */}
+            <label className='text-gray-700 text-sm' htmlFor="customer_name">Nombres y Apellidos:</label>
             <input
-              id="experience_package"
-              name="experience_package"
-              type="date" // Cambiado a type="date" para seleccionar fecha
-              value={formData.experience_package}
+              id="customer_name"
+              name="customer_name"
+              type="text"
+              value={formData.customer_name}
               onChange={handleChange}
               className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
             />
+
+            {/* Identificación del Cliente */}
+            <label className='text-gray-700 text-sm' htmlFor="customer_identification">Identificación:</label>
+            <input
+              id="customer_identification"
+              name="customer_identification"
+              type="text"
+              value={formData.customer_identification}
+              onChange={handleChange}
+              className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
+            />
+
+            {/* Teléfono del Cliente */}
+            <label className='text-gray-700 text-sm' htmlFor="customer_phone">Teléfono:</label>
+            <input
+              id="customer_phone"
+              name="customer_phone"
+              type="tel"
+              value={formData.customer_phone}
+              onChange={handleChange}
+              className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
+            />
+
+            {/* Correo Electrónico del Cliente */}
+            <label className='text-gray-700 text-sm' htmlFor="customer_email">Correo Electrónico:</label>
+            <input
+              id="customer_email"
+              name="customer_email"
+              type="email"
+              value={formData.customer_email}
+              onChange={handleChange}
+              className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
+            />
+
+            {/* Dirección del Cliente */}
+            <label className='text-gray-700 text-sm' htmlFor="customer_address">Dirección completa, incluyendo Ciudad y País:</label>
+            <input
+              id="customer_address"
+              name="customer_address"
+              type="text"
+              value={formData.customer_address}
+              onChange={handleChange}
+              className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
+            />
+            
+            <label className='text-gray-700 text-sm' htmlFor="experience_package">Elige la fecha de tu experiencia</label>
+            <select
+              id="experience_package"
+              name="experience_package"
+              value={formData.experience_package}
+              onChange={handleChange}
+              className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
+            >
+              <option value="">Selecciona una fecha</option>
+              {availableDates.map((dateOption) => (
+                <option key={dateOption.id} value={dateOption.date}>
+                  {dateOption.label}
+                </option>
+              ))}
+            </select>
 
             {/* Corrección en el campo del número de personas */}
             <label className='text-gray-700 text-sm' htmlFor="players">Número de personas</label>
