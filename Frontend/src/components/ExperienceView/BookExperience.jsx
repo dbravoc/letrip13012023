@@ -20,33 +20,6 @@ const BookExperience = ({ experienceCard }) => {
     experience_package: '',
   });
 
-  useEffect(() => {
-    const loadAvailableDates = async () => {
-      const apiUrl = `https://letrip13012023-backend-lawitec.vercel.app/available_experiences?experience_uuid=${id}`;
-      try {
-        const response = await fetch(apiUrl);
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        const data = await response.json();
-        
-        const formattedDates = data
-          .filter(item => item.experience_uuid === id) // Asegurarse de filtrar por el experience_uuid correcto
-          .map((item) => ({
-            id: item.experience_uuid,
-            label: `${item.available_date_start} al ${item.available_date_end}`,
-            value: `${item.available_date_start}_${item.available_date_end}`,
-          }));
-        
-        setAvailableDates(formattedDates);
-      } catch (error) {
-        console.error("Error fetching available dates:", error);
-      }
-    };
-  
-    loadAvailableDates();
-  }, [id]);// Dependencia [id] para reaccionar a cambios en el ID seleccionado
-
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData(prevData => ({
