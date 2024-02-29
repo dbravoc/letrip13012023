@@ -102,7 +102,7 @@ const BookExperience = ({ experienceCard }) => {
       {selectedExperience ? (
         <>
           <div className='pt-10'>
-          <h3 className="text-2xl font-bold mb-6">Reservar experiencia</h3>
+          <h2 className="bg-letrip px-4 py-2 text-3xl text-left sm:px-32 font-bold tracking-tight text-gray-900 mb-10">Reserva tu experiencia</h2>
           <form onSubmit={handleSubmit}>
             {/* Nombre del Cliente */}
             <label className='text-gray-700 text-sm' htmlFor="customer_name">Nombres y Apellidos:</label>
@@ -188,18 +188,18 @@ const BookExperience = ({ experienceCard }) => {
               className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
             />
 
-<div className='pt-10'>
+            <div className='my-10'>
               <h3 className="text-2xl font-bold mb-10">Valor total de la experiencia</h3>
-              <p className="block w-1/2 font-semibold text-sm outline-none border-b-2 border-r-2 border-b-letrip border-r-letrip py-2">
+              <p className="block w-1/2 font-semibold text-sm outline-none  py-2">
                 <span className="font-semibold text-xl">
-                  <FontAwesomeIcon className='text-green-700' icon={faMoneyBills} />
+                  <FontAwesomeIcon className='text-green-700 pr-4' icon={faMoneyBills} />
                   {totalPrice.toLocaleString('de-DE')}
                 </span> USD en total
               </p>
             </div>
 
             {/* Aceptación de Términos y Condiciones */}
-            <div className="mt-4 flex">
+            <div className="my-10 flex">
               <input
                 id="approved_terms_and_conditions"
                 name="approved_terms_and_conditions"

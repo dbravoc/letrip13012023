@@ -90,7 +90,7 @@ const ExperienceView = ({ experienceCard }) => {
 
 
     <div className="flex flex-col p-10 bg-white border-white border-2 rounded-2xl">
-            <h2 className="bg-letrip rounded-xl px-4 py-2  text-xl text-left font-bold tracking-tight text-gray-900 mb-4">Características de la experiencia</h2>
+            <h2 className="bg-letrip rounded-xl px-4 py-2 text-xl text-left font-bold tracking-tight text-gray-900 mb-4">Características de la experiencia</h2>
             <dl className="mt-0 grid grid-cols-1 sm:grid-cols-2 gap-y-2 gap-x-8">
               {features.map((feature, index) => (
                 <div key={index} className="border-b border-gray-400 pt-2">
