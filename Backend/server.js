@@ -341,8 +341,8 @@ app.post('/sold_experiences', async (req, res) => {
 });
 
 // Endpoint para obtener experiencias disponibles
-app.get('/available_experiences', async (req, res) => {
+app.get('/availableExperiences', async (req, res) => {
         let { data: available_experiences, error } = await supabase
-            .from('available_experiences')
+            .from('availableExperiences')
             .select('*');
 });
