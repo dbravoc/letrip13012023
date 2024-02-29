@@ -44,19 +44,19 @@ app.get('/experiences', async (req, res) => {
     }
 });
 
-app.get('/availableExperiences', async (req, res) => {
+app.get('/available_experiences', async (req, res) => {
     try {
         // Obtener experiencias directamente sin combinar con otra tabla
-        const { data: experiencesData, error: experiencesError } = await supabase
-            .from('availableExperiences')
+        const { data: availabilityData, error: availabilityError } = await supabase
+            .from('available_experiences')
             .select('*');
 
-        if (experiencesError) {
+        if (availabilityError) {
             throw experiencesError;
         }
 
         // Devolver directamente los datos de experiencias sin combinarlos con otra tabla
-        res.json(experiencesData);
+        res.json(availabilityData);
     } catch (err) {
         console.error(err.message);
         res.status(500).send('Server Error');
@@ -217,6 +217,35 @@ app.use(express.static(path.join(__dirname, 'build')));
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
+});
+
+app.put('/available_experiences/:uuid', async (req, res) => {
+    const { uuid } = req.params;
+    const {
+        available_date_start,
+        available_date_end,
+        experience_uuid
+    } = req.body;
+    try {
+        const { data, error } = await supabase
+            .from('available_experiences')
+            .update({
+                available_date_start,
+                available_date_end,
+                experience_uuid
+            })
+            .eq('experience_uuid', uuid)
+            .select();
+
+        if (error) throw error;
+
+        res.json(data);
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server Error');
+    }
+
+    
 });
 
 
