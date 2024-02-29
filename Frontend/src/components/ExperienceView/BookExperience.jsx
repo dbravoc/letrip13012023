@@ -17,12 +17,12 @@ const BookExperience = ({ experienceCard }) => {
     customer_email: '',
     customer_address: '',
     approved_terms_and_conditions: false,
-    experience_package: '', // Añadido para manejar la fecha de la experiencia
+    experience_package: '',
   });
 
   useEffect(() => {
     const loadAvailableDates = async () => {
-      const apiUrl = `https://letrip13012023-backend-lawitec.vercel.app/available_experiences`;
+      const apiUrl = `https://letrip13012023-backend-lawitec.vercel.app/available_experiences?experience_uuid=${id}`;
       try {
         const response = await fetch(apiUrl);
         if (!response.ok) {
@@ -30,12 +30,13 @@ const BookExperience = ({ experienceCard }) => {
         }
         const data = await response.json();
         
-        // Ajuste para definir el valor para cada opción
-        const formattedDates = data.map((item) => ({
-          id: item.experience_uuid, // Suponiendo que cada fecha tiene un identificador único
-          label: `${item.available_date_start} al ${item.available_date_end}`,
-          value: `${item.available_date_start}_${item.available_date_end}`, // Concatenación de fechas como valor
-        }));
+        const formattedDates = data
+          .filter(item => item.experience_uuid === id) // Asegurarse de filtrar por el experience_uuid correcto
+          .map((item) => ({
+            id: item.experience_uuid,
+            label: `${item.available_date_start} al ${item.available_date_end}`,
+            value: `${item.available_date_start}_${item.available_date_end}`,
+          }));
         
         setAvailableDates(formattedDates);
       } catch (error) {
@@ -44,8 +45,9 @@ const BookExperience = ({ experienceCard }) => {
     };
   
     loadAvailableDates();
-  }, [id]); // Dependencia [id] para reaccionar a cambios en el ID seleccionado
+  }, [id]);
 
+  
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData(prevData => ({
@@ -57,37 +59,6 @@ const BookExperience = ({ experienceCard }) => {
   const handlePlayerChange = (e) => {
     const numPlayers = parseInt(e.target.value, 10);
     setPlayers(numPlayers);
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const apiUrl = 'https://letrip13012023-backend-lawitec.vercel.app/sold_experiences';
-
-    try {
-      const response = await fetch(apiUrl, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          ...formData,
-          experience_uuid: id,
-          number_of_players: players,
-        }),
-      });
-
-      if (!response.ok) {
-        throw new Error('Error en la respuesta del servidor');
-      }
-
-      const data = await response.json();
-      alert('Serás redirigido a la plataforma de pago. Activa la ventana emergente. ¡Nos pondremos en contacto contigo!');
-      console.log('Datos guardados:', data);
-
-      window.open('https://cobros.global66.com/DAVBRA654', '_blank');
-    } catch (error) {
-      alert('Error al guardar los datos: ' + error.message);
-    }
   };
 
   return (
