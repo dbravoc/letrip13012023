@@ -45,9 +45,8 @@ const BookExperience = ({ experienceCard }) => {
     };
   
     loadAvailableDates();
-  }, [id]);
+  }, [id]);// Dependencia [id] para reaccionar a cambios en el ID seleccionado
 
-  
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData(prevData => ({
@@ -59,6 +58,37 @@ const BookExperience = ({ experienceCard }) => {
   const handlePlayerChange = (e) => {
     const numPlayers = parseInt(e.target.value, 10);
     setPlayers(numPlayers);
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const apiUrl = 'https://letrip13012023-backend-lawitec.vercel.app/sold_experiences';
+
+    try {
+      const response = await fetch(apiUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          ...formData,
+          experience_uuid: id,
+          number_of_players: players,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Error en la respuesta del servidor');
+      }
+
+      const data = await response.json();
+      alert('Serás redirigido a la plataforma de pago. Activa la ventana emergente. ¡Nos pondremos en contacto contigo!');
+      console.log('Datos guardados:', data);
+
+      window.open('https://cobros.global66.com/DAVBRA654', '_blank');
+    } catch (error) {
+      alert('Error al guardar los datos: ' + error.message);
+    }
   };
 
   return (
