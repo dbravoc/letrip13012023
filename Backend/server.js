@@ -340,24 +340,19 @@ app.post('/sold_experiences', async (req, res) => {
     }
 });
 
-app.get('/available_experiences', async (req, res) => {
-    const { experience_uuid } = req.query; // Asume que pasas el UUID como parámetro de consulta
-  
+app.get('/available_experiences', async (req, res) => {  
     try {
-      const { data, error } = await supabase
+        const { data: availableData, error: availableError } = await supabase
         .from('available_experiences')
-        .select('available_date_start, available_date_end')
-        .eq('experience_uuid', experience_uuid);
+        .select('*')
   
-      if (error) {
-        console.error('Error:', error);
-        return res.status(400).json({ error: error.message });
+      if (availableError) {
+        throw experiencesError;
       }
   
-      res.json(data);
-    } catch (error) {
-      console.error('Server Error:', error);
-      res.status(500).send('Server Error');
+      res.json(availableData);
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server Error');
     }
   });
-  
