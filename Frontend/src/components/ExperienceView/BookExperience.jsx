@@ -102,7 +102,7 @@ const BookExperience = ({ experienceCard }) => {
       {selectedExperience ? (
         <>
           <div className='pt-10'>
-          <h2 className="bg-letrip px-1 rounded-xl py-2 text-3xl text-left sm:px-32 font-bold tracking-tight text-gray-900 mb-10">Reserva tu experiencia</h2>
+          <h2 className="bg-letrip px-1 rounded-xl py-2 text-3xl text-left font-bold tracking-tight text-gray-900 mb-10">Reserva tu experiencia</h2>
           <form onSubmit={handleSubmit}>
             {/* Nombre del Cliente */}
             <label className='text-gray-700 text-sm' htmlFor="customer_name">Nombres y Apellidos:</label>
