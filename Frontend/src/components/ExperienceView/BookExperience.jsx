@@ -5,7 +5,7 @@ function AvailableExperiencesDropdown() {
 
   useEffect(() => {
     // Reemplaza esta URL con la ruta correcta a tu endpoint de experiencias disponibles
-    fetch('https://tu-backend.com/available_experiences')
+    fetch('https://letrip13012023-backend.vercel.app/available_experiences')
       .then(response => response.json())
       .then(data => {
         setAvailableExperiences(data);
