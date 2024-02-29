@@ -20,6 +20,27 @@ const BookExperience = ({ experienceCard }) => {
     experience_package: '',
   });
 
+  useEffect(() => {
+    // Cargar las fechas disponibles solo si la experiencia está seleccionada
+    if (selectedExperience) {
+      const loadAvailableDates = async () => {
+        const apiUrl = `https://letrip13012023-backend-lawitec.vercel.app/available_experiences?experience_uuid=${id}`;
+        try {
+          const response = await fetch(apiUrl);
+          if (!response.ok) {
+            throw new Error('Error en la respuesta del servidor');
+          }
+          const data = await response.json();
+          setAvailableDates(data);
+        } catch (error) {
+          console.error("Error al cargar las fechas disponibles:", error);
+        }
+      };
+
+      loadAvailableDates();
+    }
+  }, [id, selectedExperience]);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData(prevData => ({
@@ -71,62 +92,9 @@ const BookExperience = ({ experienceCard }) => {
           <div className='pt-10'>
           <h3 className="text-2xl font-bold mb-6">Reservar experiencia</h3>
           <form onSubmit={handleSubmit}>
-            {/* Nombre del Cliente */}
-            <label className='text-gray-700 text-sm' htmlFor="customer_name">Nombres y Apellidos:</label>
-            <input
-              id="customer_name"
-              name="customer_name"
-              type="text"
-              value={formData.customer_name}
-              onChange={handleChange}
-              className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
-            />
-
-            {/* Identificación del Cliente */}
-            <label className='text-gray-700 text-sm' htmlFor="customer_identification">Identificación:</label>
-            <input
-              id="customer_identification"
-              name="customer_identification"
-              type="text"
-              value={formData.customer_identification}
-              onChange={handleChange}
-              className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
-            />
-
-            {/* Teléfono del Cliente */}
-            <label className='text-gray-700 text-sm' htmlFor="customer_phone">Teléfono:</label>
-            <input
-              id="customer_phone"
-              name="customer_phone"
-              type="tel"
-              value={formData.customer_phone}
-              onChange={handleChange}
-              className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
-            />
-
-            {/* Correo Electrónico del Cliente */}
-            <label className='text-gray-700 text-sm' htmlFor="customer_email">Correo Electrónico:</label>
-            <input
-              id="customer_email"
-              name="customer_email"
-              type="email"
-              value={formData.customer_email}
-              onChange={handleChange}
-              className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
-            />
-
-            {/* Dirección del Cliente */}
-            <label className='text-gray-700 text-sm' htmlFor="customer_address">Dirección completa, incluyendo Ciudad y País:</label>
-            <input
-              id="customer_address"
-              name="customer_address"
-              type="text"
-              value={formData.customer_address}
-              onChange={handleChange}
-              className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
-            />
-
-<label className='text-gray-700 text-sm' htmlFor="experience_package">Elige la fecha de tu experiencia</label>
+            {/* Campos del formulario ... */}
+            
+            <label className='text-gray-700 text-sm' htmlFor="experience_package">Elige la fecha de tu experiencia</label>
             <select
               id="experience_package"
               name="experience_package"
@@ -135,9 +103,9 @@ const BookExperience = ({ experienceCard }) => {
               className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
             >
               <option value="">Selecciona una fecha</option>
-              {availableDates.map((dateOption) => (
-                <option key={dateOption.id} value={dateOption.value}>
-                  {dateOption.label}
+              {availableDates.map((date, index) => (
+                <option key={index} value={`${date.available_date_start}_${date.available_date_end}`}>
+                  {`${date.available_date_start} al ${date.available_date_end}`}
                 </option>
               ))}
             </select>
