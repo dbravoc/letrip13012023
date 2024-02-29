@@ -44,6 +44,24 @@ app.get('/experiences', async (req, res) => {
     }
 });
 
+app.get('/availableExperiences', async (req, res) => {
+    try {
+        // Obtener experiencias directamente sin combinar con otra tabla
+        const { data: experiencesData, error: experiencesError } = await supabase
+            .from('availableExperiences')
+            .select('*');
+
+        if (experiencesError) {
+            throw experiencesError;
+        }
+
+        // Devolver directamente los datos de experiencias sin combinarlos con otra tabla
+        res.json(experiencesData);
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server Error');
+    }
+});
 
 // Endpoint para crear una nueva experiencia
 app.post('/experiences', async (req, res) => {
@@ -338,11 +356,4 @@ app.post('/sold_experiences', async (req, res) => {
         console.error('Error al insertar en sold_experiences:', error.message);
         res.status(500).send('Server Error');
     }
-});
-
-// Endpoint para obtener experiencias disponibles
-app.get('/availableExperiences', async (req, res) => {
-        let { data: available_experiences, error } = await supabase
-            .from('availableExperiences')
-            .select('*');
 });
