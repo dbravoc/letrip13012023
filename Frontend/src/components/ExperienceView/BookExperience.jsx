@@ -55,6 +55,12 @@ const BookExperience = ({ experienceCard }) => {
     }));
   };
 
+  useEffect(() => {
+    if (selectedExperience) {
+      setTotalPrice(players * selectedExperience.experience_price);
+    }
+  }, [players, selectedExperience]);
+
   const handlePlayerChange = (e) => {
     const numPlayers = parseInt(e.target.value, 10);
     setPlayers(numPlayers);
