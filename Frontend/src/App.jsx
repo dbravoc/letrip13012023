@@ -58,6 +58,15 @@ const App = () => {
           </>
         } />  
 
+      <Route path="/request" element={
+          <>
+            <div className="mx-auto w-full sm:px-6 px-8">
+              <div className="flex flex-col justify-between flex-wrap"><Inicio /></div>
+              <div className="pt-36 px-12 flex flex-col justify-between flex-wrap relative z-10"><BasicsCreate /></div>
+            </div>
+          </>
+        } />  
+
       <Route path="/pruebas" element={
           <>
             <div className="mx-auto w-full sm:px-6 px-8">
@@ -67,7 +76,7 @@ const App = () => {
           </>
         } /> 
 
-            <Route path="/pruebas2/:id" element={
+            <Route path="/tarjeta/:id" element={
           <>
             <div className="mx-auto w-full px-8">
               <div className="flex flex-col justify-between flex-wrap"><Inicio /></div>
@@ -76,14 +85,6 @@ const App = () => {
               <div className="pt-24 sm:px-32 "><BookExperience experienceCard={experienceCard} /></div>
 
 
-            </div>
-          </>
-        } /> 
-            <Route path="/pruebas3/:id" element={
-          <>
-            <div className="mx-auto w-full sm:px-6 px-8">
-              <div className="flex flex-col justify-between flex-wrap"><Inicio /></div>
-              <div className="pt-36 px-12 flex flex-col justify-between flex-wrap relative z-10"><Carousel experienceCard={experienceCard} /></div>
             </div>
           </>
         } /> 
@@ -98,7 +99,7 @@ const App = () => {
         } />   
 
         
-        <Route path="/tarjeta/:id" element={
+        <Route path="/borrar/:id" element={
           <>
           <div className="bg-white mx-auto w-full px-2">
             <div className="flex flex-col justify-between flex-wrap"><Inicio /></div>
