@@ -110,9 +110,10 @@ const BookExperience = ({ experienceCard }) => {
     <div className="mx-0 sm:px-6 mb-10 tracking-tight text-gray-900">
       {selectedExperience ? (
         <>
-          <div className='pt-10'>
+        <div className='pt-10 grid-cols-3'>
           <h2 className="px-1 rounded-xl py-2 text-3xl text-left font-bold tracking-tight text-gray-900 mb-10">Reserva tu experiencia</h2>
-          <form onSubmit={handleSubmit}>
+          <form className='grid-cols-3' onSubmit={handleSubmit}>
+            <div className='col-span-2'>
             {/* Nombre del Cliente */}
             <label className='text-gray-700 text-sm' htmlFor="customer_name">Nombres y Apellidos:</label>
             <input
@@ -123,6 +124,7 @@ const BookExperience = ({ experienceCard }) => {
               onChange={handleChange}
               className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
             />
+            
 
             {/* Identificación del Cliente */}
             <label className='text-gray-700 text-sm' htmlFor="customer_identification">Identificación:</label>
@@ -167,8 +169,9 @@ const BookExperience = ({ experienceCard }) => {
               onChange={handleChange}
               className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
             />
-
-<label className='text-gray-700 text-sm' htmlFor="experience_package">Elige la fecha de tu experiencia</label>
+            </div>
+            <div className='col-span-1'>
+            <label className='text-gray-700 text-sm' htmlFor="experience_package">Elige la fecha de tu experiencia</label>
             <select
               id="experience_package"
               name="experience_package"
@@ -213,13 +216,13 @@ const BookExperience = ({ experienceCard }) => {
                 <p>{tax.toLocaleString('de-DE')} USD</p>
               </div>
 
-
                 <li className="block w-1/2 font-semibold text-sm outline-none py-2 mt-10">                
                 <span className="font-semibold text-xl">
                   <FontAwesomeIcon className='text-green-700 pr-4' icon={faMoneyBills} />
                   {totalPriceFull.toLocaleString('de-DE')}
                 </span> USD en total
                 </li>
+
             </div>
 
             {/* Aceptación de Términos y Condiciones */}
@@ -241,8 +244,9 @@ const BookExperience = ({ experienceCard }) => {
                 Reservar experiencia
               </span>
             </button>
+            </div>
           </form>
-          </div>
+        </div>
         </>
       ) : (
         <div>Precio no disponible</div>

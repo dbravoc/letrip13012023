@@ -1,6 +1,6 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
-import { faMoneyBills } from '@fortawesome/free-solid-svg-icons';
+import { faExclamation, faMoneyBills } from '@fortawesome/free-solid-svg-icons';
 import { CheckIcon, XMarkIcon } from '@heroicons/react/24/outline';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
@@ -34,16 +34,16 @@ const ExperienceView = ({ experienceCard }) => {
     { name: `Video experiencia (Precio: ${selectedExperience.video_price} USD extra`, value: selectedExperience.included_experience_video },
     { name: 'Seguro accidentes', value: selectedExperience.included_accident_insurance },
     { name: 'Entrada a parques y eventos', value: selectedExperience.included_entry_fees },
-    { name: 'Transporte desde el aeropuerto incluido', value: selectedExperience.transport_airport },
-    { name: 'Transporte durante la experiencia incluido', value: selectedExperience.transport_during_experience},
-    { name: 'Tarifas de entrada incluidas', value: selectedExperience.included_entry_fees },
+    { name: 'Transporte desde el aeropuerto', value: selectedExperience.transport_airport },
+    { name: 'Transporte durante la experiencia', value: selectedExperience.transport_during_experience},
+    { name: 'Tarifas de entrada', value: selectedExperience.included_entry_fees },
     { name: 'Instructor certificado', value: selectedExperience.certified_instructor },
-    { name: 'Seguro de accidentes incluido', value: selectedExperience.included_accident_insurance},
-    { name: 'Desayuno incluido', value: selectedExperience.meal_breakfast },
-    { name: 'Almuerzo incluido', value: selectedExperience.meal_lunch },
-    { name: 'Cena incluida', value: selectedExperience.meal_dinner },
-    { name: 'Snacks incluidos', value: selectedExperience.meal_snacks },
-    { name: 'Aperitivos incluidos', value: selectedExperience.meal_drinks }
+    { name: 'Seguro de accidentes', value: selectedExperience.included_accident_insurance},
+    { name: 'Desayuno', value: selectedExperience.meal_breakfast },
+    { name: 'Almuerzo', value: selectedExperience.meal_lunch },
+    { name: 'Cena', value: selectedExperience.meal_dinner },
+    { name: 'Snacks', value: selectedExperience.meal_snacks },
+    { name: 'Aperitivos', value: selectedExperience.meal_drinks }
   ];
   const includedList = included.filter(feature => feature.value);
   const notIncludedList = included.filter(feature => !feature.value);
@@ -99,7 +99,7 @@ const ExperienceView = ({ experienceCard }) => {
 
     <div className="flex flex-col p-10  bg-white border-white border-2 rounded-2xl">
           <h2 className="bg-letrip rounded-xl px-4 py-2 text-xl text-left font-bold tracking-tight text-gray-900 mb-4">Lo que SI incluye</h2>
-           <ul role="list" className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-5 text-sm leading-6 text-black">
+           <ul role="list" className="mt-2 grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-5 text-sm leading-6 text-black">
             {includedList.map((included, index) => (
               <li key={index} className="flex gap-x-4">
                 <CheckIcon className="h-6 w-5 flex-none text-yellow-500 font-extrabold" aria-hidden="true" />
@@ -112,7 +112,7 @@ const ExperienceView = ({ experienceCard }) => {
 
     <div className="flex flex-col  p-10  bg-white border-white border-2 rounded-2xl">
           <h2 className="bg-letrip rounded-xl px-4 py-2 text-xl text-left font-bold tracking-tight text-gray-900 mb-4">Lo que NO incluye</h2>
-           <ul role="list" className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-5 text-sm leading-6 text-black">
+           <ul role="list" className="mt-2 grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-5 text-sm leading-6 text-black">
             {notIncludedList.map((notincluded, index) => (
               <li key={index} className="flex gap-x-4">
                 <XMarkIcon className="h-6 w-5 flex-none text-yellow-500 font-extrabold" aria-hidden="true" />
@@ -125,9 +125,9 @@ const ExperienceView = ({ experienceCard }) => {
 
     <div className="flex flex-col  p-10  bg-white border-white border-2 rounded-2xl">
           <h2 className="bg-letrip rounded-xl px-4 py-2 text-xl text-left font-bold tracking-tight text-gray-900 mb-4">Restricciones</h2>
-          <p className="text-sm italic py-1 leading-6 text-gray-900">{selectedExperience.target_audience_restrictions}</p>
-          <p className="text-sm italic py-1 leading-6 text-gray-900"><span>Edad mínima: </span>{selectedExperience.minimum_age}</p>
-          <p className="text-sm italic py-1 leading-6 text-gray-900"><span>Mínimo de personas: </span>{selectedExperience.minimum_group_size}</p>
+          <p className="text-sm italic py-1 leading-6 text-gray-900"> <FontAwesomeIcon className="h-6 w-5 flex-none text-yellow-500 font-extrabold" icon={faExclamation}/> {selectedExperience.target_audience_restrictions}</p>
+          <p className="text-sm italic py-1 leading-6 text-gray-900"> <FontAwesomeIcon className="h-6 w-5 flex-none text-yellow-500 font-extrabold" icon={faExclamation}/> <span>Edad mínima: </span>{selectedExperience.minimum_age}</p>
+          <p className="text-sm italic py-1 leading-6 text-gray-900"> <FontAwesomeIcon className="h-6 w-5 flex-none text-yellow-500 font-extrabold" icon={faExclamation}/> <span>Mínimo de personas: </span>{selectedExperience.minimum_group_size}</p>
     
     </div>
 
