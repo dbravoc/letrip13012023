@@ -115,6 +115,8 @@ const BookExperience = ({ experienceCard }) => {
           <form onSubmit={handleSubmit}>
             <div className='grid grid-cols-5 gap-x-8'>
               <div className='col-span-2'>
+              <h3 className="text-2xl font-bold mb-10">Ingresa tus datos</h3>
+
                 {/* Nombre del Cliente */}
                 <label className='text-gray-700 text-sm' htmlFor="customer_name">Nombres y Apellidos:</label>
                 <input
@@ -205,6 +207,10 @@ const BookExperience = ({ experienceCard }) => {
                         onChange={handlePlayerChange} // Usando handlePlayerChange para manejar este input específicamente
                         className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
                       />
+
+                      <h3 className="text-lg font-bold mb-10">Detalle del precio total</h3>
+
+
                       <div className='grid grid-cols-4 font-semibold text-sm'>
                         <p><FontAwesomeIcon className='text-gray-700 pr-2' icon={CheckIcon} />{selectedExperience.experience_price.toLocaleString('de-DE')} USD x {players} persona(s)</p>
                         <p>{totalPrice.toLocaleString('de-DE')} USD</p>
