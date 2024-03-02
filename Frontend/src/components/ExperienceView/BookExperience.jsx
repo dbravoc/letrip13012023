@@ -190,11 +190,17 @@ const BookExperience = ({ experienceCard }) => {
 
             <div className='my-10'>
               <h3 className="text-2xl font-bold mb-10">Valor total de la experiencia</h3>
-              <p className="block w-1/2 font-semibold text-sm outline-none  py-2">
+              <ul>
+                <li>Valor de la experiencia</li>
+                <li>Tarifa por servicio de Le trip</li>
+                <li>Impuestos</li>
+                <li className="block w-1/2 font-semibold text-sm outline-none  py-2">                
                 <span className="font-semibold text-xl">
                   <FontAwesomeIcon className='text-green-700 pr-4' icon={faMoneyBills} />
                   {totalPrice.toLocaleString('de-DE')}
                 </span> USD en total
+                </li>
+              </ul>
               </p>
             </div>
 
