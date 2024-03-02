@@ -220,7 +220,7 @@ const BookExperience = ({ experienceCard }) => {
                         <p>{letripPrice.toLocaleString('de-DE')} USD</p>
                       </div>
 
-                      <div className='grid grid-cols-2 font-semibold text-sm border-b-2 border-b-letrip '>
+                      <div className='grid grid-cols-2 font-semibold text-sm'>
                         <p><FontAwesomeIcon className='text-gray-700 pr-2' icon={CheckIcon} />Impuestos</p>
                         <p>{tax.toLocaleString('de-DE')} USD</p>
                       </div>
