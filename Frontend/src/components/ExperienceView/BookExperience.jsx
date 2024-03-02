@@ -190,6 +190,7 @@ const BookExperience = ({ experienceCard }) => {
 
             <div className='my-10'>
               <h3 className="text-2xl font-bold mb-10">Información del precio</h3>
+              <table>
               <ul>
                 <li>{selectedExperience.experience_price.toLocaleString('de-DE')} x {players} personas</li>
                 <li>Tarifa por servicio de Le trip</li>
@@ -206,6 +207,7 @@ const BookExperience = ({ experienceCard }) => {
                   probando
                 </li>
               </ul>
+              </table>
             </div>
 
             {/* Aceptación de Términos y Condiciones */}
