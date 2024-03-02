@@ -200,16 +200,16 @@ const BookExperience = ({ experienceCard }) => {
             <div className='my-10'>
               <h3 className="text-2xl font-bold mb-10">Información del precio</h3>
               <div className='grid grid-cols-4 font-semibold text-sm'>
-                <p><CheckIcon className='font-semibold text-sm'></CheckIcon>{selectedExperience.experience_price.toLocaleString('de-DE')} USD x {players} persona(s)</p>
+                <p><FontAwesomeIcon className='text-gray-700 pr-2' icon={CheckIcon} />{selectedExperience.experience_price.toLocaleString('de-DE')} USD x {players} persona(s)</p>
                 <p>{totalPrice.toLocaleString('de-DE')} USD</p>
               </div>
               <div className='grid grid-cols-4 font-semibold text-sm '>
-                <p><CheckIcon className='font-semibold text-sm'></CheckIcon>Tarifa por servicio Le trip</p>
+                <p><FontAwesomeIcon className='text-gray-700 pr-2' icon={CheckIcon} />Tarifa por servicio Le trip</p>
                 <p>{letripPrice.toLocaleString('de-DE')} USD</p>
               </div>
 
               <div className='grid grid-cols-4 font-semibold text-sm '>
-                <p><CheckIcon className='font-semibold text-sm'></CheckIcon>Impuestos</p>
+                <p><FontAwesomeIcon className='text-gray-700 pr-2' icon={CheckIcon} />Impuestos</p>
                 <p>{tax.toLocaleString('de-DE')} USD</p>
               </div>
 
