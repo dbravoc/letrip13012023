@@ -231,7 +231,8 @@ const BookExperience = ({ experienceCard }) => {
                           {totalPriceFull.toLocaleString('de-DE')}
                         </span> USD en total
                         </li>
-
+                </div>
+            </div>
 
                     {/* Aceptación de Términos y Condiciones */}
                     <div className="my-10 flex">
@@ -251,8 +252,7 @@ const BookExperience = ({ experienceCard }) => {
                       Reservar experiencia
                     </span>
                   </button>
-            </div>
-        </div>
+              
       </form>
     </div>
         </>
