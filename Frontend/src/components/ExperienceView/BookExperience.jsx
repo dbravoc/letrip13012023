@@ -242,14 +242,13 @@ const BookExperience = ({ experienceCard }) => {
                 Acepto los <a className='font-semibold'>términos y condiciones</a>
               </label>
             </div>
-            </div>
             <button type="submit" className="text-lg hover:bg-black hover:text-letrip bg-letrip text-black py-4 rounded-md text-center w-full block">
               <span className="font-semibold text-2xl">
                 Reservar experiencia
               </span>
             </button>
             </div>
-            
+            </div>
           </form>
         </div>
         </>
