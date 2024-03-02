@@ -125,9 +125,9 @@ const ExperienceView = ({ experienceCard }) => {
 
     <div className="flex flex-col  p-10  bg-white border-white border-2 rounded-2xl">
           <h2 className="bg-letrip rounded-xl px-4 py-2 text-xl text-left font-bold tracking-tight text-gray-900 mb-4">Restricciones</h2>
-          <p className="text-sm italic py-1 leading-6 text-gray-900"> <FontAwesomeIcon className="h-6 w-5 flex-none text-yellow-500 font-extrabold" icon={faExclamation}/> {selectedExperience.target_audience_restrictions}</p>
-          <p className="text-sm italic py-1 leading-6 text-gray-900"> <FontAwesomeIcon className="h-6 w-5 flex-none text-yellow-500 font-extrabold" icon={faExclamation}/> <span>Edad mínima: </span>{selectedExperience.minimum_age}</p>
-          <p className="text-sm italic py-1 leading-6 text-gray-900"> <FontAwesomeIcon className="h-6 w-5 flex-none text-yellow-500 font-extrabold" icon={faExclamation}/> <span>Mínimo de personas: </span>{selectedExperience.minimum_group_size}</p>
+          <p className="text-sm italic py-1 leading-6 text-gray-900"> <faExclamation className="h-6 w-5 flex-none text-yellow-500 font-extrabold" aria-hidden="true"/> {selectedExperience.target_audience_restrictions}</p>
+          <p className="text-sm italic py-1 leading-6 text-gray-900"> <faExclamation className="h-6 w-5 flex-none text-yellow-500 font-extrabold" aria-hidden="true"/> <span>Edad mínima: </span>{selectedExperience.minimum_age}</p>
+          <p className="text-sm italic py-1 leading-6 text-gray-900"> <faExclamation className="h-6 w-5 flex-none text-yellow-500 font-extrabold" aria-hidden="true"/> <span>Mínimo de personas: </span>{selectedExperience.minimum_group_size}</p>
     
     </div>
 

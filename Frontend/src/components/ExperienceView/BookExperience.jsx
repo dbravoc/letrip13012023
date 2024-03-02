@@ -199,6 +199,8 @@ const BookExperience = ({ experienceCard }) => {
               onChange={handlePlayerChange} // Usando handlePlayerChange para manejar este input específicamente
               className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
             />
+            </div>
+
 
             <div className='my-10'>
               <h3 className="text-2xl font-bold mb-10">Información del precio</h3>
@@ -244,7 +246,6 @@ const BookExperience = ({ experienceCard }) => {
                 Reservar experiencia
               </span>
             </button>
-            </div>
           </form>
         </div>
         </>
