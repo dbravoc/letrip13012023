@@ -172,9 +172,21 @@ const BookExperience = ({ experienceCard }) => {
                   onChange={handleChange}
                   className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
                 />
+
+                    {/* Aceptación de Términos y Condiciones */}
+                    <div className="my-10 flex">
+                    <input
+                      id="approved_terms_and_conditions"
+                      name="approved_terms_and_conditions"
+                      type="checkbox"
+                      checked={formData.approved_terms_and_conditions}
+                      onChange={handleChange}
+                    />
+                    <label htmlFor="approved_terms_and_conditions" className="pl-2 text-sm text-gray-700">
+                      Acepto los <a className='font-semibold'>términos y condiciones</a>
+                    </label>
+                  </div>
               </div>
-
-
 
               <div className='col-span-3 mb-10'>
               
@@ -225,7 +237,7 @@ const BookExperience = ({ experienceCard }) => {
                         <p>{tax.toLocaleString('de-DE')} USD</p>
                       </div>
 
-                        <li className="block w-1/2 font-semibold text-sm outline-none py-2 mt-10">                
+                        <li className="block w-1/2 font-semibold text-sm outline-none py-2 mt-4">                
                         <span className="font-semibold text-xl">
                           <FontAwesomeIcon className='text-green-700 pr-4' icon={faMoneyBills} />
                           {totalPriceFull.toLocaleString('de-DE')}
@@ -234,19 +246,7 @@ const BookExperience = ({ experienceCard }) => {
                 </div>
             </div>
 
-                    {/* Aceptación de Términos y Condiciones */}
-                    <div className="my-10 flex">
-                    <input
-                      id="approved_terms_and_conditions"
-                      name="approved_terms_and_conditions"
-                      type="checkbox"
-                      checked={formData.approved_terms_and_conditions}
-                      onChange={handleChange}
-                    />
-                    <label htmlFor="approved_terms_and_conditions" className="pl-2 text-sm text-gray-700">
-                      Acepto los <a className='font-semibold'>términos y condiciones</a>
-                    </label>
-                  </div>
+
                   <button type="submit" className="text-lg hover:bg-black hover:text-letrip bg-letrip text-black py-4 rounded-md text-center w-full block">
                     <span className="font-semibold text-2xl">
                       Reservar experiencia
