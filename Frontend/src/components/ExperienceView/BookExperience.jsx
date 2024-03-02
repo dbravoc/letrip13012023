@@ -189,9 +189,9 @@ const BookExperience = ({ experienceCard }) => {
             />
 
             <div className='my-10'>
-              <h3 className="text-2xl font-bold mb-10">Valor total de la experiencia</h3>
+              <h3 className="text-2xl font-bold mb-10">Información del precio</h3>
               <ul>
-                <li>Valor de la experiencia</li>
+                <li>{selectedExperience.experience_price.toLocaleString('de-DE')}</li>
                 <li>Tarifa por servicio de Le trip</li>
                 <li>Impuestos</li>
                 <li className="block w-1/2 font-semibold text-sm outline-none  py-2">                
