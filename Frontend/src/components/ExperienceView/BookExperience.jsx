@@ -112,8 +112,8 @@ const BookExperience = ({ experienceCard }) => {
         <>
         <div className='pt-10'>
           <h2 className="px-1 rounded-xl py-2 text-3xl text-left font-bold tracking-tight text-gray-900 mb-10">Reserva tu experiencia</h2>
-          <form className='grid grid-cols-3' onSubmit={handleSubmit}>
-            <div className='col-span-2'>
+          <form className='grid grid-cols-5 gap-x-8' onSubmit={handleSubmit}>
+            <div className='col-span-3'>
                 {/* Nombre del Cliente */}
                 <label className='text-gray-700 text-sm' htmlFor="customer_name">Nombres y Apellidos:</label>
                 <input
@@ -170,7 +170,13 @@ const BookExperience = ({ experienceCard }) => {
                   className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
                 />
               </div>
-            <div className='col-span-1'>
+
+
+
+            <div className='my-10'>
+              
+              <h3 className="text-2xl font-bold mb-10">Información del precio</h3>
+              <div className='col-span-2'>
                 <label className='text-gray-700 text-sm' htmlFor="experience_package">Elige la fecha de tu experiencia</label>
                 <select
                   id="experience_package"
@@ -199,11 +205,6 @@ const BookExperience = ({ experienceCard }) => {
                   onChange={handlePlayerChange} // Usando handlePlayerChange para manejar este input específicamente
                   className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
                 />
-            </div>
-
-
-            <div className='my-10'>
-              <h3 className="text-2xl font-bold mb-10">Información del precio</h3>
               <div className='grid grid-cols-4 font-semibold text-sm'>
                 <p><FontAwesomeIcon className='text-gray-700 pr-2' icon={CheckIcon} />{selectedExperience.experience_price.toLocaleString('de-DE')} USD x {players} persona(s)</p>
                 <p>{totalPrice.toLocaleString('de-DE')} USD</p>
@@ -239,6 +240,7 @@ const BookExperience = ({ experienceCard }) => {
               <label htmlFor="approved_terms_and_conditions" className="pl-2 text-sm text-gray-700">
                 Acepto los <a className='font-semibold'>términos y condiciones</a>
               </label>
+            </div>
             </div>
 
             <button type="submit" className="text-lg hover:bg-black hover:text-letrip bg-letrip text-black py-4 rounded-md text-center w-full block">
