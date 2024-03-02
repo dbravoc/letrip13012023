@@ -110,7 +110,7 @@ const BookExperience = ({ experienceCard }) => {
     <div className="mx-0 sm:px-6 mb-10 tracking-tight text-gray-900">
       {selectedExperience ? (
         <>
-        <div className='pt-10 grid-cols-3'>
+        <div className='pt-10 grid grid-cols-3'>
           <h2 className="px-1 rounded-xl py-2 text-3xl text-left font-bold tracking-tight text-gray-900 mb-10">Reserva tu experiencia</h2>
           <form className='grid-cols-3' onSubmit={handleSubmit}>
             <div className='col-span-2'>
@@ -169,7 +169,6 @@ const BookExperience = ({ experienceCard }) => {
               onChange={handleChange}
               className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
             />
-            </div>
             <div className='col-span-1'>
             <label className='text-gray-700 text-sm' htmlFor="experience_package">Elige la fecha de tu experiencia</label>
             <select
@@ -246,6 +245,7 @@ const BookExperience = ({ experienceCard }) => {
                 Reservar experiencia
               </span>
             </button>
+            </div>
           </form>
         </div>
         </>
