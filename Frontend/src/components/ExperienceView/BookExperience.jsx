@@ -200,7 +200,7 @@ const BookExperience = ({ experienceCard }) => {
             <div className='my-10'>
               <h3 className="text-2xl font-bold mb-10">Información del precio</h3>
               <div className='grid grid-cols-4 font-semibold text-sm'>
-                <p><<CheckIcon className='font-semibold text-sm'></CheckIcon> >{selectedExperience.experience_price.toLocaleString('de-DE')} USD x {players} persona(s)</p>
+                <p><CheckIcon className='font-semibold text-sm'></CheckIcon>{selectedExperience.experience_price.toLocaleString('de-DE')} USD x {players} persona(s)</p>
                 <p>{totalPrice.toLocaleString('de-DE')} USD</p>
               </div>
               <div className='grid grid-cols-4 font-semibold text-sm '>
