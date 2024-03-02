@@ -110,94 +110,95 @@ const BookExperience = ({ experienceCard }) => {
     <div className="mx-0 sm:px-6 mb-10 tracking-tight text-gray-900">
       {selectedExperience ? (
         <>
-        <div className='pt-10 grid grid-cols-3'>
+        <div className='pt-10'>
           <h2 className="px-1 rounded-xl py-2 text-3xl text-left font-bold tracking-tight text-gray-900 mb-10">Reserva tu experiencia</h2>
-          <form className='grid-cols-3' onSubmit={handleSubmit}>
+          <form className='grid grid-cols-3' onSubmit={handleSubmit}>
             <div className='col-span-2'>
-            {/* Nombre del Cliente */}
-            <label className='text-gray-700 text-sm' htmlFor="customer_name">Nombres y Apellidos:</label>
-            <input
-              id="customer_name"
-              name="customer_name"
-              type="text"
-              value={formData.customer_name}
-              onChange={handleChange}
-              className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
-            />
-            
+                {/* Nombre del Cliente */}
+                <label className='text-gray-700 text-sm' htmlFor="customer_name">Nombres y Apellidos:</label>
+                <input
+                  id="customer_name"
+                  name="customer_name"
+                  type="text"
+                  value={formData.customer_name}
+                  onChange={handleChange}
+                  className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
+                />
+                
 
-            {/* Identificación del Cliente */}
-            <label className='text-gray-700 text-sm' htmlFor="customer_identification">Identificación:</label>
-            <input
-              id="customer_identification"
-              name="customer_identification"
-              type="text"
-              value={formData.customer_identification}
-              onChange={handleChange}
-              className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
-            />
+                {/* Identificación del Cliente */}
+                <label className='text-gray-700 text-sm' htmlFor="customer_identification">Identificación:</label>
+                <input
+                  id="customer_identification"
+                  name="customer_identification"
+                  type="text"
+                  value={formData.customer_identification}
+                  onChange={handleChange}
+                  className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
+                />
 
-            {/* Teléfono del Cliente */}
-            <label className='text-gray-700 text-sm' htmlFor="customer_phone">Teléfono:</label>
-            <input
-              id="customer_phone"
-              name="customer_phone"
-              type="tel"
-              value={formData.customer_phone}
-              onChange={handleChange}
-              className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
-            />
+                {/* Teléfono del Cliente */}
+                <label className='text-gray-700 text-sm' htmlFor="customer_phone">Teléfono:</label>
+                <input
+                  id="customer_phone"
+                  name="customer_phone"
+                  type="tel"
+                  value={formData.customer_phone}
+                  onChange={handleChange}
+                  className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
+                />
 
-            {/* Correo Electrónico del Cliente */}
-            <label className='text-gray-700 text-sm' htmlFor="customer_email">Correo Electrónico:</label>
-            <input
-              id="customer_email"
-              name="customer_email"
-              type="email"
-              value={formData.customer_email}
-              onChange={handleChange}
-              className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
-            />
+                {/* Correo Electrónico del Cliente */}
+                <label className='text-gray-700 text-sm' htmlFor="customer_email">Correo Electrónico:</label>
+                <input
+                  id="customer_email"
+                  name="customer_email"
+                  type="email"
+                  value={formData.customer_email}
+                  onChange={handleChange}
+                  className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
+                />
 
-            {/* Dirección del Cliente */}
-            <label className='text-gray-700 text-sm' htmlFor="customer_address">Dirección completa, incluyendo Ciudad y País:</label>
-            <input
-              id="customer_address"
-              name="customer_address"
-              type="text"
-              value={formData.customer_address}
-              onChange={handleChange}
-              className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
-            />
+                {/* Dirección del Cliente */}
+                <label className='text-gray-700 text-sm' htmlFor="customer_address">Dirección completa, incluyendo Ciudad y País:</label>
+                <input
+                  id="customer_address"
+                  name="customer_address"
+                  type="text"
+                  value={formData.customer_address}
+                  onChange={handleChange}
+                  className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
+                />
+              </div>
             <div className='col-span-1'>
-            <label className='text-gray-700 text-sm' htmlFor="experience_package">Elige la fecha de tu experiencia</label>
-            <select
-              id="experience_package"
-              name="experience_package"
-              value={formData.experience_package}
-              onChange={handleChange}
-              className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
-            >
-              <option value="">Selecciona una fecha</option>
-              {availableDates.map((dateOption) => (
-                <option key={dateOption.id} value={dateOption.value}>
-                  {dateOption.label}
-                </option>
-              ))}
-            </select>
+                <label className='text-gray-700 text-sm' htmlFor="experience_package">Elige la fecha de tu experiencia</label>
+                <select
+                  id="experience_package"
+                  name="experience_package"
+                  value={formData.experience_package}
+                  onChange={handleChange}
+                  className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
+                >
+                  <option value="">Selecciona una fecha</option>
+                  {availableDates.map((dateOption) => (
+                    <option key={dateOption.id} value={dateOption.value}>
+                      {dateOption.label}
+                    </option>
+                  ))}
+                </select>
 
-            {/* Corrección en el campo del número de personas */}
-            <label className='text-gray-700 text-sm' htmlFor="players">Número de personas</label>
-            <input
-              id="players"
-              name="players"
-              type="number"
-              min={selectedExperience.minimum_group_size} // Asegurar que se usa selectedExperience
-              max={selectedExperience.max_group_size} // Asegurar que se usa selectedExperience
-              value={players} // Corregido para usar el estado `players`
-              onChange={handlePlayerChange} // Usando handlePlayerChange para manejar este input específicamente
-              className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
-            />
+                {/* Corrección en el campo del número de personas */}
+                <label className='text-gray-700 text-sm' htmlFor="players">Número de personas</label>
+                <input
+                  id="players"
+                  name="players"
+                  type="number"
+                  min={selectedExperience.minimum_group_size} // Asegurar que se usa selectedExperience
+                  max={selectedExperience.max_group_size} // Asegurar que se usa selectedExperience
+                  value={players} // Corregido para usar el estado `players`
+                  onChange={handlePlayerChange} // Usando handlePlayerChange para manejar este input específicamente
+                  className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
+                />
             </div>
 
 
@@ -245,7 +246,6 @@ const BookExperience = ({ experienceCard }) => {
                 Reservar experiencia
               </span>
             </button>
-            </div>
           </form>
         </div>
         </>
