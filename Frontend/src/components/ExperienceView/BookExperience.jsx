@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMoneyBills } from '@fortawesome/free-solid-svg-icons';
+import { CheckIcon } from '@heroicons/react/24/outline';
 
 const BookExperience = ({ experienceCard }) => {
   const [players, setPlayers] = useState(1);
@@ -198,25 +199,25 @@ const BookExperience = ({ experienceCard }) => {
 
             <div className='my-10'>
               <h3 className="text-2xl font-bold mb-10">Información del precio</h3>
-              <div className='grid grid-cols-2'>
-                <p>{selectedExperience.experience_price.toLocaleString('de-DE')} x {players} persona(s)</p>
+              <div className='grid grid-cols-4'>
+                <p><CheckIcon> {selectedExperience.experience_price.toLocaleString('de-DE')} USD x {players} persona(s)</CheckIcon></p>
                 <p>{totalPrice.toLocaleString('de-DE')} USD</p>
               </div>
-              <div className='grid grid-cols-2'>
-                <p>Tarifa por servicio Le trip</p>
-                <p>{letripPrice} USD</p>
+              <div className='grid grid-cols-4'>
+                <p><CheckIcon>Tarifa por servicio Le trip</CheckIcon></p>
+                <p>{letripPrice.toLocaleString('de-DE')} USD</p>
               </div>
 
-              <div className='grid grid-cols-2'>
-                <p>Impuestos</p>
-                <p>{tax} USD</p>
+              <div className='grid grid-cols-4'>
+                <p><CheckIcon>Impuestos</CheckIcon></p>
+                <p>{tax.toLocaleString('de-DE')} USD</p>
               </div>
 
 
-                <li className="block w-1/2 font-semibold text-sm outline-none  py-2">                
+                <li className="block w-1/2 font-semibold text-sm outline-none py-2 mt-10">                
                 <span className="font-semibold text-xl">
                   <FontAwesomeIcon className='text-green-700 pr-4' icon={faMoneyBills} />
-                  {totalPrice.toLocaleString('de-DE')}
+                  {totalPriceFull.toLocaleString('de-DE')}
                 </span> USD en total
                 </li>
             </div>
