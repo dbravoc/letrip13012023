@@ -97,6 +97,14 @@ const BookExperience = ({ experienceCard }) => {
     }
   };
 
+
+  const letripPrice = totalPrice * 0.1
+
+  const Tax = letripPrice* 0.19
+
+  const totalPriceFull = totalPrice + letripPrice + Tax 
+
+
   return (
     <div className="mx-0 sm:px-6 mb-10 tracking-tight text-gray-900">
       {selectedExperience ? (
@@ -190,24 +198,27 @@ const BookExperience = ({ experienceCard }) => {
 
             <div className='my-10'>
               <h3 className="text-2xl font-bold mb-10">Información del precio</h3>
-              <table>
-              <ul>
-                <li>{selectedExperience.experience_price.toLocaleString('de-DE')} x {players} personas</li>
-                <li>Tarifa por servicio de Le trip</li>
-                <li>Impuestos</li>
+              <div className='grid grid-cols-2'>
+                <p>{selectedExperience.experience_price.toLocaleString('de-DE')} x {players} personas</p>
+                <p>{totalPrice.toLocaleString('de-DE')} USD</p>
+              </div>
+              <div className='grid grid-cols-2'>
+                <p>Tarifa por servicio Le trip</p>
+                <p>{selectedExperience.letripPrice} USD</p>
+              </div>
+
+              <div className='grid grid-cols-2'>
+                <p>Impuestos</p>
+                <p>{selectedExperience.tax} USD</p>
+              </div>
+
+
                 <li className="block w-1/2 font-semibold text-sm outline-none  py-2">                
                 <span className="font-semibold text-xl">
                   <FontAwesomeIcon className='text-green-700 pr-4' icon={faMoneyBills} />
                   {totalPrice.toLocaleString('de-DE')}
                 </span> USD en total
                 </li>
-              </ul>
-              <ul>
-                <li>
-                  probando
-                </li>
-              </ul>
-              </table>
             </div>
 
             {/* Aceptación de Términos y Condiciones */}
