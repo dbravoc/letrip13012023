@@ -201,7 +201,6 @@ const BookExperience = ({ experienceCard }) => {
                 </span> USD en total
                 </li>
               </ul>
-              </p>
             </div>
 
             {/* Aceptación de Términos y Condiciones */}
