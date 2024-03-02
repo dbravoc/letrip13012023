@@ -176,7 +176,7 @@ const BookExperience = ({ experienceCard }) => {
 
 
 
-              <div className='col-span-3 my-10'>
+              <div className='col-span-3 mb-10'>
               
                     <h3 className="text-2xl font-bold mb-10">Información del precio</h3>
                       <label className='text-gray-700 text-sm' htmlFor="experience_package">Elige la fecha de tu experiencia</label>
@@ -208,19 +208,19 @@ const BookExperience = ({ experienceCard }) => {
                         className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
                       />
 
-                      <h3 className="text-lg font-bold mb-10">Detalle del precio total</h3>
+                      <h3 className="text-lg font-bold my-8">Detalle del precio total</h3>
 
 
-                      <div className='grid grid-cols-4 font-semibold text-sm'>
+                      <div className='grid grid-cols-2 font-semibold text-sm'>
                         <p><FontAwesomeIcon className='text-gray-700 pr-2' icon={CheckIcon} />{selectedExperience.experience_price.toLocaleString('de-DE')} USD x {players} persona(s)</p>
                         <p>{totalPrice.toLocaleString('de-DE')} USD</p>
                       </div>
-                      <div className='grid grid-cols-4 font-semibold text-sm '>
+                      <div className='grid grid-cols-2 font-semibold text-sm '>
                         <p><FontAwesomeIcon className='text-gray-700 pr-2' icon={CheckIcon} />Tarifa por servicio Le trip</p>
                         <p>{letripPrice.toLocaleString('de-DE')} USD</p>
                       </div>
 
-                      <div className='grid grid-cols-4 font-semibold text-sm '>
+                      <div className='grid grid-cols-2 font-semibold text-sm border-b-2 border-b-letrip '>
                         <p><FontAwesomeIcon className='text-gray-700 pr-2' icon={CheckIcon} />Impuestos</p>
                         <p>{tax.toLocaleString('de-DE')} USD</p>
                       </div>
