@@ -12,7 +12,11 @@ const ExperienceView = ({ experienceCard }) => {
   if (!selectedExperience) {
     return <div>No se encontró la experiencia</div>;
   }
+  const Prices = [
+    { name: 'Precio de arriendo de equipos', value: selectedExperience.equipment_rental_price},
+    { name: 'Precio del video de la experiencia', value: selectedExperience.video_price}
 
+  ]
   const features = [
     { name: 'Disciplina Principal', description: selectedExperience.experience_main_discipline },
     { name: 'Tipo de experiencia', description: selectedExperience.experience_type },
@@ -24,13 +28,15 @@ const ExperienceView = ({ experienceCard }) => {
   const included = [
     { name: 'Clase práctica', value: selectedExperience.included_practical_lessons },
     { name: 'Clase teórica', value: selectedExperience.included_theoretical_lessons },
-    { name: 'Arriendo equipo', value: selectedExperience.included_equipment_rental},
+    { name: `Arriendo de equipo (Precio: ${selectedExperience.equipment_rental_price} USD/día)`, value: selectedExperience.included_equipment_rental},
     { name: 'Yoga', value: selectedExperience.included_yoga },
     { name: 'Entrenamiento', value: selectedExperience.included_training },
-    { name: 'Video experiencia', value: selectedExperience.included_experience_video },
+    { name: `Video experiencia (Precio: ${selectedExperience.video_price} USD extra`, value: selectedExperience.included_experience_video },
     { name: 'Seguro accidentes', value: selectedExperience.included_accident_insurance },
     { name: 'Entrada a parques y eventos', value: selectedExperience.included_entry_fees },
-    { name: 'Ticket de Andarivel', value: selectedExperience.included_lift_ticket },
+    { name: 'Transporte desde el aeropuerto incluido', value: selectedExperience.transport_airport },
+    { name: 'Transporte durante la experiencia incluido', value: selectedExperience.transport_during_experience},
+    { name: 'Tarifas de entrada incluidas', value: selectedExperience.included_entry_fees }
   ];
   const includedList = included.filter(feature => feature.value);
   const notIncludedList = included.filter(feature => !feature.value);
@@ -39,15 +45,14 @@ const ExperienceView = ({ experienceCard }) => {
     { name: 'Desayuno incluido', value: selectedExperience.meal_breakfast },
     { name: 'Almuerzo incluido', value: selectedExperience.meal_lunch },
     { name: 'Cena incluida', value: selectedExperience.meal_dinner },
-    { name: 'Aperitivos y bebidas incluidos', value: selectedExperience.meal_snacks_and_drinks },
+    { name: 'Snacks incluidos', value: selectedExperience.meal_snacks },
+    { name: 'Aperitivos incluidos', value: selectedExperience.meal_drinks }
+
   ];
   const accommodationList = accommodation.filter(meal => meal.value);
 
   const transport = [
-    { name: 'Transporte desde el aeropuerto incluido', value: selectedExperience.transport_airport },
-    { name: 'Transporte durante la experiencia incluido', value: selectedExperience.transport_during_experience},
-    { name: 'Tarifas de entrada incluidas', value: selectedExperience.included_entry_fees },
-    { name: 'Ticket de andarivel incluido', value: selectedExperience.included_lift_ticket },
+
   ];
 
   const transportList = transport.filter(included => included.value);
@@ -62,6 +67,8 @@ const ExperienceView = ({ experienceCard }) => {
     { name: 'Video de la experiencia incluido', value: selectedExperience.included_experience_video},
   ];
   const videoList = video.filter(included => included.value);
+
+
 
   return (
     <>
@@ -140,12 +147,6 @@ const ExperienceView = ({ experienceCard }) => {
     
     </div>
 
-    <div className="flex flex-col  p-10  bg-white border-white border-2 rounded-2xl">
-          <h2 className="bg-letrip rounded-xl px-4 py-2 text-xl text-left font-bold tracking-tight text-gray-900 mb-4">Equipamiento</h2>
-          <p className="text-sm italic py-1 leading-6 text-gray-900">{selectedExperience.equipment_required}</p>
-    
-    </div>
-
 
     <div className="flex flex-col  p-10  bg-white border-white border-2 rounded-2xl">
           <h2 className="bg-letrip rounded-xl px-4 py-2 text-xl text-left font-bold tracking-tight text-gray-900 mb-4">Alojamiento</h2>
@@ -184,6 +185,11 @@ const ExperienceView = ({ experienceCard }) => {
               </li>
             ))}
           </ul>
+    </div>
+
+    <div className="flex flex-col p-10  bg-white border-white border-2 rounded-2xl">
+          <h2 className="bg-letrip rounded-xl px-4 py-2 text-xl text-left font-bold tracking-tight text-gray-900 mb-4">No olvidar</h2>
+          <p className="text-sm italic py-5 leading-6 text-gray-900">{selectedExperience.dont_forget}</p>
     </div>
 
     <div className="flex flex-col  p-10  bg-white border-white border-2 rounded-2xl">
