@@ -175,9 +175,9 @@ const BookExperience = ({ experienceCard }) => {
 
 
             <div className='my-10'>
+            <div className='col-span-2'>
               
               <h3 className="text-2xl font-bold mb-10">Información del precio</h3>
-              <div className='col-span-2'>
                 <label className='text-gray-700 text-sm' htmlFor="experience_package">Elige la fecha de tu experiencia</label>
                 <select
                   id="experience_package"
@@ -206,28 +206,27 @@ const BookExperience = ({ experienceCard }) => {
                   onChange={handlePlayerChange} // Usando handlePlayerChange para manejar este input específicamente
                   className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
                 />
-              <div className='grid grid-cols-4 font-semibold text-sm'>
-                <p><FontAwesomeIcon className='text-gray-700 pr-2' icon={CheckIcon} />{selectedExperience.experience_price.toLocaleString('de-DE')} USD x {players} persona(s)</p>
-                <p>{totalPrice.toLocaleString('de-DE')} USD</p>
-              </div>
-              <div className='grid grid-cols-4 font-semibold text-sm '>
-                <p><FontAwesomeIcon className='text-gray-700 pr-2' icon={CheckIcon} />Tarifa por servicio Le trip</p>
-                <p>{letripPrice.toLocaleString('de-DE')} USD</p>
-              </div>
+                <div className='grid grid-cols-4 font-semibold text-sm'>
+                  <p><FontAwesomeIcon className='text-gray-700 pr-2' icon={CheckIcon} />{selectedExperience.experience_price.toLocaleString('de-DE')} USD x {players} persona(s)</p>
+                  <p>{totalPrice.toLocaleString('de-DE')} USD</p>
+                </div>
+                <div className='grid grid-cols-4 font-semibold text-sm '>
+                  <p><FontAwesomeIcon className='text-gray-700 pr-2' icon={CheckIcon} />Tarifa por servicio Le trip</p>
+                  <p>{letripPrice.toLocaleString('de-DE')} USD</p>
+                </div>
 
-              <div className='grid grid-cols-4 font-semibold text-sm '>
-                <p><FontAwesomeIcon className='text-gray-700 pr-2' icon={CheckIcon} />Impuestos</p>
-                <p>{tax.toLocaleString('de-DE')} USD</p>
-              </div>
+                <div className='grid grid-cols-4 font-semibold text-sm '>
+                  <p><FontAwesomeIcon className='text-gray-700 pr-2' icon={CheckIcon} />Impuestos</p>
+                  <p>{tax.toLocaleString('de-DE')} USD</p>
+                </div>
 
-                <li className="block w-1/2 font-semibold text-sm outline-none py-2 mt-10">                
-                <span className="font-semibold text-xl">
-                  <FontAwesomeIcon className='text-green-700 pr-4' icon={faMoneyBills} />
-                  {totalPriceFull.toLocaleString('de-DE')}
-                </span> USD en total
-                </li>
+                  <li className="block w-1/2 font-semibold text-sm outline-none py-2 mt-10">                
+                  <span className="font-semibold text-xl">
+                    <FontAwesomeIcon className='text-green-700 pr-4' icon={faMoneyBills} />
+                    {totalPriceFull.toLocaleString('de-DE')}
+                  </span> USD en total
+                  </li>
 
-            </div>
 
             {/* Aceptación de Términos y Condiciones */}
             <div className="my-10 flex">
@@ -248,9 +247,10 @@ const BookExperience = ({ experienceCard }) => {
               </span>
             </button>
             </div>
-            </div>
-          </form>
+          </div>
         </div>
+      </form>
+    </div>
         </>
       ) : (
         <div>Precio no disponible</div>
