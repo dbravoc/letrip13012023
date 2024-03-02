@@ -112,7 +112,8 @@ const BookExperience = ({ experienceCard }) => {
         <>
         <div className='pt-10'>
           <h2 className="px-1 rounded-xl py-2 text-3xl text-left font-bold tracking-tight text-gray-900 mb-10">Reserva tu experiencia</h2>
-          <form className='grid grid-cols-5 gap-x-8' onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit}>
+            <div className='grid grid-cols-5 gap-x-8'>
             <div className='col-span-3'>
                 {/* Nombre del Cliente */}
                 <label className='text-gray-700 text-sm' htmlFor="customer_name">Nombres y Apellidos:</label>
@@ -241,13 +242,14 @@ const BookExperience = ({ experienceCard }) => {
                 Acepto los <a className='font-semibold'>términos y condiciones</a>
               </label>
             </div>
-
+            </div>
             <button type="submit" className="text-lg hover:bg-black hover:text-letrip bg-letrip text-black py-4 rounded-md text-center w-full block">
               <span className="font-semibold text-2xl">
                 Reservar experiencia
               </span>
             </button>
             </div>
+            
           </form>
         </div>
         </>
