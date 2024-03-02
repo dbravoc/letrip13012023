@@ -174,7 +174,19 @@ const BookExperience = ({ experienceCard }) => {
                 />
               </div>
 
-
+                    {/* Aceptación de Términos y Condiciones */}
+                    <div className="my-10 flex">
+                    <input
+                      id="approved_terms_and_conditions"
+                      name="approved_terms_and_conditions"
+                      type="checkbox"
+                      checked={formData.approved_terms_and_conditions}
+                      onChange={handleChange}
+                    />
+                    <label htmlFor="approved_terms_and_conditions" className="pl-2 text-sm text-gray-700">
+                      Acepto los <a className='font-semibold'>términos y condiciones</a>
+                    </label>
+                  </div>
 
               <div className='col-span-3 mb-10'>
               
@@ -233,26 +245,14 @@ const BookExperience = ({ experienceCard }) => {
                         </li>
 
 
-                    {/* Aceptación de Términos y Condiciones */}
-                    <div className="my-10 flex">
-                    <input
-                      id="approved_terms_and_conditions"
-                      name="approved_terms_and_conditions"
-                      type="checkbox"
-                      checked={formData.approved_terms_and_conditions}
-                      onChange={handleChange}
-                    />
-                    <label htmlFor="approved_terms_and_conditions" className="pl-2 text-sm text-gray-700">
-                      Acepto los <a className='font-semibold'>términos y condiciones</a>
-                    </label>
-                  </div>
+
+            </div>
+        </div>
                   <button type="submit" className="text-lg hover:bg-black hover:text-letrip bg-letrip text-black py-4 rounded-md text-center w-full block">
                     <span className="font-semibold text-2xl">
                       Reservar experiencia
                     </span>
                   </button>
-            </div>
-        </div>
       </form>
     </div>
         </>
