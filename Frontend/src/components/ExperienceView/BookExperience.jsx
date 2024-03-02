@@ -114,7 +114,7 @@ const BookExperience = ({ experienceCard }) => {
           <h2 className="px-1 rounded-xl py-2 text-3xl text-left font-bold tracking-tight text-gray-900 mb-10">Reserva tu experiencia</h2>
           <form onSubmit={handleSubmit}>
             <div className='grid grid-cols-5 gap-x-8'>
-            <div className='col-span-3'>
+              <div className='col-span-2'>
                 {/* Nombre del Cliente */}
                 <label className='text-gray-700 text-sm' htmlFor="customer_name">Nombres y Apellidos:</label>
                 <input
@@ -174,80 +174,78 @@ const BookExperience = ({ experienceCard }) => {
 
 
 
-            <div className='my-10'>
-            <div className='col-span-2'>
+              <div className='col-span-3 my-10'>
               
-              <h3 className="text-2xl font-bold mb-10">Información del precio</h3>
-                <label className='text-gray-700 text-sm' htmlFor="experience_package">Elige la fecha de tu experiencia</label>
-                <select
-                  id="experience_package"
-                  name="experience_package"
-                  value={formData.experience_package}
-                  onChange={handleChange}
-                  className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
-                >
-                  <option value="">Selecciona una fecha</option>
-                  {availableDates.map((dateOption) => (
-                    <option key={dateOption.id} value={dateOption.value}>
-                      {dateOption.label}
-                    </option>
-                  ))}
-                </select>
+                    <h3 className="text-2xl font-bold mb-10">Información del precio</h3>
+                      <label className='text-gray-700 text-sm' htmlFor="experience_package">Elige la fecha de tu experiencia</label>
+                      <select
+                        id="experience_package"
+                        name="experience_package"
+                        value={formData.experience_package}
+                        onChange={handleChange}
+                        className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
+                      >
+                        <option value="">Selecciona una fecha</option>
+                        {availableDates.map((dateOption) => (
+                          <option key={dateOption.id} value={dateOption.value}>
+                            {dateOption.label}
+                          </option>
+                        ))}
+                      </select>
 
-                {/* Corrección en el campo del número de personas */}
-                <label className='text-gray-700 text-sm' htmlFor="players">Número de personas</label>
-                <input
-                  id="players"
-                  name="players"
-                  type="number"
-                  min={selectedExperience.minimum_group_size} // Asegurar que se usa selectedExperience
-                  max={selectedExperience.max_group_size} // Asegurar que se usa selectedExperience
-                  value={players} // Corregido para usar el estado `players`
-                  onChange={handlePlayerChange} // Usando handlePlayerChange para manejar este input específicamente
-                  className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
-                />
-                <div className='grid grid-cols-4 font-semibold text-sm'>
-                  <p><FontAwesomeIcon className='text-gray-700 pr-2' icon={CheckIcon} />{selectedExperience.experience_price.toLocaleString('de-DE')} USD x {players} persona(s)</p>
-                  <p>{totalPrice.toLocaleString('de-DE')} USD</p>
-                </div>
-                <div className='grid grid-cols-4 font-semibold text-sm '>
-                  <p><FontAwesomeIcon className='text-gray-700 pr-2' icon={CheckIcon} />Tarifa por servicio Le trip</p>
-                  <p>{letripPrice.toLocaleString('de-DE')} USD</p>
-                </div>
+                      {/* Corrección en el campo del número de personas */}
+                      <label className='text-gray-700 text-sm' htmlFor="players">Número de personas</label>
+                      <input
+                        id="players"
+                        name="players"
+                        type="number"
+                        min={selectedExperience.minimum_group_size} // Asegurar que se usa selectedExperience
+                        max={selectedExperience.max_group_size} // Asegurar que se usa selectedExperience
+                        value={players} // Corregido para usar el estado `players`
+                        onChange={handlePlayerChange} // Usando handlePlayerChange para manejar este input específicamente
+                        className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
+                      />
+                      <div className='grid grid-cols-4 font-semibold text-sm'>
+                        <p><FontAwesomeIcon className='text-gray-700 pr-2' icon={CheckIcon} />{selectedExperience.experience_price.toLocaleString('de-DE')} USD x {players} persona(s)</p>
+                        <p>{totalPrice.toLocaleString('de-DE')} USD</p>
+                      </div>
+                      <div className='grid grid-cols-4 font-semibold text-sm '>
+                        <p><FontAwesomeIcon className='text-gray-700 pr-2' icon={CheckIcon} />Tarifa por servicio Le trip</p>
+                        <p>{letripPrice.toLocaleString('de-DE')} USD</p>
+                      </div>
 
-                <div className='grid grid-cols-4 font-semibold text-sm '>
-                  <p><FontAwesomeIcon className='text-gray-700 pr-2' icon={CheckIcon} />Impuestos</p>
-                  <p>{tax.toLocaleString('de-DE')} USD</p>
-                </div>
+                      <div className='grid grid-cols-4 font-semibold text-sm '>
+                        <p><FontAwesomeIcon className='text-gray-700 pr-2' icon={CheckIcon} />Impuestos</p>
+                        <p>{tax.toLocaleString('de-DE')} USD</p>
+                      </div>
 
-                  <li className="block w-1/2 font-semibold text-sm outline-none py-2 mt-10">                
-                  <span className="font-semibold text-xl">
-                    <FontAwesomeIcon className='text-green-700 pr-4' icon={faMoneyBills} />
-                    {totalPriceFull.toLocaleString('de-DE')}
-                  </span> USD en total
-                  </li>
+                        <li className="block w-1/2 font-semibold text-sm outline-none py-2 mt-10">                
+                        <span className="font-semibold text-xl">
+                          <FontAwesomeIcon className='text-green-700 pr-4' icon={faMoneyBills} />
+                          {totalPriceFull.toLocaleString('de-DE')}
+                        </span> USD en total
+                        </li>
 
 
-            {/* Aceptación de Términos y Condiciones */}
-            <div className="my-10 flex">
-              <input
-                id="approved_terms_and_conditions"
-                name="approved_terms_and_conditions"
-                type="checkbox"
-                checked={formData.approved_terms_and_conditions}
-                onChange={handleChange}
-              />
-              <label htmlFor="approved_terms_and_conditions" className="pl-2 text-sm text-gray-700">
-                Acepto los <a className='font-semibold'>términos y condiciones</a>
-              </label>
+                    {/* Aceptación de Términos y Condiciones */}
+                    <div className="my-10 flex">
+                    <input
+                      id="approved_terms_and_conditions"
+                      name="approved_terms_and_conditions"
+                      type="checkbox"
+                      checked={formData.approved_terms_and_conditions}
+                      onChange={handleChange}
+                    />
+                    <label htmlFor="approved_terms_and_conditions" className="pl-2 text-sm text-gray-700">
+                      Acepto los <a className='font-semibold'>términos y condiciones</a>
+                    </label>
+                  </div>
+                  <button type="submit" className="text-lg hover:bg-black hover:text-letrip bg-letrip text-black py-4 rounded-md text-center w-full block">
+                    <span className="font-semibold text-2xl">
+                      Reservar experiencia
+                    </span>
+                  </button>
             </div>
-            <button type="submit" className="text-lg hover:bg-black hover:text-letrip bg-letrip text-black py-4 rounded-md text-center w-full block">
-              <span className="font-semibold text-2xl">
-                Reservar experiencia
-              </span>
-            </button>
-            </div>
-          </div>
         </div>
       </form>
     </div>
