@@ -36,33 +36,17 @@ const ExperienceView = ({ experienceCard }) => {
     { name: 'Entrada a parques y eventos', value: selectedExperience.included_entry_fees },
     { name: 'Transporte desde el aeropuerto incluido', value: selectedExperience.transport_airport },
     { name: 'Transporte durante la experiencia incluido', value: selectedExperience.transport_during_experience},
-    { name: 'Tarifas de entrada incluidas', value: selectedExperience.included_entry_fees }
-  ];
-  const includedList = included.filter(feature => feature.value);
-  const notIncludedList = included.filter(feature => !feature.value);
-
-  const accommodation = [
+    { name: 'Tarifas de entrada incluidas', value: selectedExperience.included_entry_fees },
+    { name: 'Instructor certificado', value: selectedExperience.certified_instructor },
+    { name: 'Seguro de accidentes incluido', value: selectedExperience.included_accident_insurance},
     { name: 'Desayuno incluido', value: selectedExperience.meal_breakfast },
     { name: 'Almuerzo incluido', value: selectedExperience.meal_lunch },
     { name: 'Cena incluida', value: selectedExperience.meal_dinner },
     { name: 'Snacks incluidos', value: selectedExperience.meal_snacks },
     { name: 'Aperitivos incluidos', value: selectedExperience.meal_drinks }
-
   ];
-  const accommodationList = accommodation.filter(meal => meal.value);
-
-  const transport = [
-
-  ];
-
-  const transportList = transport.filter(included => included.value);
-
-  const insurance = [
-    { name: 'Instructor certificado', value: selectedExperience.certified_instructor },
-    { name: 'Seguro de accidentes incluido', value: selectedExperience.included_accident_insurance},
-  ];
-  const insuranceList = insurance.filter(included => included.value);
-
+  const includedList = included.filter(feature => feature.value);
+  const notIncludedList = included.filter(feature => !feature.value);
   const video = [
     { name: 'Video de la experiencia incluido', value: selectedExperience.included_experience_video},
   ];
@@ -147,45 +131,6 @@ const ExperienceView = ({ experienceCard }) => {
     
     </div>
 
-
-    <div className="flex flex-col  p-10  bg-white border-white border-2 rounded-2xl">
-          <h2 className="bg-letrip rounded-xl px-4 py-2 text-xl text-left font-bold tracking-tight text-gray-900 mb-4">Alojamiento</h2>
-          {selectedExperience.experience_accommodation}
-           <ul role="list" className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-5 text-sm leading-6 text-black">
-            {accommodationList.map((accommodation, index) => (
-              <li key={index} className="flex gap-x-4">
-                <CheckIcon className="h-6 w-5 flex-none text-yellow-500 font-extrabold" aria-hidden="true" />
-                {accommodation.name}
-              </li>
-            ))}
-          </ul>
-
-    </div>
-
-    <div className="flex flex-col  p-10  bg-white border-white border-2 rounded-2xl">
-          <h2 className="bg-letrip rounded-xl px-4 py-2 text-xl text-left font-bold tracking-tight text-gray-900 mb-4">Transporte</h2>
-           <ul role="list" className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-5 text-sm leading-6 text-black">
-            {transportList.map((transport, index) => (
-              <li key={index} className="flex gap-x-4">
-                <CheckIcon className="h-6 w-5 flex-none text-yellow-500 font-extrabold" aria-hidden="true" />
-                {transport.name}
-              </li>
-            ))}
-          </ul>
-
-    </div>
-
-    <div className="flex flex-col  p-10  bg-white border-white border-2 rounded-2xl">
-          <h2 className="bg-letrip rounded-xl px-4 py-2 text-xl text-left font-bold tracking-tight text-gray-900 mb-4">Seguridad</h2>
-           <ul role="list" className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-5 text-sm leading-6 text-black">
-            {insuranceList.map((insurance, index) => (
-              <li key={index} className="flex gap-x-4">
-                <CheckIcon className="h-6 w-5 flex-none text-yellow-500 font-extrabold" aria-hidden="true" />
-                {insurance.name}
-              </li>
-            ))}
-          </ul>
-    </div>
 
     <div className="flex flex-col p-10  bg-white border-white border-2 rounded-2xl">
           <h2 className="bg-letrip rounded-xl px-4 py-2 text-xl text-left font-bold tracking-tight text-gray-900 mb-4">No olvidar</h2>
