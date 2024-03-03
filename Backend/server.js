@@ -386,3 +386,28 @@ app.post('/sold_experiences', async (req, res) => {
         res.status(500).send('Server Error');
     }
 });
+
+// endpoint Mailgun
+
+const mailgun = require('mailgun-js');
+
+const DOMAIN = process.env.MAILGUN_DOMAIN;
+const mg = mailgun({apiKey: process.env.MAILGUN_API_KEY, domain: DOMAIN});
+
+app.post('/send-email', (req, res) => {
+  const {to, subject, text} = req.body;
+
+  const data = {
+    from: 'Excited User <david@letriplab.com>',
+    to,
+    subject,
+    text,
+  };
+
+  mg.messages().send(data, function (error, body) {
+    if(error) {
+      return res.status(500).send({error});
+    }
+    res.send({message: 'Email sent', body});
+  });
+});

@@ -3,6 +3,8 @@ import { useParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMoneyBills } from '@fortawesome/free-solid-svg-icons';
 import { CheckIcon } from '@heroicons/react/24/outline';
+import { sendReservationEmail } from './BookMailing';
+
 
 const BookExperience = ({ experienceCard }) => {
   const [players, setPlayers] = useState(1);
@@ -89,6 +91,7 @@ const BookExperience = ({ experienceCard }) => {
       }
 
       const data = await response.json();
+      await sendReservationEmail(formData, selectedExperience, item, players, totalPriceFull);
       alert('Serás redirigido a la plataforma de pago. Activa la ventana emergente. ¡Nos pondremos en contacto contigo!');
       console.log('Datos guardados:', data);
 
@@ -104,6 +107,7 @@ const BookExperience = ({ experienceCard }) => {
   const tax = letripPrice* 0.19
 
   const totalPriceFull = totalPrice + letripPrice + tax 
+  
 
 
   return (
