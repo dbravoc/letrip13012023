@@ -392,7 +392,7 @@ app.post('/sold_experiences', async (req, res) => {
 const mailgun = require('mailgun-js');
 
 const DOMAIN = process.env.MAILGUN_DOMAIN;
-const mg = mailgun({apiKey: process.env.MAILGUN_API_KEY, domain: DOMAIN});
+const mg = mailgun({apiKey: process.env.MAILGUN_KEY, domain: DOMAIN});
 
 app.post('/send-email', (req, res) => {
   const {to, subject, text} = req.body;
