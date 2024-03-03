@@ -12,6 +12,8 @@ const BookExperience = ({ experienceCard }) => {
   const selectedExperience = experienceCard.find(e => e.experience_uuid === id);
   const [totalPrice, setTotalPrice] = useState(0);
   const [availableDates, setAvailableDates] = useState([]);
+  const [selectedItem, setSelectedItem] = useState(null);
+
 
   const [formData, setFormData] = useState({
     customer_name: '',
@@ -56,6 +58,15 @@ const BookExperience = ({ experienceCard }) => {
       ...prevData,
       [name]: value,
     }));
+    if (name === "experience_package") {
+      const [startDate, endDate] = value.split("_");
+      const item = availableDates.find(d => d.value === value);
+      setSelectedItem({
+        available_date_start: startDate,
+        available_date_end: endDate,
+        ...item,
+      });
+    }
   };
 
   useEffect(() => {
@@ -71,9 +82,17 @@ const BookExperience = ({ experienceCard }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+  
+    // Verificar si se ha seleccionado un item (fecha de experiencia)
+    if (!selectedItem) {
+      alert('Por favor, selecciona una fecha para tu experiencia.');
+      return;
+    }
+  
     const apiUrl = 'https://letrip13012023-backend-lawitec.vercel.app/sold_experiences';
-
+  
     try {
+      // Llamada a la API para guardar los datos de la experiencia vendida
       const response = await fetch(apiUrl, {
         method: 'POST',
         headers: {
@@ -85,22 +104,31 @@ const BookExperience = ({ experienceCard }) => {
           number_of_players: players,
         }),
       });
-
+  
       if (!response.ok) {
         throw new Error('Error en la respuesta del servidor');
       }
-
+  
+      // Si la respuesta es exitosa, procesar los datos
       const data = await response.json();
-      await sendReservationEmail(formData, selectedExperience, item, players, totalPriceFull);
+  
+      // Cálculo final del precio total
+      const letripPrice = totalPrice * 0.1;
+      const tax = letripPrice * 0.19;
+      const totalPriceFull = totalPrice + letripPrice + tax;
+  
+      // Envío del email de confirmación
+      await sendReservationEmail(formData, selectedExperience, selectedItem, players, totalPriceFull);
       alert('Serás redirigido a la plataforma de pago. Activa la ventana emergente. ¡Nos pondremos en contacto contigo!');
       console.log('Datos guardados:', data);
-
+  
+      // Redirección a la plataforma de pago
       window.open('https://cobros.global66.com/DAVBRA654', '_blank');
     } catch (error) {
+      // Manejo de errores al guardar los datos o enviar el email
       alert('Error al guardar los datos: ' + error.message);
     }
   };
-
 
   const letripPrice = totalPrice * 0.1
 
