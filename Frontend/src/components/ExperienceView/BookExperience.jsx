@@ -30,8 +30,6 @@ const BookExperience = ({ experienceCard }) => {
   });
 
 
-  cons
-
   useEffect(() => {
     const loadAvailableDates = async () => {
       const apiUrl = `https://letrip13012023-backend-lawitec.vercel.app/available_experiences?experience_uuid=${id}`;
