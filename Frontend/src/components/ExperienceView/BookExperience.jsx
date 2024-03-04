@@ -112,10 +112,10 @@ const BookExperience = ({ experienceCard }) => {
           sold_experience_name: selectedExperience.experience_name, // Aquí agregas el nombre de la experiencia
           players: players,
           experience_package: formData.experience_package,
-          experience_price: totalPrice, // Asegúrate de que esto es lo que tu API espera
-          letrip_price: letripPrice,
-          customer_tax: tax,
-          total_price: totalPriceFull,
+          experience_price: parseFloat(totalPrice.toFixed(2)), // Asegúrate de que esto es lo que tu API espera
+          letrip_price: parseFloat(letripPrice.toFixed(2)),
+          customer_tax: parseFloat(tax.toFixed(2)),
+          total_price: parseFloat(totalPriceFull.toFixed(2)),
         }),
       });
   
