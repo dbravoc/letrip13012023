@@ -5,7 +5,7 @@ import { CheckIcon, XMarkIcon } from '@heroicons/react/24/outline';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 
-const ExperienceView = ({ experienceCard }) => {
+const Info = ({ experienceCard }) => {
   const { id } = useParams(); // Obtiene el ID de la URL
   const selectedExperience = experienceCard.find(e => e.experience_uuid === id);
 
@@ -155,4 +155,4 @@ const ExperienceView = ({ experienceCard }) => {
   
 };
 
-export default ExperienceView;
+export default Info;
