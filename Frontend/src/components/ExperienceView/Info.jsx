@@ -1,6 +1,6 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
-import { faExclamation, faMoneyBills } from '@fortawesome/free-solid-svg-icons';
+import { faMoneyBills } from '@fortawesome/free-solid-svg-icons';
 import { CheckIcon, XMarkIcon } from '@heroicons/react/24/outline';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
@@ -122,6 +122,17 @@ const Info = ({ experienceCard }) => {
           </ul>
 
     </div>
+
+    <div className="flex flex-col p-10  bg-white border-white border-2 rounded-2xl">
+          <h2 className="bg-letrip rounded-xl px-4 py-2 text-xl text-left font-bold tracking-tight text-gray-900 mb-4">Alojamiento</h2>
+          <p className="text-sm italic py-5 leading-6 text-gray-900">{selectedExperience.acommodation}</p>
+    </div>
+
+    <div className="flex flex-col p-10  bg-white border-white border-2 rounded-2xl">
+          <h2 className="bg-letrip rounded-xl px-4 py-2 text-xl text-left font-bold tracking-tight text-gray-900 mb-4">Itinerario</h2>
+          <p className="text-sm italic py-5 leading-6 text-gray-900">{selectedExperience.itinerary}</p>
+    </div>
+
 
     <div className="flex flex-col  p-10  bg-white border-white border-2 rounded-2xl">
           <h2 className="bg-letrip rounded-xl px-4 py-2 text-xl text-left font-bold tracking-tight text-gray-900 mb-4">Restricciones</h2>
