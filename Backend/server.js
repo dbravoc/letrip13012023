@@ -396,21 +396,26 @@ app.post('/sold_experiences', async (req, res) => {
 // endpoint Mailgun
 
 app.post('/send-email', async (req, res) => {
-    const { to, subject, text } = req.body;  
-
-const formData = require('form-data');
-const Mailgun = require('mailgun.js');
-const mailgun = new Mailgun(formData);
-const mg = mailgun.client({username: 'api', key: process.env.MAILGUN_KEY || 'key-yourkeyhere'});
-
-mg.messages.create('letriplab.com', {
-	from: "postmaster@letriplab.com",
-	to: ["david@letriplab.com"],
-	subject: "Hello",
-	text: "Testing some Mailgun awesomeness!",
-	html: "<h1>Testing some Mailgun awesomeness!</h1>"
-})
-.then(msg => console.log(msg)) // logs response data
-.catch(err => console.log(err)); // logs any error
-
-});
+    const { to, subject, text } = req.body;
+  
+    const formData = require('form-data');
+    const Mailgun = require('mailgun.js');
+    const mailgun = new Mailgun(formData);
+    const mg = mailgun.client({username: 'api', key: process.env.MAILGUN_KEY || 'key-yourkeyhere'});
+  
+    mg.messages.create('letriplab.com', {
+      from: "postmaster@letriplab.com",
+      to: [to], // Asegúrate de que 'to' sea un array
+      subject,
+      text,
+      html: `<p>${text}</p>`, // Aquí convertimos el texto a HTML para el cuerpo del correo
+    })
+    .then(msg => {
+      console.log(msg); // logs response data
+      res.send({message: 'Email sent', body: msg});
+    }) // Envía una respuesta exitosa
+    .catch(err => {
+      console.log(err); // logs any error
+      res.status(500).send({error: err.message});
+    }); // Envía una respuesta de error
+  });

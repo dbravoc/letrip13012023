@@ -1,7 +1,7 @@
  //MAILGUN
  const BookMailing = async (formData, selectedExperience, item, players, totalPriceFull) => {
     const emailData = {
-      to: 'david@letrip.com',
+      to: `${formData.customer_email}`,
       subject: 'Confirmación de Reserva - Le trip',
       text: `¡Hola, ${formData.customer_name}!\n\n` +
             `Gracias por preferir Le trip para vivir una nueva experiencia deportiva. A continuación te confirmamos los datos de tu reserva:\n` +
