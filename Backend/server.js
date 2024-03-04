@@ -401,7 +401,7 @@ app.post('/send-email', async (req, res) => {
     const formData = require('form-data');
     const Mailgun = require('mailgun.js');
     const mailgun = new Mailgun(formData);
-    const mg = mailgun.client({username: 'api', key: process.env.MAILGUN_KEY || 'key-yourkeyhere'});
+    const mg = mailgun.client({username: 'Le trip sending', key: process.env.MAILGUN_KEY || 'key-yourkeyhere'});
   
     mg.messages.create('letriplab.com', {
       from: "postmaster@letriplab.com",
