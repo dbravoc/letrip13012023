@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMoneyBills } from '@fortawesome/free-solid-svg-icons';
 import { CheckIcon } from '@heroicons/react/24/outline';
-import { sendReservationEmail } from './BookMailing';
+import { BookMailing } from './BookMailing';
 
 
 const BookExperience = ({ experienceCard }) => {
@@ -125,7 +125,7 @@ const BookExperience = ({ experienceCard }) => {
       const data = await response.json();
 
       // Envío del email de confirmación
-      await sendReservationEmail(formData, selectedExperience, selectedItem, players, totalPriceFull);
+      await BookMailing(formData, selectedExperience, selectedItem, players, totalPriceFull);
       alert('Serás redirigido a la plataforma de pago. Activa la ventana emergente. ¡Nos pondremos en contacto contigo!');
       console.log('Datos guardados:', data);
   

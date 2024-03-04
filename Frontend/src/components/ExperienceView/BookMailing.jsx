@@ -1,5 +1,5 @@
  //MAILGUN
- const sendReservationEmail = async (formData, selectedExperience, item, players, totalPriceFull) => {
+ const BookMailing = async (formData, selectedExperience, item, players, totalPriceFull) => {
     const emailData = {
       to: 'david@letrip.com',
       subject: 'Confirmación de Reserva - Le trip',
@@ -30,4 +30,4 @@
     }
   };
 
-  export { sendReservationEmail };
+  export { BookMailing };
