@@ -374,7 +374,11 @@ app.post('/sold_experiences', async (req, res) => {
                     customer_phone,
                     customer_email,
                     customer_address,
-                    approved_terms_and_conditions
+                    approved_terms_and_conditions,
+                    experience_price,
+                    letrip_price,
+                    customer_tax,
+                    total_price
                 }
             ]);
 
