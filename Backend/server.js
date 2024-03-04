@@ -378,7 +378,7 @@ app.post('/sold_experiences', async (req, res) => {
                     experience_price,
                     letrip_price,
                     customer_tax,
-                    total_price
+                    total_price,
                 }
             ]);
 
