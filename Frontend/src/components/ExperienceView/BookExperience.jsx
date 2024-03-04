@@ -88,9 +88,10 @@ const BookExperience = ({ experienceCard }) => {
       alert('Por favor, selecciona una fecha para tu experiencia.');
       return;
     }
-    const letripPrice = totalPrice * 0.1
-    const tax = letripPrice* 0.19
-    const totalPriceFull = totalPrice + letripPrice + tax 
+
+    const letripPrice = totalPrice * 0.1;
+    const tax = letripPrice * 0.19;
+    const totalPriceFull = totalPrice + letripPrice + tax;
   
     const apiUrl = 'https://letrip13012023-backend-lawitec.vercel.app/sold_experiences';
   
