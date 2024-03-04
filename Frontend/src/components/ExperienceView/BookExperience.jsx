@@ -119,12 +119,7 @@ const BookExperience = ({ experienceCard }) => {
   
       // Si la respuesta es exitosa, procesar los datos
       const data = await response.json();
-  
-      // Cálculo final del precio total
-      const letripPrice = totalPrice * 0.1;
-      const tax = letripPrice * 0.19;
-      const totalPriceFull = totalPrice + letripPrice + tax;
-  
+
       // Envío del email de confirmación
       await sendReservationEmail(formData, selectedExperience, selectedItem, players, totalPriceFull);
       alert('Serás redirigido a la plataforma de pago. Activa la ventana emergente. ¡Nos pondremos en contacto contigo!');
