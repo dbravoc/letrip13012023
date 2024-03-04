@@ -115,7 +115,7 @@ const BookExperience = ({ experienceCard }) => {
           experience_price: parseFloat(totalPrice.toFixed(2)), // Asegúrate de que esto es lo que tu API espera
           letrip_price: parseFloat(letripPrice.toFixed(2)),
           customer_tax: parseFloat(tax.toFixed(2)),
-          total_price: parseFloat(totalPriceFull..toFixed(2)),
+          total_price: parseFloat(totalPriceFull.toFixed(2)),
         }),
       });
   
