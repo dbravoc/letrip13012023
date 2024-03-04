@@ -404,7 +404,7 @@ app.post('/send-email', async (req, res) => {
     const mg = mailgun.client({username: 'api', key: process.env.MAILGUN_KEY || 'key-yourkeyhere'});
   
     mg.messages.create('letriplab.com', {
-      from: "postmaster@letriplab.com",
+      from: "david@letriplab.com",
       to: [to], // Asegúrate de que 'to' sea un array
       subject,
       text,
