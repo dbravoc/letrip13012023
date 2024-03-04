@@ -88,6 +88,9 @@ const BookExperience = ({ experienceCard }) => {
       alert('Por favor, selecciona una fecha para tu experiencia.');
       return;
     }
+    const letripPrice = totalPrice * 0.1
+    const tax = letripPrice* 0.19
+    const totalPriceFull = totalPrice + letripPrice + tax 
   
     const apiUrl = 'https://letrip13012023-backend-lawitec.vercel.app/sold_experiences';
   
@@ -102,6 +105,11 @@ const BookExperience = ({ experienceCard }) => {
           ...formData,
           experience_uuid: id,
           number_of_players: players,
+          experience_package: formData.experience_package,
+          totalPrice, // Asegúrate de que esto es lo que tu API espera
+          letripPrice,
+          tax,
+          totalPriceFull,
         }),
       });
   
@@ -129,13 +137,6 @@ const BookExperience = ({ experienceCard }) => {
       alert('Error al guardar los datos: ' + error.message);
     }
   };
-
-  const letripPrice = totalPrice * 0.1
-
-  const tax = letripPrice* 0.19
-
-  const totalPriceFull = totalPrice + letripPrice + tax 
-  
 
 
   return (
