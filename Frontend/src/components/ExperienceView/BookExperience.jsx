@@ -258,23 +258,23 @@ const BookExperience = ({ experienceCard }) => {
 
 
                       <div className='grid grid-cols-2 font-semibold text-sm'>
-                        <p><FontAwesomeIcon className='text-gray-700 pr-2' icon={CheckIcon} />{selectedExperience.experience_price} USD x {players} persona(s)</p>
-                        <p>{totalPrice} USD</p>
+                        <p><FontAwesomeIcon className='text-gray-700 pr-2' icon={CheckIcon} />{selectedExperience.experience_price.toLocaleString('de-DE')} USD x {players} persona(s)</p>
+                        <p>{totalPrice.toLocaleString('de-DE')} USD</p>
                       </div>
                       <div className='grid grid-cols-2 font-semibold text-sm '>
                         <p><FontAwesomeIcon className='text-gray-700 pr-2' icon={CheckIcon} />Tarifa por servicio Le trip</p>
-                        <p>{letripPrice} USD</p>
+                        <p>{letripPrice.toLocaleString('de-DE')} USD</p>
                       </div>
 
                       <div className='grid grid-cols-2 font-semibold text-sm'>
                         <p><FontAwesomeIcon className='text-gray-700 pr-2' icon={CheckIcon} />Impuestos</p>
-                        <p>{tax} USD</p>
+                        <p>{tax.toLocaleString('de-DE')} USD</p>
                       </div>
 
                         <li className="block w-1/2 font-semibold text-sm outline-none py-2 mt-4">                
                         <span className="font-semibold text-xl">
                           <FontAwesomeIcon className='text-green-700 pr-4' icon={faMoneyBills} />
-                          {totalPriceFull}
+                          {totalPriceFull.toLocaleString('de-DE')}
                         </span> USD en total
                         </li>
                 </div>
