@@ -1,17 +1,21 @@
  //MAILGUN
  const BookMailing = async (formData, selectedExperience, item, players, totalPriceFull) => {
     const emailData = {
-      to: `${formData.customer_email}`,
+      to: `${formData.customer_email}, 'david@letriplab.com', 'matias@letriplab.com', 'thomas@letriplab.com'`,
       subject: 'Confirmación de Reserva - Le trip',
-      text: `¡Hola, ${formData.customer_name}!\n\n` +
-            `Gracias por preferir Le trip para vivir una nueva experiencia deportiva. A continuación te confirmamos los datos de tu reserva:\n` +
-            `- Nombre experiencia: ${selectedExperience.experience_name}\n` +
-            `- Fecha: ${item.available_date_start} al ${item.available_date_end}\n` +
-            `- Nº de personas: ${players}\n` +
-            `- Precio total: ${totalPriceFull.toLocaleString('de-DE')}\n\n` +
-            `En las próximas horas, nuestro equipo se contactará contigo para quedar en contacto ante cualquier duda que tengas y también para enviarte la boleta o factura del servicio.\n\n` +
-            `Estamos ansiosos para que disfrutes una de nuestras experiencias únicas en Le trip.\n\n` +
-            `¡Un abrazo grande!`
+      text: `
+      <h3>¡Hola, ${formData.customer_name}!</h3>
+      <p>Gracias por elegir <strong>Le trip</strong> para vivir una nueva experiencia deportiva. Nos complace confirmarte los detalles de tu reserva:</p>
+      <ul>
+        <li><strong>Nombre experiencia:</strong> ${selectedExperience.experience_name}</li>
+        <li><strong>Fecha:</strong> ${selectedItem.available_date_start} al ${selectedItem.available_date_end}</li>
+        <li><strong>Nº de personas:</strong> ${players}</li>
+        <li><strong>Precio total:</strong> ${totalPriceFull.toLocaleString('de-DE')} USD</li>
+      </ul>
+      <p>En las próximas horas, uno de nuestros representantes se pondrá en contacto contigo para resolver cualquier duda y enviarte la boleta o factura correspondiente.</p>
+      <p>Estamos emocionados de que vayas a disfrutar una de nuestras experiencias únicas. ¡Te esperamos con los brazos abiertos!</p>
+    `
+            
     };
   
     try {
