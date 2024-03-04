@@ -362,7 +362,7 @@ app.put('/experiences/:uuid', async (req, res) => {
 
 // Endpoint para insertar un nuevo registro en public.sold_experiences
 app.post('/sold_experiences', async (req, res) => {
-    const { customer_name, customer_identification, customer_phone, customer_email, customer_address, approved_terms_and_conditions } = req.body;
+    const { customer_name, customer_identification, customer_phone, customer_email, customer_address, approved_terms_and_conditions, experience_price, letrip_price, customer_tax, total_price} = req.body;
 
     try {
         const { data, error } = await supabase
