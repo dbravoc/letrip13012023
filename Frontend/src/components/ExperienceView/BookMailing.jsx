@@ -9,8 +9,8 @@
       <ul>
         <li>Nombre experiencia:</strong> ${selectedExperience.experience_name}</li>
         <li>Fecha:${selectedItem.available_date_start} al ${selectedItem.available_date_end}</li>
-        <li>Nº de personas:${formData.players} </li>
-        <li>Precio total:${totalPriceFull} USD</li>
+        <li>Nº de personas:${players} </li>
+        <li>Precio total:${totalPriceFull.toLocaleString('de-DE')} USD</li>
       </ul>
       <p>En las próximas horas, uno de nuestros representantes se pondrá en contacto contigo para resolver cualquier duda y enviarte la boleta o factura correspondiente.</p>
       <p>Estamos emocionados de que vayas a disfrutar una de nuestras experiencias únicas. ¡Te esperamos con los brazos abiertos!</p>
