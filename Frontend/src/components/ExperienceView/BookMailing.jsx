@@ -1,5 +1,5 @@
  //MAILGUN
- const BookMailing = async (formData, selectedExperience, selectedItem, item, players, totalPriceFull) => {
+ const BookMailing = async (formData, selectedExperience, selectedItem) => {
     const emailData = {
       to: `${formData.customer_email}, david@letriplab.com, matias@letriplab.com, thomas@letriplab.com`,
       subject: 'Confirmación de Reserva - Le trip',
@@ -10,7 +10,7 @@
         <li>Nombre experiencia:</strong> ${selectedExperience.experience_name}</li>
         <li>Fecha:${selectedItem.available_date_start} al ${selectedItem.available_date_end}</li>
         <li>Nº de personas:${players} </li>
-        <li>Precio total:${totalPriceFull.toLocaleString('de-DE')} USD</li>
+        <li>Precio total:${total_price} USD</li>
       </ul>
       <p>En las próximas horas, uno de nuestros representantes se pondrá en contacto contigo para resolver cualquier duda y enviarte la boleta o factura correspondiente.</p>
       <p>Estamos emocionados de que vayas a disfrutar una de nuestras experiencias únicas. ¡Te esperamos con los brazos abiertos!</p>
