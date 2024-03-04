@@ -109,7 +109,7 @@ const BookExperience = ({ experienceCard }) => {
         body: JSON.stringify({
           ...formData,
           experience_uuid: id,
-          number_of_players: players,
+          players: players,
           experience_package: formData.experience_package,
           experience_price: totalPrice, // Asegúrate de que esto es lo que tu API espera
           letrip_price: letripPrice,
