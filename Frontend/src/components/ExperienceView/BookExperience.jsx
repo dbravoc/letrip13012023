@@ -84,10 +84,9 @@ const BookExperience = ({ experienceCard }) => {
     setPlayers(numPlayers);
   };
 
-  const letripPrice = totalPrice * 0.1;
-  const tax = letripPrice * 0.19;
-  const totalPriceFull = totalPrice + letripPrice + tax;
-
+  const letripPrice = parseFloat((totalPrice * 0.1).toFixed(2));
+  const tax = parseFloat((letripPrice * 0.19).toFixed(2));
+  const totalPriceFull = parseFloat((totalPrice + letripPrice + tax).toFixed(2));
 
   const handleSubmit = async (e) => {
     e.preventDefault();
