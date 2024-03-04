@@ -23,6 +23,10 @@ const BookExperience = ({ experienceCard }) => {
     customer_address: '',
     approved_terms_and_conditions: false,
     experience_package: '',
+    experience_price:'',
+    letrip_price:'',
+    customer_tax:'',
+    total_price:''
   });
 
   useEffect(() => {
