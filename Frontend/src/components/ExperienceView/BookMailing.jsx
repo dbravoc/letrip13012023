@@ -5,7 +5,7 @@
       subject: 'Confirmación de Reserva - Le trip',
       text: `
       <h3>¡Hola, ${formData.customer_name}!</h3>
-      <p>Gracias por elegir <strong>Le trip</strong> para vivir una nueva experiencia deportiva. Nos complace confirmarte los detalles de tu reserva:</p>
+      <p>Gracias por elegir <strong>Le trip</strong> para vivir una experiencia inolvidable. Nos complace confirmarte los detalles de tu reserva:</p>
       <ul>
         <li>Nombre experiencia:</strong> ${selectedExperience.experience_name}</li>
         <li>Fecha:${selectedItem.available_date_start} al ${selectedItem.available_date_end}</li>
@@ -13,7 +13,8 @@
         <li>Precio total:${total_price} USD</li>
       </ul>
       <p>En las próximas horas, uno de nuestros representantes se pondrá en contacto contigo para resolver cualquier duda y enviarte la boleta o factura correspondiente.</p>
-      <p>Estamos emocionados de que vayas a disfrutar una de nuestras experiencias únicas. ¡Te esperamos con los brazos abiertos!</p>
+      <p>Estamos emocionados de que vayas a disfrutar una de nuestras experiencias únicas.</p>
+      <p> ¡Te esperamos con los brazos abiertos!</p>
     `
             
     };
