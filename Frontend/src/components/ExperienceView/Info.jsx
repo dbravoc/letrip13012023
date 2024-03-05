@@ -82,10 +82,15 @@ const Info = ({ experienceCard }) => {
 
 </div>
 
-  <div className='grid grid-cols-1 sm:grid-cols-2 gap-8'>
+  <div className='grid grid-cols-1 sm:grid-cols-3 gap-8'>
 
 
-    <div className="flex flex-col p-10 bg-white border-white border-2 rounded-2xl">
+    <div className="flex col-span-2 flex-col p-10  bg-white border-white border-2 rounded-2xl">
+          <h2 className="bg-letrip rounded-xl px-4 py-2 text-xl text-left font-bold tracking-tight text-gray-900 mb-4">Descripción de la experiencia</h2>
+          <p className="text-sm italic py-5 leading-6 text-gray-900">{selectedExperience.experience_included_description}</p>
+    </div>
+
+    <div className="flex col-span-1 flex-col p-10 bg-white border-white border-2 rounded-2xl">
             <h2 className="bg-letrip rounded-xl px-4 py-2 text-xl text-left font-bold tracking-tight text-gray-900 mb-4">Características de la experiencia</h2>
             <dl className="mt-0 grid grid-cols-1 sm:grid-cols-2 gap-y-2 gap-x-8">
               {features.map((feature, index) => (
@@ -97,22 +102,17 @@ const Info = ({ experienceCard }) => {
             </dl>
     </div>
 
-    <div className="flex flex-col p-10  bg-white border-white border-2 rounded-2xl">
-          <h2 className="bg-letrip rounded-xl px-4 py-2 text-xl text-left font-bold tracking-tight text-gray-900 mb-4">Descripción de la experiencia</h2>
-          <p className="text-sm italic py-5 leading-6 text-gray-900">{selectedExperience.experience_included_description}</p>
-    </div>
-
     </div>
 
 
-    <div className='grid grid-cols-1 sm:grid-cols-2 gap-8'>
+    <div className='grid grid-cols-1 sm:grid-cols-3 gap-8'>
     <div className="flex flex-col p-10  bg-white border-white border-2 rounded-2xl">
           <h2 className="bg-letrip rounded-xl px-4 py-2 text-xl text-left font-bold tracking-tight text-gray-900 mb-4">Itinerario</h2>
           <div className="text-sm italic py-5 leading-6 text-gray-900">{selectedExperience.itinerary}</div>
     </div>
 
   <div>
-    <div className="flex flex-col p-10  bg-white border-white border-2 rounded-2xl">
+    <div className="flex col-span-2 flex-col p-10  bg-white border-white border-2 rounded-2xl">
           <h2 className="bg-letrip rounded-xl px-4 py-2 text-xl text-left font-bold tracking-tight text-gray-900 mb-4">Lo que SI incluye</h2>
            <ul role="list" className="mt-2 grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-5 text-sm leading-6 text-black">
             {includedList.map((included, index) => (
@@ -125,7 +125,7 @@ const Info = ({ experienceCard }) => {
 
     </div>
 
-    <div className="flex flex-col  p-10  bg-white border-white border-2 rounded-2xl">
+    <div className="flex col-span-1 flex-col  p-10  bg-white border-white border-2 rounded-2xl">
           <h2 className="bg-letrip rounded-xl px-4 py-2 text-xl text-left font-bold tracking-tight text-gray-900 mb-4">Lo que NO incluye</h2>
            <ul role="list" className="mt-2 grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-5 text-sm leading-6 text-black">
             {notIncludedList.map((notincluded, index) => (
@@ -168,7 +168,7 @@ const Info = ({ experienceCard }) => {
         <div>Precio no disponible</div>
       )}
     </div>
-  </div>
+</div>
   </>
 
   );
