@@ -164,7 +164,7 @@ const BookExperience = ({ experienceCard }) => {
                 
 
                 {/* Identificación del Cliente */}
-                <label className='text-gray-700 text-sm' htmlFor="customer_identification">Identificación:</label>
+                <label className='text-gray-700 text-sm' htmlFor="customer_identification">Número de identificación:</label>
                 <input
                   id="customer_identification"
                   name="customer_identification"
