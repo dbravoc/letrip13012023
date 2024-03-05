@@ -144,7 +144,7 @@ const BookExperience = ({ experienceCard }) => {
     <div className="mx-0 sm:px-6 mb-10 tracking-tight text-gray-900">
       {selectedExperience ? (
         <>
-        <div className='pt-10'>
+        <div className='pt-2'>
           <h2 className="rounded-xl py-2 text-3xl text-left font-bold tracking-tight text-gray-900 mb-10">Reserva tu experiencia</h2>
           <form onSubmit={handleSubmit}>
             <div className='grid grid-cols-5 gap-x-8'>
