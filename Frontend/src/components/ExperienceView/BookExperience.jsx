@@ -85,25 +85,32 @@ const BookExperience = ({ experienceCard }) => {
     setPlayers(numPlayers);
   };
 
-  const discounts = {
-    1: discount_1,
-    2: discount_2,
-    3: discount_3,
-    4: discount_4,
-    5: discount_5,
-    6: discount_6,
-    7: discount_7,
-    8: discount_8,
-  };
-  
   useEffect(() => {
+    let discountValue;
+  
     if (selectedExperience) {
-      const basePrice = players * selectedExperience.experience_price;
-      const discount = discounts[players] || 0; // Obtener el descuento basado en el número de jugadores o 0 si no hay descuento definido
-      setTotalPrice(basePrice - discount);
+      if (players < 1) {
+        // Si el número de jugadores es menor que 1, el descuento es 0
+        discountValue = 0;
+      } else if (players > 10) {
+        // Si el número de jugadores es mayor que 10, se usa el descuento para 10 jugadores
+        discountValue = selectedExperience[`discount_10`];
+      } else {
+        // Construir el nombre del campo del descuento basado en el número de players dentro del rango 1-10
+        const discountFieldName = `discount_${players}`;
+        // Acceder dinámicamente al campo del descuento en el objeto selectedExperience
+        discountValue = selectedExperience[discountFieldName];
+      }
     }
-  }, [players, selectedExperience, discounts]);
-
+  
+    // Aquí puedes hacer lo que necesites con discountValue, por ejemplo, actualizar un estado
+    console.log(discountValue); // Mostrar el valor del descuento para verificar
+  
+    // Supongamos que quieres actualizar el estado con este nuevo valor de descuento
+    // setDiscount(discountValue); // Asegúrate de tener un estado `discount` definido para esto
+  
+  }, [players, selectedExperience]); // Dependencias [players, selectedExperience] para reaccionar a cambios
+  
   const letripPrice = parseFloat((totalPrice * 0.1).toFixed(2));
   const tax = parseFloat((letripPrice * 0.19).toFixed(2));
   const totalPriceFull = parseFloat((totalPrice + letripPrice + tax).toFixed(2));
@@ -286,7 +293,7 @@ const BookExperience = ({ experienceCard }) => {
                       </div>
                       <div className='grid grid-cols-2 font-semibold text-sm'>
                         <p><FontAwesomeIcon className='text-gray-700 pr-2' icon={CheckIcon} />Descuentos</p>
-                        <p>{discounts.toLocaleString('de-DE')} USD</p>
+                        <p>{discountValue.toLocaleString('de-DE')} USD</p>
                       </div>
 
                       <div className='grid grid-cols-2 font-semibold text-sm'>
