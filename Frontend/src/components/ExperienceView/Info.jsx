@@ -114,9 +114,9 @@ const Info = ({ experienceCard }) => {
   <div className='col-span-2'>
     <div className="flex flex-col p-10  bg-white border-white border-2 rounded-2xl">
           <h2 className="bg-letrip rounded-xl px-4 py-2 text-xl text-left font-bold tracking-tight text-gray-900 mb-4">Lo que SI incluye</h2>
-           <ul role="list" className="mt-2 grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-5 text-sm leading-6 text-black">
+           <ul role="list" className="mt-2 grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-1 text-sm leading-6 text-black">
             {includedList.map((included, index) => (
-              <li key={index} className="flex gap-x-4">
+              <li key={index} className="flex gap-x-3">
                 <CheckIcon className="h-6 w-5 flex-none text-yellow-500 font-extrabold" aria-hidden="true" />
                 {included.name}
               </li>
@@ -127,9 +127,9 @@ const Info = ({ experienceCard }) => {
 
     <div className="flex flex-col  p-10  bg-white border-white border-2 rounded-2xl">
           <h2 className="bg-letrip rounded-xl px-4 py-2 text-xl text-left font-bold tracking-tight text-gray-900 mb-4">Lo que NO incluye</h2>
-           <ul role="list" className="mt-2 grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-5 text-sm leading-6 text-black">
+           <ul role="list" className="mt-2 grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-1 text-sm leading-6 text-black">
             {notIncludedList.map((notincluded, index) => (
-              <li key={index} className="flex gap-x-4">
+              <li key={index} className="flex gap-x-3">
                 <XMarkIcon className="h-6 w-5 flex-none text-yellow-500 font-extrabold" aria-hidden="true" />
                 {notincluded.name}
               </li>
@@ -147,9 +147,9 @@ const Info = ({ experienceCard }) => {
     </div>
     <div className="flex flex-col  p-10  bg-white border-white border-2 rounded-2xl">
           <h2 className="bg-letrip rounded-xl px-4 py-2 text-xl text-left font-bold tracking-tight text-gray-900 mb-4">Restricciones</h2>
-          <faExclamation className="h-6 w-5 flex-none text-yellow-500 font-extrabold" aria-hidden="true"/> <p className="text-sm italic py-1 leading-6 text-gray-900"> {selectedExperience.target_audience_restrictions}</p>
-          <faExclamation className="h-6 w-5 flex-none text-yellow-500 font-extrabold" aria-hidden="true"/> <p className="text-sm italic py-1 leading-6 text-gray-900">  <span>Edad mínima: </span>{selectedExperience.minimum_age}</p>
-          <faExclamation className="h-6 w-5 flex-none text-yellow-500 font-extrabold" aria-hidden="true"/> <p className="text-sm italic py-1 leading-6 text-gray-900">  <span>Mínimo de personas: </span>{selectedExperience.minimum_group_size}</p>
+          <CheckIcon className="h-6 w-5 flex-none text-yellow-500 font-extrabold" aria-hidden="true"/> <p className="text-sm italic py-1 leading-6 text-gray-900"> {selectedExperience.target_audience_restrictions}</p>
+          <CheckIcon className="h-6 w-5 flex-none text-yellow-500 font-extrabold" aria-hidden="true"/> <p className="text-sm italic py-1 leading-6 text-gray-900">  <span>Edad mínima: </span>{selectedExperience.minimum_age}</p>
+          <CheckIcon className="h-6 w-5 flex-none text-yellow-500 font-extrabold" aria-hidden="true"/> <p className="text-sm italic py-1 leading-6 text-gray-900">  <span>Mínimo de personas: </span>{selectedExperience.minimum_group_size}</p>
     
     </div>
 
