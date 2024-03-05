@@ -85,6 +85,25 @@ const BookExperience = ({ experienceCard }) => {
     setPlayers(numPlayers);
   };
 
+  const discounts = {
+    1: discount_1,
+    2: discount_2,
+    3: discount_3,
+    4: discount_4,
+    5: discount_5,
+    6: discount_6,
+    7: discount_7,
+    8: discount_8,
+  };
+  
+  useEffect(() => {
+    if (selectedExperience) {
+      const basePrice = players * selectedExperience.experience_price;
+      const discount = discounts[players] || 0; // Obtener el descuento basado en el número de jugadores o 0 si no hay descuento definido
+      setTotalPrice(basePrice - discount);
+    }
+  }, [players, selectedExperience, discounts]);
+
   const letripPrice = parseFloat((totalPrice * 0.1).toFixed(2));
   const tax = parseFloat((letripPrice * 0.19).toFixed(2));
   const totalPriceFull = parseFloat((totalPrice + letripPrice + tax).toFixed(2));
@@ -264,6 +283,10 @@ const BookExperience = ({ experienceCard }) => {
                       <div className='grid grid-cols-2 font-semibold text-sm '>
                         <p><FontAwesomeIcon className='text-gray-700 pr-2' icon={CheckIcon} />Tarifa por servicio Le trip</p>
                         <p>{letripPrice.toLocaleString('de-DE')} USD</p>
+                      </div>
+                      <div className='grid grid-cols-2 font-semibold text-sm'>
+                        <p><FontAwesomeIcon className='text-gray-700 pr-2' icon={CheckIcon} />Descuentos</p>
+                        <p>{discounts.toLocaleString('de-DE')} USD</p>
                       </div>
 
                       <div className='grid grid-cols-2 font-semibold text-sm'>
