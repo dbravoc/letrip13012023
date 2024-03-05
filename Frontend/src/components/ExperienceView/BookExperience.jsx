@@ -109,7 +109,7 @@ const BookExperience = ({ experienceCard }) => {
     console.log(discountValue); // Mostrar el valor del descuento para verificar
   
     // Supongamos que quieres actualizar el estado con este nuevo valor de descuento
-    // setDiscount(discountValue); // Asegúrate de tener un estado `discount` definido para esto
+   setDiscount(discountValue); // Asegúrate de tener un estado `discount` definido para esto
   
   }, [players, selectedExperience]); // Dependencias [players, selectedExperience] para reaccionar a cambios
   
