@@ -147,9 +147,9 @@ const Info = ({ experienceCard }) => {
     </div>
     <div className="flex flex-col  p-10  bg-white border-white border-2 rounded-2xl">
           <h2 className="bg-letrip rounded-xl px-4 py-2 text-xl text-left font-bold tracking-tight text-gray-900 mb-4">Restricciones</h2>
-          <CheckIcon className="h-6 w-5 flex-none text-yellow-500 font-extrabold" aria-hidden="true"/> <p className="text-sm italic py-1 leading-6 text-gray-900"> {selectedExperience.target_audience_restrictions}</p>
-          <CheckIcon className="h-6 w-5 flex-none text-yellow-500 font-extrabold" aria-hidden="true"/> <p className="text-sm italic py-1 leading-6 text-gray-900">  <span>Edad mínima: </span>{selectedExperience.minimum_age}</p>
-          <CheckIcon className="h-6 w-5 flex-none text-yellow-500 font-extrabold" aria-hidden="true"/> <p className="text-sm italic py-1 leading-6 text-gray-900">  <span>Mínimo de personas: </span>{selectedExperience.minimum_group_size}</p>
+          <CheckIcon className="h-6 w-5 flex-none text-yellow-500 font-extrabold" aria-hidden="true"/> <span className="text-sm italic py-1 leading-6 text-gray-900"> {selectedExperience.target_audience_restrictions}</span>
+          <CheckIcon className="h-6 w-5 flex-none text-yellow-500 font-extrabold" aria-hidden="true"/> <span className="text-sm italic py-1 leading-6 text-gray-900"> Edad mínima: {selectedExperience.minimum_age}</span>
+          <CheckIcon className="h-6 w-5 flex-none text-yellow-500 font-extrabold" aria-hidden="true"/> <span className="text-sm italic py-1 leading-6 text-gray-900"> Mínimo de personas: {selectedExperience.minimum_group_size}</span>
     
     </div>
 
