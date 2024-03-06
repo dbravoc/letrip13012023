@@ -29,8 +29,8 @@ const BasicsCreate = () => {
 
   return (
     <>
-<h3 className="text-center mb-10 text-2xl font-bold tracking-tight text-gray-500">Conoce nuestro proceso Le Trip</h3>
-<div className='grid grid-cols-5 gap-8 text-gray-500 text-center mb-20'>
+<h3 className="text-center mb-10 text-2xl font-bold tracking-tight text-gray-900">Conoce nuestro proceso <span className='bg-letrip font-semibold rounded-xl p-2'>Le trip</span></h3>
+<div className='grid grid-cols-5 gap-8 text-gray-500 text-center pb-10 '>
     <ul className=''>
         <li><FontAwesomeIcon className='text-5xl' icon={faUserPlus} /></li>
         <li className='font-bold mt-3'>Operador Le Trip</li>
@@ -61,10 +61,10 @@ const BasicsCreate = () => {
 
 </div>
 
-<form className='flex flex-col px-auto sm:mx-64 gap-y-2' onSubmit={handleSubmit}>
+<form className='flex flex-col px-auto sm:mx-64 gap-y-2 ' onSubmit={handleSubmit}>
 
-<h3 className="text-center mb-5 text-2xl font-bold tracking-tight text-gray-900">Solicita la publicación de una experiencia</h3>
-<h3 className="text-center mb-10 text-md tracking-tight text-gray-700">Ingresa los datos de tu empresa</h3>
+<h3 className="text-center mb-5 text-2xl font-bold tracking-tight mt-10 text-gray-900 bg-letrip rounded-xl p-2">Solicita la publicación de una experiencia</h3>
+<h3 className="text-left mb-2 text-md tracking-tight font-semibold text-gray-700">Ingresa los datos de tu <span className='bg-letrip font-semibold rounded-xl p-2'>empresa.</span></h3>
 
       <label className='text-gray-700 text-sm' htmlFor="experience_name" >Nombre de la empresa</label>
       <input
@@ -126,7 +126,7 @@ const BasicsCreate = () => {
               
       />
 
-<h3 className="text-center mb-10 text-md tracking-tight text-gray-700">Ingresa los datos de la experiencia que quieres publicar para que uno de nuestros representantes se pondrá en contacto contigo.</h3>
+<h3 className="text-left mb-5 mt-8 font-semibold text-md tracking-tight text-gray-700">Ingresa los datos de la <span className='bg-letrip font-semibold rounded-xl p-2'>experiencia</span> que quieres publicar.</h3>
 
       <label className='text-gray-700 text-sm' htmlFor="experience_name" >Título de la experiencia. <span className='text-xs italic'> (Escribe algo simple, breve y persuasivo para los visitantes de Le Trip)</span></label>
       <input
