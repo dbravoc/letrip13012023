@@ -22,7 +22,7 @@ const InboundForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('/providers', {
+      const response = await fetch('https://letrip13012023-backend.vercel.app/providers', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
