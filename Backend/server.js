@@ -420,3 +420,54 @@ app.post('/send-email', async (req, res) => {
       res.status(500).send({error: err.message});
     }); // Envía una respuesta de error
   });
+
+  app.get('/providers', async (req, res) => {
+    try {
+        const { data: providersData, error: providersError } = await supabase
+            .from('providers')
+            .select('*');
+
+        if (providersError) {
+            throw providersError;
+        }
+
+        res.json(providersData);
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server Error');
+    }
+});
+
+app.post('/providers', async (req, res) => {
+    try {
+        const {
+            company_name,
+            contact_person,
+            phone_number,
+            company_address,
+            email_address,
+            website_url
+        } = req.body;
+
+        const { data, error } = await supabase
+            .from('providers')
+            .insert([
+                {
+                    company_name,
+                    contact_person,
+                    phone_number,
+                    company_address,
+                    email_address,
+                    website_url
+                },
+            ])
+            .select();
+
+        if (error) throw error;
+
+        res.status(201).json(data);
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server Error');
+    }
+});

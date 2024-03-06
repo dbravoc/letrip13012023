@@ -63,69 +63,6 @@ const BasicsCreate = () => {
 
 <form className='flex flex-col px-auto sm:mx-64 gap-y-2 ' onSubmit={handleSubmit}>
 
-<h3 className="text-center mb-5 text-2xl font-bold tracking-tight mt-10 text-gray-900 bg-letrip rounded-xl p-2">Solicita la publicación de una experiencia</h3>
-<h3 className="text-left mb-2 text-md tracking-tight font-semibold text-gray-700">Ingresa los datos de tu <span className='bg-letrip font-semibold rounded-xl p-2'>empresa.</span></h3>
-
-      <label className='text-gray-700 text-sm' htmlFor="experience_name" >Nombre de la empresa</label>
-      <input
-        id="experience_name"
-        name="experience_name"
-        type="text"
-        required
-        value={formData.experience_name}
-        onChange={handleChange}
-        className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
-              
-      />
-
-      <label className='text-gray-700 text-sm' htmlFor="experience_name" >Persona de contacto </label>
-      <input
-        id="experience_name"
-        name="experience_name"
-        type="text"
-        required
-        value={formData.experience_name}
-        onChange={handleChange}
-        className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
-              
-      />
-
-      <label className='text-gray-700 text-sm' htmlFor="experience_name" >Número de teléfono </label>
-      <input
-        id="experience_name"
-        name="experience_name"
-        type="text"
-        required
-        value={formData.experience_name}
-        onChange={handleChange}
-        className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
-              
-      />
-
-      <label className='text-gray-700 text-sm' htmlFor="experience_name" >Correo electrónico </label>
-      <input
-        id="experience_name"
-        name="experience_name"
-        type="text"
-        required
-        value={formData.experience_name}
-        onChange={handleChange}
-        className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
-              
-      />
-
-      <label className='text-gray-700 text-sm' htmlFor="experience_name" >Página web</label>
-      <input
-        id="experience_name"
-        name="experience_name"
-        type="text"
-        required
-        value={formData.experience_name}
-        onChange={handleChange}
-        className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
-              
-      />
-
 <h3 className="text-left mb-5 mt-8 font-semibold text-md tracking-tight text-gray-700">Ingresa los datos de la <span className='bg-letrip font-semibold rounded-xl p-2'>experiencia</span> que quieres publicar.</h3>
 
       <label className='text-gray-700 text-sm' htmlFor="experience_name" >Título de la experiencia. <span className='text-xs italic'> (Escribe algo simple, breve y persuasivo para los visitantes de Le Trip)</span></label>
