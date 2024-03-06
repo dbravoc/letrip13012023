@@ -132,7 +132,8 @@ const InboundForm = () => {
         className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
               
       />
-      <label className='text-gray-700 text-sm' htmlFor="inbound_experience_name" >Nombre de la experiencia</label>
+      <h2 className="text-left mt-8 mb-2 text-md tracking-tight font-semibold text-gray-700">Ingresa los datos de la <span className='bg-letrip font-semibold rounded-xl p-2'>experiencia.</span></h2>
+      <label className='text-gray-700 text-sm' htmlFor="inbound_experience_name" >Título de la experiencia</label>
       <input
         id="inbound_experience_name"
         name="inbound_experience_name"
