@@ -4,6 +4,7 @@ import { faCircleCheck, faHeart, faList, faMagnifyingGlass, faUserPlus } from '@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import ProviderForm from './ProviderForm';
 
 
 
@@ -26,15 +27,22 @@ const BasicsCreate = () => {
         console.error('Error:', error);
       }
     };
-
+    
   return (
     <>
+<form className='mt-36 flex flex-col gap-y-2 ' onSubmit={handleSubmit}>
+<h3 className="text-center text-2xl font-bold tracking-tight mt-20 text-gray-900 rounded-xl p-2">Solicita la publicación de una experiencia</h3>
 
-<form className='flex flex-col px-auto sm:mx-64 gap-y-2 ' onSubmit={handleSubmit}>
+<div className='grid grid-cols-2 gap-x-20'>
+  <div className='col-span-1'>
+  <ProviderForm></ProviderForm>
+  </div>
+
+  <div className='col-span-1'>
 
 <h3 className="text-left mb-5 mt-8 font-semibold text-md tracking-tight text-gray-700">Ingresa los datos de la <span className='bg-letrip font-semibold rounded-xl p-2'>experiencia</span> que quieres publicar.</h3>
 
-      <label className='text-gray-700 text-sm' htmlFor="experience_name" >Título de la experiencia. <span className='text-xs italic'> (Escribe algo simple, breve y persuasivo para los visitantes de Le Trip)</span></label>
+      <label className='text-gray-700 text-sm' htmlFor="experience_name" >Título de la experiencia. <span className='text-xs italic'> (Escribe algo simple, breve y persuasivo para los visitantes de Le trip)</span></label>
       <input
         id="experience_name"
         name="experience_name"
@@ -198,10 +206,13 @@ const BasicsCreate = () => {
         className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
       />
         
+        </div>
+        </div>
 
       <button  type="submit" className="block w-full rounded-md my-10 px-3 py-4 text-center text-xl font-semibold shadow-sm hover:bg-black hover:text-letrip bg-letrip text-black">
         Solicitar publicación
     </button>
+
     <ToastContainer position="bottom-right" />
 </form>
 </>

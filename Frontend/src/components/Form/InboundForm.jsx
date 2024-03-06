@@ -1,13 +1,9 @@
-// ProviderForm.jsx
 import React, { useState } from 'react';
-import { useExperienceFormContext } from '../../context/ExperienceFormContext';
-import { faCircleCheck, faHeart, faList, faMagnifyingGlass, faUserPlus } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 
-const ProviderForm = () => {
+const InboundForm = () => {
   const [formData, setFormData] = useState({
     company_name: '',
     contact_person: '',
@@ -56,6 +52,8 @@ const ProviderForm = () => {
 
   return (
     <>
+        <h3 className="text-center text-2xl font-bold tracking-tight mt-20 text-gray-900 rounded-xl p-2">Solicita la publicación de una experiencia</h3>
+
       <form className='flex flex-col px-auto gap-y-2' onSubmit={handleSubmit}>
         <h3 className="text-left mt-8 mb-2 text-md tracking-tight font-semibold text-gray-700">Ingresa los datos de tu <span className='bg-letrip font-semibold rounded-xl p-2'>empresa.</span></h3>
 
@@ -130,11 +128,14 @@ const ProviderForm = () => {
         className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
               
       />
-
+      <button  type="submit" className="block w-full rounded-md my-10 px-3 py-4 text-center text-xl font-semibold shadow-sm hover:bg-black hover:text-letrip bg-letrip text-black">
+        Enviar solicitud
+      </button>
       </form>
       <ToastContainer position="bottom-right" />
     </>
   );
 };
 
-export default ProviderForm;
+
+  export default InboundForm;
