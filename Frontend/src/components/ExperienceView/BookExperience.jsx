@@ -115,8 +115,8 @@ const BookExperience = ({ experienceCard }) => {
   
   const letripPrice = parseFloat((totalPrice * 0.1).toFixed(2));
   const tax = parseFloat((letripPrice * 0.19).toFixed(2));
-  const discountValue = parseFloat((discount * totalPrice).toFixed(2));
-  const totalPriceFull = parseFloat((totalPrice + letripPrice + tax - discountValue).toFixed(2));
+  const discountAmount = parseFloat((discount * totalPrice).toFixed(2));
+  const totalPriceFull = parseFloat((totalPrice + letripPrice + tax - discountAmount).toFixed(2));
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -296,7 +296,7 @@ const BookExperience = ({ experienceCard }) => {
                       </div>
                       <div className='grid grid-cols-2 font-semibold text-sm'>
                         <p><FontAwesomeIcon className='text-gray-700 pr-2' icon={CheckIcon} />Descuentos</p>
-                        <p>{discountValue.toLocaleString('de-DE')} USD</p>
+                        <p>{discountAmount.toLocaleString('de-DE')} USD</p>
                       </div>
 
                       <div className='grid grid-cols-2 font-semibold text-sm'>
