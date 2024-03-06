@@ -64,7 +64,69 @@ const BasicsCreate = () => {
 <form className='flex flex-col px-auto sm:mx-64 gap-y-2' onSubmit={handleSubmit}>
 
 <h3 className="text-center mb-5 text-2xl font-bold tracking-tight text-gray-900">Solicita la publicación de una experiencia</h3>
-<h3 className="text-center mb-10 text-md tracking-tight text-gray-700">Ingresa los datos básicos para solicitar la publicación de tu experiencia y continuar con el <strong>proceso Le Trip</strong>. Nuestro equipo estará en contacto contigo para ir apoyándote en el proceso.</h3>
+<h3 className="text-center mb-10 text-md tracking-tight text-gray-700">Ingresa los datos de tu empresa</h3>
+
+      <label className='text-gray-700 text-sm' htmlFor="experience_name" >Nombre de la empresa</label>
+      <input
+        id="experience_name"
+        name="experience_name"
+        type="text"
+        required
+        value={formData.experience_name}
+        onChange={handleChange}
+        className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
+              
+      />
+
+      <label className='text-gray-700 text-sm' htmlFor="experience_name" >Persona de contacto </label>
+      <input
+        id="experience_name"
+        name="experience_name"
+        type="text"
+        required
+        value={formData.experience_name}
+        onChange={handleChange}
+        className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
+              
+      />
+
+      <label className='text-gray-700 text-sm' htmlFor="experience_name" >Número de teléfono </label>
+      <input
+        id="experience_name"
+        name="experience_name"
+        type="text"
+        required
+        value={formData.experience_name}
+        onChange={handleChange}
+        className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
+              
+      />
+
+      <label className='text-gray-700 text-sm' htmlFor="experience_name" >Correo electrónico </label>
+      <input
+        id="experience_name"
+        name="experience_name"
+        type="text"
+        required
+        value={formData.experience_name}
+        onChange={handleChange}
+        className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
+              
+      />
+
+      <label className='text-gray-700 text-sm' htmlFor="experience_name" >Página web</label>
+      <input
+        id="experience_name"
+        name="experience_name"
+        type="text"
+        required
+        value={formData.experience_name}
+        onChange={handleChange}
+        className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
+              
+      />
+
+<h3 className="text-center mb-10 text-md tracking-tight text-gray-700">Ingresa los datos de la experiencia que quieres publicar para que uno de nuestros representantes se pondrá en contacto contigo.</h3>
 
       <label className='text-gray-700 text-sm' htmlFor="experience_name" >Título de la experiencia. <span className='text-xs italic'> (Escribe algo simple, breve y persuasivo para los visitantes de Le Trip)</span></label>
       <input
