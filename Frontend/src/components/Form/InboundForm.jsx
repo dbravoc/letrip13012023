@@ -57,7 +57,7 @@ const InboundForm = () => {
     <div className='flex justify-center'>
     <form className='flex flex-col px-auto gap-y-2 sm:w-2/5' onSubmit={handleSubmit}>
 
-    <h2 className="text-center text-2xl font-bold tracking-tight text-gray-900 rounded-xl p-2 z-10">Solicita la publicación de una experiencia</h2>
+    <h2 className="text-center text-2xl font-bold tracking-tight text-gray-900 rounded-xl p-2 z-10"><span className='bg-letrip font-semibold rounded-xl p-2'>Solicita publicar tus experiencias con Le trip</span></h2>
 
      <h2 className="text-left mt-8 mb-2 text-md tracking-tight font-semibold text-gray-700">Ingresa los datos de tu <span className='bg-letrip font-semibold rounded-xl p-2'>empresa.</span></h2>
 
@@ -132,7 +132,7 @@ const InboundForm = () => {
         className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
               
       />
-      <label className='text-gray-700 text-sm' htmlFor="inbound_experience_name" >Nombre de tu experiencia</label>
+      <label className='text-gray-700 text-sm' htmlFor="inbound_experience_name" >Nombre de la experiencia</label>
       <input
         id="inbound_experience_name"
         name="inbound_experience_name"
