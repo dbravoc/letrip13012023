@@ -57,7 +57,7 @@ const InboundForm = () => {
     <div className='flex justify-center'>
     <form className='flex flex-col px-auto gap-y-2 sm:w-2/5' onSubmit={handleSubmit}>
 
-    <h2 className="text-center text-2xl font-bold tracking-tight text-gray-900 rounded-xl p-2 z-10"><span className='bg-letrip font-semibold rounded-xl p-2'>Solicita publicar tus experiencias con Le trip</span></h2>
+    <h2 className="text-center text-2xl font-bold tracking-tight text-gray-900 rounded-xl p-2 z-10">Solicita publicar tus experiencias con <span className='bg-letrip font-semibold rounded-xl p-2'>Le trip</span></h2>
 
      <h2 className="text-left mt-8 mb-2 text-md tracking-tight font-semibold text-gray-700">Ingresa los datos de tu <span className='bg-letrip font-semibold rounded-xl p-2'>empresa.</span></h2>
 
