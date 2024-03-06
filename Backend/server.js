@@ -445,8 +445,6 @@ app.post('/providers', async (req, res) => {
                     inbound_experience_name
                 },
             ])
-            .select();
-
         if (error) throw error;
 
         res.status(201).json(data);
