@@ -18,7 +18,7 @@ import ExperienceForm from './pages/ExperienceForm copy 2'
 import Info from './components/ExperienceView/Info';
 import Carousel from './components/ExperienceView/Carousel';
 import BookExperience from './components/ExperienceView/BookExperience';
-import InboundForm from './components/Form/ProviderForm';
+import InboundForm from './components/Form/InboundForm';
 import FooterProceso from './components/FooterProceso';
 
 
@@ -55,7 +55,7 @@ const App = () => {
           <>
             <div className="mx-auto w-full">
               <div className="mb-36 flex flex-col justify-between flex-wrap"><Inicio /></div>
-              <div className="pt-4 px-12 flex flex-col justify-between flex-  wrap relative z-10"><InboundForm /></div>
+              <div className="pt-4 px-12 flex flex-col justify-between wrap relative z-10"><InboundForm /></div>
               <div className='flex flex-col justify-between flex-wrap'><FooterProceso /></div>
 
 

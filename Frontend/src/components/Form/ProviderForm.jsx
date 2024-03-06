@@ -57,7 +57,8 @@ const ProviderForm = () => {
   return (
     <>
       <form className='flex flex-col px-auto gap-y-2' onSubmit={handleSubmit}>
-        <h3 className="text-left mt-8 mb-2 text-md tracking-tight font-semibold text-gray-700">Ingresa los datos de tu <span className='bg-letrip font-semibold rounded-xl p-2'>empresa.</span></h3>
+    
+    <h3 className="text-left mt-8 mb-2 text-md tracking-tight font-semibold text-gray-700">Ingresa los datos de tu <span className='bg-letrip font-semibold rounded-xl p-2'>empresa.</span></h3>
 
       <label className='text-gray-700 text-sm' htmlFor="company_name" >Nombre de la empresa</label>
       <input

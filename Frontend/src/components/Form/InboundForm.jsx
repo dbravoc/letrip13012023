@@ -11,6 +11,7 @@ const InboundForm = () => {
     company_address: '',
     email_address: '',
     website_url: '',
+    requested_experience_name:''
   });
 
   const handleChange = (e) => {
@@ -43,6 +44,7 @@ const InboundForm = () => {
         company_address: '',
         email_address: '',
         website_url: '',
+        requested_experience_name:''
       }); // Resetear el formulario
     } catch (error) {
       toast.error('Error al registrar el proveedor');
@@ -52,10 +54,12 @@ const InboundForm = () => {
 
   return (
     <>
-        <h3 className="text-center text-2xl font-bold tracking-tight mt-20 text-gray-900 rounded-xl p-2">Solicita la publicación de una experiencia</h3>
+    <div className='flex justify-center'>
+    <form className='flex flex-col px-auto gap-y-2 sm:w-2/5' onSubmit={handleSubmit}>
 
-      <form className='flex flex-col px-auto gap-y-2' onSubmit={handleSubmit}>
-        <h3 className="text-left mt-8 mb-2 text-md tracking-tight font-semibold text-gray-700">Ingresa los datos de tu <span className='bg-letrip font-semibold rounded-xl p-2'>empresa.</span></h3>
+    <h2 className="text-center text-2xl font-bold tracking-tight text-gray-900 rounded-xl p-2 z-10">Solicita la publicación de una experiencia</h2>
+
+     <h2 className="text-left mt-8 mb-2 text-md tracking-tight font-semibold text-gray-700">Ingresa los datos de tu <span className='bg-letrip font-semibold rounded-xl p-2'>empresa.</span></h2>
 
       <label className='text-gray-700 text-sm' htmlFor="company_name" >Nombre de la empresa</label>
       <input
@@ -93,7 +97,7 @@ const InboundForm = () => {
               
       />
 
-      <label className='text-gray-700 text-sm' htmlFor="company_address" >Dirección, Ciudad y País <span className='text-xs italic'> (Para temas de facturación)</span></label>
+      <label className='text-gray-700 text-sm' htmlFor="company_address" >Dirección, Ciudad y País</label>
       <input
         id="company_address"
         name="company_address"
@@ -117,7 +121,7 @@ const InboundForm = () => {
               
       />
 
-      <label className='text-gray-700 text-sm' htmlFor="experience_name" >Página web o red social</label>
+      <label className='text-gray-700 text-sm' htmlFor="website_url" >Página web o red social</label>
       <input
         id="website_url"
         name="website_url"
@@ -128,10 +132,23 @@ const InboundForm = () => {
         className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
               
       />
-      <button  type="submit" className="block w-full rounded-md my-10 px-3 py-4 text-center text-xl font-semibold shadow-sm hover:bg-black hover:text-letrip bg-letrip text-black">
+      <label className='text-gray-700 text-sm' htmlFor="requested_experience_name" >Nombre de tu experiencia</label>
+      <input
+        id="requested_experience_name"
+        name="requested_experience_name"
+        type="text"
+        required
+        value={formData.requested_experience_name}
+        onChange={handleChange}
+        className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
+              
+      />
+
+      <button  type="submit" className="block w-full rounded-md my-10 px-3 py-4 text-center text-xl font-semibold shadow-sm z-10 hover:bg-black hover:text-letrip bg-letrip text-black">
         Enviar solicitud
       </button>
       </form>
+      </div>
       <ToastContainer position="bottom-right" />
     </>
   );
