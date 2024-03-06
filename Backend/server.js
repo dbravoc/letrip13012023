@@ -403,48 +403,36 @@ app.post('/send-email', async (req, res) => {
     }); // Envía una respuesta de error
   });
 
-  app.get('/providers', async (req, res) => {
-    try {
-        const { data: providersData, error: providersError } = await supabase
-            .from('providers')
-            .select('*');
 
-        if (providersError) {
-            throw providersError;
-        }
-
-        res.json(providersData);
-    } catch (err) {
-        console.error(err.message);
-        res.status(500).send('Server Error');
-    }
-});
-
+// Endpoint para crear una nueva experiencia
 app.post('/providers', async (req, res) => {
     try {
-        const {
-            company_name,
-            contact_person,
-            phone_number,
-            company_address,
-            email_address,
-            website_url,
-            inbound_experience_name
-        } = req.body;
+        const { company_name,
+                contact_person,
+                phone_number,
+                company_address,
+                email_address,
+                website_url,
+                inbound_experience_name
+        
+         } = req.body;
 
+        // Insertar la nueva experiencia en Supabase
         const { data, error } = await supabase
-            .from('providers')
+            .from('experiences')
             .insert([
-                {
-                    company_name,
+                {   company_name,
                     contact_person,
                     phone_number,
                     company_address,
                     email_address,
                     website_url,
                     inbound_experience_name
-                },
+                
+                 } ,
             ])
+            .select();
+
         if (error) throw error;
 
         res.status(201).json(data);
@@ -453,3 +441,4 @@ app.post('/providers', async (req, res) => {
         res.status(500).send('Server Error');
     }
 });
+
