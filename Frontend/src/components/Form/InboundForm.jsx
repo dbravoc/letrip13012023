@@ -11,7 +11,7 @@ const InboundForm = () => {
     company_address: '',
     email_address: '',
     website_url: '',
-    requested_experience_name:''
+    inbound_experience_name:''
   });
 
   const handleChange = (e) => {
@@ -44,7 +44,7 @@ const InboundForm = () => {
         company_address: '',
         email_address: '',
         website_url: '',
-        requested_experience_name:''
+        inbound_experience_name:''
       }); // Resetear el formulario
     } catch (error) {
       toast.error('Error al registrar el proveedor');
@@ -132,13 +132,13 @@ const InboundForm = () => {
         className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
               
       />
-      <label className='text-gray-700 text-sm' htmlFor="requested_experience_name" >Nombre de tu experiencia</label>
+      <label className='text-gray-700 text-sm' htmlFor="inbound_experience_name" >Nombre de tu experiencia</label>
       <input
-        id="requested_experience_name"
-        name="requested_experience_name"
+        id="inbound_experience_name"
+        name="inbound_experience_name"
         type="text"
         required
-        value={formData.requested_experience_name}
+        value={formData.inbound_experience_name}
         onChange={handleChange}
         className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
               

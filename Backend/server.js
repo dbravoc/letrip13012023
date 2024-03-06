@@ -428,7 +428,8 @@ app.post('/providers', async (req, res) => {
             phone_number,
             company_address,
             email_address,
-            website_url
+            website_url,
+            inbound_experience_name
         } = req.body;
 
         const { data, error } = await supabase
@@ -440,7 +441,8 @@ app.post('/providers', async (req, res) => {
                     phone_number,
                     company_address,
                     email_address,
-                    website_url
+                    website_url,
+                    inbound_experience_name
                 },
             ])
             .select();
