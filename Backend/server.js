@@ -85,7 +85,7 @@ app.post('/experiences', async (req, res) => {
                 meal_breakfast,
                 meal_lunch,
                 meal_dinner,
-                meal_snacks_and_drinks,
+                
                 transport_airport,
                 transport_during_experience,
                 experience_type,
@@ -130,7 +130,7 @@ app.post('/experiences', async (req, res) => {
                     meal_breakfast,
                     meal_lunch,
                     meal_dinner,
-                    meal_snacks_and_drinks,
+                    
                     transport_airport,
                     transport_during_experience,
                     experience_type,
@@ -262,7 +262,7 @@ app.put('/experiences/:uuid', async (req, res) => {
         meal_breakfast,
         meal_lunch,
         meal_dinner,
-        meal_snacks_and_drinks,
+        
         transport_airport,
         transport_during_experience,
         experience_type,
@@ -306,7 +306,7 @@ app.put('/experiences/:uuid', async (req, res) => {
                 meal_breakfast,
                 meal_lunch,
                 meal_dinner,
-                meal_snacks_and_drinks,
+                
                 transport_airport,
                 transport_during_experience,
                 experience_type,
