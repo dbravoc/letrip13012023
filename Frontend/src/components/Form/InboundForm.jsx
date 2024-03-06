@@ -133,16 +133,15 @@ const InboundForm = () => {
               
       />
       <h2 className="text-left mt-8 mb-2 text-md tracking-tight font-semibold text-gray-700">Ingresa los datos de la <span className='bg-letrip font-semibold rounded-xl p-2'>experiencia.</span></h2>
-      <label className='text-gray-700 text-sm' htmlFor="inbound_experience_name" >Título de la experiencia</label>
-      <input
+      <label className='text-gray-700 text-sm' htmlFor="inbound_experience_name" >Cuéntanos que tipo de experiencias te gustaría publicar:</label>
+      <textarea
         id="inbound_experience_name"
         name="inbound_experience_name"
-        type="text"
         required
         value={formData.inbound_experience_name}
         onChange={handleChange}
         className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
-              
+        rows='3'
       />
 
       <button  type="submit" className="block w-full rounded-md my-10 px-3 py-4 text-center text-xl font-semibold shadow-sm z-10 hover:bg-black hover:text-letrip bg-letrip text-black">
