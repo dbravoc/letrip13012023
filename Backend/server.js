@@ -419,7 +419,7 @@ app.post('/providers', async (req, res) => {
 
         // Insertar la nueva experiencia en Supabase
         const { data, error } = await supabase
-            .from('experiences')
+            .from('providers')
             .insert([
                 {   company_name,
                     contact_person,
