@@ -379,30 +379,30 @@ app.post('/sold_experiences', async (req, res) => {
 // endpoint mailing google
 
 const {google} = require('googleapis');
-const gmail = google.gmail('v1');
+const bodyParser = require('body-parser');
+
+app.use(bodyParser.json()); // Middleware para parsear cuerpos JSON
 
 const SCOPES = ['https://www.googleapis.com/auth/gmail.send'];
-const key = process.env.GMAIL_KEY;
+
+// Parsear la clave de la cuenta de servicio
+const key = JSON.parse(process.env.GMAIL_KEY);
+const gmail = google.gmail({version: 'v1', auth: new google.auth.JWT(
+  key.client_email,
+  null,
+  key.private_key,
+  SCOPES,
+)});
 
 async function sendEmail(req, res) {
   const { customer_email, customer_name, experience_name, experience_date, total_price } = req.body;
 
-  const jwtClient = new google.auth.JWT(
-    key.client_email,
-    null,
-    key.private_key,
-    SCOPES,
-  );
-
   try {
-    await jwtClient.authorize();
-
     const rawMessage = `From: "Le trip" <david@letriplab.com>\nTo: ${customer_email}\nSubject: Confirmación de reserva para ${experience_name}\n\nHola ${customer_name},\n\nTu reserva para la experiencia "${experience_name}" el día ${experience_date} ha sido confirmada. El monto total a pagar es de ${total_price}.\n\nGracias por elegirnos,\nEl Equipo de Le Trip`;
 
     const encodedMessage = Buffer.from(rawMessage).toString('base64').replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
 
     const response = await gmail.users.messages.send({
-      auth: jwtClient,
       userId: 'me',
       requestBody: {
         raw: encodedMessage,
@@ -416,8 +416,14 @@ async function sendEmail(req, res) {
   }
 }
 
-// Asegúrate de exportar correctamente tu función para usarla en tu enrutador Express.
-module.exports = sendEmail;
+// Definir el endpoint que usará esta función
+app.post('/bookmailing', sendEmail);
+
+const port = process.env.PORT || 3000;
+app.listen(port, () => {
+  console.log(`Servidor escuchando en http://localhost:${port}`);
+});
+
 
 
 
