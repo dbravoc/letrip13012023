@@ -3,8 +3,6 @@ import { useParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMoneyBills } from '@fortawesome/free-solid-svg-icons';
 import { CheckIcon } from '@heroicons/react/24/outline';
-import { BookMailing } from './BookMailing';
-
 
 const BookExperience = ({ experienceCard }) => {
   const [players, setPlayers] = useState(1);
