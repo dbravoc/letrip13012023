@@ -1,7 +1,7 @@
 import { Resend } from 'resend';
 
 // Asume que 'RESEND_KEY' es una clave válida de tu API Resend configurada en tus variables de entorno.
-const resendClient = new Resend(process.env.RESEND_KEY);
+const resendClient = new Resend('re_cqxck4e2_CarZtsctC2SzYaC9bQxGKDwW');
 
 resend.apiKeys.create({ name: 'Mailing' });
 
