@@ -376,56 +376,53 @@ app.post('/sold_experiences', async (req, res) => {
     }
 });
 
-// endpoint mailing google
+
+
+//mailing google
 
 const {google} = require('googleapis');
-const bodyParser = require('body-parser');
+const base64url = require('base64url');
 
-app.use(bodyParser.json()); // Middleware para parsear cuerpos JSON
+// Función auxiliar para obtener el cliente OAuth2
+// Asegúrate de tener esta función definida correctamente
+async function getOAuth2Client() {
+    const oauth2Client = new google.auth.OAuth2(
+        process.env.GMAIL_ID,
+        process.env.GMAIL__KEY,
+        process.env.GMAIL_REDIRECTURI
+    );
 
-const SCOPES = ['https://www.googleapis.com/auth/gmail.send'];
-
-// Parsear la clave de la cuenta de servicio
-const key = JSON.parse(process.env.GMAIL_KEY);
-const gmail = google.gmail({version: 'v1', auth: new google.auth.JWT(
-  key.client_email,
-  null,
-  key.private_key,
-  SCOPES,
-)});
-
-async function sendEmail(req, res) {
-  const { customer_email, customer_name, experience_name, experience_date, total_price } = req.body;
-
-  try {
-    const rawMessage = `From: "Le trip" <david@letriplab.com>\nTo: ${customer_email}\nSubject: Confirmación de reserva para ${experience_name}\n\nHola ${customer_name},\n\nTu reserva para la experiencia "${experience_name}" el día ${experience_date} ha sido confirmada. El monto total a pagar es de ${total_price}.\n\nGracias por elegirnos,\nEl Equipo de Le Trip`;
-
-    const encodedMessage = Buffer.from(rawMessage).toString('base64').replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
-
-    const response = await gmail.users.messages.send({
-      userId: 'me',
-      requestBody: {
-        raw: encodedMessage,
-      },
+    oauth2Client.setCredentials({
+        refresh_token: process.env.GMAIL_REFRESHTOKEN
     });
 
-    res.status(200).send('Correo enviado con éxito');
-  } catch (error) {
-    console.error('Error al enviar correo:', error);
-    res.status(500).send('Error al enviar el correo');
-  }
+    return oauth2Client;
 }
+app.post('/bookmailing', async (req, res) => {
+    try {
+        const oauth2Client = await getOAuth2Client();
+        const gmail = google.gmail({version: 'v1', auth: oauth2Client});
 
-// Definir el endpoint que usará esta función
-app.post('/bookmailing', sendEmail);
+        const emailData = req.body; // Suponiendo que emailData se envía correctamente desde el cliente
 
-const port = process.env.PORT || 3000;
-app.listen(port, () => {
-  console.log(`Servidor escuchando en http://localhost:${port}`);
+        // Crear el mensaje MIME
+        const mimeMessage = `Content-Type: text/plain; charset="UTF-8"\nMIME-Version: 1.0\nContent-Transfer-Encoding: 7bit\nto: ${emailData.to}\nsubject: ${emailData.subject}\n\n${emailData.text}`;
+
+        const encodedMessage = base64url(mimeMessage);
+
+        const response = await gmail.users.messages.send({
+            userId: 'me', // Usar 'me' para indicar el usuario autenticado
+            requestBody: {
+                raw: encodedMessage,
+            },
+        });
+
+        res.status(200).send('Correo enviado con éxito');
+    } catch (error) {
+        console.error('Error al enviar correo:', error);
+        res.status(500).send('Error al enviar el correo');
+    }
 });
-
-
-
 
 // Endpoint para crear una nueva experiencia
 app.post('/providers', async (req, res) => {
