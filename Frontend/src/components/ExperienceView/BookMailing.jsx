@@ -13,7 +13,7 @@ const BookMailing = async (emailData) => {
       subject: 'Confirmación de Reserva - Le trip',
       html: `
         <h3>¡Hola, ${customer_name}!</h3>
-        <p>Gracias por elegir <strong>Le trip</strong> para vivir una experiencia inolvidable. Nos complace confirmarte los detalles de tu reserva:</p>
+        <p>Gracias por elegir <strong>Le trip</strong> para vivir una experiencia deportiva inolvidable. Nos complace confirmarte los detalles de tu reserva:</p>
         <ul>
           <li>Nombre experiencia: ${selectedExperience.experience_name}</li>
           <li>Fecha: ${selectedItem.available_date_start} al ${selectedItem.available_date_end}</li>
