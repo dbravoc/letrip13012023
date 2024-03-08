@@ -5,6 +5,8 @@ const cors = require('cors');
 const multer = require('multer');
 const fs = require('fs');
 const { supabase, supabaseUrl } = require('./db');
+const http = require('http');
+
 
   app.use(cors({
     origin: ['https://letrip13012023-frontend.vercel.app', 'https://www.letriplab.com'],// URL de tu frontend
