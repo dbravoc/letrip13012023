@@ -20,7 +20,7 @@
     };
   
     try {
-      const response = await fetch('https://letrip13012023-backend-lawitec.vercel.app/send-email', {
+      const response = await fetch('https://letrip13012023-backend-lawitec.vercel.app/bookmailing', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -376,32 +376,49 @@ app.post('/sold_experiences', async (req, res) => {
     }
 });
 
-// endpoint Mailgun
+// endpoint mailing google
 
-app.post('/send-email', async (req, res) => {
-    const { to, subject, text } = req.body;
-  
-    const formData = require('form-data');
-    const Mailgun = require('mailgun.js');
-    const mailgun = new Mailgun(formData);
-    const mg = mailgun.client({username: 'api', key: process.env.MAILGUN_KEY || 'key-yourkeyhere'});
-  
-    mg.messages.create('letriplab.com', {
-      from: "david@letriplab.com",
-      to: [to], // Asegúrate de que 'to' sea un array
-      subject,
-      text,
-      html: `<p>${text}</p>`, // Aquí convertimos el texto a HTML para el cuerpo del correo
-    })
-    .then(msg => {
-      console.log(msg); // logs response data
-      res.send({message: 'Email sent', body: msg});
-    }) // Envía una respuesta exitosa
-    .catch(err => {
-      console.log(err); // logs any error
-      res.status(500).send({error: err.message});
-    }); // Envía una respuesta de error
-  });
+const {google} = require('googleapis');
+const gmail = google.gmail('v1');
+
+const SCOPES = ['https://www.googleapis.com/auth/gmail.send'];
+const key = process.env.GMAIL_KEY;
+
+async function sendEmail(req, res) {
+  const { customer_email, customer_name, experience_name, experience_date, total_price } = req.body;
+
+  const jwtClient = new google.auth.JWT(
+    key.client_email,
+    null,
+    key.private_key,
+    SCOPES,
+  );
+
+  try {
+    await jwtClient.authorize();
+
+    const rawMessage = `From: "Le trip" <david@letriplab.com>\nTo: ${customer_email}\nSubject: Confirmación de reserva para ${experience_name}\n\nHola ${customer_name},\n\nTu reserva para la experiencia "${experience_name}" el día ${experience_date} ha sido confirmada. El monto total a pagar es de ${total_price}.\n\nGracias por elegirnos,\nEl Equipo de Le Trip`;
+
+    const encodedMessage = Buffer.from(rawMessage).toString('base64').replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+
+    const response = await gmail.users.messages.send({
+      auth: jwtClient,
+      userId: 'me',
+      requestBody: {
+        raw: encodedMessage,
+      },
+    });
+
+    res.status(200).send('Correo enviado con éxito');
+  } catch (error) {
+    console.error('Error al enviar correo:', error);
+    res.status(500).send('Error al enviar el correo');
+  }
+}
+
+// Asegúrate de exportar correctamente tu función para usarla en tu enrutador Express.
+module.exports = sendEmail;
+
 
 
 // Endpoint para crear una nueva experiencia

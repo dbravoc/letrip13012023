@@ -155,18 +155,30 @@ const BookExperience = ({ experienceCard }) => {
       // Si la respuesta es exitosa, procesar los datos
       const data = await response.json();
 
-      // Envío del email de confirmación
-      await BookMailing(formData, selectedExperience, selectedItem, players, totalPriceFull);
+      // Aquí agregamos la llamada a tu endpoint de bookmailing
+      await fetch('https://letrip13012023-backend-lawitec.vercel.app/bookmailing', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          customer_email: formData.customer_email,
+          customer_name: formData.customer_name,
+          experience_name: selectedExperience.experience_name,
+          experience_date: `${selectedItem.available_date_start} al ${selectedItem.available_date_end}`, // Asegúrate de que este valor refleje la fecha de la experiencia seleccionada
+          total_price: totalPriceFull, // Precio total calculado previamente
+        }),
+      });
+
       alert('Serás redirigido a la plataforma de pago. Activa la ventana emergente. ¡Nos pondremos en contacto contigo!');
       console.log('Datos guardados:', data);
-  
-      // Redirección a la plataforma de pago
-      window.open('https://cobros.global66.com/DAVBRA654', '_blank');
-    } catch (error) {
-      // Manejo de errores al guardar los datos o enviar el email
-      alert('Error al guardar los datos: ' + error.message);
-    }
-  };
+           // Redirección a la plataforma de pago
+           window.open('https://cobros.global66.com/DAVBRA654', '_blank');
+          } catch (error) {
+            // Manejo de errores al guardar los datos o enviar el email
+            alert('Error al guardar los datos: ' + error.message);
+          }
+      };
 
 
   return (
