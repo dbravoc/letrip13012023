@@ -3,6 +3,8 @@ import { Resend } from 'resend';
 // Asume que 'RESEND_KEY' es una clave válida de tu API Resend configurada en tus variables de entorno.
 const resendClient = new Resend(process.env.RESEND_KEY);
 
+resend.apiKeys.create({ name: 'Mailing' });
+
 const BookMailing = async (emailData) => {
   try {
     const { customer_email, customer_name, selectedExperience, selectedItem, players, total_price } = emailData;
