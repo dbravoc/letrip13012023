@@ -157,25 +157,6 @@ const BookExperience = ({ experienceCard }) => {
       // Si la respuesta es exitosa, procesar los datos
       const data = await response.json();
 
-  // Construye aquí los datos que necesitas enviar para MAILING
-    const emailData = {
-      customer_email: formData.customer_email,
-      customer_name: formData.customer_name,
-      experience_name: selectedExperience.experience_name,
-      experience_date: `${selectedItem.available_date_start} al ${selectedItem.available_date_end}`, // Asegúrate de que este valor refleje la fecha de la experiencia seleccionada
-      players: players,
-      total_price: totalPriceFull, // Asegúrate de que este es el precio total calculado
-    };
-
-    try {
-      await BookMailing(emailData);
-      // Aquí maneja la respuesta exitosa, como mostrar un mensaje de éxito al usuario
-      console.log("Correo enviado con éxito.");
-    } catch (error) {
-      // Maneja errores en el envío del correo
-      console.error('Error al enviar el correo:', error);
-    }
-
       alert('Serás redirigido a la plataforma de pago. Activa la ventana emergente. ¡Nos pondremos en contacto contigo!');
       console.log('Datos guardados:', data);
            // Redirección a la plataforma de pago
