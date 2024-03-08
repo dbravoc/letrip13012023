@@ -121,7 +121,7 @@ const BookExperience = ({ experienceCard }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
   
-    // Verificar si se ha seleccionado un item (fecha de experiencia)
+    // Verificar si se ha seleccionado un item (una fecha de experiencia)
     if (!selectedItem) {
       alert('Por favor, selecciona una fecha para tu experiencia.');
 
