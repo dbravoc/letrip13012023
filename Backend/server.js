@@ -5,7 +5,6 @@ const cors = require('cors');
 const multer = require('multer');
 const fs = require('fs');
 const { supabase, supabaseUrl } = require('./db');
-const http = require('http');
 
 
   app.use(cors({
@@ -402,9 +401,9 @@ const url = oauth2Client.generateAuthUrl({
 });
 
 // Crea un servidor web temporal para manejar la respuesta de Google
-const server = http.createServer(async (req, res) => {
+const server = https.createServer(async (req, res) => {
   if (req.url.indexOf('/oauth2callback') > -1) {
-    const qs = new URL(req.url, 'http://letriplab.com').searchParams;
+    const qs = new URL(req.url, 'https://letriplab.com').searchParams;
     res.end('Autenticación exitosa! Puedes cerrar esta pestaña.');
     server.destroy();
     const {tokens} = await oauth2Client.getToken(qs.get('code'));
