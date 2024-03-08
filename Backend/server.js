@@ -392,9 +392,33 @@ async function getOAuth2Client() {
         process.env.GMAIL_REDIRECTURI
     );
 
-    oauth2Client.setCredentials({
-        refresh_token: process.env.GMAIL_REFRESHTOKEN
-    });
+// Genera una URL de autenticación
+const scopes = ['https://www.googleapis.com/auth/gmail.send'];
+const url = oauth2Client.generateAuthUrl({
+  access_type: 'offline',
+  scope: scopes,
+});
+
+// Crea un servidor web temporal para manejar la respuesta de Google
+const server = http.createServer(async (req, res) => {
+  if (req.url.indexOf('/oauth2callback') > -1) {
+    const qs = new URL(req.url, 'http://letriplab.com').searchParams;
+    res.end('Autenticación exitosa! Puedes cerrar esta pestaña.');
+    server.destroy();
+    const {tokens} = await oauth2Client.getToken(qs.get('code'));
+    oauth2Client.setCredentials(tokens);
+
+    // tokens.refresh_token es el token de actualización
+    console.log(tokens.refresh_token);
+  }
+});
+
+server.listen(3000, () => {
+  // Abre el navegador para autenticarse
+  open(url);
+});
+
+destroyer(server);
 
     return oauth2Client;
 }
