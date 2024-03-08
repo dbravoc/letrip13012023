@@ -167,14 +167,17 @@ const BookExperience = ({ experienceCard }) => {
       total_price: totalPriceFull, // Asegúrate de que este es el precio total calculado
     };
 
-    try {
-      await BookMailing(emailData);
-      // Aquí maneja la respuesta exitosa, como mostrar un mensaje de éxito al usuario
-      console.log("Correo enviado con éxito.");
-    } catch (error) {
-      // Maneja errores en el envío del correo
-      console.error('Error al enviar el correo:', error);
-    }
+    // Llamada a BookMailing para enviar el correo electrónico
+    await BookMailing(emailData);
+    console.log("Correo enviado con éxito.");
+    
+    // Aquí manejarías la redirección o mostrarías un mensaje de éxito
+    
+  } catch (error) {
+    console.error('Error al procesar la reserva o al enviar el correo:', error);
+    alert('Ocurrió un error. Por favor, inténtalo de nuevo.');
+  }
+
 
       alert('Serás redirigido a la plataforma de pago. Activa la ventana emergente. ¡Nos pondremos en contacto contigo!');
       console.log('Datos guardados:', data);
