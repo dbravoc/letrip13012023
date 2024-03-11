@@ -353,8 +353,8 @@ const sendConfirmationEmail = async (emailData) => {
     const { customer_email, customer_name, players, sold_experience_name,total_price, available_date_start, available_date_end } = emailData;
 
     const message = {
-        "html": `<p>Hola ${customer_name},</p>
-                 <p>Gracias por reservar tu experiencia <stron>"${sold_experience_name}"</strong> con nosotros. Aquí están los detalles de tu reserva:</p>
+        "html": `<h1>Hola ${customer_name},</h1>
+                 <h3>Gracias por reservar tu experiencia <stron>"${sold_experience_name}"</strong> con nosotros. Aquí están los detalles de tu reserva:</h3>
                  <ul>
                    <li>Check-in: ${available_date_start}</li>
                    <li>Check-out: ${available_date_end}</li>
@@ -362,7 +362,7 @@ const sendConfirmationEmail = async (emailData) => {
                    <li>Precio total: ${total_price} USD</li>
                  </ul>
                  <p>Durante las próximas horas uno de nuestros representantes se pondrá en contacto contigo.</p>
-                 <p>Esperamos que disfrutes de tu experiencia.</p>
+                 <h3>Esperamos que disfrutes de tu experiencia <strong>Le trip</strong>.</h3>
                  <img src="Frontend/public/img/letrip logo.png" style="width: auto; height: 100px; display: block; margin: 20px auto;">`,
         "subject": "Confirmación de tu reserva de experiencia",
         "from_email": "david@letriplab.com",
