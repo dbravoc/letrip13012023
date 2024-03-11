@@ -4,6 +4,7 @@
   },
   "dependencies": {
     "googleapis": "^133.0.0",
+    "mandrill-api": "^1.0.45",
     "nodemailer": "^6.9.11"
   }
 }

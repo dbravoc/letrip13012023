@@ -21,6 +21,8 @@ const BookExperience = ({ experienceCard }) => {
     customer_address: '',
     approved_terms_and_conditions: false,
     experience_package: '',
+    available_date_start: '', 
+    available_date_end: '',
     experience_price:'',
     letrip_price:'',
     customer_tax:'',
@@ -62,7 +64,7 @@ const BookExperience = ({ experienceCard }) => {
       [name]: value,
     }));
     if (name === "experience_package") {
-      const [startDate, endDate] = value.split("_");
+      const [startDate, endDate] = value.split(" al ");
       const item = availableDates.find(d => d.value === value);
       setSelectedItem({
         available_date_start: startDate,
@@ -141,6 +143,8 @@ const BookExperience = ({ experienceCard }) => {
           sold_experience_name: selectedExperience.experience_name, // Aquí agregas el nombre de la experiencia
           players: players,
           experience_package: formData.experience_package,
+          available_date_start: formData.available_date_start ,
+          available_date_end: formData.available_date_end ,
           experience_price: parseFloat(totalPrice.toFixed(2)), // Asegúrate de que esto es lo que tu API espera
           letrip_price: parseFloat(letripPrice.toFixed(2)),
           customer_tax: parseFloat(tax.toFixed(2)),

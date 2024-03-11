@@ -7,7 +7,7 @@ resend.apiKeys.create({ name: 'Mailing' });
 
 const BookMailing = async (emailData) => {
   try {
-    const { customer_email, customer_name, selectedExperience, selectedItem, players, total_price } = emailData;
+    const { customer_email, customer_name, selectedExperience, selectedItem, players, totalPriceFull } = emailData;
     
     const response = await resendClient.emails.send({
       from: 'Le trip <david@letriplab.com>',
@@ -20,7 +20,7 @@ const BookMailing = async (emailData) => {
           <li>Nombre experiencia: ${selectedExperience.experience_name}</li>
           <li>Fecha: ${selectedItem.available_date_start} al ${selectedItem.available_date_end}</li>
           <li>Nº de personas: ${players}</li>
-          <li>Precio total: ${total_price} USD</li>
+          <li>Precio total: ${totalPriceFull} USD</li>
         </ul>
         <p>En las próximas horas, uno de nuestros representantes se pondrá en contacto contigo para resolver cualquier duda y enviarte la boleta o factura correspondiente.</p>
         <p>Estamos emocionados de que vayas a disfrutar una de nuestras experiencias únicas.</p>

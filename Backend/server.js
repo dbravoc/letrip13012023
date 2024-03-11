@@ -1,4 +1,5 @@
 const express = require('express');
+require('dotenv').config();
 const path = require('path');
 const app = express();
 const cors = require('cors');
@@ -6,6 +7,8 @@ const multer = require('multer');
 const fs = require('fs');
 const { supabase, supabaseUrl } = require('./db');
 const https = require('https');
+const mandrill = require('mandrill-api/mandrill');
+const mandrillClient = new mandrill.Mandrill(process.env.MAILING_KEY);
 
 
 
@@ -345,11 +348,46 @@ app.put('/experiences/:uuid', async (req, res) => {
     
 });
 
-// Endpoint para insertar un nuevo registro en public.sold_experiences
+// Función para enviar correo electrónico con Mandrill
+const sendConfirmationEmail = async (emailData) => {
+    const { customer_email, customer_name, players, sold_experience_name,total_price, available_date_start, available_date_end } = emailData;
+
+    const message = {
+        "html": `<p>Hola ${customer_name},</p>
+                 <p>Gracias por reservar tu experiencia "${sold_experience_name}" con nosotros. Aquí están los detalles de tu reserva:</p>
+                 <ul>
+                   <li>Check-in: ${available_date_start}</li>
+                   <li>Check-out: ${available_date_end}</li>
+                   <li>Nº de personas: ${players}</li>
+                   <li>Precio total: ${total_price} USD</li>
+                 </ul>
+                 <p>Esperamos que disfrutes de tu experiencia.</p>`,
+        "subject": "Confirmación de tu reserva de experiencia",
+        "from_email": "david@letriplab.com",
+        "from_name": "Le trip",
+        "to": [{
+                "email": customer_email,
+                "name": customer_name,
+                "type": "to"
+            }],
+        "important": false,
+    };
+
+    return new Promise((resolve, reject) => {
+        mandrillClient.messages.send({"message": message, "async": false}, result => {
+            resolve(result);
+        }, e => {
+            reject(e);
+        });
+    });
+};
+
+// Endpoint para insertar un nuevo registro en public.sold_experiences y enviar un correo electrónico
 app.post('/sold_experiences', async (req, res) => {
-    const { customer_name, customer_identification, customer_phone, customer_email, customer_address, approved_terms_and_conditions, experience_package, players, experience_price, letrip_price, customer_tax, total_price, sold_experience_name} = req.body;
+    const { customer_name, customer_identification, customer_phone, customer_email, customer_address, approved_terms_and_conditions, experience_package, players, experience_price, letrip_price, customer_tax, total_price, sold_experience_name } = req.body;
 
     try {
+        // Inserta el registro en Supabase
         const { data, error } = await supabase
             .from('sold_experiences')
             .insert([
@@ -372,11 +410,18 @@ app.post('/sold_experiences', async (req, res) => {
 
         if (error) throw error;
 
-        res.status(201).json(data);
+        // Envía el correo electrónico de confirmación
+        await sendConfirmationEmail({ customer_email, customer_name, sold_experience_name, experience_package, total_price });
+    
+        res.status(201).json({ message: 'Experiencia vendida y correo electrónico enviado con éxito.', data });
     } catch (error) {
-        console.error('Error al insertar en sold_experiences:', error.message);
+        console.error('Error al procesar la solicitud:', error.message);
         res.status(500).send('Server Error');
     }
+});
+
+app.listen(PORT, () => {
+    console.log(`Servidor escuchando en el puerto ${PORT}`);
 });
 
 
