@@ -354,14 +354,16 @@ const sendConfirmationEmail = async (emailData) => {
 
     const message = {
         "html": `<p>Hola ${customer_name},</p>
-                 <p>Gracias por reservar tu experiencia "${sold_experience_name}" con nosotros. Aquí están los detalles de tu reserva:</p>
+                 <p>Gracias por reservar tu experiencia <stron>"${sold_experience_name}"</strong> con nosotros. Aquí están los detalles de tu reserva:</p>
                  <ul>
                    <li>Check-in: ${available_date_start}</li>
                    <li>Check-out: ${available_date_end}</li>
                    <li>Nº de personas: ${players}</li>
                    <li>Precio total: ${total_price} USD</li>
                  </ul>
-                 <p>Esperamos que disfrutes de tu experiencia.</p>`,
+                 <p>Durante las próximas horas uno de nuestros representantes se pondrá en contacto contigo.</p>
+                 <p>Esperamos que disfrutes de tu experiencia.</p>
+                 <img src="Frontend/public/img/letrip logo.png" style="width: auto; height: 100px; display: block; margin: 20px auto;">`,
         "subject": "Confirmación de tu reserva de experiencia",
         "from_email": "david@letriplab.com",
         "from_name": "Le trip",
@@ -384,7 +386,7 @@ const sendConfirmationEmail = async (emailData) => {
 
 // Endpoint para insertar un nuevo registro en public.sold_experiences y enviar un correo electrónico
 app.post('/sold_experiences', async (req, res) => {
-    const { customer_name, customer_identification, customer_phone, customer_email, customer_address, approved_terms_and_conditions, experience_package, players, experience_price, letrip_price, customer_tax, total_price, sold_experience_name } = req.body;
+    const { customer_name, customer_identification, customer_phone, customer_email, customer_address, approved_terms_and_conditions, experience_package, players, experience_price, letrip_price, customer_tax, total_price, sold_experience_name, available_date_start, available_date_end  } = req.body;
 
     try {
         // Inserta el registro en Supabase
@@ -405,13 +407,15 @@ app.post('/sold_experiences', async (req, res) => {
                     customer_tax,
                     total_price,
                     sold_experience_name,
+                    available_date_start,
+                    available_date_end 
                 }
             ]);
 
         if (error) throw error;
 
         // Envía el correo electrónico de confirmación
-        await sendConfirmationEmail({ customer_email, customer_name, sold_experience_name, experience_package, total_price });
+        await sendConfirmationEmail({ customer_email, customer_name, sold_experience_name, experience_package, available_date_start, available_date_end });
     
         res.status(201).json({ message: 'Experiencia vendida y correo electrónico enviado con éxito.', data });
     } catch (error) {
