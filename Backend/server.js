@@ -351,7 +351,8 @@ app.put('/experiences/:uuid', async (req, res) => {
 // Función para enviar correo electrónico con Mandrill
 const sendConfirmationEmail = async (emailData) => {
     const { customer_email,
-        customer_name, players,
+        customer_name, 
+        players,
         sold_experience_name,
         total_price,
         experience_package} = emailData;
@@ -365,9 +366,9 @@ const sendConfirmationEmail = async (emailData) => {
                    <li>Precio total: ${total_price} USD</li>
                  </ul>
                  <p>Durante las próximas horas uno de nuestros representantes se pondrá en contacto contigo.</p>
-                 <h3>Esperamos que disfrutes de tu experiencia <strong>Le trip</strong>.</h3>
-                 <img src="Frontend/public/img/letrip logo.png" style="width: auto; height: 100px; display: block; margin: 20px auto;">`,
-        "subject": `Confirmación la reserva de tu experiencia "${sold_experience_name}"`,
+                    Esperamos que disfrutes de tu experiencia <strong>Le trip</strong>.</h3>
+                 <img src="./public/img/letrip logo.png" style="width: auto; height: 100px; display: block; margin: 20px auto;">`,
+        "subject": `Confirmamos la reserva de tu experiencia Le trip "${sold_experience_name}"`,
         "from_email": "david@letriplab.com",
         "from_name": "Le trip",
         "to": [{
@@ -419,7 +420,7 @@ app.post('/sold_experiences', async (req, res) => {
         if (error) throw error;
 
         // Envía el correo electrónico de confirmación
-        await sendConfirmationEmail({ customer_email, customer_name, sold_experience_name, experience_package, available_date_start, available_date_end });
+        await sendConfirmationEmail({ customer_email, customer_name, sold_experience_name, experience_package, players, customer_email, total_price});
     
         res.status(201).json({ message: 'Experiencia vendida y correo electrónico enviado con éxito.', data });
     } catch (error) {

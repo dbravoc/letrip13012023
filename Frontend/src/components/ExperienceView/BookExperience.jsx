@@ -45,7 +45,7 @@ const BookExperience = ({ experienceCard }) => {
           .map((item) => ({
             id: item.experience_uuid,
             label: `${item.available_date_start} al ${item.available_date_end}`,
-            value: `${item.available_date_start}_${item.available_date_end}`,
+            value: `${item.available_date_start} al ${item.available_date_end}`,
           }));
         
         setAvailableDates(formattedDates);
