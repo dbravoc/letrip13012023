@@ -2,9 +2,9 @@ const TyC = () => {
 
 return (
 
-<div>
-<h1>Términos y condiciones generales</h1>
-<h2>Le Trip SpA</h2>
+<>
+<h1 className="text-center">Términos y condiciones generales</h1>
+<h2 className="text-center">Le Trip SpA</h2>
 <p>
 <h3> 1. CONSIDERACIONES GENERALES </h3>
 1.1 Bienvenido a Le Trip. 
@@ -143,7 +143,7 @@ El Sitio Web puede contener vínculos (links) a otros sitios web que tienen sus 
 <h3>LE TRIP SpA</h3>
 
 </p>
-</div>
+</>
 );
 };
 
