@@ -11,7 +11,6 @@ const mandrill = require('mandrill-api/mandrill');
 const mandrillClient = new mandrill.Mandrill(process.env.MAILING_KEY);
 
 
-
   app.use(cors({
     origin: ['https://letrip13012023-frontend.vercel.app', 'https://www.letriplab.com'],// URL de tu frontend
     methods: ['GET', 'POST', 'PUT', 'DELETE'], // Métodos HTTP permitidos
@@ -349,6 +348,7 @@ app.put('/experiences/:uuid', async (req, res) => {
 });
 
 // Función para enviar correo electrónico con Mandrill
+
 const sendConfirmationEmail = async (emailData) => {
     const { customer_email,
         customer_name, 
@@ -366,8 +366,7 @@ const sendConfirmationEmail = async (emailData) => {
                    <li>Precio total: ${total_price} USD</li>
                  </ul>
                  <p>Durante las próximas horas uno de nuestros representantes se pondrá en contacto contigo.</p>
-                    Esperamos que disfrutes de tu experiencia <strong>Le trip</strong>.</h3>
-                    <img src="Frontend/public/img/letrip logo.png" class="w-auto h-24 mx-auto my-5 block" />`,
+                    Esperamos que disfrutes de tu experiencia <strong>Le trip</strong>.</h3>`,
         "subject": `Confirmamos la reserva de tu experiencia Le trip "${sold_experience_name}"`,
         "from_email": "david@letriplab.com",
         "from_name": "Le trip",
