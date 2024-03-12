@@ -367,7 +367,7 @@ const sendConfirmationEmail = async (emailData) => {
                  </ul>
                  <p>Durante las próximas horas uno de nuestros representantes se pondrá en contacto contigo.</p>
                     Esperamos que disfrutes de tu experiencia <strong>Le trip</strong>.</h3>
-                 <img src="/public/img/letrip logo.png" style="width: auto; height: 100px; display: block; margin: 20px auto;"/>`,
+                    <img src="Frontend/public/img/letrip logo.png" class="w-auto h-24 mx-auto my-5 block" />`,
         "subject": `Confirmamos la reserva de tu experiencia Le trip "${sold_experience_name}"`,
         "from_email": "david@letriplab.com",
         "from_name": "Le trip",
