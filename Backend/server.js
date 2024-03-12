@@ -350,21 +350,24 @@ app.put('/experiences/:uuid', async (req, res) => {
 
 // Función para enviar correo electrónico con Mandrill
 const sendConfirmationEmail = async (emailData) => {
-    const { customer_email, customer_name, players, sold_experience_name,total_price, available_date_start, available_date_end } = emailData;
+    const { customer_email,
+        customer_name, players,
+        sold_experience_name,
+        total_price,
+        experience_package} = emailData;
 
     const message = {
         "html": `<h1>Hola ${customer_name},</h1>
-                 <h3>Gracias por reservar tu experiencia <stron>"${sold_experience_name}"</strong> con nosotros. Aquí están los detalles de tu reserva:</h3>
+                 <h3>Gracias por reservar tu experiencia <strong>"${sold_experience_name}"</strong> con nosotros. Aquí están los detalles de tu reserva:</h3>
                  <ul>
-                   <li>Check-in: ${available_date_start}</li>
-                   <li>Check-out: ${available_date_end}</li>
+                   <li>Check-in y check-out: ${experience_package}</li>
                    <li>Nº de personas: ${players}</li>
                    <li>Precio total: ${total_price} USD</li>
                  </ul>
                  <p>Durante las próximas horas uno de nuestros representantes se pondrá en contacto contigo.</p>
                  <h3>Esperamos que disfrutes de tu experiencia <strong>Le trip</strong>.</h3>
                  <img src="Frontend/public/img/letrip logo.png" style="width: auto; height: 100px; display: block; margin: 20px auto;">`,
-        "subject": "Confirmación de tu reserva de experiencia",
+        "subject": `Confirmación la reserva de tu experiencia "${sold_experience_name}"`,
         "from_email": "david@letriplab.com",
         "from_name": "Le trip",
         "to": [{
@@ -372,10 +375,11 @@ const sendConfirmationEmail = async (emailData) => {
                 "name": customer_name,
                 "type": "to"
             }],
-        "important": false,
+        "important": true,
     };
 
     return new Promise((resolve, reject) => {
+        console.log(emailData);
         mandrillClient.messages.send({"message": message, "async": false}, result => {
             resolve(result);
         }, e => {

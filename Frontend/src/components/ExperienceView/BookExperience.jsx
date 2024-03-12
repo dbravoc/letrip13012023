@@ -113,7 +113,7 @@ const BookExperience = ({ experienceCard }) => {
   
   }, [players, selectedExperience]); // Dependencias [players, selectedExperience] para reaccionar a cambios
   
-  const letripPrice = parseFloat((totalPrice * 0.1).toFixed(2));
+  const letripPrice = parseFloat((totalPrice * 0.05).toFixed(2));
   const tax = parseFloat((letripPrice * 0.19).toFixed(2));
   const discountAmount = parseFloat((discount * totalPrice).toFixed(2));
   const totalPriceFull = parseFloat((totalPrice + letripPrice + tax - discountAmount).toFixed(2));
@@ -143,8 +143,6 @@ const BookExperience = ({ experienceCard }) => {
           sold_experience_name: selectedExperience.experience_name, // Aquí agregas el nombre de la experiencia
           players: players,
           experience_package: formData.experience_package,
-          available_date_start: formData.available_date_start ,
-          available_date_end: formData.available_date_end ,
           experience_price: parseFloat(totalPrice.toFixed(2)), // Asegúrate de que esto es lo que tu API espera
           letrip_price: parseFloat(letripPrice.toFixed(2)),
           customer_tax: parseFloat(tax.toFixed(2)),
