@@ -275,7 +275,7 @@ const BookExperience = ({ experienceCard }) => {
                         id="players"
                         name="players"
                         type="number"
-                        min={selectedExperience.minimum_group_size} // Asegurar que se usa selectedExperience
+                        min={selectedExperience.minimum_group_size} // Asegurar que se usa selectedExperience e e
                         max={selectedExperience.max_group_size} // Asegurar que se usa selectedExperience
                         value={players} // Corregido para usar el estado `players`
                         onChange={handlePlayerChange} // Usando handlePlayerChange para manejar este input específicamente
