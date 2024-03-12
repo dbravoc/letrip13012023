@@ -378,16 +378,10 @@ const sendConfirmationEmail = async (emailData) => {
                 "type": "to"
             },
             {
-                "email": "matias@letriplab.com", // Segundo destinatario
-                "name": "Matías Barriga",
+                "email": "bravocisterna@gmail.com", // Segundo destinatario
+                "name": "David Bravo Gmail",
                 "type": "cc" // Puedes cambiar este tipo a "cc" o "bcc" si lo deseas
             },
-            {
-                "email": "thomas@letriplab.com", // Segundo destinatario
-                "name": "Thomas Heller",
-                "type": "cc" // Puedes cambiar este tipo a "cc" o "bcc" si lo deseas
-            },
-            // Puedes seguir añadiendo más destinatarios aquí
         ],
         "important": true,
     };
