@@ -388,7 +388,7 @@ const sendConfirmationEmail = async (emailData) => {
     });
 };
 
-// Endpoint para insertar un nuevo registro en public.sold_experiences y enviar un correo electrónico
+// Endpoint para insertar un nuevo registro en public.sold_experiences y enviar un correo electrónico al mail
 app.post('/sold_experiences', async (req, res) => {
     const { customer_name, customer_identification, customer_phone, customer_email, customer_address, approved_terms_and_conditions, experience_package, players, experience_price, letrip_price, customer_tax, total_price, sold_experience_name, available_date_start, available_date_end  } = req.body;
 

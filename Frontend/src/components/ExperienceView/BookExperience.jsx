@@ -131,7 +131,7 @@ const BookExperience = ({ experienceCard }) => {
     const apiUrl = 'https://letrip13012023-backend-lawitec.vercel.app/sold_experiences';
   
     try {
-      // Llamada a la API para guardar los datos de la experiencia vendida
+      // Llamada a la API para guardar los datos de la experiencia vendidaa/
       const response = await fetch(apiUrl, {
         method: 'POST',
         headers: {
