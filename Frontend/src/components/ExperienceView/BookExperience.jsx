@@ -3,6 +3,8 @@ import { useParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMoneyBills } from '@fortawesome/free-solid-svg-icons';
 import { CheckIcon } from '@heroicons/react/24/outline';
+import { Link } from 'react-router-dom';
+
 
 const BookExperience = ({ experienceCard }) => {
   const [players, setPlayers] = useState(1);
@@ -245,7 +247,7 @@ const BookExperience = ({ experienceCard }) => {
                       onChange={handleChange}
                     />
                     <label htmlFor="approved_terms_and_conditions" className="pl-2 text-sm text-gray-700">
-                      Acepto los <a className='font-semibold'>términos y condiciones</a>
+                      Acepto los <Link to="/tyc"  className='font-semibold'>términos y condiciones</Link>
                     </label>
                   </div>
               </div>

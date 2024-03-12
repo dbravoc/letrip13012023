@@ -364,6 +364,7 @@ const sendConfirmationEmail = async (emailData) => {
                    <li>Check-in / Check-out: ${experience_package}</li>
                    <li>Nº de personas: ${players}</li>
                    <li>Precio total: ${total_price} USD</li>
+                   <li><a href="letriplab.com/tyc">Términos y condiciones</a></li>
                  </ul>
                  <p>Durante las próximas horas uno de nuestros representantes se pondrá en contacto contigo.</p>
                     Esperamos que disfrutes de tu experiencia <strong>Le trip</strong>.</h3>`,
