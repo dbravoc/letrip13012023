@@ -295,7 +295,7 @@ const BookExperience = ({ experienceCard }) => {
                       </div>
                       <div className='grid grid-cols-2 font-semibold text-sm'>
                         <p><FontAwesomeIcon className='text-gray-700 pr-2' icon={CheckIcon} />Descuentos</p>
-                        <p>- {discountAmount.toLocaleString('de-DE')} USD</p>
+                        <p>{discountAmount.toLocaleString('de-DE')} USD</p>
                       </div>
 
                       <div className='grid grid-cols-2 font-semibold text-sm'>

@@ -361,21 +361,34 @@ const sendConfirmationEmail = async (emailData) => {
         "html": `<h1>Hola ${customer_name},</h1>
                  <h3>Gracias por reservar tu experiencia <strong>"${sold_experience_name}"</strong> con nosotros. Aquí están los detalles de tu reserva:
                  <ul>
-                   <li>Check-in y check-out: ${experience_package}</li>
+                   <li>Check-in / Check-out: ${experience_package}</li>
                    <li>Nº de personas: ${players}</li>
                    <li>Precio total: ${total_price} USD</li>
                  </ul>
                  <p>Durante las próximas horas uno de nuestros representantes se pondrá en contacto contigo.</p>
                     Esperamos que disfrutes de tu experiencia <strong>Le trip</strong>.</h3>
-                 <img src="/public/img/letrip logo.png" style="width: auto; height: 100px; display: block; margin: 20px auto;">`,
+                 <img src="/public/img/letrip logo.png" style="width: auto; height: 100px; display: block; margin: 20px auto;"/>`,
         "subject": `Confirmamos la reserva de tu experiencia Le trip "${sold_experience_name}"`,
         "from_email": "david@letriplab.com",
         "from_name": "Le trip",
-        "to": [{
-                "email": customer_email,
+        "to": [
+            {
+                "email": customer_email, // Primer destinatario
                 "name": customer_name,
                 "type": "to"
-            }],
+            },
+            {
+                "email": "matias@letriplab.com", // Segundo destinatario
+                "name": "Matías Barriga",
+                "type": "cc" // Puedes cambiar este tipo a "cc" o "bcc" si lo deseas
+            },
+            {
+                "email": "thomas@letriplab.com", // Segundo destinatario
+                "name": "Thomas Heller",
+                "type": "cc" // Puedes cambiar este tipo a "cc" o "bcc" si lo deseas
+            },
+            // Puedes seguir añadiendo más destinatarios aquí
+        ],
         "important": true,
     };
 
