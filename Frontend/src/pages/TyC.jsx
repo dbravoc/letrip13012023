@@ -3,10 +3,9 @@ const TyC = () => {
 return (
 
 <>
-<h1 className="text-center">Términos y condiciones generales</h1>
-<h2 className="text-center">Le Trip SpA</h2>
-<p>
-<h3> 1. CONSIDERACIONES GENERALES </h3>
+<h1 className="text-center font-bold text-2xl">Términos y condiciones generales</h1>
+<h1 className="text-center font-bold  text-2xl">Le Trip SpA</h1>
+<h3 className="text-xl font-bold"> 1. CONSIDERACIONES GENERALES </h3>
 1.1 Bienvenido a Le Trip. 
 Le Trip le da la bienvenida, y agradeciendo su preferencia, le invita a leer en detalle el siguiente documento que contiene los términos y condiciones de acceso y uso (en adelante “Términos y Condiciones”) aplicables al sitio web www.letriplab.com, y a la contratación de servicios publicados en éste (en adelante el “Sitio Web”).
 Cualquier persona que desee acceder y/o usar el Sitio Web o contratar los servicios publicados, podrá hacerlo sujetándose a los siguientes Términos y Condiciones, junto con todos los demás términos y condiciones específicas, políticas, y principios que rigen a Le Trip, y que son incorporados al presente instrumento por referencia. En el mismo sentido, se deberá sujetar a la legislación vigente que sea aplicable en la República de Chile. 
@@ -35,7 +34,7 @@ Le Trip no será responsable por daños o lesiones ocasionados por el ejercicio 
 1.6 Jurisdicción y Ley aplicable. 
 Los presentes Términos y Condiciones se regirán por las leyes de la República de Chile. Cualquier controversia derivada de estos Términos y Condiciones, su existencia, validez, interpretación, alcance o cumplimiento, será sometida a las leyes aplicables de la República de Chile y a los Tribunales Ordinarios de Justicia de la ciudad de Santiago. 
 
-<h3>2. TÉRMINOS Y CONDICIONES DE LOS SERVICIOS </h3>
+<h3 className="text-xl font-bold ">2. TÉRMINOS Y CONDICIONES DE LOS SERVICIOS </h3>
 2.1 Modificaciones de los Términos y Condiciones. 
 Le Trip podrá modificar los Términos y Condiciones del Sitio Web, y cualquier otra disposición, en cualquier momento haciendo las modificaciones públicas en el Sitio Web. Todos los términos modificados entrarán en vigor desde la fecha de publicación de la modificación en el Sitio Web. Todo usuario que no esté de acuerdo con los cambios efectuados en el Sitio Web se deberá abstener de utilizarlo y de contratar los servicios publicados a través de esta.
 
@@ -92,7 +91,7 @@ Queda prohibida la reproducción total o parcial o uso comercial del formato, di
 Si el usuario necesita formular solicitudes, reclamos o disconformidades puede ingresarlas en su sesión privada a través del Sitio Web, o enviar la presentación o reclamo al correo electrónico contacto@letriplab.com.
 Le Trip revisará el reclamo, y la primera respuesta será enviada al mismo correo electrónico del reclamo, dentro del plazo de 48 horas a contar de la recepción de los antecedentes. En caso de requerir un plazo adicional, ello le será informado al usuario.
 
-<h3>3. POLÍTICAS DE PRIVACIDAD </h3>
+<h3 className="text-xl font-bold ">3. POLÍTICAS DE PRIVACIDAD </h3>
 3.1 Antecedentes Generales 
 Esta política de privacidad es parte de los Términos y Condiciones de Le Trip. 
 En este documento se explica cómo se trata cada tipo de dato que recibe y almacena Le Trip, a través de:
@@ -140,9 +139,7 @@ El Sitio Web puede contener vínculos (links) a otros sitios web que tienen sus 
 
 
 
-<h3>LE TRIP SpA</h3>
-
-</p>
+<h1 className="text-center font-bold  text-2xl">LE TRIP SpA</h1>
 </>
 );
 };
