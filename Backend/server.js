@@ -378,8 +378,8 @@ const sendConfirmationEmail = async (emailData) => {
                 "type": "to"
             },
             {
-                "email": "bravocisterna@gmail.com", // Segundo destinatario
-                "name": "David Bravo Gmail",
+                "email": "david@gmail.com", // Segundo destinatario
+                "name": "David Bravo",
                 "type": "cc" // Puedes cambiar este tipo a "cc" o "bcc" si lo deseas
             },
         ],
