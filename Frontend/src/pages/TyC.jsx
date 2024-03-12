@@ -5,6 +5,8 @@ return (
 <>
 <h1 className="text-center font-bold text-2xl">Términos y condiciones generales</h1>
 <h1 className="text-center font-bold  text-2xl">Le Trip SpA</h1>
+<h1 className="text-center pt-6">Versión actualizada el 06/03/2024</h1>
+
 <h3 className="text-xl font-bold pt-6"> 1. CONSIDERACIONES GENERALES </h3>
 <p className="font-bold pt-6">1.1 Bienvenido a Le Trip.</p>
 Le Trip le da la bienvenida, y agradeciendo su preferencia, le invita a leer en detalle el siguiente documento que contiene los términos y condiciones de acceso y uso (en adelante “Términos y Condiciones”) aplicables al sitio web www.letriplab.com, y a la contratación de servicios publicados en éste (en adelante el “Sitio Web”).
