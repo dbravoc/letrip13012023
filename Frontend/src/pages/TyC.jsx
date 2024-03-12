@@ -1,4 +1,4 @@
-const Frases = () => {
+const TyC = () => {
 
 return (
 
