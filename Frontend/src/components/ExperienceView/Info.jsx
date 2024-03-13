@@ -70,14 +70,14 @@ const Info = ({ experienceCard }) => {
             </div>
             
             <div>
-                  <p className="text-base text-center font-semibold leading-6 text-gray-900">{selectedExperience.experience_instructor}</p>
-                  <p className="text-sm text-center leading-6 text-gray-900">{selectedExperience.experience_instructor_type}</p>
+                  <p className="text-base text-center font-semibold leading-6 text-letrip">{selectedExperience.experience_instructor}</p>
+                  <p className="text-sm text-center leading-6 text-letrip">{selectedExperience.experience_instructor_type}</p>
             </div>
           </div>
         </div>
         
         <div className='col-span-4 row-span-4'>
-          <p className=" text-sm italic py-5 leading-6 text-gray-900">{selectedExperience.experience_instructor_message}</p>
+          <p className=" text-sm italic py-5 leading-6 text-letrip">{selectedExperience.experience_instructor_message}</p>
         </div>
 
 </div>
@@ -86,12 +86,12 @@ const Info = ({ experienceCard }) => {
 
 
     <div className="flex col-span-3 flex-col p-10  bg-white border-white border-2 rounded-2xl">
-          <h2 className="bg-letrip rounded-xl px-4 py-2 text-xl text-left font-bold tracking-tight text-gray-900 mb-4">Descripción de la experiencia</h2>
-          <p className="text-sm italic py-5 leading-6 text-gray-900">{selectedExperience.experience_included_description}</p>
+          <h2 className="bg-black rounded-xl px-4 py-2 text-xl text-left font-bold tracking-tight text-letrip mb-4">Descripción de la experiencia</h2>
+          <p className="text-sm italic py-5 leading-6 text-letrip">{selectedExperience.experience_included_description}</p>
     </div>
 
     <div className="flex col-span-2 flex-col p-10 bg-white border-white border-2 rounded-2xl">
-            <h2 className="bg-letrip rounded-xl px-4 py-2 text-xl text-left font-bold tracking-tight text-gray-900 mb-4">Características de la experiencia</h2>
+            <h2 className="bg-black rounded-xl px-4 py-2 text-xl text-left font-bold tracking-tight text-letrip mb-4">Características de la experiencia</h2>
             <dl className="mt-0 grid grid-cols-1 sm:grid-cols-2 gap-y-2 gap-x-8">
               {features.map((feature, index) => (
                 <div key={index} className="border-b border-gray-400 pt-2">
@@ -107,13 +107,13 @@ const Info = ({ experienceCard }) => {
 
     <div className='grid grid-cols-1 sm:grid-cols-5 gap-4'>
     <div className="flex col-span-3 flex-col p-10  bg-white border-white border-2 rounded-2xl">
-          <h2 className="bg-letrip rounded-xl px-4 py-2 text-xl text-left font-bold tracking-tight text-gray-900 mb-4">Itinerario</h2>
-          <div className="text-sm italic py-5 leading-6 text-gray-900">{selectedExperience.itinerary}</div>
+          <h2 className="bg-black rounded-xl px-4 py-2 text-xl text-left font-bold tracking-tight text-letrip mb-4">Itinerario</h2>
+          <div className="text-sm italic py-5 leading-6 text-letrip">{selectedExperience.itinerary}</div>
     </div>
 
   <div className='col-span-2'>
     <div className="flex flex-col p-10  bg-white border-white border-2 rounded-2xl">
-          <h2 className="bg-letrip rounded-xl px-4 py-2 text-xl text-left font-bold tracking-tight text-gray-900 mb-4">Lo que SI incluye</h2>
+          <h2 className="bg-black rounded-xl px-4 py-2 text-xl text-left font-bold tracking-tight text-letrip mb-4">Lo que SI incluye</h2>
            <ul role="list" className="mt-2 grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-1 text-sm leading-6 text-black">
             {includedList.map((included, index) => (
               <li key={index} className="flex gap-x-3">
@@ -126,7 +126,7 @@ const Info = ({ experienceCard }) => {
     </div>
 
     <div className="flex flex-col  p-10  bg-white border-white border-2 rounded-2xl">
-          <h2 className="bg-letrip rounded-xl px-4 py-2 text-xl text-left font-bold tracking-tight text-gray-900 mb-4">Lo que NO incluye</h2>
+          <h2 className="bg-black rounded-xl px-4 py-2 text-xl text-left font-bold tracking-tight text-letrip mb-4">Lo que NO incluye</h2>
            <ul role="list" className="mt-2 grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-1 text-sm leading-6 text-black">
             {notIncludedList.map((notincluded, index) => (
               <li key={index} className="flex gap-x-3">
@@ -141,25 +141,25 @@ const Info = ({ experienceCard }) => {
   </div>
   <div className='grid grid-cols-1 sm:grid-cols-5 gap-4'>
 
-  <div className="grid col-span-3 p-10  bg-white border-white border-2 rounded-2xl">
-          <h2 className="bg-letrip rounded-xl px-4 py-2 text-xl text-left font-bold tracking-tight text-gray-900 mb-4">Alojamiento</h2>
-          <p className="text-sm italic py-5 leading-6 text-gray-900">{selectedExperience.acommodation}</p>
+  <div className="flex col-span-3 flex-col p-10 bg-white border-white border-2 rounded-2xl">
+  <h2 className="bg-black rounded-xl px-4 py-2 text-xl text-left font-bold tracking-tight text-letrip mb-4">Alojamiento</h2>
+          <p className="text-sm italic py-5 leading-6 text-letrip">{selectedExperience.acommodation}</p>
     </div>
-    <div className="grid col-span-2  p-10  bg-white border-white border-2 rounded-2xl">
-          <h2 className="bg-letrip rounded-xl px-4 py-2 text-xl text-left font-bold tracking-tight text-gray-900 mb-4">Restricciones</h2>
-          <p><CheckIcon className="h-6 w-5 flex-none text-yellow-500 font-extrabold" aria-hidden="true"/> <span className="text-sm italic py-1 leading-6 text-gray-900"> {selectedExperience.target_audience_restrictions}</span></p>
-          <p><CheckIcon className="h-6 w-5 flex-none text-yellow-500 font-extrabold" aria-hidden="true"/> <span className="text-sm italic py-1 leading-6 text-gray-900"> Edad mínima: {selectedExperience.minimum_age}</span></p>
-          <p><CheckIcon className="h-6 w-5 flex-none text-yellow-500 font-extrabold" aria-hidden="true"/> <span className="text-sm italic py-1 leading-6 text-gray-900"> Mínimo de personas: {selectedExperience.minimum_group_size}</span></p>
+    <div className="flex col-span-2 flex-col p-10 bg-white border-white border-2 rounded-2xl">
+          <h2 className="bg-black rounded-xl px-4 py-2 text-xl text-left font-bold tracking-tight text-letrip mb-4">Restricciones</h2>
+          <p><CheckIcon className="h-6 w-5 flex-none text-yellow-500 font-extrabold" aria-hidden="true"/> <span className="text-sm italic py-1 leading-6 text-letrip"> {selectedExperience.target_audience_restrictions}</span></p>
+          <p><CheckIcon className="h-6 w-5 flex-none text-yellow-500 font-extrabold" aria-hidden="true"/> <span className="text-sm italic py-1 leading-6 text-letrip"> Edad mínima: {selectedExperience.minimum_age}</span></p>
+          <p><CheckIcon className="h-6 w-5 flex-none text-yellow-500 font-extrabold" aria-hidden="true"/> <span className="text-sm italic py-1 leading-6 text-letrip"> Mínimo de personas: {selectedExperience.minimum_group_size}</span></p>
     
     </div>
 
-    <div className="grid col-span-3 p-10  bg-white border-white border-2 rounded-2xl">
-          <h2 className="bg-letrip rounded-xl px-4 py-2 text-xl text-left font-bold tracking-tight text-gray-900 mb-4">No olvidar</h2>
-          <p className="text-sm italic py-5 leading-6 text-gray-900">{selectedExperience.dont_forget}</p>
+    <div className="flex col-span-3 flex-col p-10 bg-white border-white border-2 rounded-2xl">
+          <h2 className="bg-black rounded-xl px-4 py-2 text-xl text-left font-bold tracking-tight text-letrip mb-4">No olvidar</h2>
+          <p className="text-sm italic py-5 leading-6 text-letrip">{selectedExperience.dont_forget}</p>
     </div>
 
-    <div className="grid col-span-2 p-10  bg-white border-white border-2 rounded-2xl">
-          <h2 className="bg-letrip rounded-xl px-4 py-2 text-xl text-left font-bold tracking-tight text-gray-900 mb-4">Valor de la experiencia</h2>
+    <div className="flex col-span-2 flex-col p-10 bg-white border-white border-2 rounded-2xl">
+          <h2 className="bg-black rounded-xl px-4 py-2 text-xl text-left font-bold tracking-tight text-letrip mb-4">Valor de la experiencia</h2>
           {selectedExperience ? (
         <div className="mb-4">
           <p className='text-sm'> <FontAwesomeIcon className='text-green-700' icon={faMoneyBills} /> US$ <span className='text-xl font-semibold'> {selectedExperience.experience_price.toLocaleString('de-DE')} </span>por persona</p>

@@ -182,7 +182,7 @@ if(formData.payment_method === 'mercadopago') {
       {selectedExperience ? (
         <>
         <div className='pt-2'>
-          <h2 className="rounded-xl py-2 text-3xl text-left font-bold tracking-tight text-gray-900 mb-10 bg-letrip">Reserva tu experiencia</h2>
+          <h2 className="rounded-xl py-2 text-2xl text-center font-bold tracking-tight text-gray-900 mb-10 bg-letrip">Reserva tu experiencia</h2>
           <form onSubmit={handleSubmit}>
             <div className='grid grid-cols-5 gap-x-8'>
               <div className='col-span-2'>
@@ -259,7 +259,8 @@ if(formData.payment_method === 'mercadopago') {
                   </div>
               </div>
 
-              <div className='col-span-3 mb-10'>
+              <div className='col-span-1 mb-10'> </div>
+              <div className='col-span-2 mb-10'>
               
                     <h3 className="text-2xl font-bold mb-10">Información del precio</h3>
                     <h3 className="text-lg font-bold my-8">Fecha y número de aficionados</h3>
@@ -344,7 +345,7 @@ if(formData.payment_method === 'mercadopago') {
 
                   <button type="submit" className="text-lg hover:bg-black hover:text-letrip bg-letrip text-black py-4 rounded-md text-center w-full block">
                     <span className="font-semibold text-2xl">
-                      Reservar experiencia
+                       Confirmar reserva
                     </span>
                   </button>
               
