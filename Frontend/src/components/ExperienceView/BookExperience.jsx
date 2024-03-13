@@ -3,7 +3,6 @@ import { useParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMoneyBills } from '@fortawesome/free-solid-svg-icons';
 import { CheckIcon } from '@heroicons/react/24/outline';
-import { Link } from 'react-router-dom';
 
 
 const BookExperience = ({ experienceCard }) => {
@@ -127,15 +126,6 @@ const BookExperience = ({ experienceCard }) => {
     if (!selectedItem) {
       alert('Por favor, selecciona una fecha para tu experiencia.');
 
-  // Antes de enviar los datos a la API
-if(formData.payment_method === 'mercadopago') {
-  window.open('link.mercadopago.cl/letrip', '_blank'); // Reemplaza 'URL_DE_MERCADOPAGO' con la URL correspondiente
-} else if(formData.payment_method === 'global66') {
-  window.open('https://cobros.global66.com/DAVBRA654', '_blank');
-} else {
-  alert('Por favor, selecciona un método de pago.');
-  return;
-}
       return;
     }
     const apiUrl = 'https://letrip13012023-backend-lawitec.vercel.app/sold_experiences';
@@ -168,12 +158,22 @@ if(formData.payment_method === 'mercadopago') {
       // Si la respuesta es exitosa, procesar los datos
       const data = await response.json();
 
+      // Coloca aquí la lógica de redirección basada en el método de pago seleccionado
+      if(formData.payment_method === 'mercadopago') {
+        window.open('link.mercadopago.cl/letrip', '_blank'); // Asegúrate de que esta es la URL correcta para MercadoPago
+      } else if(formData.payment_method === 'global66') {
+        window.open('https://cobros.global66.com/DAVBRA654', '_blank');
+      } else {
+        alert('Por favor, selecciona un método de pago.');
+        return;
+      }
+      
       alert('Serás redirigido a la plataforma de pago. Activa la ventana emergente. ¡Nos pondremos en contacto contigo!');
       console.log('Datos guardados:', data);
-          } catch (error) {
-            // Manejo de errores al guardar los datos o enviar el email
-            alert('Error al guardar los datos: ' + error.message);
-          }
+      } catch (error) {
+        // Manejo de errores al guardar los datos o enviar el email
+         alert('Error al guardar los datos: ' + error.message);
+      }
       };
 
 
@@ -254,7 +254,7 @@ if(formData.payment_method === 'mercadopago') {
                       onChange={handleChange}
                     />
                     <label htmlFor="approved_terms_and_conditions" className="pl-2 text-lg">
-                      Acepto los <Link to="/tyc"  className='font-semibold px-1 bg-letrip text-black'>términos y condiciones</Link>
+                    Acepto los <a href="https://www.letriplab.com/tyc" target="_blank" class="font-semibold px-1 bg-letrip text-black">términos y condiciones</a>.
                     </label>
                   </div>
               </div>
