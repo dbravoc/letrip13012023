@@ -70,14 +70,14 @@ const Info = ({ experienceCard }) => {
             </div>
             
             <div>
-                  <p className="text-base text-center font-semibold leading-6 text-letrip">{selectedExperience.experience_instructor}</p>
-                  <p className="text-sm text-center leading-6 text-letrip">{selectedExperience.experience_instructor_type}</p>
+                  <p className="text-base text-center font-semibold leading-6 text-black">{selectedExperience.experience_instructor}</p>
+                  <p className="text-sm text-center leading-6 text-black">{selectedExperience.experience_instructor_type}</p>
             </div>
           </div>
         </div>
         
         <div className='col-span-4 row-span-4'>
-          <p className=" text-sm italic py-5 leading-6 text-letrip">{selectedExperience.experience_instructor_message}</p>
+          <p className=" text-sm italic py-5 leading-6 text-black">{selectedExperience.experience_instructor_message}</p>
         </div>
 
 </div>

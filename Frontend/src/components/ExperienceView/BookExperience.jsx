@@ -254,7 +254,7 @@ if(formData.payment_method === 'mercadopago') {
                       onChange={handleChange}
                     />
                     <label htmlFor="approved_terms_and_conditions" className="pl-2 text-lg">
-                      Acepto los <Link to="/tyc"  className='font-semibold py-1 bg-letrip text-black'>términos y condiciones</Link>
+                      Acepto los <Link to="/tyc"  className='font-semibold px-1 bg-letrip text-black'>términos y condiciones</Link>
                     </label>
                   </div>
               </div>
