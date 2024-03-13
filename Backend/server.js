@@ -347,8 +347,7 @@ app.put('/experiences/:uuid', async (req, res) => {
 
 // Función para enviar correo electrónico
 
-const mailjet = require('node-mailjet')
-  .connect(process.env.MAILING_ACCOUNT, process.env.MAILING_KEY);
+const mailjet = require('node-mailjet').connect(process.env.MAILING_ACCOUNT, process.env.MAILING_KEY);
 
 const sendConfirmationEmail = async (emailData) => {
   const {
