@@ -247,7 +247,7 @@ const BookExperience = ({ experienceCard }) => {
                       onChange={handleChange}
                     />
                     <label htmlFor="approved_terms_and_conditions" className="pl-2 text-sm text-gray-700">
-                      Acepto los <Link to="/tyc"  className='font-semibold'>términos y condiciones</Link>
+                      Acepto los <Link to="/tyc"  className='font-semibold bg-letrip'>términos y condiciones</Link>
                     </label>
                   </div>
               </div>
