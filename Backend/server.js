@@ -349,52 +349,40 @@ app.put('/experiences/:uuid', async (req, res) => {
 
 // Función para enviar correo electrónico con Mandrill
 
-const sendConfirmationEmail = async (emailData) => {
-    const { customer_email,
-        customer_name, 
-        players,
-        sold_experience_name,
-        total_price,
-        experience_package} = emailData;
+const axios = require('axios');
 
-    const message = {
+const sendConfirmationEmail = async (emailData) => {
+    const { customer_email, customer_name, players, sold_experience_name, total_price, experience_package } = emailData;
+
+    const messageData = {
+        // Ajusta los campos necesarios según Mailrelay. Ejemplo basado en tu estructura y necesidades.
+        "to": [
+            { "email": customer_email, "name": customer_name }
+        ],
+        "subject": `Confirmamos la reserva de tu experiencia Le trip "${sold_experience_name}"`,
         "html": `<h1>Hola ${customer_name},</h1>
-                 <h3>Gracias por reservar tu experiencia <strong>"${sold_experience_name}"</strong> con nosotros. Aquí están los detalles de tu reserva:
+                 <p>Gracias por reservar tu experiencia "${sold_experience_name}" con nosotros.</p>
                  <ul>
                    <li>Check-in / Check-out: ${experience_package}</li>
                    <li>Nº de personas: ${players}</li>
                    <li>Precio total: ${total_price} USD</li>
-                   <li><a href="letriplab.com/tyc">Términos y condiciones</a></li>
                  </ul>
-                 <p>Durante las próximas horas uno de nuestros representantes se pondrá en contacto contigo.</p>
-                    Esperamos que disfrutes de tu experiencia <strong>Le trip</strong>.</h3>`,
-        "subject": `Confirmamos la reserva de tu experiencia Le trip "${sold_experience_name}"`,
-        "from_email": "david@letriplab.com",
-        "from_name": "Le trip",
-        "to": [
-            {
-                "email": customer_email, // Primer destinatario
-                "name": customer_name,
-                "type": "to"
-            },
-            {
-                "email": "david@gmail.com", // Segundo destinatario
-                "name": "David Bravo",
-                "type": "cc" // Puedes cambiar este tipo a "cc" o "bcc" si lo deseas
-            },
-        ],
-        "important": true,
+                 <p>Esperamos que disfrutes de tu experiencia Le trip.</p>`,
+        // Asegúrate de ajustar esto para incluir la dirección "from" según los requerimientos de Mailrelay
     };
 
-    return new Promise((resolve, reject) => {
-        console.log(emailData);
-        mandrillClient.messages.send({"message": message, "async": false}, result => {
-            resolve(result);
-        }, e => {
-            reject(e);
+    try {
+        const response = await axios.post(`https://${process.env.MAILING_ACCOUNT}/api/v1/send_emails`, messageData, {
+            headers: {
+                'X-AUTH-TOKEN': process.env.MAILING_KEY
+            }
         });
-    });
+        console.log('Correo enviado con éxito:', response.data);
+    } catch (error) {
+        console.error('Error al enviar el correo:', error);
+    }
 };
+
 
 // Endpoint para insertar un nuevo registro en public.sold_experiences y enviar un correo electrónico al mail e e
 app.post('/sold_experiences', async (req, res) => {
