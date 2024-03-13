@@ -7,8 +7,9 @@ const multer = require('multer');
 const fs = require('fs');
 const { supabase, supabaseUrl } = require('./db');
 const https = require('https');
-const mandrill = require('mandrill-api/mandrill');
-const mandrillClient = new mandrill.Mandrill(process.env.MAILING_KEY);
+const mailjet = require ('node-mailjet')
+.connect(process.env.MAILING_ACCOUNT, process.env.MAILING_KEY)
+;
 
 
   app.use(cors({
@@ -347,42 +348,47 @@ app.put('/experiences/:uuid', async (req, res) => {
     
 });
 
-// Función para enviar correo electrónico con Mandrill
-
-const axios = require('axios');
-
 const sendConfirmationEmail = async (emailData) => {
     const { customer_email, customer_name, players, sold_experience_name, total_price, experience_package } = emailData;
-
-    const messageData = {
-        // Ajusta los campos necesarios según Mailrelay. Ejemplo basado en tu estructura y necesidades.
-        "to": [
-            { "email": customer_email, "name": customer_name }
-        ],
-        "subject": `Confirmamos la reserva de tu experiencia Le trip "${sold_experience_name}"`,
-        "html": `<h1>Hola ${customer_name},</h1>
-                 <p>Gracias por reservar tu experiencia "${sold_experience_name}" con nosotros.</p>
-                 <ul>
-                   <li>Check-in / Check-out: ${experience_package}</li>
-                   <li>Nº de personas: ${players}</li>
-                   <li>Precio total: ${total_price} USD</li>
-                 </ul>
-                 <p>Esperamos que disfrutes de tu experiencia Le trip.</p>`,
-        // Asegúrate de ajustar esto para incluir la dirección "from" según los requerimientos de Mailrelay
-    };
-
-    try {
-        const response = await axios.post(`https://${process.env.MAILING_ACCOUNT}/api/v1/send_emails`, messageData, {
-            headers: {
-                'X-AUTH-TOKEN': process.env.MAILING_KEY
-            }
-        });
-        console.log('Correo enviado con éxito:', response.data);
-    } catch (error) {
-        console.error('Error al enviar el correo:', error);
-    }
-};
-
+  
+    const request = mailjet
+      .post("send", {'version': 'v3.1'})
+      .request({
+        "Messages":[
+          {
+            "From": {
+              "Email": "tudireccion@ejemplo.com", // Ajusta esta línea con tu dirección de correo de salida
+              "Name": "Tu Nombre o el de tu Empresa" // Ajusta esta línea con tu nombre o el de tu empresa
+            },
+            "To": [
+              {
+                "Email": customer_email,
+                "Name": customer_name
+              }
+            ],
+            "Subject": `Confirmamos la reserva de tu experiencia Le trip "${sold_experience_name}"`,
+            "TextPart": `Hola ${customer_name}, gracias por reservar tu experiencia "${sold_experience_name}" con nosotros. Check-in / Check-out: ${experience_package}. Nº de personas: ${players}. Precio total: ${total_price} USD. Esperamos que disfrutes de tu experiencia Le trip.`,
+            "HTMLPart": `<h1>Hola ${customer_name},</h1>
+                         <p>Gracias por reservar tu experiencia "${sold_experience_name}" con nosotros.</p>
+                         <ul>
+                           <li>Check-in / Check-out: ${experience_package}</li>
+                           <li>Nº de personas: ${players}</li>
+                           <li>Precio total: ${total_price} USD</li>
+                         </ul>
+                         <p>Esperamos que disfrutes de tu experiencia Le trip.</p>`,
+            "CustomID": "AppGettingStartedTest"
+          }
+        ]
+      });
+  
+    request
+      .then((result) => {
+        console.log('Correo enviado con éxito:', result.body);
+      })
+      .catch((err) => {
+        console.error('Error al enviar el correo:', err.statusCode);
+      });
+  };
 
 // Endpoint para insertar un nuevo registro en public.sold_experiences y enviar un correo electrónico al mail e e
 app.post('/sold_experiences', async (req, res) => {
