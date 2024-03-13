@@ -7,6 +7,9 @@ const multer = require('multer');
 const fs = require('fs');
 const { supabase, supabaseUrl } = require('./db');
 const https = require('https');
+const mandrill = require('mandrill-api/mandrill');
+const mandrillClient = new mandrill.Mandrill(process.env.MAILING_KEY);
+
 
   app.use(cors({
     origin: ['https://letrip13012023-frontend.vercel.app', 'https://www.letriplab.com'],// URL de tu frontend
@@ -343,49 +346,55 @@ app.put('/experiences/:uuid', async (req, res) => {
 
     
 });
-const mailjet = require ('node-mailjet')
-.connect(process.env.MAILING_ACCOUNT, process.env.MAILING_KEY);
+
+// Función para enviar correo electrónico con Mandrill
+
 const sendConfirmationEmail = async (emailData) => {
-    const { customer_email, customer_name, players, sold_experience_name, total_price, experience_package } = emailData;
-  
-    const request = mailjet
-      .post("send", {'version': 'v3.1'})
-      .request({
-        "Messages":[
-          {
-            "From": {
-              "Email": "david@letriplab.com", // Ajusta esta línea con tu dirección de correo de salida
-              "Name": "Le trip" // Ajusta esta línea con tu nombre o el de tu empresa
+    const { customer_email,
+        customer_name, 
+        players,
+        sold_experience_name,
+        total_price,
+        experience_package} = emailData;
+
+    const message = {
+        "html": `<h1>Hola ${customer_name},</h1>
+                 <h3>Gracias por reservar tu experiencia <strong>"${sold_experience_name}"</strong> con nosotros. Aquí están los detalles de tu reserva:
+                 <ul>
+                   <li>Check-in / Check-out: ${experience_package}</li>
+                   <li>Nº de personas: ${players}</li>
+                   <li>Precio total: ${total_price} USD</li>
+                   <li><a href="letriplab.com/tyc">Términos y condiciones</a></li>
+                 </ul>
+                 <p>Durante las próximas horas uno de nuestros representantes se pondrá en contacto contigo.</p>
+                    Esperamos que disfrutes de tu experiencia <strong>Le trip</strong>.</h3>`,
+        "subject": `Confirmamos la reserva de tu experiencia Le trip "${sold_experience_name}"`,
+        "from_email": "david@letriplab.com",
+        "from_name": "Le trip",
+        "to": [
+            {
+                "email": customer_email, // Primer destinatario
+                "name": customer_name,
+                "type": "to"
             },
-            "To": [
-              {
-                "Email": customer_email,
-                "Name": customer_name
-              }
-            ],
-            "Subject": `Confirmamos la reserva de tu experiencia Le trip "${sold_experience_name}"`,
-            "TextPart": `Hola ${customer_name}, gracias por reservar tu experiencia "${sold_experience_name}" con nosotros. Check-in / Check-out: ${experience_package}. Nº de personas: ${players}. Precio total: ${total_price} USD. Esperamos que disfrutes de tu experiencia Le trip.`,
-            "HTMLPart": `<h1>Hola ${customer_name},</h1>
-                         <p>Gracias por reservar tu experiencia "${sold_experience_name}" con nosotros.</p>
-                         <ul>
-                           <li>Check-in / Check-out: ${experience_package}</li>
-                           <li>Nº de personas: ${players}</li>
-                           <li>Precio total: ${total_price} USD</li>
-                         </ul>
-                         <p>Esperamos que disfrutes de tu experiencia Le trip.</p>`,
-            "CustomID": "AppGettingStartedTest"
-          }
-        ]
-      });
-  
-    request
-      .then((result) => {
-        console.log('Correo enviado con éxito:', result.body);
-      })
-      .catch((err) => {
-        console.error('Error al enviar el correo:', err.statusCode);
-      });
-  };
+            {
+                "email": "david@gmail.com", // Segundo destinatario
+                "name": "David Bravo",
+                "type": "cc" // Puedes cambiar este tipo a "cc" o "bcc" si lo deseas
+            },
+        ],
+        "important": true,
+    };
+
+    return new Promise((resolve, reject) => {
+        console.log(emailData);
+        mandrillClient.messages.send({"message": message, "async": false}, result => {
+            resolve(result);
+        }, e => {
+            reject(e);
+        });
+    });
+};
 
 // Endpoint para insertar un nuevo registro en public.sold_experiences y enviar un correo electrónico al mail e e
 app.post('/sold_experiences', async (req, res) => {
