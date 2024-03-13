@@ -5,6 +5,7 @@
   "dependencies": {
     "googleapis": "^133.0.0",
     "mandrill-api": "^1.0.45",
+    "node-mailjet": "^6.0.5",
     "nodemailer": "^6.9.11"
   }
 }

@@ -7,10 +7,6 @@ const multer = require('multer');
 const fs = require('fs');
 const { supabase, supabaseUrl } = require('./db');
 const https = require('https');
-const mailjet = require ('node-mailjet')
-.connect(process.env.MAILING_ACCOUNT, process.env.MAILING_KEY)
-;
-
 
   app.use(cors({
     origin: ['https://letrip13012023-frontend.vercel.app', 'https://www.letriplab.com'],// URL de tu frontend
@@ -347,7 +343,8 @@ app.put('/experiences/:uuid', async (req, res) => {
 
     
 });
-
+const mailjet = require ('node-mailjet')
+.connect(process.env.MAILING_ACCOUNT, process.env.MAILING_KEY);
 const sendConfirmationEmail = async (emailData) => {
     const { customer_email, customer_name, players, sold_experience_name, total_price, experience_package } = emailData;
   
