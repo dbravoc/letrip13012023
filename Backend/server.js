@@ -354,8 +354,8 @@ const sendConfirmationEmail = async (emailData) => {
         "Messages":[
           {
             "From": {
-              "Email": "tudireccion@ejemplo.com", // Ajusta esta línea con tu dirección de correo de salida
-              "Name": "Tu Nombre o el de tu Empresa" // Ajusta esta línea con tu nombre o el de tu empresa
+              "Email": "david@letriplab.com", // Ajusta esta línea con tu dirección de correo de salida
+              "Name": "Le trip" // Ajusta esta línea con tu nombre o el de tu empresa
             },
             "To": [
               {
