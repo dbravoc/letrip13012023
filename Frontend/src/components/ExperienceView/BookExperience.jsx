@@ -182,7 +182,7 @@ if(formData.payment_method === 'mercadopago') {
       {selectedExperience ? (
         <>
         <div className='pt-2'>
-          <h2 className="rounded-xl py-2 text-2xl text-center font-bold tracking-tight bgf-black mb-10 text-letrip">Reserva tu experiencia</h2>
+          <h2 className="rounded-xl py-2 text-2xl text-center font-bold tracking-tight bg-black mb-10 text-letrip">Reserva tu experiencia</h2>
           <form onSubmit={handleSubmit}>
             <div className='grid grid-cols-5 gap-x-8'>
               <div className='col-span-2'>
@@ -254,7 +254,7 @@ if(formData.payment_method === 'mercadopago') {
                       onChange={handleChange}
                     />
                     <label htmlFor="approved_terms_and_conditions" className="pl-2 text-lg">
-                      Acepto los <Link to="/tyc"  className='font-semibold bg-black text-letrip'>términos y condiciones</Link>
+                      Acepto los <Link to="/tyc"  className='font-semibold py-1 bg-letrip text-black'>términos y condiciones</Link>
                     </label>
                   </div>
               </div>
