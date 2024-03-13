@@ -420,7 +420,8 @@ app.post('/sold_experiences', async (req, res) => {
                     total_price,
                     sold_experience_name,
                     available_date_start,
-                    available_date_end 
+                    available_date_end,
+                    payment_method,
                 }
             ]);
 

@@ -127,7 +127,15 @@ const BookExperience = ({ experienceCard }) => {
     if (!selectedItem) {
       alert('Por favor, selecciona una fecha para tu experiencia.');
 
-  
+  // Antes de enviar los datos a la API
+if(formData.payment_method === 'mercadopago') {
+  window.open('URL_DE_MERCADOPAGO', '_blank'); // Reemplaza 'URL_DE_MERCADOPAGO' con la URL correspondiente
+} else if(formData.payment_method === 'global66') {
+  window.open('https://cobros.global66.com/DAVBRA654', '_blank');
+} else {
+  alert('Por favor, selecciona un método de pago.');
+  return;
+}
       return;
     }
     const apiUrl = 'https://letrip13012023-backend-lawitec.vercel.app/sold_experiences';
@@ -149,6 +157,7 @@ const BookExperience = ({ experienceCard }) => {
           letrip_price: parseFloat(letripPrice.toFixed(2)),
           customer_tax: parseFloat(tax.toFixed(2)),
           total_price: parseFloat(totalPriceFull.toFixed(2)),
+          payment_method: formData.payment_method,
         }),
       });
   
