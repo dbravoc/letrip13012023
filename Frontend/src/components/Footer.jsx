@@ -4,7 +4,7 @@ export default function Footer() {
     return (
       <div className="py-5 border-t-letrip border-t-2 bg-black mt-32 pb-32 pt-12">
           <h2 className="text-center text-lg font-semibold leading-8 text-yellow-100 pb-5">
-          ¿Quiéres formar parte de Le trip?
+          ¿Quieres formar parte de Le trip?
           </h2>
           <div className="flex justify-center items-center">
           <Link 
