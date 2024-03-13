@@ -347,55 +347,55 @@ app.put('/experiences/:uuid', async (req, res) => {
 
 // Función para enviar correo electrónico
 
-const mailjet = require('node-mailjet').connect(process.env.MAILING_ACCOUNT, process.env.MAILING_KEY);
+const axios = require('axios');
 
 const sendConfirmationEmail = async (emailData) => {
-  const {
-    customer_email,
-    customer_name, 
-    players,
-    sold_experience_name,
-    total_price,
-    experience_package
-  } = emailData;
+  const { customer_email, customer_name, players, sold_experience_name, total_price, experience_package } = emailData;
 
-  const request = mailjet
-    .post("send", {'version': 'v3.1'})
-    .request({
-      "Messages":[
-        {
-          "From": {
-            "Email": "david@letriplab.com",
-            "Name": "Le trip"
-          },
-          "To": [
-            {
-              "Email": customer_email,
-              "Name": customer_name
-            }
-          ],
-          "Subject": `Confirmamos la reserva de tu experiencia Le trip "${sold_experience_name}"`,
-          "TextPart": `Hola ${customer_name}, gracias por reservar tu experiencia "${sold_experience_name}" con nosotros. Check-in / Check-out: ${experience_package}. Nº de personas: ${players}. Precio total: ${total_price} USD. Esperamos que disfrutes de tu experiencia Le trip.`,
-          "HTMLPart": `<h1>Hola ${customer_name},</h1>
-                       <p>Gracias por reservar tu experiencia "${sold_experience_name}" con nosotros. Aquí están los detalles de tu reserva:</p>
-                       <ul>
-                         <li>Check-in / Check-out: ${experience_package}</li>
-                         <li>Nº de personas: ${players}</li>
-                         <li>Precio total: ${total_price} USD</li>
-                       </ul>
-                       <p>Esperamos que disfrutes de tu experiencia Le trip.</p>`
-        }
-      ]
+  const authKey = Buffer.from(`${process.env.MAILING_ACCOUNT}:${process.env.MAILING_KEY}`).toString('base64');
+
+  const mailjetEmailData = {
+    Messages: [
+      {
+        From: {
+          Email: "david@letriplab.com", // Asegúrate de reemplazar esto con tu dirección de correo válida de Mailjet
+          Name: "Le trip"
+        },
+        To: [
+          {
+            Email: customer_email,
+            Name: customer_name
+          }
+        ],
+        Subject: `Confirmamos la reserva de tu experiencia Le trip "${sold_experience_name}"`,
+        TextPart: `Hola ${customer_name}, gracias por reservar tu experiencia "${sold_experience_name}" con nosotros. Check-in / Check-out: ${experience_package}. Nº de personas: ${players}. Precio total: ${total_price} USD. Esperamos que disfrutes de tu experiencia Le trip.`,
+        HTMLPart: `<h1>Hola ${customer_name},</h1>
+                   <p>Gracias por reservar tu experiencia "${sold_experience_name}" con nosotros. Aquí están los detalles de tu reserva:</p>
+                   <ul>
+                     <li>Check-in / Check-out: ${experience_package}</li>
+                     <li>Nº de personas: ${players}</li>
+                     <li>Precio total: ${total_price} USD</li>
+                   </ul>
+                   <p>Esperamos que disfrutes de tu experiencia Le trip.</p>`
+      }
+    ]
+  };
+
+  try {
+    const response = await axios.post('https://api.mailjet.com/v3.1/send', mailjetEmailData, {
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Basic ${authKey}`
+      }
     });
 
-  request
-    .then((result) => {
-      console.log('Correo enviado con éxito:', result.body);
-    })
-    .catch((err) => {
-      console.error('Error al enviar el correo:', err.statusCode);
-    });
+    console.log('Correo enviado con éxito:', response.data);
+  } catch (error) {
+    console.error('Error al enviar el correo:', error.response ? error.response.data : error);
+    throw error;
+  }
 };
+
 
 // Endpoint para insertar un nuevo registro en public.sold_experiences y enviar un correo electrónico al mail e e
 app.post('/sold_experiences', async (req, res) => {
