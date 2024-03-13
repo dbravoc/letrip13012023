@@ -370,13 +370,13 @@ const sendConfirmationEmail = async (emailData) => {
         Subject: `Confirmamos la reserva de tu experiencia Le trip "${sold_experience_name}"`,
         TextPart: `Hola ${customer_name}, gracias por reservar tu experiencia "${sold_experience_name}" con nosotros. Check-in / Check-out: ${experience_package}. Nº de personas: ${players}. Precio total: ${total_price} USD. Esperamos que disfrutes de tu experiencia Le trip.`,
         HTMLPart: `<h1>Hola ${customer_name},</h1>
-                   <p>Gracias por reservar tu experiencia "${sold_experience_name}" con nosotros. Aquí están los detalles de tu reserva:</p>
-                   <ul>
+                   <h3>Gracias por reservar tu experiencia "${sold_experience_name}" con nosotros. Aquí están los detalles de tu reserva:</h3>
+                   <h3><ul>
                      <li>Check-in / Check-out: ${experience_package}</li>
                      <li>Nº de personas: ${players}</li>
                      <li>Precio total: ${total_price} USD</li>
-                   </ul>
-                   <p>Esperamos que disfrutes de tu experiencia Le trip.</p>`
+                   </ul></h3>
+                   <h3>Esperamos que disfrutes de tu experiencia Le trip.</h3>`
       }
     ]
   };
