@@ -7,8 +7,6 @@ const multer = require('multer');
 const fs = require('fs');
 const { supabase, supabaseUrl } = require('./db');
 const https = require('https');
-const mandrill = require('mandrill-api/mandrill');
-const mandrillClient = new mandrill.Mandrill(process.env.MAILING_KEY);
 
 
   app.use(cors({
@@ -349,50 +347,54 @@ app.put('/experiences/:uuid', async (req, res) => {
 
 // Función para enviar correo electrónico con Mandrill
 
+const mailjet = require('node-mailjet')
+  .connect(process.env.MAILING_ACCOUNT, process.env.MAILING_KEY);
+
 const sendConfirmationEmail = async (emailData) => {
-    const { customer_email,
-        customer_name, 
-        players,
-        sold_experience_name,
-        total_price,
-        experience_package} = emailData;
+  const {
+    customer_email,
+    customer_name, 
+    players,
+    sold_experience_name,
+    total_price,
+    experience_package
+  } = emailData;
 
-    const message = {
-        "html": `<h1>Hola ${customer_name},</h1>
-                 <h3>Gracias por reservar tu experiencia <strong>"${sold_experience_name}"</strong> con nosotros. Aquí están los detalles de tu reserva:
-                 <ul>
-                   <li>Check-in / Check-out: ${experience_package}</li>
-                   <li>Nº de personas: ${players}</li>
-                   <li>Precio total: ${total_price} USD</li>
-                   <li><a href="letriplab.com/tyc">Términos y condiciones</a></li>
-                 </ul>
-                 <p>Durante las próximas horas uno de nuestros representantes se pondrá en contacto contigo.</p>
-                    Esperamos que disfrutes de tu experiencia <strong>Le trip</strong>.</h3>`,
-        "subject": `Confirmamos la reserva de tu experiencia Le trip "${sold_experience_name}"`,
-        "from_email": "david@letriplab.com",
-        "from_name": "Le trip",
-        "to": [
+  const request = mailjet
+    .post("send", {'version': 'v3.1'})
+    .request({
+      "Messages":[
+        {
+          "From": {
+            "Email": "tudireccion@ejemplo.com",
+            "Name": "Le trip"
+          },
+          "To": [
             {
-                "email": customer_email, // Primer destinatario
-                "name": customer_name,
-                "type": "to"
-            },
-            {
-                "email": "david@gmail.com", // Segundo destinatario
-                "name": "David Bravo",
-                "type": "cc" // Puedes cambiar este tipo a "cc" o "bcc" si lo deseas
-            },
-        ],
-        "important": true,
-    };
+              "Email": customer_email,
+              "Name": customer_name
+            }
+          ],
+          "Subject": `Confirmamos la reserva de tu experiencia Le trip "${sold_experience_name}"`,
+          "TextPart": `Hola ${customer_name}, gracias por reservar tu experiencia "${sold_experience_name}" con nosotros. Check-in / Check-out: ${experience_package}. Nº de personas: ${players}. Precio total: ${total_price} USD. Esperamos que disfrutes de tu experiencia Le trip.`,
+          "HTMLPart": `<h1>Hola ${customer_name},</h1>
+                       <p>Gracias por reservar tu experiencia "${sold_experience_name}" con nosotros. Aquí están los detalles de tu reserva:</p>
+                       <ul>
+                         <li>Check-in / Check-out: ${experience_package}</li>
+                         <li>Nº de personas: ${players}</li>
+                         <li>Precio total: ${total_price} USD</li>
+                       </ul>
+                       <p>Esperamos que disfrutes de tu experiencia Le trip.</p>`
+        }
+      ]
+    });
 
-    return new Promise((resolve, reject) => {
-        console.log(emailData);
-        mandrillClient.messages.send({"message": message, "async": false}, result => {
-            resolve(result);
-        }, e => {
-            reject(e);
-        });
+  request
+    .then((result) => {
+      console.log('Correo enviado con éxito:', result.body);
+    })
+    .catch((err) => {
+      console.error('Error al enviar el correo:', err.statusCode);
     });
 };
 
