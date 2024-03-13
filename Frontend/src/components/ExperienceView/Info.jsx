@@ -139,13 +139,13 @@ const Info = ({ experienceCard }) => {
     </div>
   </div>
   </div>
-  <div className='grid grid-cols-1 sm:grid-cols-2 gap-4'>
+  <div className='grid grid-cols-1 sm:grid-cols-5 gap-4'>
 
-  <div className="flex flex-col p-10  bg-white border-white border-2 rounded-2xl">
+  <div className="grid col-span-3 p-10  bg-white border-white border-2 rounded-2xl">
           <h2 className="bg-letrip rounded-xl px-4 py-2 text-xl text-left font-bold tracking-tight text-gray-900 mb-4">Alojamiento</h2>
           <p className="text-sm italic py-5 leading-6 text-gray-900">{selectedExperience.acommodation}</p>
     </div>
-    <div className="flex flex-col  p-10  bg-white border-white border-2 rounded-2xl">
+    <div className="grid col-span-2  p-10  bg-white border-white border-2 rounded-2xl">
           <h2 className="bg-letrip rounded-xl px-4 py-2 text-xl text-left font-bold tracking-tight text-gray-900 mb-4">Restricciones</h2>
           <p><CheckIcon className="h-6 w-5 flex-none text-yellow-500 font-extrabold" aria-hidden="true"/> <span className="text-sm italic py-1 leading-6 text-gray-900"> {selectedExperience.target_audience_restrictions}</span></p>
           <p><CheckIcon className="h-6 w-5 flex-none text-yellow-500 font-extrabold" aria-hidden="true"/> <span className="text-sm italic py-1 leading-6 text-gray-900"> Edad mínima: {selectedExperience.minimum_age}</span></p>
@@ -153,12 +153,12 @@ const Info = ({ experienceCard }) => {
     
     </div>
 
-    <div className="flex flex-col p-10  bg-white border-white border-2 rounded-2xl">
+    <div className="grid col-span-3 p-10  bg-white border-white border-2 rounded-2xl">
           <h2 className="bg-letrip rounded-xl px-4 py-2 text-xl text-left font-bold tracking-tight text-gray-900 mb-4">No olvidar</h2>
           <p className="text-sm italic py-5 leading-6 text-gray-900">{selectedExperience.dont_forget}</p>
     </div>
 
-    <div className="flex flex-col  p-10  bg-white border-white border-2 rounded-2xl">
+    <div className="grid col-span-2 p-10  bg-white border-white border-2 rounded-2xl">
           <h2 className="bg-letrip rounded-xl px-4 py-2 text-xl text-left font-bold tracking-tight text-gray-900 mb-4">Valor de la experiencia</h2>
           {selectedExperience ? (
         <div className="mb-4">

@@ -129,7 +129,7 @@ const BookExperience = ({ experienceCard }) => {
 
   // Antes de enviar los datos a la API
 if(formData.payment_method === 'mercadopago') {
-  window.open('URL_DE_MERCADOPAGO', '_blank'); // Reemplaza 'URL_DE_MERCADOPAGO' con la URL correspondiente
+  window.open('link.mercadopago.cl/letrip', '_blank'); // Reemplaza 'URL_DE_MERCADOPAGO' con la URL correspondiente
 } else if(formData.payment_method === 'global66') {
   window.open('https://cobros.global66.com/DAVBRA654', '_blank');
 } else {
@@ -170,8 +170,6 @@ if(formData.payment_method === 'mercadopago') {
 
       alert('Serás redirigido a la plataforma de pago. Activa la ventana emergente. ¡Nos pondremos en contacto contigo!');
       console.log('Datos guardados:', data);
-           // Redirección a la plataforma de pago
-           window.open('https://cobros.global66.com/DAVBRA654', '_blank');
           } catch (error) {
             // Manejo de errores al guardar los datos o enviar el email
             alert('Error al guardar los datos: ' + error.message);
@@ -184,7 +182,7 @@ if(formData.payment_method === 'mercadopago') {
       {selectedExperience ? (
         <>
         <div className='pt-2'>
-          <h2 className="rounded-xl py-2 text-3xl text-left font-bold tracking-tight text-gray-900 mb-10">Reserva tu experiencia</h2>
+          <h2 className="rounded-xl py-2 text-3xl text-left font-bold tracking-tight text-gray-900 mb-10 bg-letrip">Reserva tu experiencia</h2>
           <form onSubmit={handleSubmit}>
             <div className='grid grid-cols-5 gap-x-8'>
               <div className='col-span-2'>
@@ -255,7 +253,7 @@ if(formData.payment_method === 'mercadopago') {
                       checked={formData.approved_terms_and_conditions}
                       onChange={handleChange}
                     />
-                    <label htmlFor="approved_terms_and_conditions" className="pl-2 text-lg text-gray-700">
+                    <label htmlFor="approved_terms_and_conditions" className="pl-2 text-lg">
                       Acepto los <Link to="/tyc"  className='font-semibold bg-letrip'>términos y condiciones</Link>
                     </label>
                   </div>
