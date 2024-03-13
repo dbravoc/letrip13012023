@@ -345,7 +345,7 @@ app.put('/experiences/:uuid', async (req, res) => {
     
 });
 
-// Función para enviar correo electrónico con Mandrill
+// Función para enviar correo electrónico
 
 const mailjet = require('node-mailjet')
   .connect(process.env.MAILING_ACCOUNT, process.env.MAILING_KEY);
@@ -366,7 +366,7 @@ const sendConfirmationEmail = async (emailData) => {
       "Messages":[
         {
           "From": {
-            "Email": "tudireccion@ejemplo.com",
+            "Email": "david@letriplab.com",
             "Name": "Le trip"
           },
           "To": [
