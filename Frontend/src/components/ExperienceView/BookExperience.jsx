@@ -160,14 +160,14 @@ const BookExperience = ({ experienceCard }) => {
 
       // Coloca aquí la lógica de redirección basada en el método de pago seleccionado
       if(formData.payment_method === 'mercadopago') {
-        window.open('link.mercadopago.cl/letrip', '_blank'); // Asegúrate de que esta es la URL correcta para MercadoPago
+        window.open('https://link.mercadopago.cl/letrip', '_blank'); // Asegúrate de que esta es la URL correcta para MercadoPago
       } else if(formData.payment_method === 'global66') {
         window.open('https://cobros.global66.com/DAVBRA654', '_blank');
       } else {
         alert('Por favor, selecciona un método de pago.');
         return;
       }
-      
+
       alert('Serás redirigido a la plataforma de pago. Activa la ventana emergente. ¡Nos pondremos en contacto contigo!');
       console.log('Datos guardados:', data);
       } catch (error) {
