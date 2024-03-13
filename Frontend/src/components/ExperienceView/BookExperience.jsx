@@ -246,7 +246,7 @@ const BookExperience = ({ experienceCard }) => {
                       checked={formData.approved_terms_and_conditions}
                       onChange={handleChange}
                     />
-                    <label htmlFor="approved_terms_and_conditions" className="pl-2 text-sm text-gray-700">
+                    <label htmlFor="approved_terms_and_conditions" className="pl-2 text-lg text-gray-700">
                       Acepto los <Link to="/tyc"  className='font-semibold bg-letrip'>términos y condiciones</Link>
                     </label>
                   </div>
@@ -255,6 +255,8 @@ const BookExperience = ({ experienceCard }) => {
               <div className='col-span-3 mb-10'>
               
                     <h3 className="text-2xl font-bold mb-10">Información del precio</h3>
+                    <h3 className="text-lg font-bold my-8">Fecha y número de aficionados</h3>
+
                       <label className='text-gray-700 text-sm' htmlFor="experience_package">Elige la fecha de tu experiencia</label>
                       <select
                         id="experience_package"
@@ -271,8 +273,8 @@ const BookExperience = ({ experienceCard }) => {
                         ))}
                       </select>
 
-                      {/* Corrección en el campo del número de personas */}
-                      <label className='text-gray-700 text-sm' htmlFor="players">Número de personas</label>
+                      {/* Corrección en el campo del número de aficionados */}
+                      <label className='text-gray-700 text-sm' htmlFor="players">Número de aficionados</label>
                       <input
                         id="players"
                         name="players"
@@ -288,7 +290,7 @@ const BookExperience = ({ experienceCard }) => {
 
 
                       <div className='grid grid-cols-2 font-semibold text-sm'>
-                        <p><FontAwesomeIcon className='text-gray-700 pr-2' icon={CheckIcon} />{selectedExperience.experience_price.toLocaleString('de-DE')} USD x {players} persona(s)</p>
+                        <p><FontAwesomeIcon className='text-gray-700 pr-2' icon={CheckIcon} />{selectedExperience.experience_price.toLocaleString('de-DE')} USD x {players} aficionado(s)</p>
                         <p>{totalPrice.toLocaleString('de-DE')} USD</p>
                       </div>
                       <div className='grid grid-cols-2 font-semibold text-sm '>
@@ -314,7 +316,7 @@ const BookExperience = ({ experienceCard }) => {
 
                         <div className="mb-4">
 
-                  <label htmlFor="payment_method" className="text-lg font-bold my-8"><h3>Método de pago</h3> </label>
+                  <label htmlFor="payment_method"><h3 className="text-lg font-bold my-8">Método de pago</h3> </label>
                   <select
                     id="payment_method"
                     name="payment_method"
