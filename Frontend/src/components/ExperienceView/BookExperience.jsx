@@ -313,8 +313,8 @@ const BookExperience = ({ experienceCard }) => {
                         </li>
 
                         <div className="mb-4">
-                          
-                  <label htmlFor="payment_method" className="block text-sm font-medium text-gray-700">Método de pago</label>
+
+                  <label htmlFor="payment_method" className="text-lg font-bold my-8"><h3>Método de pago</h3> </label>
                   <select
                     id="payment_method"
                     name="payment_method"
