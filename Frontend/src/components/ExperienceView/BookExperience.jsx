@@ -311,7 +311,25 @@ const BookExperience = ({ experienceCard }) => {
                           {totalPriceFull.toLocaleString('de-DE')}
                         </span> USD en total
                         </li>
+
+                        <div className="mb-4">
+                          
+                  <label htmlFor="payment_method" className="block text-sm font-medium text-gray-700">Método de pago</label>
+                  <select
+                    id="payment_method"
+                    name="payment_method"
+                    value={formData.payment_method}
+                    onChange={handleChange}
+                    className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                  >
+                    <option value="">Selecciona un método de pago</option>
+                    <option value="mercadopago">MercadoPago</option>
+                    <option value="global66">Global66</option>
+                  </select>
                 </div>
+
+                </div>
+
             </div>
 
 
