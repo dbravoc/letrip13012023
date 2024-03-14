@@ -159,8 +159,8 @@ const BookExperience = ({ experienceCard }) => {
       const data = await response.json();
 
       // Coloca aquí la lógica de redirección basada en el método de pago seleccionado
-      if(formData.payment_method === 'mercadopago') {
-        window.open('https://link.mercadopago.cl/letrip', '_blank'); // Asegúrate de que esta es la URL correcta para MercadoPago
+      if(formData.payment_method === 'paypal') {
+        window.open('https://paypal.me/letriplab', '_blank');
       } else if(formData.payment_method === 'global66') {
         window.open('https://cobros.global66.com/DAVBRA654', '_blank');
       } else {
@@ -333,7 +333,7 @@ const BookExperience = ({ experienceCard }) => {
                     className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                   >
                     <option value="">Selecciona un método de pago</option>
-                    <option value="mercadopago">MercadoPago</option>
+                    <option value="paypal">PayPal</option>
                     <option value="global66">Global66</option>
                   </select>
                 </div>
