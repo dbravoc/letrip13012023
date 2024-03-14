@@ -154,6 +154,8 @@ const ExperienceRequest = () => {
       <textarea
         id="itinerary"
         name="itinerary"
+        type="text"
+        required
         value={formData.itinerary}
         onChange={handleChange}
         className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
@@ -162,6 +164,8 @@ const ExperienceRequest = () => {
       <textarea
         id="dont_forget"
         name="dont_forget"
+        type="text"
+        required
         value={formData.dont_forget}
         onChange={handleChange}
         className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
