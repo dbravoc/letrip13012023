@@ -18,14 +18,30 @@ const ExperienceRequest = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-        await submitFormData(formData);
-        toast.success('Publicación solicitada con éxito!'); // Mostrar notificación de éxito
-        setFormData({}); // Resetear el formulario
-      } catch (error) {
-        toast.error('Error al solicitar la publicación'); // Mostrar notificación de error
-        console.error('Error:', error);
+      // Modificar aquí para usar fetch y enviar datos al backend
+      const response = await fetch('https://letrip13012023-backend-lawitec.vercel.app/experiences', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        throw new Error('Error en la solicitud al backend');
       }
-    };
+
+      // Opcional: respuesta del servidor si la necesitas
+      const data = await response.json();
+
+      toast.success('Publicación solicitada con éxito!');
+      setFormData({}); // Resetear el formulario
+    } catch (error) {
+      toast.error('Error al solicitar la publicación');
+      console.error('Error:', error);
+    }
+  };
+
 
   return (
     <>
