@@ -201,7 +201,7 @@ const ExperienceRequest = () => {
         min="0"
         max="100" 
         required
-        value={formData.experience_price}
+        value={formData.discount_2}
         onChange={handleChange}
         className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
       />
@@ -216,7 +216,7 @@ const ExperienceRequest = () => {
         max="100"
         step="1"
         required
-        value={formData.experience_price}
+        value={formData.discount_3}
         onChange={handleChange}
         className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
       />
@@ -230,7 +230,7 @@ const ExperienceRequest = () => {
         min="0"
         max="100" 
         required
-        value={formData.experience_price}
+        value={formData.discount_4}
         onChange={handleChange}
         className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
       />
@@ -244,7 +244,7 @@ const ExperienceRequest = () => {
         min="0"
         max="100" 
         required
-        value={formData.experience_price}
+        value={formData.discount_5}
         onChange={handleChange}
         className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
       />
