@@ -96,11 +96,11 @@ const ExperienceRequest = () => {
         <option value='Experiencia por semanas'>Viaje por semanas</option>
         <option value='Experiencia por meses'>Viaje por meses</option>
         </select>
-        <label className='text-gray-700 text-sm' htmlFor="experience_demand_level">Nivel técnico</label>
+        <label className='text-gray-700 text-sm' htmlFor="technical_level">Nivel técnico</label>
         <select
           required
-          id="experience_demand_level"
-          name="experience_demand_level"
+          id="technical_level"
+          name="technical_level"
           value={formData.experience_demand_level}
           onChange={handleChange}
           className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
@@ -150,11 +150,19 @@ const ExperienceRequest = () => {
         onChange={handleChange}
         className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
       />
-          <label className='text-gray-700 text-sm' htmlFor="experience_included_description">Descripción del itinerario de la experiencia.<span className='text-xs italic'></span></label>
+      <label className='text-gray-700 text-sm' htmlFor="itinerary">Descripción del itinerario de la experiencia.<span className='text-xs italic'></span></label>
       <textarea
-        id="experience_included_description"
-        name="experience_included_description"
-        value={formData.experience_included_description}
+        id="itinerary"
+        name="itinerary"
+        value={formData.itinerary}
+        onChange={handleChange}
+        className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
+      />
+      <label className='text-gray-700 text-sm' htmlFor="dont_forget">Cosas que no puede olvidar el aficionado<span className='text-xs italic'></span></label>
+      <textarea
+        id="dont_forget"
+        name="dont_forget"
+        value={formData.dont_forget}
         onChange={handleChange}
         className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
       />
@@ -410,7 +418,16 @@ const ExperienceRequest = () => {
         checked={formData.meal_snacks_and_drinks}
         onChange={handleChange}
       />
-      </li>   
+      </li> 
+       
+      <label className='text-gray-700 text-sm' htmlFor="acommodation">Descripción del alojamiento de la experiencia.<span className='text-xs italic'></span></label>
+      <textarea
+        id="acommodation"
+        name="acommodation"
+        value={formData.acommodation}
+        onChange={handleChange}
+        className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
+      />
 <h3 className="my-10 text-2xl font-bold tracking-tight text-gray-900">Transporte </h3>
       <li className='grid grid-cols-2 list-none pb-5 gap-y-5'>
       <label className='text-gray-700 text-sm' htmlFor="transport_airport">Transporte desde el aeropuerto incluido</label>
