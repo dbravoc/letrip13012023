@@ -18,7 +18,7 @@ const Tarjeta = ({ experienceCard }) => {
     { name: 'País', description: selectedExperience.experience_country },
     { name: 'Disciplina Principal', description: selectedExperience.experience_main_discipline },
     { name: 'Geografía', description: selectedExperience.experience_geography },
-    { name: 'Nivel de exigencia', description: selectedExperience.experience_demand_level },
+    { name: 'Nivel técnico', description: selectedExperience.technical_level },
     { name: 'Precio Desde', description: `${selectedExperience.experience_price} USD` },
   ];
 

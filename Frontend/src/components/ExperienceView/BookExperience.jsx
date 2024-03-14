@@ -334,7 +334,6 @@ const BookExperience = ({ experienceCard }) => {
                   >
                     <option value="">Selecciona un método de pago</option>
                     <option value="paypal">PayPal</option>
-                    <option value="global66">Global66</option>
                   </select>
                 </div>
 
