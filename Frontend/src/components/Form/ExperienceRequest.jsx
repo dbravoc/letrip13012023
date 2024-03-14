@@ -368,12 +368,12 @@ const ExperienceRequest = () => {
       />
       </li>
 <h3 className="my-10 text-2xl font-bold tracking-tight text-gray-900">Alojamiento</h3>
-<label className='text-gray-700 text-sm' htmlFor="experience_accommodation">Tipo de alojamiento <span className='text-xs italic'> (Campo requerido)</span></label>
+<label className='text-gray-700 text-sm' htmlFor="experience_acommodation">Tipo de alojamiento <span className='text-xs italic'> (Campo requerido)</span></label>
 <select
   required
-  id="experience_accommodation"
-  name="experience_accommodation"
-  value={formData.experience_accommodation}
+  id="experience_acommodation"
+  name="experience_acommodation"
+  value={formData.experience_acommodation}
   onChange={handleChange}
   className="text-sm block w-full mt-1 p-2 mb-5 rounded-md border border-gray-300 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
 >
