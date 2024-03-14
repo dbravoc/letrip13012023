@@ -116,7 +116,7 @@ const BookExperience = ({ experienceCard }) => {
   
   const letripPrice = parseFloat((totalPrice * 0.05).toFixed(2));
   const tax = parseFloat((letripPrice * 0.19).toFixed(2));
-  const discountAmount = parseFloat((discount * totalPrice).toFixed(2));
+  const discountAmount = parseFloat((discount * totalPrice/100).toFixed(2));
   const totalPriceFull = parseFloat((totalPrice + letripPrice + tax - discountAmount).toFixed(2));
 
   const handleSubmit = async (e) => {

@@ -19,6 +19,8 @@ import Info from './components/ExperienceView/Info';
 import Carousel from './components/ExperienceView/Carousel';
 import BookExperience from './components/ExperienceView/BookExperience';
 import InboundForm from './components/Form/InboundForm';
+import ExperienceRequest from './components/Form/ExperienceRequest';
+
 import FooterProceso from './components/FooterProceso';
 import TyC from './pages/TyC';
 
@@ -51,7 +53,7 @@ const App = () => {
         } />
 
 
-      <Route path="/request" element={
+      <Route path="/inboundform" element={
           <>
             <div className="mx-auto w-full">
               <div className="mb-36 flex flex-col justify-between flex-wrap"><Inicio /></div>
@@ -62,6 +64,18 @@ const App = () => {
             </div>
           </>
         } />  
+
+        <Route path="/request" element={
+          <>
+            <div className="mx-auto w-full">
+              <div className="mb-36 flex flex-col justify-between flex-wrap"><Inicio /></div>
+              <div className="pt-4 px-12 flex flex-col justify-between wrap relative z-10"><ExperienceRequest /></div>
+              <div className='flex flex-col justify-between flex-wrap'><FooterProceso /></div>
+
+
+            </div>
+          </>
+        } />
 
       <Route path="/pruebas" element={
           <>
