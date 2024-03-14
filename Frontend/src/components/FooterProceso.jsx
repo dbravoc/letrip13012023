@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 export default function FooterProceso() {
     return (
       <div className="py-5 border-t-letrip border-t-2 bg-black mt-32 pb-32 pt-2">
-        <h3 className="mt-36 text-center mb-10 text-2xl font-bold tracking-tight text-gray-100">Conoce nuestro proceso <span className='bg-letrip text-black font-semibold px-2'>Le trip</span></h3>
+        <h3 className="mt-36 text-center mb-10 text-2xl font-bold tracking-tight text-gray-100">Conoce nuestro proceso <span className='bg-letrip text-black font-semibold rounded px-2 py-1'>Le trip</span></h3>
           <div className='grid grid-cols-5 gap-8 text-gray-500 text-center '>
     <ul className=''>
         <li><FontAwesomeIcon className='text-5xl text-gray-200' icon={faUserPlus} /></li>
