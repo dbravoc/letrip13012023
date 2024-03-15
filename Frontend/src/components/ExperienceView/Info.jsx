@@ -61,7 +61,7 @@ const Info = ({ experienceCard }) => {
 
   return (
     <>
-<div className="sm:grid sm:grid-cols-5 flex flex-col p-10  bg-white border-white border-2 rounded-2xl">
+<div className="sm:grid sm:grid-cols-5 flex flex-col justify-center p-10  bg-white border-white border-2 rounded-2xl">
         
         <div className="flex col-span-1 row-span-1 py-5 items-left gap-x-4">
           <div className="flex flex-col items-center min-w-0 gap-x-4">
