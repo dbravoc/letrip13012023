@@ -61,7 +61,7 @@ const Info = ({ experienceCard }) => {
 
   return (
     <>
-<div className="flex flex-col justify-center items-center md:px-10 md:py-5 bg-white border-white border-2 rounded-2xl md:grid md:grid-cols-5 md:justify-start">
+<div className="flex flex-col justify-center items-center md:p-10 py-5 bg-white border-white border-2 rounded-2xl md:grid md:grid-cols-5 md:justify-start">
         
         <div className="flex md:col-span-1 md:row-span-1 py-5 items-center md:items-start gap-x-4">
           <div className="flex flex-col min-w-0 gap-x-4">
@@ -85,7 +85,7 @@ const Info = ({ experienceCard }) => {
 
 
 
-    <div className="flex col-span-2 flex-col md:px-10 md:py-5 bg-white border-white border-2 rounded-2xl">
+    <div className="flex col-span-2 flex-col md:p-10 py-5 bg-white border-white border-2 rounded-2xl">
             <h2 className="bg-black rounded-xl px-4 py-2 text-xl text-left font-bold tracking-tight text-letrip mb-4">Características de la experiencia</h2>
             <dl className="mt-0 grid grid-cols-1 md:grid-cols-6 gap-y-2 gap-x-8">
               {features.map((feature, index) => (
@@ -100,13 +100,13 @@ const Info = ({ experienceCard }) => {
 
 
     <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
-    <div className="flex col-span-1 flex-col md:px-10 md:py-5  bg-white border-white border-2 rounded-2xl">
+    <div className="flex col-span-1 flex-col md:p-10 py-5  bg-white border-white border-2 rounded-2xl">
           <h2 className="bg-black rounded-xl px-4 py-2 text-xl text-left font-bold tracking-tight text-letrip mb-4">Itinerario</h2>
           <div className="text-sm italic py-5 leading-6 text-black">{selectedExperience.itinerary}</div>
     </div>
 
   <div className='col-span-1'>
-    <div className="flex flex-col md:px-10 md:py-5  bg-white border-white border-2 rounded-2xl">
+    <div className="flex flex-col md:p-10 py-5  bg-white border-white border-2 rounded-2xl">
           <h2 className="bg-black rounded-xl px-4 py-2 text-xl text-left font-bold tracking-tight text-letrip mb-4">Lo que SI incluye</h2>
            <ul role="list" className="mt-2 grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-1 text-sm leading-6 text-black">
             {includedList.map((included, index) => (
@@ -119,7 +119,7 @@ const Info = ({ experienceCard }) => {
 
     </div>
 
-    <div className="flex flex-col  md:px-10 md:py-5  bg-white border-white border-2 rounded-2xl">
+    <div className="flex flex-col  md:p-10 py-5  bg-white border-white border-2 rounded-2xl">
           <h2 className="bg-black rounded-xl px-4 py-2 text-xl text-left font-bold tracking-tight text-letrip mb-4">Lo que NO incluye</h2>
            <ul role="list" className="mt-2 grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-1 text-sm leading-6 text-black">
             {notIncludedList.map((notincluded, index) => (
@@ -134,14 +134,14 @@ const Info = ({ experienceCard }) => {
   </div>
   </div>
 
-  <div className="flex flex-col md:px-10 md:py-5 bg-white border-white border-2 rounded-2xl">
+  <div className="flex flex-col md:p-10 py-5 bg-white border-white border-2 rounded-2xl">
   <h2 className="bg-black rounded-xl px-4 py-2 text-xl text-left font-bold tracking-tight text-letrip mb-4">Alojamiento</h2>
           <p className="text-sm italic py-5 leading-6 text-black">{selectedExperience.acommodation}</p>
     </div>
 
     <div className='grid grid-cols-1 md:grid-cols-3 gap-4'>
 
-    <div className="flex col-span-1 flex-col md:px-10 md:py-5 bg-white border-white border-2 rounded-2xl">
+    <div className="flex col-span-1 flex-col md:p-10 py-5 bg-white border-white border-2 rounded-2xl">
           <h2 className="bg-black rounded-xl px-4 py-2 text-xl text-left font-bold tracking-tight text-letrip mb-4">Restricciones</h2>
           <p><CheckIcon className="h-6 w-5 flex-none text-yellow-500 font-extrabold" aria-hidden="true"/> <span className="text-sm italic py-1 leading-6 text-black"> {selectedExperience.target_audience_restrictions}</span></p>
           <p><CheckIcon className="h-6 w-5 flex-none text-yellow-500 font-extrabold" aria-hidden="true"/> <span className="text-sm italic py-1 leading-6 text-black"> Edad mínima: {selectedExperience.minimum_age}</span></p>
@@ -149,12 +149,12 @@ const Info = ({ experienceCard }) => {
     
     </div>
 
-    <div className="flex col-span-1 flex-col md:px-10 md:py-5 bg-white border-white border-2 rounded-2xl">
+    <div className="flex col-span-1 flex-col md:p-10 py-5 bg-white border-white border-2 rounded-2xl">
           <h2 className="bg-black rounded-xl px-4 py-2 text-xl text-left font-bold tracking-tight text-letrip mb-4">No olvidar</h2>
           <p className="text-sm italic py-5 leading-6 text-black">{selectedExperience.dont_forget}</p>
     </div>
 
-    <div className="flex col-span-1 flex-col md:px-10 md:py-5 bg-white border-white border-2 rounded-2xl">
+    <div className="flex col-span-1 flex-col md:p-10 py-5 bg-white border-white border-2 rounded-2xl">
           <h2 className="bg-black rounded-xl px-4 py-2 text-xl text-left font-bold tracking-tight text-letrip mb-4">Valor de la experiencia</h2>
           {selectedExperience ? (
         <div className="mb-4">
