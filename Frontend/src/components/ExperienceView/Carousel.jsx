@@ -35,16 +35,16 @@ const Carousel = ({ experienceCard }) => {
   return (
     <>
       <h2 className="md:mx-36 py-2 text-3xl text-left font-bold tracking-tight text-gray-900 mb-10">{selectedExperience.experience_name}</h2>
-      <div className="carousel-container flex justify-center items-center flex-col">
+      <div className="relative carousel-container flex justify-center items-center">
         {imageUrls.length > 0 && (
-          <div className="flex justify-center items-center overflow-hidden">
-            <button onClick={prevImage} className="px-4 py-2 text-black font-bold z-20"> 
+          <div className="flex justify-between items-center w-full">
+            <button onClick={prevImage} className="absolute z-30 left-0 px-2 py-2 text-black font-bold transition duration-300"> 
               <FontAwesomeIcon icon={faChevronLeft} /> 
             </button>
             {displayedImages.map((url, index) => (
-              <img key={index} src={url} alt={`Imagen ${currentImageIndex + index + 1}`} className="block w-full md:w-1/4 max-h-max object-cover rounded-2xl" />
+              <img key={index} src={url} alt={`Imagen ${currentImageIndex + index + 1}`} className="block w-full h-auto object-cover rounded-2xl" />
             ))}
-            <button onClick={nextImage} className="px-4 py-2 text-black font-bold z-20"> 
+            <button onClick={nextImage} className="absolute z-30 right-0 px-2 py-2 text-black font-bold transition duration-300"> 
               <FontAwesomeIcon icon={faChevronRight} />
             </button>
           </div>
