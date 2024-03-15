@@ -20,7 +20,7 @@ const Info = ({ experienceCard }) => {
   const features = [
     { name: 'Disciplina Principal', description: selectedExperience.experience_main_discipline },
     { name: 'Tipo de experiencia', description: selectedExperience.experience_type },
-    { name: 'Nivel de exigencia', description: selectedExperience.experience_demand_level },
+    { name: 'Nivel de exigencia', description: selectedExperience.technical_level },
     { name: 'Tipo de geografía', description: selectedExperience.experience_geography },
     { name: 'País de la experiencia', description: selectedExperience.experience_country },
     { name: 'Ciudad de la experiencia', description: selectedExperience.experience_location },
