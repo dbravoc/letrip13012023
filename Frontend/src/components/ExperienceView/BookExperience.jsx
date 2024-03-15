@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMoneyBills, CheckIcon } from '@fortawesome/free-solid-svg-icons';
+import { faMoneyBills } from '@fortawesome/free-solid-svg-icons';
+import { faCheck } from '@fortawesome/free-solid-svg-icons';
+
 
 const BookExperience = ({ experienceCard }) => {
   const [players, setPlayers] = useState(1);
@@ -296,20 +298,20 @@ const BookExperience = ({ experienceCard }) => {
 
 
                       <div className='grid grid-cols-2 font-semibold text-sm'>
-                        <p><FontAwesomeIcon className='text-gray-200 pr-2' icon={CheckIcon} />{selectedExperience.experience_price.toLocaleString('de-DE')} USD x {players} aficionado(s)</p>
+                        <p><FontAwesomeIcon className='text-gray-200 pr-2' icon={faCheck} />{selectedExperience.experience_price.toLocaleString('de-DE')} USD x {players} aficionado(s)</p>
                         <p>{totalPrice.toLocaleString('de-DE')} USD</p>
                       </div>
                       <div className='grid grid-cols-2 font-semibold text-sm '>
-                        <p><FontAwesomeIcon className='text-gray-200 pr-2' icon={CheckIcon} />Tarifa por servicio Le trip</p>
+                        <p><FontAwesomeIcon className='text-gray-200 pr-2' icon={faCheck} />Tarifa por servicio Le trip</p>
                         <p>{letripPrice.toLocaleString('de-DE')} USD</p>
                       </div>
                       <div className='grid grid-cols-2 font-semibold text-sm'>
-                        <p><FontAwesomeIcon className='text-gray-200 pr-2' icon={CheckIcon} />Descuentos</p>
+                        <p><FontAwesomeIcon className='text-gray-200 pr-2' icon={faCheck} />Descuentos</p>
                         <p>{discountAmount.toLocaleString('de-DE')} USD</p>
                       </div>
 
                       <div className='grid grid-cols-2 font-semibold text-sm'>
-                        <p><FontAwesomeIcon className='text-gray-200 pr-2' icon={CheckIcon} />Impuestos</p>
+                        <p><FontAwesomeIcon className='text-gray-200 pr-2' icon={faCheck} />Impuestos</p>
                         <p>{tax.toLocaleString('de-DE')} USD</p>
                       </div>
 
