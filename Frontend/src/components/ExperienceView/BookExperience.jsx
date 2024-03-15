@@ -299,26 +299,26 @@ const BookExperience = ({ experienceCard }) => {
 
                       <div className='grid grid-cols-3 font-semibold text-sm'>
                         <p className='col-span-2'><FontAwesomeIcon className='text-gray-200 pr-2' icon={faCheck} />{selectedExperience.experience_price.toLocaleString('de-DE')} USD x {players} aficionado(s)</p>
-                        <p className='col-span-1'>= {totalPrice.toLocaleString('de-DE')} USD</p>
+                        <p className='col-span-1'>= ${totalPrice.toLocaleString('de-DE')} USD</p>
                       </div>
                       <div className='grid grid-cols-3 font-semibold text-sm '>
                         <p className='col-span-2'><FontAwesomeIcon className='text-gray-200 pr-2' icon={faCheck} />Tarifa por servicio Le trip</p>
-                        <p className='col-span-1'>= {letripPrice.toLocaleString('de-DE')} USD</p>
+                        <p className='col-span-1'>= ${letripPrice.toLocaleString('de-DE')} USD</p>
                       </div>
                       <div className='grid grid-cols-3 font-semibold text-sm'>
                         <p className='col-span-2'><FontAwesomeIcon className='text-gray-200 pr-2' icon={faCheck} />Descuentos</p>
-                        <p className='col-span-1'>= {discountAmount.toLocaleString('de-DE')} USD</p>
+                        <p className='col-span-1'>= ${discountAmount.toLocaleString('de-DE')} USD</p>
                       </div>
 
                       <div className='grid grid-cols-3 font-semibold text-sm'>
                         <p className='col-span-2'><FontAwesomeIcon className='text-gray-200 pr-2' icon={faCheck} />Impuestos</p>
-                        <p className='col-span-1'>= {tax.toLocaleString('de-DE')} USD</p>
+                        <p className='col-span-1'>= ${tax.toLocaleString('de-DE')} USD</p>
                       </div>
 
                         <li className="block font-semibold text-sm outline-none py-2 mt-4">                
                         <span className="font-semibold text-xl">
                           <FontAwesomeIcon className='text-gray-200 pr-4' icon={faMoneyBills} />
-                          {totalPriceFull.toLocaleString('de-DE')}
+                          ${totalPriceFull.toLocaleString('de-DE')}
                         </span> USD en total
                         </li>
 
