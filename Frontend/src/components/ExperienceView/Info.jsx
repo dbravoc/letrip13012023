@@ -61,32 +61,33 @@ const Info = ({ experienceCard }) => {
 
   return (
     <>
-<div className="sm:grid sm:grid-cols-5 sm:jusitify-left flex flex-col justify-center p-10  bg-white border-white border-2 rounded-2xl">
+<div className="flex flex-col justify-center items-center p-10 bg-white border-white border-2 rounded-2xl md:grid md:grid-cols-5 md:justify-start">
         
-        <div className="flex sm:col-span-1 sm:row-span-1 py-5 sm:items-left items-center sm:gap-x-4">
+        <div className="flex md:col-span-1 md:row-span-1 py-5 items-center md:items-start gap-x-4">
           <div className="flex flex-col min-w-0 gap-x-4">
-            <div className="h-24 w-24 flex rounded-full overflow-hidden bg-gray-50">
+            <div className="h-24 w-24 rounded-full overflow-hidden bg-gray-50">
               <img src={selectedExperience.instructor_profile_img} alt="" className='w-full h-full object-cover' />
             </div>
             
             <div>
-                  <p className="text-base text-center font-semibold leading-6 text-black">{selectedExperience.experience_instructor}</p>
-                  <p className="text-sm text-center leading-6 text-black">{selectedExperience.experience_instructor_type}</p>
+                  <p className="text-base font-semibold leading-6 text-black text-center md:text-left">{selectedExperience.experience_instructor}</p>
+                  <p className="text-sm leading-6 text-black text-center md:text-left">{selectedExperience.experience_instructor_type}</p>
             </div>
           </div>
         </div>
         
         <div className='col-span-4 row-span-4'>
-          <p className=" text-sm italic py-5 leading-6 text-black">{selectedExperience.experience_instructor_message}</p>
+          <p className="text-sm italic py-5 leading-6 text-black">{selectedExperience.experience_instructor_message}</p>
         </div>
-
-</div>
+      
+      </div>
+      
 
 
 
     <div className="flex col-span-2 flex-col p-10 bg-white border-white border-2 rounded-2xl">
             <h2 className="bg-black rounded-xl px-4 py-2 text-xl text-left font-bold tracking-tight text-letrip mb-4">Características de la experiencia</h2>
-            <dl className="mt-0 grid grid-cols-1 sm:grid-cols-6 gap-y-2 gap-x-8">
+            <dl className="mt-0 grid grid-cols-1 md:grid-cols-6 gap-y-2 gap-x-8">
               {features.map((feature, index) => (
                 <div key={index} className="border-b border-yellow-500 pt-2">
                   <dt className=" text-xs text-gray-700 text-center">{feature.name}</dt>
@@ -98,7 +99,7 @@ const Info = ({ experienceCard }) => {
 
 
 
-    <div className='grid grid-cols-1 sm:grid-cols-2 gap-4'>
+    <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
     <div className="flex col-span-1 flex-col p-10  bg-white border-white border-2 rounded-2xl">
           <h2 className="bg-black rounded-xl px-4 py-2 text-xl text-left font-bold tracking-tight text-letrip mb-4">Itinerario</h2>
           <div className="text-sm italic py-5 leading-6 text-black">{selectedExperience.itinerary}</div>
@@ -107,7 +108,7 @@ const Info = ({ experienceCard }) => {
   <div className='col-span-1'>
     <div className="flex flex-col p-10  bg-white border-white border-2 rounded-2xl">
           <h2 className="bg-black rounded-xl px-4 py-2 text-xl text-left font-bold tracking-tight text-letrip mb-4">Lo que SI incluye</h2>
-           <ul role="list" className="mt-2 grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-1 text-sm leading-6 text-black">
+           <ul role="list" className="mt-2 grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-1 text-sm leading-6 text-black">
             {includedList.map((included, index) => (
               <li key={index} className="flex gap-x-3">
                 <CheckIcon className="h-6 w-5 flex-none text-yellow-500 font-extrabold" aria-hidden="true" />
@@ -120,7 +121,7 @@ const Info = ({ experienceCard }) => {
 
     <div className="flex flex-col  p-10  bg-white border-white border-2 rounded-2xl">
           <h2 className="bg-black rounded-xl px-4 py-2 text-xl text-left font-bold tracking-tight text-letrip mb-4">Lo que NO incluye</h2>
-           <ul role="list" className="mt-2 grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-1 text-sm leading-6 text-black">
+           <ul role="list" className="mt-2 grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-1 text-sm leading-6 text-black">
             {notIncludedList.map((notincluded, index) => (
               <li key={index} className="flex gap-x-3">
                 <XMarkIcon className="h-6 w-5 flex-none text-yellow-500 font-extrabold" aria-hidden="true" />
@@ -138,7 +139,7 @@ const Info = ({ experienceCard }) => {
           <p className="text-sm italic py-5 leading-6 text-black">{selectedExperience.acommodation}</p>
     </div>
 
-    <div className='grid grid-cols-1 sm:grid-cols-3 gap-4'>
+    <div className='grid grid-cols-1 md:grid-cols-3 gap-4'>
 
     <div className="flex col-span-1 flex-col p-10 bg-white border-white border-2 rounded-2xl">
           <h2 className="bg-black rounded-xl px-4 py-2 text-xl text-left font-bold tracking-tight text-letrip mb-4">Restricciones</h2>
