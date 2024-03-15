@@ -178,7 +178,7 @@ const BookExperience = ({ experienceCard }) => {
 
 
   return (
-    <div className="mx-0 md:px-32 mb-10 tracking-tight bg-black border-t-letrip border-t-2 text-letrip">
+    <div className="mx-0 md:px-32 pb-20 tracking-tight bg-black border-t-letrip border-t-2 text-letrip">
       {selectedExperience ? (
         <>
         <div className='pt-2'>
