@@ -7,9 +7,9 @@ export default function Footer() {
       <>
 
       <div className='bg-black border-t-letrip border-t-2 flex flex-col justify-center items-center gap-y-2' >
-        <img className="flex h-10 w-auto" src={logo} alt="Logo de LeTrip"/>
+        <img className="flex h-10 w-auto pt-10" src={logo} alt="Logo de LeTrip"/>
         <p className=' text-yellow-300 text-sm text-center font-light'>Somos <span className='font-bold'>Le Trip SpA</span>, una <span className='font-bold'>TravelTech</span> de experiencias deportivas.</p>
-        <p className=' text-yellow-100 text-sm text-center font-light'>CEO: matias@letriplab.com - CCO: thomas@letriplab.com - CTO: david@letriplab.com</p>
+        <p className=' text-yellow-100 text-sm text-center font-light pb-8'>CEO: matias@letriplab.com - CCO: thomas@letriplab.com - CTO: david@letriplab.com</p>
 
       </div>
 
