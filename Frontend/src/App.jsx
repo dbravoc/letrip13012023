@@ -79,7 +79,7 @@ const App = () => {
 
       <Route path="/pruebas" element={
           <>
-            <div className="mx-auto w-full sm:px-6 px-8">
+            <div className="mx-auto w-full md:px-6 px-8">
               <div className="flex flex-col justify-between flex-wrap"><Inicio /></div>
               <div className="pt-36 px-12 flex flex-col justify-between flex-wrap relative z-10"><ExperienceForm /></div>
             </div>
@@ -88,7 +88,7 @@ const App = () => {
 
             <Route path="/tyc" element={
           <>
-            <div className="mx-auto w-full sm:px-6 px-8">
+            <div className="mx-auto w-full md:px-6 px-8">
               <div className="flex flex-col justify-between flex-wrap"><Inicio /></div>
               <div className="pt-36 px-12 flex flex-col justify-between flex-wrap relative z-10"><TyC /></div>
             </div>
@@ -97,10 +97,10 @@ const App = () => {
 
             <Route path="/tarjeta/:id" element={
           <>
-            <div className="mx-auto my-0 w-full">
+            <div className="mx-auto w-full">
               <div className="flex flex-col justify-between flex-wrap  px-8"><Inicio /></div>
               <div className=" flex-wrap pt-44 relative z-10  px-8"><Carousel experienceCard={experienceCard} /></div>
-              <div className="pt-24 sm:px-32  px-8"><Info experienceCard={experienceCard} /></div>
+              <div className="pt-24 md:px-32  px-8"><Info experienceCard={experienceCard} /></div>
               <div className="pt-24"><BookExperience experienceCard={experienceCard} /></div>
 
 
@@ -110,7 +110,7 @@ const App = () => {
 
       <Route path="/admin" element={
           <>
-            <div className="mx-auto w-full sm:px-6 px-8">
+            <div className="mx-auto w-full md:px-6 px-8">
               <div className="flex flex-col justify-between flex-wrap"><Inicio /></div>
               <div className="pt-36 px-12 flex flex-col justify-between flex-wrap relative z-10"><MenuCard /></div>
             </div>
@@ -122,7 +122,7 @@ const App = () => {
           <>
           <div className="bg-white mx-auto w-full px-2">
             <div className="flex flex-col justify-between flex-wrap"><Inicio /></div>
-            <div className='grid grid-cols-1 sm:grid-cols-2'>
+            <div className='grid grid-cols-1 md:grid-cols-2'>
               <div className='justify-self-center'>
                   <div className='pt-36'><Tarjeta experienceCard={experienceCard} /></div>
                   <div className='pt-10'><IncludedNotIncluded experienceCard={experienceCard} /></div>
@@ -142,7 +142,7 @@ const App = () => {
 
         <Route path="/formulariopago/:id" element={
           <>
-          <div className="bg-white mx-auto w-full sm:px-6 px-8">
+          <div className="bg-white mx-auto w-full md:px-6 px-8">
             <div className="flex flex-col justify-between flex-wrap"><Inicio /></div>
             <div className='pt-36 '><FormularioPago experienceCard={experienceCard} /></div>
 

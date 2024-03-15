@@ -178,7 +178,7 @@ const BookExperience = ({ experienceCard }) => {
 
 
   return (
-    <div className="mx-0 md:px-6 mb-10 tracking-tight text-letrip bg-black">
+    <div className="mx-0 md:px-32 mb-10 tracking-tight bg-letrip text-black">
       {selectedExperience ? (
         <>
         <div className='pt-2'>
@@ -254,7 +254,7 @@ const BookExperience = ({ experienceCard }) => {
                       onChange={handleChange}
                     />
                     <label htmlFor="approved_terms_and_conditions" className="pl-2 text-lg">
-                    Acepto los <a href="https://www.letriplab.com/tyc" target="_blank" class="font-semibold px-1 bg-letrip text-black">términos y condiciones</a>.
+                    Acepto los <a href="https://www.letriplab.com/tyc" target="_blank" class="font-semibold px-1 text-letrip bg-black">términos y condiciones</a>.
                     </label>
                   </div>
               </div>
