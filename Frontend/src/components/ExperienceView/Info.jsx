@@ -99,7 +99,7 @@ const Info = ({ experienceCard }) => {
 
 
 
-    <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
+    <div className='grid grid-cols-1 md:grid-cols-2 md:gap-4'>
     <div className="flex col-span-1 flex-col md:p-10 py-5  bg-white border-white border-2 rounded-2xl">
           <h2 className="bg-black rounded-xl px-4 py-2 text-xl text-left font-bold tracking-tight text-letrip mb-4">Itinerario</h2>
           <div className="text-sm italic py-5 leading-6 text-black">{selectedExperience.itinerary}</div>
