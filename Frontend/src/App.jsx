@@ -97,7 +97,7 @@ const App = () => {
 
             <Route path="/tarjeta/:id" element={
           <>
-            <div className="mx-auto w-full">
+            <div className="mx-auto w-full h-full">
               <div className="flex flex-col justify-between flex-wrap  px-8"><Inicio /></div>
               <div className=" flex-wrap pt-44 relative z-10  px-8"><Carousel experienceCard={experienceCard} /></div>
               <div className="pt-24 sm:px-32  px-8"><Info experienceCard={experienceCard} /></div>
