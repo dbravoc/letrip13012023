@@ -61,7 +61,7 @@ const Info = ({ experienceCard }) => {
 
   return (
     <>
-<div className="flex flex-col justify-center items-center p-10 bg-white border-white border-2 rounded-2xl md:grid md:grid-cols-5 md:justify-start">
+<div className="flex flex-col justify-center items-center md:p-10 bg-white border-white border-2 rounded-2xl md:grid md:grid-cols-5 md:justify-start">
         
         <div className="flex md:col-span-1 md:row-span-1 py-5 items-center md:items-start gap-x-4">
           <div className="flex flex-col min-w-0 gap-x-4">
