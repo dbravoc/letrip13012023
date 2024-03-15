@@ -38,13 +38,13 @@ const Carousel = ({ experienceCard }) => {
       <div className="md:mx-36 relative carousel-container flex justify-center items-center">
         {imageUrls.length > 0 && (
           <div className="flex justify-between items-center w-full">
-            <button onClick={prevImage} className="absolute z-30 left-0 px-2 py-2 text-letrip text-4xl font-bold"> 
+            <button onClick={prevImage} className="md:relative absolute z-30 left-0 px-2 py-2 text-letrip text-4xl font-bold"> 
               <FontAwesomeIcon icon={faChevronLeft} /> 
             </button>
             {displayedImages.map((url, index) => (
               <img key={index} src={url} alt={`Imagen ${currentImageIndex + index + 1}`} className=" md:w-1/4 block w- w-full h-full object-cover rounded-2xl" />
             ))}
-            <button onClick={nextImage} className="absolute z-30 right-0 px-2 py-2 text-letrip text-4xl font-bold"> 
+            <button onClick={nextImage} className="md:relative absolute  z-30 right-0 px-2 py-2 text-letrip text-4xl font-bold"> 
               <FontAwesomeIcon icon={faChevronRight} />
             </button>
           </div>
