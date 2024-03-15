@@ -63,8 +63,8 @@ const Info = ({ experienceCard }) => {
     <>
 <div className="sm:grid sm:grid-cols-5 flex flex-col p-10  bg-white border-white border-2 rounded-2xl">
         
-        <div className="flex col-span-1 row-span-1 py-5 items-left gap-x-4">
-          <div className="flex flex-col justify-center items-center min-w-0 gap-x-4">
+        <div className="flex sm:col-span-1 sm:row-span-1 py-5 sm:items-left items-center sm:gap-x-4">
+          <div className="flex flex-col min-w-0 gap-x-4">
             <div className="h-24 w-24 flex rounded-full overflow-hidden bg-gray-50">
               <img src={selectedExperience.instructor_profile_img} alt="" className='w-full h-full object-cover' />
             </div>
