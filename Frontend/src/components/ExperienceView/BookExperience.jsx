@@ -196,7 +196,7 @@ const BookExperience = ({ experienceCard }) => {
                   type="text"
                   value={formData.customer_name}
                   onChange={handleChange}
-                  className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 bg-yellow-200 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
+                  className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 bg-yellow-100 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
                 />
                 
 
@@ -208,7 +208,7 @@ const BookExperience = ({ experienceCard }) => {
                   type="text"
                   value={formData.customer_identification}
                   onChange={handleChange}
-                  className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 bg-yellow-200 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
+                  className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 bg-yellow-100 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
                 />
 
                 {/* Teléfono del Cliente */}
@@ -219,7 +219,7 @@ const BookExperience = ({ experienceCard }) => {
                   type="tel"
                   value={formData.customer_phone}
                   onChange={handleChange}
-                  className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 bg-yellow-200 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
+                  className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 bg-yellow-100 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
                 />
 
                 {/* Correo Electrónico del Cliente */}
@@ -230,7 +230,7 @@ const BookExperience = ({ experienceCard }) => {
                   type="email"
                   value={formData.customer_email}
                   onChange={handleChange}
-                  className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 bg-yellow-200 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
+                  className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 bg-yellow-100 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
                 />
 
                 {/* Dirección del Cliente */}
@@ -241,7 +241,7 @@ const BookExperience = ({ experienceCard }) => {
                   type="text"
                   value={formData.customer_address}
                   onChange={handleChange}
-                  className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 bg-yellow-200 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
+                  className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 bg-yellow-100 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
                 />
 
                     {/* Aceptación de Términos y Condiciones */}
@@ -271,7 +271,7 @@ const BookExperience = ({ experienceCard }) => {
                         name="experience_package"
                         value={formData.experience_package}
                         onChange={handleChange}
-                        className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 bg-yellow-200 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
+                        className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 bg-yellow-100 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
                       >
                         <option value="">Selecciona una fecha</option>
                         {availableDates.map((dateOption) => (
@@ -291,7 +291,7 @@ const BookExperience = ({ experienceCard }) => {
                         max={selectedExperience.max_group_size} // Asegurar que se usa selectedExperience
                         value={players} // Corregido para usar el estado `players`
                         onChange={handlePlayerChange} // Usando handlePlayerChange para manejar este input específicamente
-                        className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 bg-yellow-200 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
+                        className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 bg-yellow-100 shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
                       />
 
                       <h3 className="text-lg font-bold my-8">Detalle del precio total</h3>
@@ -330,7 +330,7 @@ const BookExperience = ({ experienceCard }) => {
                     name="payment_method"
                     value={formData.payment_method}
                     onChange={handleChange}
-                    className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-yellow-200 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 md:text-sm"
+                    className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-yellow-100 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 md:text-sm"
                   >
                     <option value="">Selecciona un método de pago</option>
                     <option value="paypal">PayPal</option>
