@@ -330,7 +330,7 @@ const BookExperience = ({ experienceCard }) => {
                     name="payment_method"
                     value={formData.payment_method}
                     onChange={handleChange}
-                    className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-yellow-100 text-black bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 md:text-sm"
+                    className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-yellow-100 text-black rounded-md shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none md:text-sm"
                   >
                     <option value="">Selecciona un método de pago</option>
                     <option value="paypal">PayPal</option>
@@ -342,7 +342,7 @@ const BookExperience = ({ experienceCard }) => {
             </div>
 
 
-                  <button type="submit" className="text-lg hover:bg-black hover:text-letrip bg-letrip text-black py-4 rounded-md text-center w-full block">
+                  <button type="submit" className="text-lg hover:bg-yellow-100 hover:text-letrip bg-letrip text-black py-4 rounded-md text-center w-full block">
                     <span className="font-semibold text-2xl">
                        Confirmar reserva
                     </span>
