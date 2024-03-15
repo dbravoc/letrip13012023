@@ -132,13 +132,15 @@ const Info = ({ experienceCard }) => {
     </div>
   </div>
   </div>
-  <div className='grid grid-cols-1 sm:grid-cols-5 gap-4'>
 
-  <div className="flex col-span-3 flex-col p-10 bg-white border-white border-2 rounded-2xl">
+  <div className="flex flex-col p-10 bg-white border-white border-2 rounded-2xl">
   <h2 className="bg-black rounded-xl px-4 py-2 text-xl text-left font-bold tracking-tight text-letrip mb-4">Alojamiento</h2>
           <p className="text-sm italic py-5 leading-6 text-black">{selectedExperience.acommodation}</p>
     </div>
-    <div className="flex col-span-2 flex-col p-10 bg-white border-white border-2 rounded-2xl">
+
+    <div className='grid grid-cols-1 sm:grid-cols-3 gap-4'>
+
+    <div className="flex col-span-1 flex-col p-10 bg-white border-white border-2 rounded-2xl">
           <h2 className="bg-black rounded-xl px-4 py-2 text-xl text-left font-bold tracking-tight text-letrip mb-4">Restricciones</h2>
           <p><CheckIcon className="h-6 w-5 flex-none text-yellow-500 font-extrabold" aria-hidden="true"/> <span className="text-sm italic py-1 leading-6 text-black"> {selectedExperience.target_audience_restrictions}</span></p>
           <p><CheckIcon className="h-6 w-5 flex-none text-yellow-500 font-extrabold" aria-hidden="true"/> <span className="text-sm italic py-1 leading-6 text-black"> Edad mínima: {selectedExperience.minimum_age}</span></p>
@@ -146,12 +148,12 @@ const Info = ({ experienceCard }) => {
     
     </div>
 
-    <div className="flex col-span-3 flex-col p-10 bg-white border-white border-2 rounded-2xl">
+    <div className="flex col-span-1 flex-col p-10 bg-white border-white border-2 rounded-2xl">
           <h2 className="bg-black rounded-xl px-4 py-2 text-xl text-left font-bold tracking-tight text-letrip mb-4">No olvidar</h2>
           <p className="text-sm italic py-5 leading-6 text-black">{selectedExperience.dont_forget}</p>
     </div>
 
-    <div className="flex col-span-2 flex-col p-10 bg-white border-white border-2 rounded-2xl">
+    <div className="flex col-span-1 flex-col p-10 bg-white border-white border-2 rounded-2xl">
           <h2 className="bg-black rounded-xl px-4 py-2 text-xl text-left font-bold tracking-tight text-letrip mb-4">Valor de la experiencia</h2>
           {selectedExperience ? (
         <div className="mb-4">
