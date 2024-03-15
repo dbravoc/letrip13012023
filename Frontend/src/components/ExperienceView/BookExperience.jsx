@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMoneyBills } from '@fortawesome/free-solid-svg-icons';
-import { CheckIcon } from '@heroicons/react/24/outline';
-
+import { faMoneyBills, CheckIcon } from '@fortawesome/free-solid-svg-icons';
 
 const BookExperience = ({ experienceCard }) => {
   const [players, setPlayers] = useState(1);
@@ -182,14 +180,14 @@ const BookExperience = ({ experienceCard }) => {
       {selectedExperience ? (
         <>
         <div className='pt-2'>
-          <h2 className="rounded-2xl bg-letrip text-black py-2 text-2xl text-center font-bold tracking-tight mb-10">Reserva tu experiencia</h2>
+          <h2 className="rounded-2xl px-4 py-2 text-2xl text-center font-bold tracking-tight mb-10">Reserva tu experiencia</h2>
           <form onSubmit={handleSubmit}>
             <div className='grid grid-cols-5 gap-x-8'>
               <div className='col-span-2'>
               <h3 className="rounded-2xl bg-letrip text-black py-2 text-xl font-bold mb-10">Ingresa tus datos</h3>
 
                 {/* Nombre del Cliente */}
-                <label className='text-gray-700 text-sm' htmlFor="customer_name">Nombres y Apellidos:</label>
+                <label className=' text-sm' htmlFor="customer_name">Nombres y Apellidos:</label>
                 <input
                   id="customer_name"
                   name="customer_name"
@@ -201,7 +199,7 @@ const BookExperience = ({ experienceCard }) => {
                 
 
                 {/* Identificación del Cliente */}
-                <label className='text-gray-700 text-sm' htmlFor="customer_identification">Número de identificación:</label>
+                <label className=' text-sm' htmlFor="customer_identification">Número de identificación:</label>
                 <input
                   id="customer_identification"
                   name="customer_identification"
@@ -212,7 +210,7 @@ const BookExperience = ({ experienceCard }) => {
                 />
 
                 {/* Teléfono del Cliente */}
-                <label className='text-gray-700 text-sm' htmlFor="customer_phone">Teléfono:</label>
+                <label className=' text-sm' htmlFor="customer_phone">Teléfono:</label>
                 <input
                   id="customer_phone"
                   name="customer_phone"
@@ -223,7 +221,7 @@ const BookExperience = ({ experienceCard }) => {
                 />
 
                 {/* Correo Electrónico del Cliente */}
-                <label className='text-gray-700 text-sm' htmlFor="customer_email">Correo Electrónico:</label>
+                <label className=' text-sm' htmlFor="customer_email">Correo Electrónico:</label>
                 <input
                   id="customer_email"
                   name="customer_email"
@@ -234,7 +232,7 @@ const BookExperience = ({ experienceCard }) => {
                 />
 
                 {/* Dirección del Cliente */}
-                <label className='text-gray-700 text-sm' htmlFor="customer_address">Dirección completa, incluyendo Ciudad y País:</label>
+                <label className=' text-sm' htmlFor="customer_address">Dirección completa, incluyendo Ciudad y País:</label>
                 <input
                   id="customer_address"
                   name="customer_address"
@@ -262,10 +260,10 @@ const BookExperience = ({ experienceCard }) => {
               <div className='col-span-1 mb-10'> </div>
               <div className='col-span-2 mb-10'>
               
-                    <h3 className="rounded-xl bg-letrip text-black py-2 text-2xl font-bold mb-10">Información del precio</h3>
+                    <h3 className="rounded-xl bg-letrip text-black px-4 py-2 text-xl font-bold mb-10">Información del precio</h3>
                     <h3 className="text-lg font-bold my-8">Fecha y número de aficionados</h3>
 
-                      <label className='text-gray-700 text-sm' htmlFor="experience_package">Elige la fecha de tu experiencia</label>
+                      <label className=' text-sm' htmlFor="experience_package">Elige la fecha de tu experiencia</label>
                       <select
                         id="experience_package"
                         name="experience_package"
@@ -282,7 +280,7 @@ const BookExperience = ({ experienceCard }) => {
                       </select>
 
                       {/* Corrección en el campo del número de aficionados */}
-                      <label className='text-gray-700 text-sm' htmlFor="players">Número de aficionados</label>
+                      <label className=' text-sm' htmlFor="players">Número de aficionados</label>
                       <input
                         id="players"
                         name="players"
@@ -298,20 +296,20 @@ const BookExperience = ({ experienceCard }) => {
 
 
                       <div className='grid grid-cols-2 font-semibold text-sm'>
-                        <p><FontAwesomeIcon className='text-gray-700 pr-2' icon={CheckIcon} />{selectedExperience.experience_price.toLocaleString('de-DE')} USD x {players} aficionado(s)</p>
+                        <p><FontAwesomeIcon className='text-gray-200 pr-2' icon={CheckIcon} />{selectedExperience.experience_price.toLocaleString('de-DE')} USD x {players} aficionado(s)</p>
                         <p>{totalPrice.toLocaleString('de-DE')} USD</p>
                       </div>
                       <div className='grid grid-cols-2 font-semibold text-sm '>
-                        <p><FontAwesomeIcon className='text-gray-700 pr-2' icon={CheckIcon} />Tarifa por servicio Le trip</p>
+                        <p><FontAwesomeIcon className='text-gray-200 pr-2' icon={CheckIcon} />Tarifa por servicio Le trip</p>
                         <p>{letripPrice.toLocaleString('de-DE')} USD</p>
                       </div>
                       <div className='grid grid-cols-2 font-semibold text-sm'>
-                        <p><FontAwesomeIcon className='text-gray-700 pr-2' icon={CheckIcon} />Descuentos</p>
+                        <p><FontAwesomeIcon className='text-gray-200 pr-2' icon={CheckIcon} />Descuentos</p>
                         <p>{discountAmount.toLocaleString('de-DE')} USD</p>
                       </div>
 
                       <div className='grid grid-cols-2 font-semibold text-sm'>
-                        <p><FontAwesomeIcon className='text-gray-700 pr-2' icon={CheckIcon} />Impuestos</p>
+                        <p><FontAwesomeIcon className='text-gray-200 pr-2' icon={CheckIcon} />Impuestos</p>
                         <p>{tax.toLocaleString('de-DE')} USD</p>
                       </div>
 
