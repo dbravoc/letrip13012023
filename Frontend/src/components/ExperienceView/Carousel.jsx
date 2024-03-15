@@ -20,7 +20,7 @@ const Carousel = ({ experienceCard }) => {
   }
 
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const imagesToShow = window.innerWidth < 640 ? 1 : 3; // Si es móvil, mostrar solo una imagen, de lo contrario, mostrar tres
+  const imagesToShow = window.innerWidth < 640 ? 1 : 3;
 
   const nextImage = () => {
     setCurrentImageIndex((prevIndex) => (prevIndex + imagesToShow < imageUrls.length) ? prevIndex + imagesToShow : 0);
@@ -30,27 +30,26 @@ const Carousel = ({ experienceCard }) => {
     setCurrentImageIndex((prevIndex) => (prevIndex - imagesToShow >= 0) ? prevIndex - imagesToShow : (imageUrls.length - (imageUrls.length % imagesToShow || imagesToShow)));
   };
 
-  // Calcular el rango de imágenes a mostrar
   const displayedImages = imageUrls.slice(currentImageIndex, currentImageIndex + imagesToShow);
 
   return (
     <>
-    <h2 className="md:mx-36 py-2 text-3xl text-left font-bold tracking-tight text-gray-900 mb-10">{selectedExperience.experience_name}</h2>
-
+      <h2 className="md:mx-36 py-2 text-3xl text-left font-bold tracking-tight text-gray-900 mb-10">{selectedExperience.experience_name}</h2>
       <div className="carousel-container flex justify-center items-center flex-col">
         {imageUrls.length > 0 && (
-          <div className="flex flex-col justify-center items-center">
-            <div className="flex justify-center overflow-hidden md:gap-x-5">
-            <button onClick={prevImage} className="md:px-4 py-2  text-black font-bold transition duration-300"> <FontAwesomeIcon icon={faChevronLeft} /> </button>
-              {displayedImages.map((url, index) => (
-                <img key={index} src={url} alt={`Imagen ${currentImageIndex + index + 1}`} className={`${window.innerWidth < 640 && index > 0 ? 'hidden' : 'block'} md:w-1/4 max-h-max object-cover rounded-2xl`} />
-              ))}
-            <button onClick={nextImage} className="px-4 py-2 z-10 text-black font-bold transition duration-300"> <FontAwesomeIcon icon={faChevronRight} /></button>
-            </div>
+          <div className="flex justify-center items-center overflow-hidden">
+            <button onClick={prevImage} className="px-4 py-2 text-black font-bold z-20"> 
+              <FontAwesomeIcon icon={faChevronLeft} /> 
+            </button>
+            {displayedImages.map((url, index) => (
+              <img key={index} src={url} alt={`Imagen ${currentImageIndex + index + 1}`} className="block w-full md:w-1/4 max-h-max object-cover rounded-2xl" />
+            ))}
+            <button onClick={nextImage} className="px-4 py-2 text-black font-bold z-20"> 
+              <FontAwesomeIcon icon={faChevronRight} />
+            </button>
           </div>
         )}
       </div>
-      {/* Resto del componente Carousel... */}
     </>
   );
 };
