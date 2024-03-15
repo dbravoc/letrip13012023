@@ -42,7 +42,7 @@ const Carousel = ({ experienceCard }) => {
               <FontAwesomeIcon icon={faChevronLeft} /> 
             </button>
             {displayedImages.map((url, index) => (
-              <img key={index} src={url} alt={`Imagen ${currentImageIndex + index + 1}`} className="md:w-1/3 md:gap-x-8 block w-full h-auto object-cover rounded-2xl" />
+              <img key={index} src={url} alt={`Imagen ${currentImageIndex + index + 1}`} className=" md:w-48 block w-full h-full object-cover rounded-2xl" />
             ))}
             <button onClick={nextImage} className="absolute z-30 right-0 px-2 py-2 text-letrip text-4xl font-bold"> 
               <FontAwesomeIcon icon={faChevronRight} />
