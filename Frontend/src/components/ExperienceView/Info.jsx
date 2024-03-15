@@ -82,17 +82,11 @@ const Info = ({ experienceCard }) => {
 
 </div>
 
-  <div className='grid grid-cols-1 sm:grid-cols-5 gap-4'>
 
-
-    <div className="flex col-span-3 flex-col p-10  bg-white border-white border-2 rounded-2xl">
-          <h2 className="bg-black rounded-xl px-4 py-2 text-xl text-left font-bold tracking-tight text-letrip mb-4">Descripción de la experiencia</h2>
-          <p className="text-sm italic py-5 leading-6 text-black">{selectedExperience.experience_included_description}</p>
-    </div>
 
     <div className="flex col-span-2 flex-col p-10 bg-white border-white border-2 rounded-2xl">
             <h2 className="bg-black rounded-xl px-4 py-2 text-xl text-left font-bold tracking-tight text-letrip mb-4">Características de la experiencia</h2>
-            <dl className="mt-0 grid grid-cols-1 sm:grid-cols-2 gap-y-2 gap-x-8">
+            <dl className="mt-0 grid grid-cols-1 sm:grid-cols-6 gap-y-2 gap-x-8">
               {features.map((feature, index) => (
                 <div key={index} className="border-b border-gray-400 pt-2">
                   <dt className=" text-xs text-gray-700">{feature.name}</dt>
@@ -102,7 +96,6 @@ const Info = ({ experienceCard }) => {
             </dl>
     </div>
 
-  </div>
 
 
     <div className='grid grid-cols-1 sm:grid-cols-5 gap-4'>
