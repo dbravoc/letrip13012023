@@ -178,15 +178,15 @@ const BookExperience = ({ experienceCard }) => {
 
 
   return (
-    <div className="mx-0 md:px-32 mb-10 tracking-tight bg-letrip text-black">
+    <div className="mx-0 md:px-32 mb-10 tracking-tight bg-black border-t-letrip border-t-2 text-letrip">
       {selectedExperience ? (
         <>
         <div className='pt-2'>
-          <h2 className="rounded-xl py-2 text-2xl text-center font-bold tracking-tight mb-10">Reserva tu experiencia</h2>
+          <h2 className="rounded-2xl bg-letrip text-black py-2 text-2xl text-center font-bold tracking-tight mb-10">Reserva tu experiencia</h2>
           <form onSubmit={handleSubmit}>
             <div className='grid grid-cols-5 gap-x-8'>
               <div className='col-span-2'>
-              <h3 className="text-2xl font-bold mb-10">Ingresa tus datos</h3>
+              <h3 className="rounded-2xl bg-letrip text-black py-2 text-xl font-bold mb-10">Ingresa tus datos</h3>
 
                 {/* Nombre del Cliente */}
                 <label className='text-gray-700 text-sm' htmlFor="customer_name">Nombres y Apellidos:</label>
@@ -262,7 +262,7 @@ const BookExperience = ({ experienceCard }) => {
               <div className='col-span-1 mb-10'> </div>
               <div className='col-span-2 mb-10'>
               
-                    <h3 className="text-2xl font-bold mb-10">Información del precio</h3>
+                    <h3 className="rounded-xl bg-letrip text-black py-2 text-2xl font-bold mb-10">Información del precio</h3>
                     <h3 className="text-lg font-bold my-8">Fecha y número de aficionados</h3>
 
                       <label className='text-gray-700 text-sm' htmlFor="experience_package">Elige la fecha de tu experiencia</label>
