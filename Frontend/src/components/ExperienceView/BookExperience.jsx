@@ -186,7 +186,7 @@ const BookExperience = ({ experienceCard }) => {
           <form onSubmit={handleSubmit}>
             <div className='grid grid-cols-5 gap-x-8'>
               <div className='col-span-2'>
-              <h3 className="rounded-2xl bg-letrip text-black py-2 text-xl font-bold mb-10">Ingresa tus datos</h3>
+              <h3 className="rounded-2xl bg-letrip text-black px-4 py-2 text-xl font-bold mb-10">Ingresa tus datos</h3>
 
                 {/* Nombre del Cliente */}
                 <label className=' text-sm' htmlFor="customer_name">Nombres y Apellidos:</label>
