@@ -36,7 +36,7 @@ const Experiencias = ({ experienceCard }) => {
                                     className="mt-1 hover:bg-black hover:text-letrip bg-letrip text-black focus:ring-offset-2 rounded-lg px-4 py-1 ease-in-out duration-50 text-center"
                                     style={{ position: 'relative', zIndex: 2 }}
                                 >
-                                    <strong>{experience.experience_price}<span> USD por persona</span></strong>
+                                    <strong>${experience.experience_price.toLocaleString('de-DE')}<span> USD por persona</span></strong>
                                 </Link>
                             </div>
                         </div>
