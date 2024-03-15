@@ -184,8 +184,8 @@ const BookExperience = ({ experienceCard }) => {
         <div className='pt-2'>
           <h2 className="rounded-2xl px-4 py-2 text-2xl text-center font-bold tracking-tight mb-10">Reserva tu experiencia</h2>
           <form onSubmit={handleSubmit}>
-            <div className='grid grid-cols-5 gap-x-8'>
-              <div className='col-span-2'>
+            <div className='md:grid md:grid-cols-5 flex flex-col gap-x-8'>
+              <div className='md:col-span-2'>
               <h3 className="rounded-2xl bg-letrip text-black px-4 py-2 text-xl font-bold mb-10">Ingresa tus datos</h3>
 
                 {/* Nombre del Cliente */}
@@ -259,8 +259,8 @@ const BookExperience = ({ experienceCard }) => {
                   </div>
               </div>
 
-              <div className='col-span-1 mb-10'> </div>
-              <div className='col-span-2 mb-10'>
+              <div className='md:col-span-1 mb-10'> </div>
+              <div className='md:col-span-2 mb-10'>
               
                     <h3 className="rounded-xl bg-letrip text-black px-4 py-2 text-xl font-bold mb-10">Información del precio</h3>
                     <h3 className="text-lg font-bold my-8">Fecha y número de aficionados</h3>
