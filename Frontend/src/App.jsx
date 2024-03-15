@@ -100,7 +100,7 @@ const App = () => {
             <div className="mx-auto w-full">
               <div className="flex flex-col justify-between flex-wrap px-8"><Inicio /></div>
               <div className="flex-wrap pt-44 relative z-10 px-8"><Carousel experienceCard={experienceCard} /></div>
-              <div className="pt-24 md:px-32  px-8"><Info experienceCard={experienceCard} /></div>
+              <div className="pt-24 md:px-32 px-8"><Info experienceCard={experienceCard} /></div>
               <div className="pt-24"><BookExperience experienceCard={experienceCard} /></div>
 
 
