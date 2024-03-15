@@ -178,11 +178,11 @@ const BookExperience = ({ experienceCard }) => {
 
 
   return (
-    <div className="mx-0 sm:px-6 mb-10 tracking-tight text-gray-900">
+    <div className="mx-0 md:px-6 mb-10 tracking-tight text-letrip bg-black">
       {selectedExperience ? (
         <>
         <div className='pt-2'>
-          <h2 className="rounded-xl py-2 text-2xl text-center font-bold tracking-tight bg-black mb-10 text-letrip">Reserva tu experiencia</h2>
+          <h2 className="rounded-xl py-2 text-2xl text-center font-bold tracking-tight mb-10">Reserva tu experiencia</h2>
           <form onSubmit={handleSubmit}>
             <div className='grid grid-cols-5 gap-x-8'>
               <div className='col-span-2'>
@@ -330,7 +330,7 @@ const BookExperience = ({ experienceCard }) => {
                     name="payment_method"
                     value={formData.payment_method}
                     onChange={handleChange}
-                    className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                    className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 md:text-sm"
                   >
                     <option value="">Selecciona un método de pago</option>
                     <option value="paypal">PayPal</option>
