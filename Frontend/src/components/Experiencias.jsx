@@ -10,7 +10,8 @@ const Experiencias = ({ experienceCard }) => {
             experience.experience_main_discipline,
             experience.experience_country,
             experience.experience_type,
-            experience.experience_geography
+            experience.experience_geography,
+            experience.technical_level
         ];
     });
 
