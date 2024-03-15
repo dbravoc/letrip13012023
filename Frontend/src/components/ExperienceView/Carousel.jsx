@@ -8,7 +8,7 @@ const Carousel = ({ experienceCard }) => {
   const selectedExperience = experienceCard.find(e => e.experience_uuid === id);
 
   if (!selectedExperience) {
-    return <div className="text-center">No se encontró la experiencia</div>;
+    return <div className="text-center">Cargando...</div>;
   }
 
   const imageUrls = [];
