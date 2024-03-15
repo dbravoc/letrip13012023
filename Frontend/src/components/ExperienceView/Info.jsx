@@ -88,9 +88,9 @@ const Info = ({ experienceCard }) => {
             <h2 className="bg-black rounded-xl px-4 py-2 text-xl text-left font-bold tracking-tight text-letrip mb-4">Características de la experiencia</h2>
             <dl className="mt-0 grid grid-cols-1 sm:grid-cols-6 gap-y-2 gap-x-8">
               {features.map((feature, index) => (
-                <div key={index} className="border-b border-gray-400 pt-2">
-                  <dt className=" text-xs text-gray-700">{feature.name}</dt>
-                  <dd className="text-sm mt-2 font-semibold text-black">{feature.description}</dd>
+                <div key={index} className="border-b border-yellow-500 pt-2">
+                  <dt className=" text-xs text-gray-700 text-center">{feature.name}</dt>
+                  <dd className="text-sm mt-2 font-semibold text-black text-center">{feature.description}</dd>
                 </div>
               ))}
             </dl>
@@ -98,13 +98,13 @@ const Info = ({ experienceCard }) => {
 
 
 
-    <div className='grid grid-cols-1 sm:grid-cols-5 gap-4'>
-    <div className="flex col-span-3 flex-col p-10  bg-white border-white border-2 rounded-2xl">
+    <div className='grid grid-cols-1 sm:grid-cols-2 gap-4'>
+    <div className="flex col-span-1 flex-col p-10  bg-white border-white border-2 rounded-2xl">
           <h2 className="bg-black rounded-xl px-4 py-2 text-xl text-left font-bold tracking-tight text-letrip mb-4">Itinerario</h2>
           <div className="text-sm italic py-5 leading-6 text-black">{selectedExperience.itinerary}</div>
     </div>
 
-  <div className='col-span-2'>
+  <div className='col-span-1'>
     <div className="flex flex-col p-10  bg-white border-white border-2 rounded-2xl">
           <h2 className="bg-black rounded-xl px-4 py-2 text-xl text-left font-bold tracking-tight text-letrip mb-4">Lo que SI incluye</h2>
            <ul role="list" className="mt-2 grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-1 text-sm leading-6 text-black">
