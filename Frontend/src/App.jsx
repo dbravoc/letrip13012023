@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import ReactGA from 'react-ga';
 import './App.css';
 import Inicio from './components/Inicio';
 import Experiencias from './components/Experiencias';
@@ -24,14 +25,18 @@ import ExperienceRequest from './components/Form/ExperienceRequest';
 import FooterProceso from './components/FooterProceso';
 import TyC from './pages/TyC';
 
+const TRACKING_ID = "G-JE2KDGP3E4"; // Sustituye con tu propio Tracking ID
 
-
+function initializeReactGA() {
+    ReactGA.initialize(TRACKING_ID);
+    ReactGA.pageview(window.location.pathname + window.location.search);
+}
 
 const App = () => {
   const [experienceCard, setExperienceCard] = useState([]);
 
   useEffect(() => {
-    // Obtener las experiencias desde el servidor
+        initializeReactGA();
     fetch('https://letrip13012023-backend-lawitec.vercel.app/experiences') // Asegúrate de usar la URL correcta de tu servidor
       .then(response => response.json())
       .then(data => setExperienceCard(data))
