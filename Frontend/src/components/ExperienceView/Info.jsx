@@ -29,7 +29,7 @@ const Info = ({ experienceCard }) => {
     { name: 'Clase práctica', value: selectedExperience.included_practical_lessons },
     { name: 'Clase teórica', value: selectedExperience.included_theoretical_lessons },
     { name: `Arriendo de equipo`, value: selectedExperience.included_equipment_rental},
-    { name: 'Yoga', value: selectedExperience.included_yoga },
+    //{ name: 'Yoga', value: selectedExperience.included_yoga },
     { name: 'Entrenamiento', value: selectedExperience.included_training },
     { name: `Video experiencia (Precio: ${selectedExperience.video_price} USD extra`, value: selectedExperience.included_experience_video },
     { name: 'Seguro accidentes', value: selectedExperience.included_accident_insurance },
