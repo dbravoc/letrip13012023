@@ -103,12 +103,14 @@ const Info = ({ experienceCard }) => {
     <div className="flex col-span-1 flex-col md:p-10 py-5  bg-white border-white border-2 rounded-2xl">
           <h2 className="bg-black rounded-xl px-4 py-2 text-xl text-left font-bold tracking-tight text-letrip mb-4">Itinerario</h2>
           <div className="text-sm italic py-5 leading-6 text-black">
-      {selectedExperience.itinerary.split('\n').map((line, index) => (
-        <React.Fragment key={index}>
-          {line}<br />
-        </React.Fragment>
-      ))}
-    </div>    </div>
+  {selectedExperience.itinerary.replace(/\\n/g, '\n').split('\n').map((line, index) => (
+    <React.Fragment key={index}>
+      {line}<br />
+    </React.Fragment>
+  ))}
+</div>    
+
+</div>
 
   <div className='col-span-1'>
     <div className="flex flex-col md:p-10 py-5  bg-white border-white border-2 rounded-2xl">
