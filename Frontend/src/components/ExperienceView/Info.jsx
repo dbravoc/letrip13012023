@@ -141,25 +141,7 @@ const Info = ({ experienceCard }) => {
 
     <div className='grid grid-cols-1 md:grid-cols-3 gap-4'>
 
-    <div className="flex col-span-1 flex-col md:p-10 py-5 bg-white border-white border-2 rounded-2xl">
-          <h2 className="bg-black rounded-xl px-4 py-2 text-xl text-left font-bold tracking-tight text-letrip mb-4">Restricciones</h2>
-          <ul className="mt-2 grid grid-cols-1 md:grid-cols-1 gap-x-8 gap-y-1 text-sm leading-6 text-black">
-            
-              <li key={index} className="flex gap-x-3">
-                <CheckIcon className="h-6 w-5 flex-none text-yellow-500 font-extrabold" aria-hidden="true" />
-                {selectedExperience.target_audience_restrictions}
-              </li>
-              <li key={index} className="flex gap-x-3">
-                <CheckIcon className="h-6 w-5 flex-none text-yellow-500 font-extrabold" aria-hidden="true" />
-                Edad mínima: {selectedExperience.minimum_age}
-              </li>
-              <li key={index} className="flex gap-x-3">
-                <CheckIcon className="h-6 w-5 flex-none text-yellow-500 font-extrabold" aria-hidden="true" />
-                Mínimo de personas: {selectedExperience.minimum_group_size}              </li>
-
-          </ul>
-          
-    </div>
+    
 
     <div className="flex col-span-1 flex-col md:p-10 py-5 bg-white border-white border-2 rounded-2xl">
           <h2 className="bg-black rounded-xl px-4 py-2 text-xl text-left font-bold tracking-tight text-letrip mb-4">No olvidar</h2>
