@@ -201,7 +201,7 @@ const BookExperience = ({ experienceCard }) => {
                 
 
                 {/* Identificación del Cliente */}
-                <label className=' text-sm' htmlFor="customer_identification">Número de identificación:</label>
+                <label className=' text-sm' htmlFor="customer_identification">Cédula de identidad:</label>
                 <input
                   id="customer_identification"
                   name="customer_identification"
