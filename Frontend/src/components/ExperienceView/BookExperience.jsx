@@ -254,7 +254,7 @@ const BookExperience = ({ experienceCard }) => {
                       onChange={handleChange}
                     />
                     <label htmlFor="approved_terms_and_conditions" className="pl-2 text-lg">
-                    Acepto los <a href="https://www.letriplab.com/tyc" target="_blank" class="font-semibold px-1 text-letrip bg-black">términos y condiciones</a>.
+                    Acepto los <a href="https://www.letriplab.com/tyc" target="_blank" class="font-semibold px-1 underline text-letrip bg-black">términos y condiciones.</a>
                     </label>
                   </div>
               </div>
