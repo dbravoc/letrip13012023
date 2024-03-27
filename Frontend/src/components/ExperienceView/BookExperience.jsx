@@ -189,7 +189,7 @@ const BookExperience = ({ experienceCard }) => {
               <h3 className="rounded-2xl bg-yellow-100 text-gray-900 px-4 py-2 text-xl text-center font-bold mb-10">Ingresa tus datos</h3>
 
                 {/* Nombre del Cliente */}
-                <label className=' text-sm' htmlFor="customer_name">Nombres y Apellidos:</label>
+                <label className=' text-sm text-center' htmlFor="customer_name">Nombres y Apellidos</label>
                 <input
                   id="customer_name"
                   name="customer_name"
@@ -201,7 +201,7 @@ const BookExperience = ({ experienceCard }) => {
                 
 
                 {/* Identificación del Cliente */}
-                <label className=' text-sm' htmlFor="customer_identification">Cédula de identidad:</label>
+                <label className=' text-sm text-center' htmlFor="customer_identification">Cédula de identidad:</label>
                 <input
                   id="customer_identification"
                   name="customer_identification"
@@ -212,7 +212,7 @@ const BookExperience = ({ experienceCard }) => {
                 />
 
                 {/* Teléfono del Cliente */}
-                <label className=' text-sm' htmlFor="customer_phone">Teléfono:</label>
+                <label className=' text-sm text-center' htmlFor="customer_phone">Teléfono:</label>
                 <input
                   id="customer_phone"
                   name="customer_phone"
@@ -223,7 +223,7 @@ const BookExperience = ({ experienceCard }) => {
                 />
 
                 {/* Correo Electrónico del Cliente */}
-                <label className=' text-sm' htmlFor="customer_email">Correo Electrónico:</label>
+                <label className=' text-sm text-center' htmlFor="customer_email">Correo Electrónico:</label>
                 <input
                   id="customer_email"
                   name="customer_email"
@@ -234,7 +234,7 @@ const BookExperience = ({ experienceCard }) => {
                 />
 
                 {/* Dirección del Cliente */}
-                <label className=' text-sm' htmlFor="customer_address">Dirección completa, incluyendo Ciudad y País:</label>
+                <label className=' text-sm text-center' htmlFor="customer_address">Dirección completa, incluyendo Ciudad y País:</label>
                 <input
                   id="customer_address"
                   name="customer_address"
@@ -265,7 +265,7 @@ const BookExperience = ({ experienceCard }) => {
                     <h3 className="rounded-2xl bg-yellow-100 text-gray-900 px-4 py-2 text-xl text-center font-bold mb-10">Información del precio</h3>
                     <h3 className="text-lg font-bold my-8">Fecha y número de aficionados</h3>
 
-                      <label className=' text-sm' htmlFor="experience_package">Elige la fecha de tu experiencia</label>
+                      <label className=' text-sm text-center' htmlFor="experience_package">Elige la fecha de tu experiencia</label>
                       <select
                         id="experience_package"
                         name="experience_package"
@@ -282,7 +282,7 @@ const BookExperience = ({ experienceCard }) => {
                       </select>
 
                       {/* Corrección en el campo del número de aficionados */}
-                      <label className=' text-sm' htmlFor="players">Número de aficionados</label>
+                      <label className=' text-sm text-center' htmlFor="players">Número de aficionados</label>
                       <input
                         id="players"
                         name="players"
