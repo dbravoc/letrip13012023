@@ -342,7 +342,7 @@ const BookExperience = ({ experienceCard }) => {
             </div>
 
 
-                  <button type="submit" className="text-lg hover:bg-yellow-100 hover:text-letrip bg-letrip text-black py-4 rounded-md text-center w-full block">
+                  <button type="submit" className="text-lg hover:bg-black hover:text-letrip bg-letrip text-black py-4 rounded-md text-center w-full block">
                     <span className="font-semibold text-2xl">
                        Confirmar reserva
                     </span>
