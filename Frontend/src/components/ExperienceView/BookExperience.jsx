@@ -196,7 +196,7 @@ const BookExperience = ({ experienceCard }) => {
                   type="text"
                   value={formData.customer_name}
                   onChange={handleChange}
-                  className="text-sm block w-full mt-1 p-2 border-b-4 border-yellow-500 text-gray-900 text-center shadow-sm focus:outline-none border-l-0 border-r-0 border-t-0"
+                  className="text-sm block w-full mt-1 p-2 border-b-2 border-yellow-500 text-gray-900 text-center focus:outline-none border-l-0 border-r-0 border-t-0"
                 />
                 
 
