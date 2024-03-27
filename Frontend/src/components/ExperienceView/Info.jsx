@@ -31,7 +31,7 @@ const Info = ({ experienceCard }) => {
     { name: `Arriendo de equipo`, value: selectedExperience.included_equipment_rental},
     //{ name: 'Yoga', value: selectedExperience.included_yoga },
     { name: 'Entrenamiento', value: selectedExperience.included_training },
-    { name: `Video experiencia (Precio: ${selectedExperience.video_price} USD extra`, value: selectedExperience.included_experience_video },
+    { name: `Video experiencia`, value: selectedExperience.included_experience_video },
     { name: 'Seguro accidentes', value: selectedExperience.included_accident_insurance },
     { name: 'Entrada a parques y eventos', value: selectedExperience.included_entry_fees },
     { name: 'Transporte desde el aeropuerto', value: selectedExperience.transport_airport },
@@ -86,7 +86,7 @@ const Info = ({ experienceCard }) => {
 
 
     <div className="flex col-span-2 flex-col md:p-10 py-5 bg-white border-white border-2 rounded-2xl">
-            <h2 className="bg-black rounded-xl px-4 py-2 text-xl text-left font-bold tracking-tight text-letrip mb-4">Características de la experiencia</h2>
+            <h2 className="bg-gray-500 rounded-xl px-4 py-2 text-xl text-left font-bold tracking-tight text-gray-50 mb-4">Características de la experiencia</h2>
             <dl className="mt-0 grid grid-cols-1 md:grid-cols-6 gap-y-2 gap-x-8">
               {features.map((feature, index) => (
                 <div key={index} className="border-b border-yellow-500 pt-2">
