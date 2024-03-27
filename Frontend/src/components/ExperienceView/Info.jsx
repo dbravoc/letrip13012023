@@ -86,7 +86,7 @@ const Info = ({ experienceCard }) => {
 
 
     <div className="flex col-span-2 flex-col md:p-10 py-5 bg-white border-white border-2 rounded-2xl">
-            <h2 className="bg-yellow-50 rounded-xl px-4 py-2 text-xl text-center font-bold tracking-tight text-gray-900 mb-4">Características de la experiencia</h2>
+            <h2 className="bg-yellow-100 rounded-xl px-4 py-2 text-xl text-center font-bold tracking-tight text-gray-900 mb-4">Características de la experiencia</h2>
             <dl className="mt-0 grid grid-cols-1 md:grid-cols-6 gap-y-2 gap-x-8">
               {features.map((feature, index) => (
                 <div key={index} className="border-b border-yellow-500 pt-2">
