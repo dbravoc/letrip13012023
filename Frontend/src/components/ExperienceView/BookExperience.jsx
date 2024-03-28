@@ -189,14 +189,14 @@ const BookExperience = ({ experienceCard }) => {
               <h3 className="rounded-2xl bg-yellow-100 text-gray-900 px-4 py-2 text-xl text-center font-bold mb-10">Ingresa tus datos</h3>
 
                 {/* Nombre del Cliente */}
-                <label className=' text-sm flex justify-center font-semibold' htmlFor="customer_name">Nombres y Apellidos</label>
+                <label className=' text-sm my-1 flex justify-center font-semibold' htmlFor="customer_name">Nombres y Apellidos</label>
                 <input
                   id="customer_name"
                   name="customer_name"
                   type="text"
                   value={formData.customer_name}
                   onChange={handleChange}
-                  className="text-lg block w-full my-1 p-2 border-b-2 bg-transparent border-yellow-500 text-gray-900 text-center focus:outline-none border-l-0 border-r-0 border-t-0"
+                  className="text-lg font-semibold block w-full p-2 border-b-2 bg-transparent border-yellow-500 text-gray-900 text-center focus:outline-none border-l-0 border-r-0 border-t-0"
                 />
                 
 
