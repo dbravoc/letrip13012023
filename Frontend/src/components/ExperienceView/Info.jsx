@@ -101,7 +101,7 @@ const Info = ({ experienceCard }) => {
 
     <div className='grid grid-cols-1 md:grid-cols-2 md:gap-4'>
     <div className="flex col-span-1 flex-col md:p-10 py-5  bg-white border-white border-2 rounded-2xl">
-          <h2 className="bg-yellow-100 rounded-xl px-4 py-2 text-xl text-left font-bold tracking-tight text-gray-900 mb-4">Itinerario</h2>
+          <h2 className="bg-yellow-100 rounded-xl px-4 py-2 text-xl text-center font-bold tracking-tight text-gray-900 mb-4">Itinerario</h2>
           <div className="text-sm italic py-5 leading-6 text-black">
   {selectedExperience.itinerary.replace(/\\n/g, '\n').split('\n').map((line, index) => (
     <React.Fragment key={index}>
@@ -114,7 +114,7 @@ const Info = ({ experienceCard }) => {
 
   <div className='col-span-1'>
     <div className="flex flex-col md:p-10 py-5  bg-white border-white border-2 rounded-2xl">
-          <h2 className="bg-yellow-100 rounded-xl px-4 py-2 text-xl text-left font-bold tracking-tight text-gray-900 mb-4">Lo que SI incluye</h2>
+          <h2 className="bg-yellow-100 rounded-xl px-4 py-2 text-xl text-center font-bold tracking-tight text-gray-900 mb-4">Lo que SI incluye</h2>
            <ul role="list" className="mt-2 grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-1 text-sm leading-6 text-black">
             {includedList.map((included, index) => (
               <li key={index} className="flex gap-x-3">
@@ -127,7 +127,7 @@ const Info = ({ experienceCard }) => {
     </div>
 
     <div className="flex flex-col  md:p-10 py-5  bg-white border-white border-2 rounded-2xl">
-          <h2 className="bg-yellow-100 rounded-xl px-4 py-2 text-xl text-left font-bold tracking-tight text-gray-900 mb-4">Lo que NO incluye</h2>
+          <h2 className="bg-yellow-100 rounded-xl px-4 py-2 text-xl text-center font-bold tracking-tight text-gray-900 mb-4">Lo que NO incluye</h2>
            <ul role="list" className="mt-2 grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-1 text-sm leading-6 text-black">
             {notIncludedList.map((notincluded, index) => (
               <li key={index} className="flex gap-x-3">
@@ -142,14 +142,14 @@ const Info = ({ experienceCard }) => {
   </div>
 
   <div className="flex flex-col md:p-10 py-5 bg-white border-white border-2 rounded-2xl">
-  <h2 className="bg-yellow-100 rounded-xl px-4 py-2 text-xl text-left font-bold tracking-tight text-gray-900 mb-4">Alojamiento</h2>
+  <h2 className="bg-yellow-100 rounded-xl px-4 py-2 text-xl text-center font-bold tracking-tight text-gray-900 mb-4">Alojamiento</h2>
           <p className="text-sm italic py-5 leading-6 text-black">{selectedExperience.acommodation}</p>
     </div>
 
     <div className='grid grid-cols-1 md:grid-cols-3 gap-4'>
 
     <div className="flex col-span-1 flex-col md:p-10 py-5 bg-white border-white border-2 rounded-2xl">
-          <h2 className="bg-yellow-100 rounded-xl px-4 py-2 text-xl text-left font-bold tracking-tight text-gray-900 mb-4">Restricciones</h2>
+          <h2 className="bg-yellow-100 rounded-xl px-4 py-2 text-xl text-center font-bold tracking-tight text-gray-900 mb-4">Restricciones</h2>
           <ul className="mt-2 grid grid-cols-1 md:grid-cols-1 gap-x-8 gap-y-1 text-sm leading-6 text-black">
             
               <li className="flex gap-x-3">
@@ -170,14 +170,14 @@ const Info = ({ experienceCard }) => {
     </div>
 
     <div className="flex col-span-1 flex-col md:p-10 py-5 bg-white border-white border-2 rounded-2xl">
-          <h2 className="bg-yellow-100 rounded-xl px-4 py-2 text-xl text-left font-bold tracking-tight text-gray-900 mb-4">No olvidar</h2>
+          <h2 className="bg-yellow-100 rounded-xl px-4 py-2 text-xl text-center font-bold tracking-tight text-gray-900 mb-4">No olvidar</h2>
           <p className="text-sm italic py-5 leading-6 text-black">{selectedExperience.dont_forget}</p>
     </div>
 
     <div className="flex col-span-1 flex-col md:p-10 py-5 bg-white border-white border-2 rounded-2xl">
-          <h2 className="bg-yellow-100 rounded-xl px-4 py-2 text-xl text-left font-bold tracking-tight text-gray-900 mb-4">Valor de la experiencia</h2>
+          <h2 className="bg-yellow-100 rounded-xl px-4 py-2 text-xl text-center font-bold tracking-tight text-gray-900 mb-4">Valor de la experiencia</h2>
           {selectedExperience ? (
-        <div className="mb-4">
+        <div className="mb-4 flex justify-center">
           <p className='text-sm'> <FontAwesomeIcon className='text-green-700' icon={faMoneyBills} /> US$ <span className='text-xl font-semibold'> {selectedExperience.experience_price.toLocaleString('de-DE')} </span>por persona</p>
         </div>
       ) : (
