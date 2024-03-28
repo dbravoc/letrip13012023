@@ -263,8 +263,8 @@ const BookExperience = ({ experienceCard }) => {
               <div className='md:col-span-1 mb-10'> </div>
               <div className='md:col-span-2 mb-10'>
               
-                    <h3 className="rounded-2xl bg-yellow-100 text-gray-900 px-4 py-2 text-xl text-center font-bold mb-10">Información del precio</h3>
-                    <h3 className="text-lg font-bold my-8 flex justify-center">Fecha y número de aficionados</h3>
+                    <h3 className="rounded-2xl bg-yellow-100 text-gray-900 px-4 py-2 text-xl text-center font-bold mb-10">Cotiza tu experiencia</h3>
+                    <h3 className=" text-sm text-gray-900 my-1 flex justify-center">Fechas disponibles</h3>
 
                       <label className=' text-sm text-gray-900 my-1 flex justify-center' htmlFor="experience_package"></label>
                       <select
