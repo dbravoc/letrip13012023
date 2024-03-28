@@ -296,7 +296,7 @@ const BookExperience = ({ experienceCard }) => {
                       />
 
 
-                      <div className='bg-yellow-50 rounded-2xl py-10 '>
+                      <div className='bg-yellow-50 rounded-2xl py-10 flex items-center'>
 
                       <h3 className="text-lg font-bold my-8 flex justify-center">Detalle del precio total</h3>
 
