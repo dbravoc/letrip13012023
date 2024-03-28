@@ -31,6 +31,21 @@ const BookExperience = ({ experienceCard }) => {
     customer_tax:'',
     total_price:''
   });
+  const createOrder = (data, actions) => { 
+    return actions.order.create[{ 
+      purchase_units: [ 
+        { 
+          amount: { 
+            value:totalPrice,
+          },
+        },
+      ],
+    }];
+  }
+
+  const onApprove = (data,actions) => { 
+    return actions.order.capture();
+  } 
 
 
   useEffect(() => {
