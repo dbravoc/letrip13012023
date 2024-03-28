@@ -7,21 +7,22 @@ import { faCheck } from '@fortawesome/free-solid-svg-icons';
 
 const PayPalButton = window.paypal.Buttons.driver("react", {React ,ReactDOM})   
 
-const createOrder = (data, actions) => { 
-    return actions.order.create[{ 
-      purchase_units: [ 
-        { 
-          amount: { 
-            value:"0.01",
-          },
-        },
-      ],
-    }];
-  }
 
-  const onApprove = (data,actions) => { 
-    return actions.order.capture();
-  } 
+const createOrder = (data, actions) => {
+  return actions.order.create({
+    purchase_units: [
+      {
+        amount: {
+          value: '0.01', // Cambia este valor al monto correcto
+        },
+      },
+    ],
+  });
+};
+
+const onApprove = (data, actions) => {
+  return actions.order.capture();
+};
 
 const BookExperience = ({ experienceCard }) => {
   const [players, setPlayers] = useState(1);
