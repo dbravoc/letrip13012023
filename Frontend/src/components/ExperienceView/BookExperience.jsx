@@ -255,7 +255,7 @@ const BookExperience = ({ experienceCard }) => {
                       className="flex justify-center text-lg font-semibold"
                     />
                     <label htmlFor="approved_terms_and_conditions" className="pl-2 flex justify-center text-lg font-semibold">
-                    Acepto los <a href="https://www.letriplab.com/tyc" target="_blank" class="font-semibold flex justify-center px-1 underline rounded-lg text-black bg-letrip hover:bg-black hover:text-letrip">términos y condiciones</a>
+                    Acepto los <a href="https://www.letriplab.com/tyc" target="_blank" class="font-semibold flex justify-center px-1 mx-1 underline rounded-lg text-black bg-letrip hover:bg-black hover:text-letrip">términos y condiciones</a>
                     </label>
                   </div>
               </div>
