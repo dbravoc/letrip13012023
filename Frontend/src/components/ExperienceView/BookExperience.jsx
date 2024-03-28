@@ -5,8 +5,6 @@ import { faMoneyBills } from '@fortawesome/free-solid-svg-icons';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
 
 
-const PayPalButton = window.paypal.Buttons.driver("react", {React ,ReactDOM})  
-
 const BookExperience = ({ experienceCard }) => {
   const [players, setPlayers] = useState(1);
   const { id } = useParams();
@@ -31,21 +29,6 @@ const BookExperience = ({ experienceCard }) => {
     customer_tax:'',
     total_price:''
   });
-  const createOrder = (data, actions) => { 
-    return actions.order.create[{ 
-      purchase_units: [ 
-        { 
-          amount: { 
-            value:totalPrice,
-          },
-        },
-      ],
-    }];
-  }
-
-  const onApprove = (data,actions) => { 
-    return actions.order.capture();
-  }
 
 
   useEffect(() => {
