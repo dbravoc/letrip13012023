@@ -208,7 +208,7 @@ const BookExperience = ({ experienceCard }) => {
                   type="text"
                   value={formData.customer_identification}
                   onChange={handleChange}
-                  className="mb-3 text-lg font-semibold block w-full p-2 border-b-2 bg-transparent border-yellow-200 text-gray-900 text-center focus:outline-none border-l-0 border-r-0 border-t-0"
+                  className="mb-10 text-lg font-semibold block w-full p-2 border-b-2 bg-transparent border-yellow-200 text-gray-900 text-center focus:outline-none border-l-0 border-r-0 border-t-0"
                 />
 
                 {/* Teléfono del Cliente */}
@@ -219,7 +219,7 @@ const BookExperience = ({ experienceCard }) => {
                   type="tel"
                   value={formData.customer_phone}
                   onChange={handleChange}
-                  className="mb-3 text-lg font-semibold block w-full p-2 border-b-2 bg-transparent border-yellow-200 text-gray-900 text-center focus:outline-none border-l-0 border-r-0 border-t-0"
+                  className="mb-10 text-lg font-semibold block w-full p-2 border-b-2 bg-transparent border-yellow-200 text-gray-900 text-center focus:outline-none border-l-0 border-r-0 border-t-0"
                 />
 
                 {/* Correo Electrónico del Cliente */}
@@ -230,7 +230,7 @@ const BookExperience = ({ experienceCard }) => {
                   type="email"
                   value={formData.customer_email}
                   onChange={handleChange}
-                  className="mb-3 text-lg font-semibold block w-full p-2 border-b-2 bg-transparent border-yellow-200 text-gray-900 text-center focus:outline-none border-l-0 border-r-0 border-t-0"
+                  className="mb-10 text-lg font-semibold block w-full p-2 border-b-2 bg-transparent border-yellow-200 text-gray-900 text-center focus:outline-none border-l-0 border-r-0 border-t-0"
                 />
 
                 {/* Dirección del Cliente */}
@@ -241,11 +241,11 @@ const BookExperience = ({ experienceCard }) => {
                   type="text"
                   value={formData.customer_address}
                   onChange={handleChange}
-                  className="mb-3 text-lg font-semibold block w-full p-2 border-b-2 bg-transparent border-yellow-200 text-gray-900 text-center focus:outline-none border-l-0 border-r-0 border-t-0"
+                  className="mb-10 text-lg font-semibold block w-full p-2 border-b-2 bg-transparent border-yellow-200 text-gray-900 text-center focus:outline-none border-l-0 border-r-0 border-t-0"
                 />
 
                     {/* Aceptación de Términos y Condiciones */}
-                    <div className="my-10 flex">
+                    <div className="my-10 flex justify-center">
                     <input
                       id="approved_terms_and_conditions"
                       name="approved_terms_and_conditions"
@@ -264,7 +264,7 @@ const BookExperience = ({ experienceCard }) => {
               <div className='md:col-span-2 mb-10'>
               
                     <h3 className="rounded-2xl bg-yellow-100 text-gray-900 px-4 py-2 text-xl text-center font-bold mb-10">Información del precio</h3>
-                    <h3 className="text-lg font-bold my-8">Fecha y número de aficionados</h3>
+                    <h3 className="text-lg font-bold my-8 flex justify-center">Fecha y número de aficionados</h3>
 
                       <label className=' text-sm text-gray-900 my-1 flex justify-center' htmlFor="experience_package"></label>
                       <select
@@ -272,7 +272,7 @@ const BookExperience = ({ experienceCard }) => {
                         name="experience_package"
                         value={formData.experience_package}
                         onChange={handleChange}
-                        className="mb-3 text-lg font-semibold block w-full p-2 border-b-2 bg-transparent border-yellow-200 text-gray-900 text-center focus:outline-none border-l-0 border-r-0 border-t-0"
+                        className="mb-10 text-lg font-semibold block w-full p-2 border-b-2 bg-transparent border-yellow-200 text-gray-900 text-center focus:outline-none border-l-0 border-r-0 border-t-0"
                       >
                         <option value="">Selecciona una fecha</option>
                         {availableDates.map((dateOption) => (
@@ -292,10 +292,10 @@ const BookExperience = ({ experienceCard }) => {
                         max={selectedExperience.max_group_size} // Asegurar que se usa selectedExperience
                         value={players} // Corregido para usar el estado `players`
                         onChange={handlePlayerChange} // Usando handlePlayerChange para manejar este input específicamente
-                        className="mb-3 text-lg font-semibold block w-full p-2 border-b-2 bg-transparent border-yellow-200 text-gray-900 text-center focus:outline-none border-l-0 border-r-0 border-t-0"
+                        className="mb-10 text-lg font-semibold block w-full p-2 border-b-2 bg-transparent border-yellow-200 text-gray-900 text-center focus:outline-none border-l-0 border-r-0 border-t-0"
                       />
 
-                      <h3 className="text-lg font-bold my-8">Detalle del precio total</h3>
+                      <h3 className="text-lg font-bold my-8 flex justify-center">Detalle del precio total</h3>
 
 
                       <div className='grid grid-cols-3 font-semibold text-sm'>
@@ -325,7 +325,7 @@ const BookExperience = ({ experienceCard }) => {
 
                         <div className="mb-4">
 
-                  <label htmlFor="payment_method"><h3 className="text-lg font-bold my-8">Método de pago</h3> </label>
+                  <label htmlFor="payment_method"><h3 className="flex justify-center text-lg font-bold my-8">Método de pago</h3> </label>
                   <select
                     id="payment_method"
                     name="payment_method"
