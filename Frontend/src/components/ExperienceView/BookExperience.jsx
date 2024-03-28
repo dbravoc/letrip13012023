@@ -92,7 +92,7 @@ const BookExperience = ({ experienceCard }) => {
     let discountValue;
   
     if (selectedExperience) {
-      if (players < 1) {
+      if (players <= 0) {
         // Si el número de jugadores es menor que 1, el descuento es 0
         discountValue = 0;
       } else if (players > 10) {
@@ -283,7 +283,7 @@ const BookExperience = ({ experienceCard }) => {
                       </select>
 
                       {/* Corrección en el campo del número de aficionados */}
-                      <label className='text-sm text-gray-900 my-1 flex justify-center' htmlFor="players">Número de aficionados (min: {selectedExperience.minimum_group_size} - max: {selectedExperience.max_group_size})</label>
+                      <label className='text-sm text-gray-900 my-1 flex justify-center' htmlFor="players">Número de aficionados (mínimo {selectedExperience.minimum_group_size} personas)</label>
                       <input
                         id="players"
                         name="players"
