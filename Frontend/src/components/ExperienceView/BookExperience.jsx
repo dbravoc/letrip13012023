@@ -114,10 +114,10 @@ const BookExperience = ({ experienceCard }) => {
   
   }, [players, selectedExperience]); // Dependencias [players, selectedExperience] para reaccionar a cambios
   
-  const letripPrice = parseFloat((totalPrice * 0.05).toFixed(2));
-  const tax = parseFloat((letripPrice * 0.19).toFixed(2));
-  const discountAmount = parseFloat((discount * totalPrice/100).toFixed(2));
-  const totalPriceFull = parseFloat((totalPrice + letripPrice + tax - discountAmount).toFixed(2));
+  const letripPrice = parseFloat((totalPrice * 0.05).toFixed(0));
+  const tax = parseFloat((letripPrice * 0.19).toFixed(0));
+  const discountAmount = parseFloat((discount * totalPrice/100).toFixed(0));
+  const totalPriceFull = parseFloat((totalPrice + letripPrice + tax - discountAmount).toFixed(0));
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -143,10 +143,10 @@ const BookExperience = ({ experienceCard }) => {
           sold_experience_name: selectedExperience.experience_name, // Aquí agregas el nombre de la experiencia
           players: players,
           experience_package: formData.experience_package,
-          experience_price: parseFloat(totalPrice.toFixed(2)), // Asegúrate de que esto es lo que tu API espera
-          letrip_price: parseFloat(letripPrice.toFixed(2)),
-          customer_tax: parseFloat(tax.toFixed(2)),
-          total_price: parseFloat(totalPriceFull.toFixed(2)),
+          experience_price: parseFloat(totalPrice.toFixed(0)), // Asegúrate de que esto es lo que tu API espera
+          letrip_price: parseFloat(letripPrice.toFixed(0)),
+          customer_tax: parseFloat(tax.toFixed(0)),
+          total_price: parseFloat(totalPriceFull.toFixed(0)),
           payment_method: formData.payment_method,
         }),
       });
@@ -254,7 +254,7 @@ const BookExperience = ({ experienceCard }) => {
                       onChange={handleChange}
                     />
                     <label htmlFor="approved_terms_and_conditions" className="pl-2 flex justify-center text-lg font-semibold">
-                    Acepto los <a href="https://www.letriplab.com/tyc" target="_blank" class="font-semibold px-2 underline text-black bg-letrip">términos y condiciones</a>
+                    Acepto los <a href="https://www.letriplab.com/tyc" target="_blank" class="font-semibold flex justify-center  px-2 underline text-black bg-letrip">términos y condiciones</a>
                     </label>
                   </div>
               </div>
