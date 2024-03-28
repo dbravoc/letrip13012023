@@ -5,7 +5,23 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMoneyBills } from '@fortawesome/free-solid-svg-icons';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
 
-const PayPalButton = window.paypal.Buttons.driver("react", {React ,ReactDOM}) 
+const PayPalButton = window.paypal.Buttons.driver("react", {React ,ReactDOM})   
+
+const createOrder = (data, actions) => { 
+    return actions.order.create[{ 
+      purchase_units: [ 
+        { 
+          amount: { 
+            value:totalPrice,
+          },
+        },
+      ],
+    }];
+  }
+
+  const onApprove = (data,actions) => { 
+    return actions.order.capture();
+  } 
 
 const BookExperience = ({ experienceCard }) => {
   const [players, setPlayers] = useState(1);
@@ -350,7 +366,10 @@ const BookExperience = ({ experienceCard }) => {
                     <span className="font-semibold text-2xl">
                        Confirmar reserva
                     </span>
-                  </button>
+                  </button> 
+                  <PayPalButton  
+                   createOrder = {(data,actions) => createOrder(data,actions)}
+                   onApprove = {(data,actions) => onApprove(data,actions)} />
               
       </form>
     </div>
