@@ -201,7 +201,7 @@ const BookExperience = ({ experienceCard }) => {
                 
 
                 {/* Identificación del Cliente */}
-                <label className=' text-sm text-gray-900 my-1 flex justify-center' htmlFor="customer_identification">Cédula de identidad:</label>
+                <label className=' text-sm text-gray-900 my-1 flex justify-center' htmlFor="customer_identification">Cédula de identidad</label>
                 <input
                   id="customer_identification"
                   name="customer_identification"
@@ -212,7 +212,7 @@ const BookExperience = ({ experienceCard }) => {
                 />
 
                 {/* Teléfono del Cliente */}
-                <label className=' text-sm text-center' htmlFor="customer_phone">Teléfono:</label>
+                <label className=' text-sm text-gray-900 my-1 flex justify-center' htmlFor="customer_phone">Teléfono</label>
                 <input
                   id="customer_phone"
                   name="customer_phone"
@@ -223,7 +223,7 @@ const BookExperience = ({ experienceCard }) => {
                 />
 
                 {/* Correo Electrónico del Cliente */}
-                <label className=' text-sm text-center' htmlFor="customer_email">Correo Electrónico:</label>
+                <label className=' text-sm text-gray-900 my-1 flex justify-center' htmlFor="customer_email">Correo Electrónico</label>
                 <input
                   id="customer_email"
                   name="customer_email"
@@ -234,7 +234,7 @@ const BookExperience = ({ experienceCard }) => {
                 />
 
                 {/* Dirección del Cliente */}
-                <label className=' text-sm text-center' htmlFor="customer_address">Dirección completa, incluyendo Ciudad y País:</label>
+                <label className='text-sm text-gray-900 my-1 flex justify-center' htmlFor="customer_address">Dirección completa (incluir Ciudad y País)</label>
                 <input
                   id="customer_address"
                   name="customer_address"
@@ -253,7 +253,7 @@ const BookExperience = ({ experienceCard }) => {
                       checked={formData.approved_terms_and_conditions}
                       onChange={handleChange}
                     />
-                    <label htmlFor="approved_terms_and_conditions" className="pl-2 text-lg">
+                    <label htmlFor="approved_terms_and_conditions" className="pl-2 text-lg font-semibold">
                     Acepto los <a href="https://www.letriplab.com/tyc" target="_blank" class="font-semibold px-2 underline text-black bg-letrip">términos y condiciones</a>
                     </label>
                   </div>
@@ -265,7 +265,7 @@ const BookExperience = ({ experienceCard }) => {
                     <h3 className="rounded-2xl bg-yellow-100 text-gray-900 px-4 py-2 text-xl text-center font-bold mb-10">Información del precio</h3>
                     <h3 className="text-lg font-bold my-8">Fecha y número de aficionados</h3>
 
-                      <label className=' text-sm text-center' htmlFor="experience_package">Elige la fecha de tu experiencia</label>
+                      <label className=' text-sm text-gray-900 my-1 flex justify-center' htmlFor="experience_package"></label>
                       <select
                         id="experience_package"
                         name="experience_package"
@@ -282,7 +282,7 @@ const BookExperience = ({ experienceCard }) => {
                       </select>
 
                       {/* Corrección en el campo del número de aficionados */}
-                      <label className=' text-sm text-center' htmlFor="players">Número de aficionados</label>
+                      <label className='text-sm text-gray-900 my-1 flex justify-center' htmlFor="players">Número de aficionados</label>
                       <input
                         id="players"
                         name="players"
@@ -298,15 +298,15 @@ const BookExperience = ({ experienceCard }) => {
 
 
                       <div className='grid grid-cols-3 font-semibold text-sm'>
-                        <p className='col-span-2'><FontAwesomeIcon className='text-gray-200 pr-2' icon={faCheck} />{selectedExperience.experience_price.toLocaleString('de-DE')} USD x {players} aficionado(s)</p>
+                        <p className='col-span-2'><FontAwesomeIcon className='text-green-600 pr-2 ' icon={faCheck} />{selectedExperience.experience_price.toLocaleString('de-DE')} USD x {players} aficionado(s)</p>
                         <p className='col-span-1'>= ${totalPrice.toLocaleString('de-DE')} USD</p>
                       </div>
                       <div className='grid grid-cols-3 font-semibold text-sm '>
-                        <p className='col-span-2'><FontAwesomeIcon className='text-gray-200 pr-2' icon={faCheck} />Tarifa por servicio Le trip</p>
+                        <p className='col-span-2'><FontAwesomeIcon className='text-green-600 pr-2' icon={faCheck} />Tarifa por servicio Le trip</p>
                         <p className='col-span-1'>= ${letripPrice.toLocaleString('de-DE')} USD</p>
                       </div>
                       <div className='grid grid-cols-3 font-semibold text-sm'>
-                        <p className='col-span-2'><FontAwesomeIcon className='text-gray-200 pr-2' icon={faCheck} />Descuentos</p>
+                        <p className='col-span-2'><FontAwesomeIcon className='text-green-600 pr-2' icon={faCheck} />Descuentos</p>
                         <p className='col-span-1'>= ${discountAmount.toLocaleString('de-DE')} USD</p>
                       </div>
 
@@ -316,7 +316,7 @@ const BookExperience = ({ experienceCard }) => {
                       </div>
 
                         <li className="block font-semibold text-sm outline-none py-2 mt-4">                
-                        <span className="font-semibold text-xl">
+                        <span className="font-semibold text-2xl">
                           <FontAwesomeIcon className='text-gray-200 pr-4' icon={faMoneyBills} />
                           ${totalPriceFull.toLocaleString('de-DE')}
                         </span> USD en total
