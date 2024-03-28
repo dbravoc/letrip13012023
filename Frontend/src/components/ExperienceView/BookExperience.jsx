@@ -12,7 +12,7 @@ const createOrder = (data, actions) => {
       purchase_units: [ 
         { 
           amount: { 
-            value:"1",
+            value:"0.01",
           },
         },
       ],
