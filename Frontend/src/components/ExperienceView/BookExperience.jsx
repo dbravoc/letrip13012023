@@ -5,8 +5,6 @@ import { faMoneyBills } from '@fortawesome/free-solid-svg-icons';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
 
 
-
-
 const BookExperience = ({ experienceCard }) => {
   const [players, setPlayers] = useState(1);
   const { id } = useParams();
@@ -94,7 +92,7 @@ const BookExperience = ({ experienceCard }) => {
     let discountValue;
   
     if (selectedExperience) {
-      if (players <= 0) {
+      if (players < 1) {
         // Si el número de jugadores es menor que 1, el descuento es 0
         discountValue = 0;
       } else if (players > 10) {
@@ -162,8 +160,7 @@ const BookExperience = ({ experienceCard }) => {
 
       // Coloca aquí la lógica de redirección basada en el método de pago seleccionado
       if(formData.payment_method === 'paypal') {
-        window.open('https://paypal.me/letriplab', '_blank'); 
-         
+        window.open('https://paypal.me/letriplab', '_blank');
       } else if(formData.payment_method === 'global66') {
         window.open('https://cobros.global66.com/DAVBRA654', '_blank');
       } else {
@@ -181,7 +178,7 @@ const BookExperience = ({ experienceCard }) => {
 
 
   return (
-    <div className="mx-0 pt-10 md:px-40 px-8 pb-20 tracking-tight border-t-2 text-gray-900">
+    <div className="mx-0 pt-28 md:px-40 px-8 pb-20 tracking-tight border-t-2 text-gray-900">
       {selectedExperience ? (
         <>
         <div className='pt-2'>
@@ -258,7 +255,7 @@ const BookExperience = ({ experienceCard }) => {
                       className="flex justify-center text-lg font-semibold"
                     />
                     <label htmlFor="approved_terms_and_conditions" className="pl-2 flex justify-center text-lg font-semibold">
-                    Acepto los <a href="https://www.letriplab.com/tyc" target="_blank" class="font-semibold flex justify-center px-1 mx-1 rounded-lg text-black bg-letrip hover:bg-black hover:text-letrip">términos y condiciones</a>
+                    Acepto los <a href="https://www.letriplab.com/tyc" target="_blank" class="font-semibold flex justify-center px-1 mx-1 underline rounded-lg text-black bg-letrip hover:bg-black hover:text-letrip">términos y condiciones</a>
                     </label>
                   </div>
               </div>
@@ -266,8 +263,8 @@ const BookExperience = ({ experienceCard }) => {
               <div className='md:col-span-1 mb-10'> </div>
               <div className='md:col-span-2 mb-10'>
               
-                    <h3 className="rounded-2xl bg-yellow-100 text-gray-900 px-4 py-2 text-xl text-center font-bold mb-10">Cotiza tu experiencia</h3>
-                    <h3 className=" text-sm text-gray-900 my-1 flex justify-center">Fechas disponibles</h3>
+                    <h3 className="rounded-2xl bg-yellow-100 text-gray-900 px-4 py-2 text-xl text-center font-bold mb-10">Información del precio</h3>
+                    <h3 className="text-lg font-bold my-8 flex justify-center">Fecha y número de aficionados</h3>
 
                       <label className=' text-sm text-gray-900 my-1 flex justify-center' htmlFor="experience_package"></label>
                       <select
@@ -286,7 +283,7 @@ const BookExperience = ({ experienceCard }) => {
                       </select>
 
                       {/* Corrección en el campo del número de aficionados */}
-                      <label className='text-sm text-gray-900 my-1 flex justify-center' htmlFor="players">Número de aficionados (mínimo {selectedExperience.minimum_group_size} personas)</label>
+                      <label className='text-sm text-gray-900 my-1 flex justify-center' htmlFor="players">Número de aficionados (min: {selectedExperience.minimum_group_size} - max: {selectedExperience.max_group_size})</label>
                       <input
                         id="players"
                         name="players"
@@ -297,9 +294,6 @@ const BookExperience = ({ experienceCard }) => {
                         onChange={handlePlayerChange} // Usando handlePlayerChange para manejar este input específicamente
                         className="mb-10 text-lg font-semibold block w-full p-2 border-b-2 bg-transparent border-yellow-200 text-gray-900 text-center focus:outline-none border-l-0 border-r-0 border-t-0"
                       />
-
-
-                      <div className='bg-yellow-50 rounded-2xl p-4 mb-10'>
 
                       <h3 className="text-lg font-bold my-8 flex justify-center">Detalle del precio total</h3>
 
@@ -322,16 +316,16 @@ const BookExperience = ({ experienceCard }) => {
                         <p className='col-span-1'>= ${tax.toLocaleString('de-DE')} USD</p>
                       </div>
 
-                        <p className="mb-10 flex justify-center font-semibold text-xl outline-none mt-4">                
+                        <li className="block font-semibold text-sm outline-none py-2 mt-4">                
+                        <span className="font-semibold text-2xl">
                           <FontAwesomeIcon className='text-green-500 pr-4' icon={faMoneyBills} />
-                          ${totalPriceFull.toLocaleString('de-DE')} USD Total
-                        </p>
-
-                        </div>
+                          ${totalPriceFull.toLocaleString('de-DE')}
+                        </span> USD en total
+                        </li>
 
                         <div className="mb-4">
 
-                  <label htmlFor="payment_method"><h3 className="text-sm text-gray-900 my-1 flex justify-center">Método de pago</h3> </label>
+                  <label htmlFor="payment_method"><h3 className="flex justify-center text-lg font-bold my-8">Método de pago</h3> </label>
                   <select
                     id="payment_method"
                     name="payment_method"
