@@ -252,6 +252,7 @@ const BookExperience = ({ experienceCard }) => {
                       type="checkbox"
                       checked={formData.approved_terms_and_conditions}
                       onChange={handleChange}
+                      className="flex justify-center text-lg font-semibold"
                     />
                     <label htmlFor="approved_terms_and_conditions" className="pl-2 flex justify-center text-lg font-semibold">
                     Acepto los <a href="https://www.letriplab.com/tyc" target="_blank" class="font-semibold flex justify-center  px-2 underline text-black bg-letrip">términos y condiciones</a>
