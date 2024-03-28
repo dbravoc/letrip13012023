@@ -6,7 +6,7 @@ export default function Footer() {
     return (
       <>
 
-      <div className='bg-black border-t-letrip border-t-2 flex flex-col justify-center items-center gap-y-2 py-48' >
+      <div className='bg-black border-t-letrip border-t-2 flex flex-col justify-center items-center gap-y-2 py-28' >
         <div className='pt-10'>
         <img className="flex h-10 w-auto" src={logo} alt="Logo de LeTrip"/>
         </div>
