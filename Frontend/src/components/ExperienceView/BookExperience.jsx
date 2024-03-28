@@ -7,7 +7,7 @@ import { faCheck } from '@fortawesome/free-solid-svg-icons';
 
 const PayPalButton = window.paypal.Buttons.driver("react", {React ,ReactDOM})   
 
-
+//Función para desarrollar pago
 const createOrder = (data, actions) => {
   return actions.order.create({
     purchase_units: [
@@ -368,7 +368,7 @@ const BookExperience = ({ experienceCard }) => {
                        Confirmar reserva
                     </span>
                   </button>  
-                  
+
                   <PayPalButton  
                    createOrder = {(data,actions) => createOrder(data,actions)}
                    onApprove = {(data,actions) => onApprove(data,actions)} /> 
