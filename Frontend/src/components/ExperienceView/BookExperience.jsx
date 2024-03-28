@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react'; 
+import ReactDOM from "react-dom"
 import { useParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMoneyBills } from '@fortawesome/free-solid-svg-icons';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
 
+const PayPalButton = window.paypal.Buttons.driver("react", {React ,ReactDOM}) 
 
 const BookExperience = ({ experienceCard }) => {
   const [players, setPlayers] = useState(1);
