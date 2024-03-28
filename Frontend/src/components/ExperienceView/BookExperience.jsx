@@ -189,7 +189,7 @@ const BookExperience = ({ experienceCard }) => {
               <h3 className="rounded-2xl bg-yellow-100 text-gray-900 px-4 py-2 text-xl text-center font-bold mb-10">Ingresa tus datos</h3>
 
                 {/* Nombre del Cliente */}
-                <label className=' text-sm text-yellow-600 mb-1 mt-2 flex justify-center font-semibold' htmlFor="customer_name">Nombres y Apellidos</label>
+                <label className=' text-sm text-gray-900 mb-3 mt-1 flex justify-center font-semibold' htmlFor="customer_name">Nombres y Apellidos</label>
                 <input
                   id="customer_name"
                   name="customer_name"
