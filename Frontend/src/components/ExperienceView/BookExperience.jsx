@@ -5,6 +5,8 @@ import { faMoneyBills } from '@fortawesome/free-solid-svg-icons';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
 
 
+const PayPalButton = window.paypal.Buttons.driver("react", {React ,ReactDOM})  
+
 const BookExperience = ({ experienceCard }) => {
   const [players, setPlayers] = useState(1);
   const { id } = useParams();
@@ -29,7 +31,21 @@ const BookExperience = ({ experienceCard }) => {
     customer_tax:'',
     total_price:''
   });
+  const createOrder = (data, actions) => { 
+    return actions.order.create[{ 
+      purchase_units: [ 
+        { 
+          amount: { 
+            value:totalPrice,
+          },
+        },
+      ],
+    }];
+  }
 
+  const onApprove = (data,actions) => { 
+    return actions.order.capture();
+  }
 
   useEffect(() => {
     const loadAvailableDates = async () => {
@@ -160,7 +176,9 @@ const BookExperience = ({ experienceCard }) => {
 
       // Coloca aquí la lógica de redirección basada en el método de pago seleccionado
       if(formData.payment_method === 'paypal') {
-        window.open('https://paypal.me/letriplab', '_blank');
+        //window.open('https://paypal.me/letriplab', '_blank'); 
+        createOrder = [(data,actions) => createOrder(data,actions)]
+        onApprove = [(data,actions) => onApprove(data,actions)]  
       } else if(formData.payment_method === 'global66') {
         window.open('https://cobros.global66.com/DAVBRA654', '_blank');
       } else {
