@@ -177,8 +177,7 @@ const BookExperience = ({ experienceCard }) => {
 
       // Coloca aquí la lógica de redirección basada en el método de pago seleccionado
       if(formData.payment_method === 'paypal') {
-        createOrder = [(data,actions) => createOrder(data,actions)]
-        onApprove = [(data,actions) => onApprove(data,actions)]  
+        window.open('https://paypal.me/letriplab', '_blank');
       } else if(formData.payment_method === 'global66') {
         window.open('https://cobros.global66.com/DAVBRA654', '_blank');
       } else {
