@@ -295,6 +295,9 @@ const BookExperience = ({ experienceCard }) => {
                         className="mb-10 text-lg font-semibold block w-full p-2 border-b-2 bg-transparent border-yellow-200 text-gray-900 text-center focus:outline-none border-l-0 border-r-0 border-t-0"
                       />
 
+
+                      <div className='bg-yellow-50 rounded-2xl'>
+
                       <h3 className="text-lg font-bold my-8 flex justify-center">Detalle del precio total</h3>
 
 
@@ -320,6 +323,8 @@ const BookExperience = ({ experienceCard }) => {
                           <FontAwesomeIcon className='text-green-500 pr-4' icon={faMoneyBills} />
                           ${totalPriceFull.toLocaleString('de-DE')} USD Total
                         </p>
+
+                        </div>
 
                         <div className="mb-4">
 
