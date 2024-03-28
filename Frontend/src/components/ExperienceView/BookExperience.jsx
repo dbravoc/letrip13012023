@@ -13,7 +13,7 @@ const createOrder = (data, actions) => {
     purchase_units: [
       {
         amount: {
-          value: '0.1', // Cambia este valor al monto correcto
+          value: total_price, 
         },
       },
     ],
@@ -361,15 +361,17 @@ const BookExperience = ({ experienceCard }) => {
                 </div>
 
             </div>
-                  <PayPalButton  
-                   createOrder = {(data,actions) => createOrder(data,actions)}
-                   onApprove = {(data,actions) => onApprove(data,actions)} /> 
+                
 
                   <button type="submit" className="text-lg hover:bg-black hover:text-letrip bg-letrip text-black py-4 rounded-md text-center w-full block">
                     <span className="font-semibold text-2xl">
                        Confirmar reserva
                     </span>
-                  </button> 
+                  </button>  
+                  
+                  <PayPalButton  
+                   createOrder = {(data,actions) => createOrder(data,actions)}
+                   onApprove = {(data,actions) => onApprove(data,actions)} /> 
                   
               
       </form>
