@@ -189,26 +189,26 @@ const BookExperience = ({ experienceCard }) => {
               <h3 className="rounded-2xl bg-yellow-100 text-gray-900 px-4 py-2 text-xl text-center font-bold mb-10">Ingresa tus datos</h3>
 
                 {/* Nombre del Cliente */}
-                <label className=' text-sm text-gray-900 mb-3 mt-1 flex justify-center font-semibold' htmlFor="customer_name">Nombres y Apellidos</label>
+                <label className=' text-sm text-gray-900 my-1 flex justify-center' htmlFor="customer_name">Nombres y Apellidos</label>
                 <input
                   id="customer_name"
                   name="customer_name"
                   type="text"
                   value={formData.customer_name}
                   onChange={handleChange}
-                  className="text-lg font-semibold block w-full p-2 border-b-2 bg-transparent border-yellow-500 text-gray-900 text-center focus:outline-none border-l-0 border-r-0 border-t-0"
+                  className="mb-3 text-lg font-semibold block w-full p-2 border-b-2 bg-transparent border-yellow-500 text-gray-900 text-center focus:outline-none border-l-0 border-r-0 border-t-0"
                 />
                 
 
                 {/* Identificación del Cliente */}
-                <label className='  text-sm text-yellow-600 mb-1 mt-2 flex justify-center font-semibold' htmlFor="customer_identification">Cédula de identidad:</label>
+                <label className=' text-sm text-gray-900 my-1 flex justify-center' htmlFor="customer_identification">Cédula de identidad:</label>
                 <input
                   id="customer_identification"
                   name="customer_identification"
                   type="text"
                   value={formData.customer_identification}
                   onChange={handleChange}
-                  className="text-sm block w-full mt-1 p-2 rounded-md border border-gray-300 bg-yellow-100 text-black shadow-sm focus:ring-yellow-700 focus:border-yellow-700 focus:outline-none"
+                  className="mb-3 text-lg font-semibold block w-full p-2 border-b-2 bg-transparent border-yellow-500 text-gray-900 text-center focus:outline-none border-l-0 border-r-0 border-t-0"
                 />
 
                 {/* Teléfono del Cliente */}
