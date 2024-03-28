@@ -27,8 +27,9 @@ const Experiencias = ({ experienceCard }) => {
                                 <div className="mt-1">
                                     {/* Etiquetas de la experiencia */}
                                     <div className="inline-flex items-center rounded-md bg-gray-500 mr-2 mb-1 px-2 py-1 text-xs font-medium text-gray-50 ring-1 ring-inset ring-gray-500/10">{experience.experience_type}</div>
-                                    <div className="inline-flex items-center rounded-md bg-gray-500 mr-2 mb-1 px-2 py-1 text-xs font-medium text-gray-50 ring-1 ring-inset ring-gray-500/10">{experience.experience_country}</div>
                                     <div className="inline-flex items-center rounded-md bg-gray-500 mr-2 mb-1 px-2 py-1 text-xs font-medium text-gray-50 ring-1 ring-inset ring-gray-500/10">{experience.experience_main_discipline}</div>
+                                    <div className="inline-flex items-center rounded-md bg-gray-500 mr-2 mb-1 px-2 py-1 text-xs font-medium text-gray-50 ring-1 ring-inset ring-gray-500/10">{experience.experience_geography}</div>
+                                    <div className="inline-flex items-center rounded-md bg-gray-500 mr-2 mb-1 px-2 py-1 text-xs font-medium text-gray-50 ring-1 ring-inset ring-gray-500/10">{experience.experience_country}</div>
                                     <div className="inline-flex items-center rounded-md bg-gray-500 mr-2 mb-1 px-2 py-1 text-xs font-medium text-gray-50 ring-1 ring-inset ring-gray-500/10">{experience.technical_level}</div>
                                 </div>
                                 {/* Link a la tarjeta de la experiencia */}
