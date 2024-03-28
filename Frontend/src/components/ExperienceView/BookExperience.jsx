@@ -13,7 +13,7 @@ const createOrder = (data, actions) => {
     purchase_units: [
       {
         amount: {
-          value: '0.01', // Cambia este valor al monto correcto
+          value: '0.1', // Cambia este valor al monto correcto
         },
       },
     ],
