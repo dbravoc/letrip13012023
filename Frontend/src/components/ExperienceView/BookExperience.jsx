@@ -316,16 +316,14 @@ const BookExperience = ({ experienceCard }) => {
                         <p className='col-span-1'>= ${tax.toLocaleString('de-DE')} USD</p>
                       </div>
 
-                        <p className="flex justify-center font-semibold text-sm outline-none py-2 mt-4">                
-                        <span className="font-semibold text-2xl">
+                        <p className="mb-10 flex justify-center font-semibold text-xl outline-none py-2 mt-4">                
                           <FontAwesomeIcon className='text-green-500 pr-4' icon={faMoneyBills} />
-                          ${totalPriceFull.toLocaleString('de-DE')}
-                        </span> USD en total
+                          ${totalPriceFull.toLocaleString('de-DE')} USD Total
                         </p>
 
                         <div className="mb-4">
 
-                  <label htmlFor="payment_method"><h3 className="flex justify-center text-lg font-bold my-8">Método de pago</h3> </label>
+                  <label htmlFor="payment_method"><h3 className="text-sm text-gray-900 my-1 flex justify-center">Método de pago</h3> </label>
                   <select
                     id="payment_method"
                     name="payment_method"
