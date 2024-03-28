@@ -296,7 +296,7 @@ const BookExperience = ({ experienceCard }) => {
                       />
 
 
-                      <div className='bg-yellow-50 rounded-2xl py-4'>
+                      <div className='bg-yellow-50 rounded-2xl p-4 mb-10'>
 
                       <h3 className="text-lg font-bold my-8 flex justify-center">Detalle del precio total</h3>
 
@@ -319,7 +319,7 @@ const BookExperience = ({ experienceCard }) => {
                         <p className='col-span-1'>= ${tax.toLocaleString('de-DE')} USD</p>
                       </div>
 
-                        <p className="mb-10 flex justify-center font-semibold text-xl outline-none py-2 mt-4">                
+                        <p className="mb-10 flex justify-center font-semibold text-xl outline-none mt-4">                
                           <FontAwesomeIcon className='text-green-500 pr-4' icon={faMoneyBills} />
                           ${totalPriceFull.toLocaleString('de-DE')} USD Total
                         </p>
