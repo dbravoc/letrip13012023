@@ -283,7 +283,7 @@ const BookExperience = ({ experienceCard }) => {
                       </select>
 
                       {/* Corrección en el campo del número de aficionados */}
-                      <label className='text-sm text-gray-900 my-1 flex justify-center' htmlFor="players">Número de aficionados</label>
+                      <label className='text-sm text-gray-900 my-1 flex justify-center' htmlFor="players">Número de aficionados (min: {selectedExperience.minimum_group_size} - max: {selectedExperience.max_group_size})</label>
                       <input
                         id="players"
                         name="players"
