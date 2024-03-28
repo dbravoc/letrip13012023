@@ -253,7 +253,7 @@ const BookExperience = ({ experienceCard }) => {
                       checked={formData.approved_terms_and_conditions}
                       onChange={handleChange}
                     />
-                    <label htmlFor="approved_terms_and_conditions" className="pl-2 text-lg font-semibold">
+                    <label htmlFor="approved_terms_and_conditions" className="pl-2 flex justify-center text-lg font-semibold">
                     Acepto los <a href="https://www.letriplab.com/tyc" target="_blank" class="font-semibold px-2 underline text-black bg-letrip">términos y condiciones</a>
                     </label>
                   </div>
@@ -311,13 +311,13 @@ const BookExperience = ({ experienceCard }) => {
                       </div>
 
                       <div className='grid grid-cols-3 font-semibold text-sm'>
-                        <p className='col-span-2'><FontAwesomeIcon className='text-gray-200 pr-2' icon={faCheck} />Impuestos</p>
+                        <p className='col-span-2'><FontAwesomeIcon className='text-green-500 pr-2' icon={faCheck} />Impuestos</p>
                         <p className='col-span-1'>= ${tax.toLocaleString('de-DE')} USD</p>
                       </div>
 
                         <li className="block font-semibold text-sm outline-none py-2 mt-4">                
                         <span className="font-semibold text-2xl">
-                          <FontAwesomeIcon className='text-gray-200 pr-4' icon={faMoneyBills} />
+                          <FontAwesomeIcon className='text-green-500 pr-4' icon={faMoneyBills} />
                           ${totalPriceFull.toLocaleString('de-DE')}
                         </span> USD en total
                         </li>
