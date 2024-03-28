@@ -179,7 +179,7 @@ const BookExperience = ({ experienceCard }) => {
       if(formData.payment_method === 'paypal') {
         createOrder = [(data,actions) => createOrder(data,actions)]
         onApprove = [(data,actions) => onApprove(data,actions)]  
-
+        console.log(totalPrice)
       } else if(formData.payment_method === 'global66') {
         window.open('https://cobros.global66.com/DAVBRA654', '_blank');
       } else {
