@@ -65,10 +65,9 @@ const Info = ({ experienceCard }) => {
         
         <div className="flex md:col-span-1 md:row-span-1 py-5 items-center md:items-start gap-x-4">
           <div className="flex flex-col min-w-0 gap-x-4">
-          <div className="flex items-center justify-center h-24 w-24 rounded-full overflow-hidden bg-gray-50">
-            <img src={selectedExperience.instructor_profile_img} alt="" className='w-full h-full object-cover' />
-          </div>
-
+            <div className=" h-24 w-24 rounded-full overflow-hidden bg-gray-50">
+              <img src={selectedExperience.instructor_profile_img} alt="" className='flex justify-center items-center text-center w-full h-full object-cover' />
+            </div>
             
             <div>
                   <p className="text-base font-semibold leading-6 text-black text-center md:text-left">{selectedExperience.experience_instructor}</p>
