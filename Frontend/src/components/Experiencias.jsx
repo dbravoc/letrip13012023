@@ -18,7 +18,7 @@ const Experiencias = ({ experienceCard }) => {
     return (
         <div>
             <div className="mx-auto flex justify-center">
-                <div className="grid sm:grid-cols-3 grid-cols-1 sm:gap-6 gap-0">
+                <div className="grid sm:grid-cols-4 grid-cols-1 sm:gap-6 gap-0">
                     {experiencesToShow.map(experience => (
                         <div key={experience.experience_uuid} className="flex flex-col justify-center mb-10 md:flex-row rounded-lg overflow-hidden px-0">
                             <div className="flex max-w-[350px] flex-col justify-between leading-normal">
