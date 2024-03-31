@@ -69,8 +69,8 @@ const Info = ({ experienceCard }) => {
             </div>
 
             <div>
-                <p className="text-base font-semibold leading-6 text-black text-center md:text-left">{selectedExperience.experience_instructor}</p>
-                <p className="text-sm leading-6 text-black text-center md:text-left">{selectedExperience.experience_instructor_type}</p>
+                <p className="text-base font-semibold leading-6 text-black text-center">{selectedExperience.experience_instructor}</p>
+                <p className="text-sm leading-6 text-black text-center">{selectedExperience.experience_instructor_type}</p>
             </div>
         </div>
     </div>
