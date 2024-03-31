@@ -8,7 +8,7 @@ import { faBicycle, faFish, faPersonSkiing, faMountainSun, faSwimmer, faSpa, faW
 import logo from '/public/img/letrip logo sin fondo.png';
 
 const navigation = [
-  { name: 'Ciclismo', href: '', current: true, icon: faBicycle}, //AGREGAR href: '', 
+  { name: 'Ciclismo', href: '', current: true, icon: faBicycle}, //AGREGAR href: '' en cada deporte para habilitar link, 
   { name: 'Pesca', href: '', current: false, icon: faFish },
   { name: 'Snowsports', href: '', current: false, icon:faPersonSkiing },
   { name: 'Trekking/Camping', href: '', current: false, icon: faMountainSun },
