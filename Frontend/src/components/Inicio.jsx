@@ -8,14 +8,14 @@ import { faBicycle, faFish, faPersonSkiing, faMountainSun, faSwimmer, faSpa, faW
 import logo from '/public/img/letrip logo sin fondo.png';
 
 const navigation = [
-  { name: 'Ciclismo', current: true, icon: faBicycle}, //AGREGAR href: '', 
-  { name: 'Pesca', current: false, icon: faFish },
-  { name: 'Snowsports', current: false, icon:faPersonSkiing },
-  { name: 'Trekking/Camping', current: false, icon: faMountainSun },
-  { name: 'Yoga', current: false, icon:faSpa },
-  { name: 'Surf', current: false, icon: faWater },
-  { name: 'Escalada', current: false, icon: faPersonHiking },
-  { name: 'Otros', current: false, icon: faSwimmer },
+  { name: 'Ciclismo', href: '', current: true, icon: faBicycle}, //AGREGAR href: '', 
+  { name: 'Pesca', href: '', current: false, icon: faFish },
+  { name: 'Snowsports', href: '', current: false, icon:faPersonSkiing },
+  { name: 'Trekking/Camping', href: '', current: false, icon: faMountainSun },
+  { name: 'Yoga', href: '', current: false, icon:faSpa },
+  { name: 'Surf', href: '', current: false, icon: faWater },
+  { name: 'Escalada', href: '', current: false, icon: faPersonHiking },
+  { name: 'Otros', href: '', current: false, icon: faSwimmer },
 
 ]
 
