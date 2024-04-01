@@ -97,34 +97,34 @@ const BookExperience = ({ experienceCard }) => {
   };
 
   useEffect(() => {
+    // Realizar cálculos incluso si players es cero
     if (selectedExperience) {
-      setTotalPrice(players * selectedExperience.experience_price);
+      const price = parseFloat(selectedExperience.experience_price) || 0;
+      setTotalPrice(players * price);
     }
   }, [players, selectedExperience]);
 
   const handlePlayerChange = (e) => {
-    const numPlayers = parseInt(e.target.value, 10);
+    let numPlayers = parseInt(e.target.value, 10);
+    // Tratar valores vacíos como cero
+    numPlayers = isNaN(numPlayers) ? 0 : numPlayers;
     setPlayers(numPlayers);
   };
+  
 
   const [discount, setDiscount] = useState(0);
 
   useEffect(() => {
-    let discountValue;
+    let discountValue = 0; // Inicializar discountValue a 0 por defecto
   
     if (selectedExperience) {
-      if (players < 1) {
-        // Si el número de jugadores es menor que 1, el descuento es 0
-        discountValue = 0;
-      } else if (players > 10) {
-        // Si el número de jugadores es mayor que 10, se usa el descuento para 10 jugadores
-        discountValue = selectedExperience[`discount_10`];
-      } else {
-        // Construir el nombre del campo del descuento basado en el número de players dentro del rango 1-10
+      if (players > 10) {
+        discountValue = selectedExperience[`discount_10`] || 0;
+      } else if (players > 0) { // Asegurar que players sea mayor que 0 para aplicar un descuento
         const discountFieldName = `discount_${players}`;
-        // Acceder dinámicamente al campo del descuento en el objeto selectedExperience
-        discountValue = selectedExperience[discountFieldName];
+        discountValue = selectedExperience[discountFieldName] || 0;
       }
+      // No se aplica descuento si players es 0
     }
   
     // Aquí puedes hacer lo que necesites con discountValue, por ejemplo, actualizar un estado
@@ -132,13 +132,12 @@ const BookExperience = ({ experienceCard }) => {
   
     // Supongamos que quieres actualizar el estado con este nuevo valor de descuento
    setDiscount(discountValue); // Asegúrate de tener un estado `discount` definido para esto
-  
   }, [players, selectedExperience]); // Dependencias [players, selectedExperience] para reaccionar a cambios
   
-  const letripPrice = parseFloat((totalPrice * 0.05).toFixed(0));
-  const tax = parseFloat((letripPrice * 0.19).toFixed(0));
-  const discountAmount = parseFloat((discount * totalPrice/100).toFixed(0));
-  const totalPriceFull = parseFloat((totalPrice + letripPrice + tax - discountAmount).toFixed(0));
+  const letripPrice = players > 0 ? parseFloat((totalPrice * 0.05).toFixed(0)):0;
+  const tax = players > 0 ?  parseFloat((letripPrice * 0.19).toFixed(0)):0;
+  const discountAmount = players > 0 ?  parseFloat((discount * totalPrice/100).toFixed(0)):0;
+  const totalPriceFull = players > 0 ?  parseFloat((totalPrice + letripPrice + tax - discountAmount).toFixed(0)):0;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
