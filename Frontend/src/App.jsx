@@ -38,11 +38,23 @@ const App = () => {
   const [experienceCard, setExperienceCard] = useState([]);
 
   useEffect(() => {
-        initializeReactGA();
-        const backendUrl = process.env.REACT_APP_BACKEND_URL; // Usa la variable de entorno
-        fetch(`${backendUrl}/experiences`) // Modifica esta línea
-        .then(response => response.json())
-      .then(data => setExperienceCard(data))
+    initializeReactGA();
+    const backendUrl = process.env.REACT_APP_BACKEND_URL; // Asegúrate de que esta variable de entorno esté definida
+    const url = `${backendUrl}/experiences`; // Construye la URL completa
+  
+    fetch(url)
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        if (response.headers.get("content-type")?.includes("application/json")) {
+          return response.json();
+        }
+        throw new TypeError("Oops, we haven't got JSON!");
+      })
+      .then(data => {
+        setExperienceCard(data);
+      })
       .catch(error => console.error('Error:', error));
   }, []);
 
