@@ -10,7 +10,7 @@ const https = require('https');
 
 
   app.use(cors({
-    origin: ['https://letrip13012023-frontend.vercel.app', 'https://www.letriplab.com', 'https://m-develop-front-letrip.vercel.app/'],// URL de tu frontend
+    origin: ['https://letrip13012023-frontend.vercel.app', 'https://www.letriplab.com', 'https://m-develop-front-letrip.vercel.app'],// URL de tu frontend
     methods: ['GET', 'POST', 'PUT', 'DELETE'], // Métodos HTTP permitidos
     credentials: true, // Si estás usando cookies o autenticación
     optionsSuccessStatus: 200
