@@ -15,6 +15,7 @@ const navigation = [
   { name: 'Yoga', href: '', current: false, icon:faSpa },
   { name: 'Surf', href: '', current: false, icon: faWater },
   { name: 'Escalada', href: '', current: false, icon: faPersonHiking },
+  { name: 'Otros', href: '', current: false, icon: faSwimmer },
 
 ]
 
