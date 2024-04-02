@@ -23,7 +23,7 @@ import Carousel from './components/ExperienceView/Carousel';
 import BookExperience from './components/ExperienceView/BookExperience';
 import InboundForm from './components/Form/InboundForm';
 import ExperienceRequest from './components/Form/ExperienceRequest';
-import PayOrder from './components/ExperienceView/PayOrder';
+//import PayOrder from './components/ExperienceView/PayOrder';
 
 import FooterProceso from './components/FooterProceso';
 import TyC from './pages/TyC';
