@@ -23,6 +23,7 @@ import Carousel from './components/ExperienceView/Carousel';
 import BookExperience from './components/ExperienceView/BookExperience';
 import InboundForm from './components/Form/InboundForm';
 import ExperienceRequest from './components/Form/ExperienceRequest';
+import PayOrder from './components/ExperienceView/PayOrder';
 
 import FooterProceso from './components/FooterProceso';
 import TyC from './pages/TyC';
@@ -151,7 +152,6 @@ fetch('https://letrip13012023-backend-lawitec.vercel.app/experiences') // Asegú
           </div>
           </>
         } />
-
         <Route path="/formulariopago/:id" element={
           <>
           <div className="bg-white mx-auto w-full md:px-6 px-8">
@@ -160,7 +160,15 @@ fetch('https://letrip13012023-backend-lawitec.vercel.app/experiences') // Asegú
 
           </div>
           </>
-        } />
+        }/>
+        <Route path="/OrderPago/:id" element={
+          <>
+          <div className="bg-white mx-auto w-full md:px-6 px-8">
+          <div className="flex flex-col justify-between flex-wrap"><Inicio /></div>
+          <div className="pt-24"><PayOrder experienceCard={experienceCard} /></div>
+          </div>
+          </>
+        }/>
       </Routes>
     </Router>
     </ExperienceFormProvider>
