@@ -142,7 +142,6 @@ fetch('https://letrip13012023-backend-lawitec.vercel.app/experiences') // Asegú
                   <div className='pt-10'><PriceExperience experienceCard={experienceCard}/></div>
                   <div className='pt-10'><SelectAvailableDates experienceCard={experienceCard}/></div>
                   <div className='pt-10'><TotalPrice experienceCard={experienceCard}/></div>
-
               </div>
               <div className='justify-self-center'>
                   <div className='pt-36'><Galeria experienceCard={experienceCard} /></div>
@@ -165,7 +164,7 @@ fetch('https://letrip13012023-backend-lawitec.vercel.app/experiences') // Asegú
           <>
           <div className="bg-white mx-auto w-full md:px-6 px-8">
           <div className="flex flex-col justify-between flex-wrap"><Inicio /></div>
-          <div className="pt-24"><PayOrder experienceCard={experienceCard} /></div>
+          {/*<div className="pt-24"><PayOrder experienceCard={experienceCard} /></div> */}
           </div>
           </>
         }/>
