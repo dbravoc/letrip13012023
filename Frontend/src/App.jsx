@@ -172,8 +172,8 @@ const App = () => {
          <Route path="/PayOrder" element={
           <>
           <div className="bg-white mx-auto w-full md:px-6 px-8">
-           {/* <div className="flex flex-col justify-between flex-wrap"><Inicio /></div>
-            <div className='pt-36 '><PayOrder experienceCard={experienceCard} /></div> */}
+          <div className="flex flex-col justify-between flex-wrap"><Inicio /></div>
+          {/*<div className='pt-36 '><PayOrder experienceCard={experienceCard} /></div> */}
           </div>
           </>
         } />
