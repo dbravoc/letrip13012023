@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import ReactGA from 'react-ga';
+import { BranchProvider } from './BranchContext';
 import './App.css';
 import Inicio from './components/Inicio';
 import Experiencias from './components/Experiencias';
@@ -16,7 +17,6 @@ import { ExperienceFormProvider } from './context/ExperienceFormContext';
 import 'react-toastify/dist/ReactToastify.css';
 import Footer from './components/Footer'
 import Footer2 from './components/Footer2'
-
 import ExperienceForm from './pages/ExperienceForm copy 2'
 import Info from './components/ExperienceView/Info';
 import Carousel from './components/ExperienceView/Carousel';
@@ -37,6 +37,7 @@ function initializeReactGA() {
 
 const App = () => {
   const [experienceCard, setExperienceCard] = useState([]);
+<<<<<<< Updated upstream
   const isDevelopment = process.env.NODE_ENV === 'development';
   
 
@@ -55,8 +56,11 @@ const App = () => {
       .catch(error => console.error('Error:', error));
   }, [backendUrl]); // Asegúrate de agregar backendUrl aquí para evitar efectos innecesarios
 
+=======
+>>>>>>> Stashed changes
 
   return (
+    <BranchProvider>
     <ExperienceFormProvider>
     <Router>
       <Routes>
@@ -180,6 +184,8 @@ const App = () => {
       </Routes>
     </Router>
     </ExperienceFormProvider>
+    </BranchProvider>
+
   );
 };
 
