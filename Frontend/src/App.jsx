@@ -39,24 +39,29 @@ const App = () => {
 
   useEffect(() => {
     initializeReactGA();
+    // Usando la variable de entorno para definir la URL del backend
     const backendUrl = process.env.REACT_APP_BACKEND_URL;
     console.log("Backend URL:", backendUrl); // Esto es solo para depuración
   
-    fetch(`${backendUrl}/experiences`, {
-      headers: {
-        'Accept': 'application/json'
-      }
-    })
-    
+    // Asegúrate de utilizar la variable `backendUrl` en tu solicitud fetch
+    fetch(`${backendUrl}/experiences`) // Asegúrate de ajustar '/experiences' al endpoint específico que necesitas
       .then(response => {
         if (!response.ok) {
-          throw new Error('Network response was not ok');
+          throw new Error(`Error: ${response.status}`);
         }
-        return response.json();
+        return response.text(); // Usa text() primero para poder inspeccionar la respuesta.
       })
-      .then(data => setExperienceCard(data))
-      .catch(error => console.error('Error:', error));
+      .then(data => {
+        try {
+          const jsonData = JSON.parse(data); // Intenta parsear como JSON
+          console.log(jsonData);
+        } catch (error) {
+          console.error("No se pudo parsear como JSON", data);
+        }
+      })
+      .catch(error => console.error('Error en la solicitud:', error));
   }, []);
+  
 
 
   return (
