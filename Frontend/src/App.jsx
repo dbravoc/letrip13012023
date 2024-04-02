@@ -41,11 +41,15 @@ const App = () => {
 
   useEffect(() => {
     initializeReactGA();
-    fetch(`${backendUrl}/experiences`) // Usando la variable de entorno
+    const backendUrl = process.env.REACT_APP_BACKEND_URL; // Accediendo a la variable de entorno
+    const fullUrl = `${backendUrl}/experiences`; // Construyendo la URL completa
+    console.log("Haciendo una petición a:", fullUrl); // Imprimiendo la URL en la consola
+    fetch(fullUrl) // Usando la URL completa en la petición fetch
       .then(response => response.json())
       .then(data => setExperienceCard(data))
       .catch(error => console.error('Error:', error));
   }, []);
+  
 
 
   return (
