@@ -39,10 +39,9 @@ const App = () => {
 
   useEffect(() => {
     initializeReactGA();
-    // Define la URL del backend basándose en la variable de entorno
-    // Asegúrate de que REACT_APP_BACKEND_URL esté definida en tus archivos .env
     const backendUrl = process.env.REACT_APP_BACKEND_URL;
-
+    console.log("Backend URL:", backendUrl); // Esto es solo para depuración
+  
     fetch(`${backendUrl}/experiences`)
       .then(response => {
         if (!response.ok) {
