@@ -36,15 +36,22 @@ function initializeReactGA() {
 
 const App = () => {
   const [experienceCard, setExperienceCard] = useState([]);
-  const backendUrl = process.env.REACT_APP_BACKEND_URL; // Accediendo a la variable de entorno 
-  console.log(backendUrl)
+  const isDevelopment = process.env.NODE_ENV === 'development';
+
+  // URLs del backend para diferentes entornos
+  const backendUrl = isDevelopment
+    ? 'https://m-develop-backend-letrip.vercel.app/experiences'
+    : 'https://letrip13012023-backend-lawitec.vercel.app/experiences';
+
   useEffect(() => {
     initializeReactGA();
-    fetch(`${backendUrl}/experiences`) // Usando la variable de entorno
+    console.log("Haciendo una petición a:", backendUrl); // Imprimiendo la URL en la consola
+    fetch(backendUrl)
       .then(response => response.json())
       .then(data => setExperienceCard(data))
       .catch(error => console.error('Error:', error));
-  }, []);
+  }, [backendUrl]); // Asegúrate de agregar backendUrl aquí para evitar efectos innecesarios
+
 
   return (
     <ExperienceFormProvider>
