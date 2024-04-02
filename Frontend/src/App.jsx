@@ -42,7 +42,7 @@ const App = () => {
     // Obtiene la URL del backend a partir de la variable de entorno
     const backendUrl = process.env.REACT_APP_BACKEND_URL;
     
-    // Construye la URL completa para la solicitud fetch
+    // Construye la URL para la solicitud fetch
     const fetchUrl = `${backendUrl}/experiences`;
   
     // Imprime la URL en la consola para depuración
