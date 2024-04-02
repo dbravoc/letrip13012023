@@ -160,7 +160,7 @@ fetch('https://letrip13012023-backend-lawitec.vercel.app/experiences') // Asegú
           </div>
           </>
         }/>
-        <Route path="/OrderPago/:id" element={
+        <Route path="/OrderPago" element={
           <>
           <div className="bg-white mx-auto w-full md:px-6 px-8">
           <div className="flex flex-col justify-between flex-wrap"><Inicio /></div>
