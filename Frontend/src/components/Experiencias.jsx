@@ -1,7 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom'; // Importar Link
+import { useBranch } from '../branch/branchContext'; // Asegúrate de que la ruta sea correcta
 
-const Experiencias = ({ experienceCard }) => {
+
+const Experiencias = () => {
+    // Accediendo a experienceCard a través del contexto
+    const { experienceCard } = useBranch();
+
     // Filtrar las experiencias activas
     const experiencesToShow = experienceCard.filter(experience => experience.Active === true);
 
@@ -14,6 +19,7 @@ const Experiencias = ({ experienceCard }) => {
             experience.technical_level
         ];
     });
+
 
     return (
         <div>
