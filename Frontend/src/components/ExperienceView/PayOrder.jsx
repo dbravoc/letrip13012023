@@ -4,9 +4,10 @@ import { useParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMoneyBills } from '@fortawesome/free-solid-svg-icons';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
-import { PayPalButton } from "react-paypal-button-v2"; 
+import { PayPalButton } from 'react-paypal-button-v2';
 
-//const PayPalButton = window.paypal.Buttons.driver("react", {React ,ReactDOM})   
+
+const PayPalButton = window.paypal.Buttons.driver("react", {React ,ReactDOM})   
 
 //Función para desarrollar pago
 const createOrder = (data, actions) => {
