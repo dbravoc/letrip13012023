@@ -38,14 +38,22 @@ const App = () => {
   const [experienceCard, setExperienceCard] = useState([]);
 
   useEffect(() => {
-        initializeReactGA();
-        const backendUrl = process.env.REACT_APP_BACKEND_URL;
+    initializeReactGA();
+    // Define la URL del backend basándose en la variable de entorno
+    // Asegúrate de que REACT_APP_BACKEND_URL esté definida en tus archivos .env
+    const backendUrl = process.env.REACT_APP_BACKEND_URL;
 
-        fetch(`${backendUrl}/experiences`)
-        .then(response => response.json())
+    fetch(`${backendUrl}/experiences`)
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
       .then(data => setExperienceCard(data))
       .catch(error => console.error('Error:', error));
   }, []);
+
 
   return (
     <ExperienceFormProvider>
