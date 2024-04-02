@@ -39,13 +39,12 @@ const App = () => {
 
   useEffect(() => {
     initializeReactGA();
-fetch('https://letrip13012023-backend-lawitec.vercel.app/experiences') // Asegúrate de usar la URL correcta de tu servidor
-  .then(response => response.json())
-  .then(data => setExperienceCard(data))
-  .catch(error => console.error('Error:', error));
-}, []);
-  
-  
+    const backendUrl = process.env.REACT_APP_BACKEND_URL; // Accediendo a la variable de entorno
+    fetch(`${backendUrl}/experiences`) // Usando la variable de entorno
+      .then(response => response.json())
+      .then(data => setExperienceCard(data))
+      .catch(error => console.error('Error:', error));
+  }, []);
 
 
   return (
