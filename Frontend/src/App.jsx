@@ -42,7 +42,12 @@ const App = () => {
     const backendUrl = process.env.REACT_APP_BACKEND_URL;
     console.log("Backend URL:", backendUrl); // Esto es solo para depuración
   
-    fetch(`${backendUrl}/experiences`)
+    fetch(`${backendUrl}/experiences`, {
+      headers: {
+        'Accept': 'application/json'
+      }
+    })
+    
       .then(response => {
         if (!response.ok) {
           throw new Error('Network response was not ok');
