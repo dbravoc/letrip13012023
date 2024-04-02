@@ -4,9 +4,9 @@ import { useParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMoneyBills } from '@fortawesome/free-solid-svg-icons';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
-// import { PayPalButton } from "react-paypal-button-v2"; 
+ 
 
-/*const PayPalButton = window.paypal.Buttons.driver("react", {React ,ReactDOM})   
+const PayPalButton = window.paypal.Buttons.driver("react", {React ,ReactDOM})   
 
 //Función para desarrollar pago
 const createOrder = (data, actions) => {
@@ -24,7 +24,7 @@ const createOrder = (data, actions) => {
 const onApprove = (data, actions) => {
   return actions.order.capture();
 };
-*/
+
 const BookExperience = ({ experienceCard }) => {
   const [players, setPlayers] = useState(1);
   const { id } = useParams();
@@ -368,14 +368,13 @@ const BookExperience = ({ experienceCard }) => {
                        Confirmar reserva
                     </span>
                   </button>  
- {/*
                             <div>
                            Resto del código del componente 
                           <PayPalButton
                             createOrder={(data, actions) => createOrder(data, actions)}
                             onApprove={(data, actions) => onApprove(data, actions)}
                           />
-                        </div>*/}
+                        </div>
                   
               
       </form>
