@@ -36,8 +36,8 @@ function initializeReactGA() {
 
 const App = () => {
   const [experienceCard, setExperienceCard] = useState([]);
-  const backendUrl = process.env.REACT_APP_BACKEND_URL; // Accediendo a la variable de entorno
-
+  const backendUrl = process.env.REACT_APP_BACKEND_URL; // Accediendo a la variable de entorno 
+  console.log(backendUrl)
   useEffect(() => {
     initializeReactGA();
     fetch(`${backendUrl}/experiences`) // Usando la variable de entorno
