@@ -36,7 +36,10 @@ function initializeReactGA() {
 }
 
 const App = () => {
-  const [experienceCard, setExperienceCard] = useState([]);
+  // Inicialización de Google Analytics
+  React.useEffect(() => {
+    initializeReactGA();
+  }, []);
 
   return (
     <BranchProvider>
