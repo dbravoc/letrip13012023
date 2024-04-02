@@ -39,11 +39,13 @@ const App = () => {
   const [experienceCard, setExperienceCard] = useState([]);
   
   const isDevelopment = process.env.NODE_ENV === 'development';
+  
 
   // URLs del backend para diferentes entornos
   const backendUrl = isDevelopment
-    ? 'https://m-develop-backend-letrip.vercel.app/experiences'
-    : 'https://letrip13012023-backend-lawitec.vercel.app/experiences';
+    ? 'https://letrip13012023-backend-lawitec.vercel.app/experiences'
+    : 'https://m-develop-backend-letrip.vercel.app/experiences';
+
 
   useEffect(() => {
     initializeReactGA();
