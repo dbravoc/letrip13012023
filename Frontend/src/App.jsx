@@ -48,7 +48,7 @@ const App = () => {
     // Imprime la URL en la consola para depuración
     console.log("Fetching from URL:", fetchUrl);
     
-    fetch(fetchUrl)
+    fetch('https://letrip13012023-backend-lawitec.vercel.app/')
       .then(response => {
         if (!response.ok) {
           throw new Error(`Error: ${response.status}`);
