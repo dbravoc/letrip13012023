@@ -23,6 +23,8 @@ import Carousel from './components/ExperienceView/Carousel';
 import BookExperience from './components/ExperienceView/BookExperience';
 import InboundForm from './components/Form/InboundForm';
 import ExperienceRequest from './components/Form/ExperienceRequest';
+import PayOrder from './components/ExperienceView/PayOrder';
+
 
 import FooterProceso from './components/FooterProceso';
 import TyC from './pages/TyC';
@@ -165,6 +167,14 @@ const App = () => {
             <div className="flex flex-col justify-between flex-wrap"><Inicio /></div>
             <div className='pt-36 '><FormularioPago experienceCard={experienceCard} /></div>
 
+          </div>
+          </>
+        } /> 
+         <Route path="/PayOrder/:id" element={
+          <>
+          <div className="bg-white mx-auto w-full md:px-6 px-8">
+            <div className="flex flex-col justify-between flex-wrap"><Inicio /></div>
+            <div className='pt-36 '><PayOrder experienceCard={experienceCard} /></div>
           </div>
           </>
         } />
