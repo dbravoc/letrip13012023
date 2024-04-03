@@ -29,7 +29,7 @@ const onApprove = (data, actions) => {
 
 const BookExperience = () => {
   const { id } = useParams();
-  const { experienceCard } = useBranch();
+  const { experienceCard, availableDatesUrl } = useBranch();
   const selectedExperience = experienceCard.find(e => e.experience_uuid === id);
 
   const [players, setPlayers] = useState(1);
@@ -57,7 +57,7 @@ const BookExperience = () => {
 
   useEffect(() => {
     const loadAvailableDates = async () => {
-      const apiUrl = `https://letrip13012023-backend-lawitec.vercel.app/available_experiences?experience_uuid=${id}`;
+      const apiUrl = `${availableDatesUrl}?experience_uuid=${id}`;
       try {
         const response = await fetch(apiUrl);
         if (!response.ok) {
@@ -80,7 +80,7 @@ const BookExperience = () => {
     };
   
     loadAvailableDates();
-  }, [id]);// Dependencia [id] para reaccionar a cambios en el ID seleccionado
+  }, [id, availableDatesUrl]); // Asegúrate de incluir availableDatesUrl como dependencia
 
   const handleChange = (e) => {
     const { name, value } = e.target;
