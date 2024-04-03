@@ -4,6 +4,8 @@ import { useParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMoneyBills } from '@fortawesome/free-solid-svg-icons';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
+import { useBranch } from './branch/branchContext'; // Asegúrate de que la ruta de importación sea correcta
+
  
 
 const PayPalButton = window.paypal.Buttons.driver("react", {React ,ReactDOM})   
@@ -25,14 +27,15 @@ const onApprove = (data, actions) => {
   return actions.order.capture();
 };
 
-const BookExperience = ({ experienceCard }) => {
-  const [players, setPlayers] = useState(1);
+const BookExperience = () => {
   const { id } = useParams();
+  const { experienceCard } = useBranch();
   const selectedExperience = experienceCard.find(e => e.experience_uuid === id);
+
+  const [players, setPlayers] = useState(1);
   const [totalPrice, setTotalPrice] = useState(0);
   const [availableDates, setAvailableDates] = useState([]);
   const [selectedItem, setSelectedItem] = useState(null);
-
 
   const [formData, setFormData] = useState({
     customer_name: '',

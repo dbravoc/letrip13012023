@@ -1,12 +1,15 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import { CheckIcon } from '@heroicons/react/20/solid';
+import { useBranch } from './branch/branchContext'; // Asegúrate de ajustar la ruta según la estructura de tu proyecto
 
 
 
 
-const FormularioPago = ({ experienceCard }) => {
+
+const FormularioPago = () => {
   const { id } = useParams(); // Obtiene el ID de la URL
+  const { experienceCard } = useBranch(); // Utiliza el hook useBranch para acceder al contexto
   const selectedExperience = experienceCard.find(e => e.experience_uuid === id);
 
   if (!selectedExperience) {
