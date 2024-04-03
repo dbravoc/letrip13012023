@@ -57,7 +57,7 @@ const App = () => {
         } />
 
 
-      <Route path="/inboundform" element={
+       {/* <Route path="/inboundform" element={
           <>
             <div className="mx-auto w-full">
               <div className="mb-36 flex flex-col justify-between flex-wrap"><Inicio /></div>
@@ -115,7 +115,7 @@ const App = () => {
           </div>
           </>
         } /> 
-        {/* <Route path="/PayOrder" element={
+       <Route path="/PayOrder" element={
           <>
           <div className="bg-white mx-auto w-full md:px-6 px-8">
           <div className="flex flex-col justify-between flex-wrap"><Inicio /></div>
