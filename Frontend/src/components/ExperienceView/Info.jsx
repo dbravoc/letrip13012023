@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { faMoneyBills } from '@fortawesome/free-solid-svg-icons';
 import { CheckIcon, XMarkIcon } from '@heroicons/react/24/outline';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useBranch } from './branch/branchContext'; // Asegúrate de que la ruta de importación sea correcta
+import { useBranch } from '../../branch/branchContext'; 
 
 const Info = () => {
   const { id } = useParams(); // Obtiene el ID de la URL

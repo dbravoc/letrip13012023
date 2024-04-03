@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMoneyBills } from '@fortawesome/free-solid-svg-icons';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
-import { useBranch } from './branch/branchContext'; // Asegúrate de que la ruta de importación sea correcta
+import { useBranch } from '../../branch/branchContext'; 
 
  
 

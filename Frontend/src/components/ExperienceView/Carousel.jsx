@@ -2,7 +2,7 @@ import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useBranch } from './branch/branchContext'; // Asegúrate de que la ruta de importación sea correcta
+import { useBranch } from '../../branch/branchContext'; 
 
 
 const Carousel = () => {
