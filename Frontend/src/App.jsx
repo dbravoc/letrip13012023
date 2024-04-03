@@ -49,14 +49,14 @@ const App = () => {
           <>
             <div className="bg-white mx-auto flex flex-col justify-between w-full min-h-screen">
               <div className="flex flex-col justify-between flex-wrap"><Inicio /></div>
-              <div className='pt-36 pb-12'><Experiencias experienceCard={experienceCard} /></div>
+              <div className='pt-36 pb-12'><Experiencias  /></div>
               <div className='flex flex-col justify-between flex-wrap'><Footer /></div>
             </div>
           </>
         } />
 
 
-       {/* <Route path="/inboundform" element={
+       <Route path="/inboundform" element={
           <>
             <div className="mx-auto w-full">
               <div className="mb-36 flex flex-col justify-between flex-wrap"><Inicio /></div>
@@ -93,9 +93,9 @@ const App = () => {
           <>
             <div className="mx-auto w-full">
               <div className="flex flex-col justify-between flex-wrap px-8"><Inicio /></div>
-              <div className="flex-wrap pt-44 relative z-10 px-8"><Carousel experienceCard={experienceCard} /></div>
-              <div className="pt-24 md:px-32 px-8"><Info experienceCard={experienceCard} /></div>
-              <div className="pt-24"><BookExperience experienceCard={experienceCard} /></div>
+              <div className="flex-wrap pt-44 relative z-10 px-8"><Carousel  /></div>
+              <div className="pt-24 md:px-32 px-8"><Info  /></div>
+              <div className="pt-24"><BookExperience  /></div>
               <div className='flex flex-col justify-between flex-wrap'><Footer2 /></div>
 
 
@@ -109,16 +109,16 @@ const App = () => {
           <>
           <div className="bg-white mx-auto w-full md:px-6 px-8">
             <div className="flex flex-col justify-between flex-wrap"><Inicio /></div>
-            <div className='pt-36 '><FormularioPago experienceCard={experienceCard} /></div>
+            <div className='pt-36 '><FormularioPago  /></div>
 
           </div>
           </>
         } /> 
-       <Route path="/PayOrder" element={
+      {/*  <Route path="/PayOrder" element={
           <>
           <div className="bg-white mx-auto w-full md:px-6 px-8">
           <div className="flex flex-col justify-between flex-wrap"><Inicio /></div>
-          {/*<div className='pt-36 '><PayOrder experienceCard={experienceCard} /></div> 
+          {/*<div className='pt-36 '><PayOrder  /></div> 
           </div>
           </>
         } />*/}
