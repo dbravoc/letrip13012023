@@ -1,7 +1,7 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import { CheckIcon } from '@heroicons/react/20/solid';
-import { useBranch } from './branch/branchContext'; // Asegúrate de ajustar la ruta según la estructura de tu proyecto
+import { useBranch } from '../branch/branchContext'; // Asegúrate de ajustar la ruta según la estructura de tu proyecto
 
 
 
