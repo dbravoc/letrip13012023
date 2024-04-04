@@ -8,7 +8,7 @@ import { useBranch } from '../../branch/branchContext';
 
  
 
-import { PayPalButton } from "react-paypal-button-v2";  
+const PayPalButton = window.paypal.Buttons.driver("react", {React ,ReactDOM})   
 
 
 
@@ -35,9 +35,9 @@ const BookExperience = () => {
     });
   };
 
-  const onApprove = (data, actions) => {
-    return actions.order.capture();
-  }; 
+const onApprove = (data, actions) => {
+  return actions.order.capture();
+}; 
 
   const [formData, setFormData] = useState({
     customer_name: '',
