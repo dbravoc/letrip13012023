@@ -367,18 +367,22 @@ const BookExperience = () => {
             </div>
                 
 
-                  <button type="submit" className="text-lg hover:bg-black hover:text-letrip bg-letrip text-black py-4 rounded-md text-center w-full block">
-                    <span className="font-semibold text-2xl">
-                       Confirmar reserva
-                    </span>
-                  </button>  
-                            <div>
-                           Resto del código del componente 
-                          <PayPalButton
-                            createOrder={(data, actions) => createOrder(data, actions)}
-                            onApprove={(data, actions) => onApprove(data, actions)}
-                          />
-                        </div>
+               {/* Botón de confirmar reserva */}
+               <button type="submit" className="text-lg hover:bg-black hover:text-letrip bg-letrip text-black py-4 rounded-md text-center w-full block">
+                <span className="font-semibold text-2xl">
+                  {formData.payment_method === 'paypal' ? 'Pagar con PayPal' : 'Confirmar reserva'}
+                </span>
+              </button>
+
+              {/* Renderizar PayPalButton solo si se selecciona PayPal */}
+              {formData.payment_method === 'paypal' && (
+                <div>
+                  <PayPalButton
+                    createOrder={(data, actions) => createOrder(data, actions)}
+                    onApprove={(data, actions) => onApprove(data, actions)}
+                  />
+                </div>
+              )}
                   
               
       </form>
