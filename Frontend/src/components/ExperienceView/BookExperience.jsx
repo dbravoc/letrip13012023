@@ -8,7 +8,7 @@ import { useBranch } from '../../branch/branchContext';
 
  
 
-const PayPalButton = window.paypal.Buttons.driver("react", {React ,ReactDOM})   
+import { PayPalButton } from "react-paypal-button-v2";  
 
 
 
