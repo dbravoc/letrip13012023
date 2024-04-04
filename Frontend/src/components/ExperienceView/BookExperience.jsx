@@ -10,22 +10,7 @@ import { useBranch } from '../../branch/branchContext';
 
 const PayPalButton = window.paypal.Buttons.driver("react", {React ,ReactDOM})   
 
-//Función para desarrollar pago
-const createOrder = (data, actions) => {
-  return actions.order.create({
-    purchase_units: [
-      {
-        amount: {
-          value: total_price, 
-        },
-      },
-    ],
-  });
-};
 
-const onApprove = (data, actions) => {
-  return actions.order.capture();
-};
 
 const BookExperience = () => {
   const { id } = useParams();
@@ -36,6 +21,23 @@ const BookExperience = () => {
   const [totalPrice, setTotalPrice] = useState(0);
   const [availableDates, setAvailableDates] = useState([]);
   const [selectedItem, setSelectedItem] = useState(null);
+
+  //Función para desarrollar pago
+  const createOrder = (data, actions) => {
+    return actions.order.create({
+      purchase_units: [
+        {
+          amount: {
+            value: total_price, 
+          },
+        },
+      ],
+    });
+  };
+
+  const onApprove = (data, actions) => {
+    return actions.order.capture();
+  }; 
 
   const [formData, setFormData] = useState({
     customer_name: '',
