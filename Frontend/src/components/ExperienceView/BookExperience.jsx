@@ -28,7 +28,7 @@ const BookExperience = () => {
       purchase_units: [
         {
           amount: {
-            value: total_price, 
+            value: "0.1", 
           },
         },
       ],
