@@ -22,22 +22,6 @@ const BookExperience = () => {
   const [availableDates, setAvailableDates] = useState([]);
   const [selectedItem, setSelectedItem] = useState(null);
 
-  //Función para desarrollar pago
-  const createOrder = (data, actions) => {
-    return actions.order.create({
-      purchase_units: [
-        {
-          amount: {
-            value: "0.1", 
-          },
-        },
-      ],
-    });
-  };
-
-const onApprove = (data, actions) => {
-  return actions.order.capture();
-}; 
 
   const [formData, setFormData] = useState({
     customer_name: '',
@@ -200,7 +184,22 @@ const onApprove = (data, actions) => {
          alert('Error al guardar los datos: ' + error.message);
       }
       };
+  //Función para desarrollar pago
+  const createOrder = (data, actions) => {
+    return actions.order.create({
+      purchase_units: [
+        {
+          amount: {
+            value: "0.1", 
+          },
+        },
+      ],
+    });
+  };
 
+  const onApprove = (data, actions) => {
+    return actions.order.capture();
+  }; 
 
   return (
     <div className="mx-0 pt-28 md:px-40 px-8 pb-20 tracking-tight border-t-2 text-gray-900">
