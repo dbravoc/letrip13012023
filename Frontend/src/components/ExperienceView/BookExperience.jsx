@@ -5,16 +5,16 @@ import { faMoneyBills } from '@fortawesome/free-solid-svg-icons';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
 import { useBranch } from '../../branch/branchContext'; 
 import ReactDOM from "react-dom"
+import { usePayPalScriptReducer } from '@paypal/react-paypal-js';
 
  
- 
+const PayPalButton = window.paypal.Buttons.driver("react", {React ,ReactDOM})  
+
 
 
 
 
 const BookExperience = () => {
-  const PayPalButton = window.paypal.Buttons.driver("react", {React ,ReactDOM})  
-
   const { id } = useParams();
   const { experienceCard, availableDatesUrl } = useBranch();
   const selectedExperience = experienceCard.find(e => e.experience_uuid === id);
@@ -390,18 +390,18 @@ const BookExperience = () => {
             </div>
                 
             {formData.payment_method === 'paypal' && (
-    <PayPalButton
-      style={{
-        layout: 'horizontal',
-        color: 'gold',
-        shape: 'rect',
-        label: 'pay',
-      }}
-      createOrder={(data, actions) => createOrder(data, actions)}
-      onApprove={(data, actions) => handleApprove(data, actions)}
-      onError={(err) => handleError(err)}
-      forceReRender={[isPending]} // Para forzar la actualización del componente cuando cambia el estado de PayPal SDK
-    />
+            <PayPalButton
+              style={{
+                layout: 'horizontal',
+                color: 'gold',
+                shape: 'rect',
+                label: 'pay',
+              }}
+              createOrder={(data, actions) => createOrder(data, actions)}
+              onApprove={(data, actions) => handleApprove(data, actions)}
+              onError={(err) => handleError(err)}
+              forceReRender={[isPending]} // Para forzar la actualización del componente cuando cambia el estado de PayPal SDK
+            />
   )}
 
 
