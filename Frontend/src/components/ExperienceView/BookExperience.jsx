@@ -82,6 +82,12 @@ const BookExperience = () => {
         available_date_end: endDate,
         ...item,
       });
+    }else if (name === "payment_method") {
+      // Aquí actualizas el método de pago seleccionado
+      setFormData(prevData => ({
+        ...prevData,
+        payment_method: value,
+      }));
     }
   };
 
@@ -170,7 +176,7 @@ const BookExperience = () => {
 
       // Coloca aquí la lógica de redirección basada en el método de pago seleccionado
       if(formData.payment_method === 'paypal') {
-        window.open('https://paypal.me/letriplab', '_blank');
+        createOrder();
       } else if(formData.payment_method === 'global66') {
         window.open('https://cobros.global66.com/DAVBRA654', '_blank');
       } else {
@@ -368,15 +374,12 @@ const BookExperience = () => {
 
             </div>
                 
+            <button type="submit" className="text-lg hover:bg-black hover:text-letrip bg-letrip text-black py-4 rounded-md text-center w-full block">
+              <span className="font-semibold text-2xl">
+                {formData.payment_method === 'paypal' ? 'Pagar con PayPal' : 'Confirmar reserva'}
+              </span>
+            </button>
 
-               {/* Botón de confirmar reserva */}
-               {formData.payment_method !== 'paypal' && (
-                <button type="submit" className="text-lg hover:bg-black hover:text-letrip bg-letrip text-black py-4 rounded-md text-center w-full block">
-                  <span className="font-semibold text-2xl">
-                    Confirmar reserva
-                  </span>
-                </button>
-              )}
 
                   
               
