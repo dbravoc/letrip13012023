@@ -172,6 +172,22 @@ const BookExperience = () => {
       // Si la respuesta es exitosa, procesar los datos
       const data = await response.json();
 
+      //Función para desarrollar pago
+      const createOrder = (data, actions) => {
+        return actions.order.create({
+          purchase_units: [
+            {
+              amount: {
+                value: totalPriceFull, 
+              },
+            },
+          ],
+        });
+      };
+
+      const onApprove = (data, actions) => {
+        return actions.order.capture();
+      };
       // Coloca aquí la lógica de redirección basada en el método de pago seleccionado
       if(formData.payment_method === 'paypal') {
         createOrder();
@@ -190,22 +206,7 @@ const BookExperience = () => {
       }
       };
   const confirmButtonText = formData.payment_method === 'paypal' ? 'Pagar con PayPal' : 'Confirmar reserva';
-  //Función para desarrollar pago
-  const createOrder = (data, actions) => {
-    return actions.order.create({
-      purchase_units: [
-        {
-          amount: {
-            value: totalPriceFull, 
-          },
-        },
-      ],
-    });
-  };
-
-  const onApprove = (data, actions) => {
-    return actions.order.capture();
-  }; 
+   
 
   return (
     <div className="mx-0 pt-28 md:px-40 px-8 pb-20 tracking-tight border-t-2 text-gray-900">
