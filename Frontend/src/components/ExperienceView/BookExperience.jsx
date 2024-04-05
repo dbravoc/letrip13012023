@@ -132,7 +132,7 @@ const BookExperience = () => {
   }, [players, selectedExperience]); // Dependencias [players, selectedExperience] para reaccionar a cambios
   const handleApprove = (data, actions) => {
     return actions.order.capture().then(function (details) {
-      alert('Transaction completed by ' + details.payer.name.given_name);
+      alert('Transacción completada por ' + details.payer.name.given_name);
     });
   };
   
@@ -172,7 +172,7 @@ const BookExperience = () => {
       return;
     }
     const apiUrl = 'https://letrip13012023-backend-lawitec.vercel.app/sold_experiences'; 
-    createOrder();
+    
   
     try {
       // Llamada a la API para guardar los datos de la experiencia vendidaa/
@@ -220,7 +220,7 @@ const BookExperience = () => {
          alert('Error al guardar los datos: ' + error.message);
       }
       };
-  const confirmButtonText = formData.payment_method === 'paypal' ? 'Pagar con PayPal' : 'Confirmar reserva';
+ 
    
 
   return (
