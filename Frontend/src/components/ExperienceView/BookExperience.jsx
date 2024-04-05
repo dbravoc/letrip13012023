@@ -4,14 +4,17 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMoneyBills } from '@fortawesome/free-solid-svg-icons';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
 import { useBranch } from '../../branch/branchContext'; 
-import { PayPalButtons, usePayPalScriptReducer } from "@paypal/react-paypal-js";
+import ReactDOM from "react-dom"
 
+ 
  
 
 
 
 
 const BookExperience = () => {
+  const PayPalButton = window.paypal.Buttons.driver("react", {React ,ReactDOM})  
+
   const { id } = useParams();
   const { experienceCard, availableDatesUrl } = useBranch();
   const selectedExperience = experienceCard.find(e => e.experience_uuid === id);
@@ -387,7 +390,7 @@ const BookExperience = () => {
             </div>
                 
             {formData.payment_method === 'paypal' && (
-    <PayPalButtons
+    <PayPalButton
       style={{
         layout: 'horizontal',
         color: 'gold',
