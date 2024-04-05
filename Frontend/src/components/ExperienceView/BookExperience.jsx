@@ -191,7 +191,7 @@ const BookExperience = () => {
       purchase_units: [
         {
           amount: {
-            value: total_price, 
+            value: totalPriceFull, 
           },
         },
       ],
@@ -368,12 +368,14 @@ const BookExperience = () => {
             </div>
                 
 
-                {/* Botón de confirmar reserva */}
+               {/* Botón de confirmar reserva */}
+               {formData.payment_method !== 'paypal' && (
                 <button type="submit" className="text-lg hover:bg-black hover:text-letrip bg-letrip text-black py-4 rounded-md text-center w-full block">
-                <span className="font-semibold text-2xl">
-                  {confirmButtonText}
-                </span>
-              </button>
+                  <span className="font-semibold text-2xl">
+                    Confirmar reserva
+                  </span>
+                </button>
+              )}
 
               {/* Renderizar PayPalButton solo si se selecciona PayPal */}
               {formData.payment_method === 'paypal' && (
