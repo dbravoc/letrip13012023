@@ -130,9 +130,16 @@ const BookExperience = () => {
     // Supongamos que quieres actualizar el estado con este nuevo valor de descuento
    setDiscount(discountValue); // Asegúrate de tener un estado `discount` definido para esto
   }, [players, selectedExperience]); // Dependencias [players, selectedExperience] para reaccionar a cambios
-  const handleApprove = (data, actions) => {
+  const onApprove = (data, actions) => {
     return actions.order.capture().then(function (details) {
       alert('Transacción completada por ' + details.payer.name.given_name);
+      // Aquí puedes realizar cualquier acción adicional después de que se haya completado el pago
+      // Por ejemplo, redireccionar a una página de confirmación o mostrar un mensaje de éxito
+    }).catch(function (error) {
+      console.error(error);
+      // Maneja cualquier error que pueda ocurrir durante la captura del pago
+      // Por ejemplo, muestra un mensaje de error al usuario
+      alert('Error al completar la transacción: ' + error.message);
     });
   };
   
@@ -159,9 +166,7 @@ const BookExperience = () => {
     });
   };
 
-  const onApprove = (data, actions) => {
-    return actions.order.capture();
-  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
   
@@ -397,7 +402,7 @@ const BookExperience = () => {
                 label: 'pay',
               }}
               createOrder={(data, actions) => createOrder(data, actions)}
-              onApprove={(data, actions) => handleApprove(data, actions)}
+              onApprove={(data, actions) => onApprove(data, actions)}
               onError={(err) => handleError(err)}
             />
   )}
