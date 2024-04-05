@@ -130,7 +130,6 @@ const BookExperience = () => {
     // Supongamos que quieres actualizar el estado con este nuevo valor de descuento
    setDiscount(discountValue); // Asegúrate de tener un estado `discount` definido para esto
   }, [players, selectedExperience]); // Dependencias [players, selectedExperience] para reaccionar a cambios
-  const [{ isPending }, dispatch] = usePayPalScriptReducer();
   const handleApprove = (data, actions) => {
     return actions.order.capture().then(function (details) {
       alert('Transaction completed by ' + details.payer.name.given_name);
