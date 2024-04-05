@@ -400,7 +400,6 @@ const BookExperience = () => {
               createOrder={(data, actions) => createOrder(data, actions)}
               onApprove={(data, actions) => handleApprove(data, actions)}
               onError={(err) => handleError(err)}
-              forceReRender={[isPending]} // Para forzar la actualización del componente cuando cambia el estado de PayPal SDK
             />
   )}
 
