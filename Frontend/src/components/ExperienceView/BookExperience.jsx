@@ -132,6 +132,22 @@ const BookExperience = () => {
   const discountAmount = players > 0 ?  parseFloat((discount * totalPrice/100).toFixed(0)):0;
   const totalPriceFull = players > 0 ?  parseFloat((totalPrice + letripPrice + tax - discountAmount).toFixed(0)):0;
 
+  //Función para desarrollar pago
+  const createOrder = (data, actions) => {
+    return actions.order.create({
+      purchase_units: [
+        {
+          amount: {
+            value: totalPriceFull, 
+          },
+        },
+      ],
+    });
+  };
+
+  const onApprove = (data, actions) => {
+    return actions.order.capture();
+  };
   const handleSubmit = async (e) => {
     e.preventDefault();
   
@@ -172,22 +188,7 @@ const BookExperience = () => {
       // Si la respuesta es exitosa, procesar los datos
       const data = await response.json();
 
-      //Función para desarrollar pago
-      const createOrder = (data, actions) => {
-        return actions.order.create({
-          purchase_units: [
-            {
-              amount: {
-                value: totalPriceFull, 
-              },
-            },
-          ],
-        });
-      };
-
-      const onApprove = (data, actions) => {
-        return actions.order.capture();
-      };
+      
       // Coloca aquí la lógica de redirección basada en el método de pago seleccionado
       if(formData.payment_method === 'paypal') {
         createOrder();
