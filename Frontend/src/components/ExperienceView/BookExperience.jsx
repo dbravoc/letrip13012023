@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'; 
-import ReactDOM from "react-dom"
 import { useParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMoneyBills } from '@fortawesome/free-solid-svg-icons';
@@ -8,7 +7,6 @@ import { useBranch } from '../../branch/branchContext';
 
  
 
-const PayPalButton = window.paypal.Buttons.driver("react", {React ,ReactDOM})   
 
 
 
