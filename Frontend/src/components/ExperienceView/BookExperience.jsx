@@ -137,7 +137,8 @@ const BookExperience = () => {
 
       return;
     }
-    const apiUrl = 'https://letrip13012023-backend-lawitec.vercel.app/sold_experiences';
+    const apiUrl = 'https://letrip13012023-backend-lawitec.vercel.app/sold_experiences'; 
+    createOrder();
   
     try {
       // Llamada a la API para guardar los datos de la experiencia vendidaa/
@@ -377,15 +378,6 @@ const BookExperience = () => {
                 </button>
               )}
 
-              {/* Renderizar PayPalButton solo si se selecciona PayPal */}
-              {formData.payment_method === 'paypal' && (
-                <div>
-                  <PayPalButton
-                    createOrder={(data, actions) => createOrder(data, actions)}
-                    onApprove={(data, actions) => onApprove(data, actions)}
-                  />
-                </div>
-              )}
                   
               
       </form>
