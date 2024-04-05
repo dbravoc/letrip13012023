@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMoneyBills } from '@fortawesome/free-solid-svg-icons';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
 import { useBranch } from '../../branch/branchContext'; 
+import { PayPalButtons, usePayPalScriptReducer } from "@paypal/react-paypal-js";
 
  
 
@@ -126,6 +127,16 @@ const BookExperience = () => {
     // Supongamos que quieres actualizar el estado con este nuevo valor de descuento
    setDiscount(discountValue); // Asegúrate de tener un estado `discount` definido para esto
   }, [players, selectedExperience]); // Dependencias [players, selectedExperience] para reaccionar a cambios
+  const [{ isPending }, dispatch] = usePayPalScriptReducer();
+  const handleApprove = (data, actions) => {
+    return actions.order.capture().then(function (details) {
+      alert('Transaction completed by ' + details.payer.name.given_name);
+    });
+  };
+  
+  const handleError = (err) => {
+    console.error(err);
+  };
   
   const letripPrice = players > 0 ? parseFloat((totalPrice * 0.05).toFixed(0)):0;
   const tax = players > 0 ?  parseFloat((letripPrice * 0.19).toFixed(0)):0;
@@ -138,7 +149,8 @@ const BookExperience = () => {
       purchase_units: [
         {
           amount: {
-            value: totalPriceFull, 
+            value: totalPriceFull.toFixed(2),
+            currency_code: 'USD', // Cambia esto si necesitas otra moneda
           },
         },
       ],
@@ -374,11 +386,20 @@ const BookExperience = () => {
 
             </div>
                 
-            <button type="submit" className="text-lg hover:bg-black hover:text-letrip bg-letrip text-black py-4 rounded-md text-center w-full block">
-              <span className="font-semibold text-2xl">
-                {formData.payment_method === 'paypal' ? 'Pagar con PayPal' : 'Confirmar reserva'}
-              </span>
-            </button>
+            {formData.payment_method === 'paypal' && (
+    <PayPalButtons
+      style={{
+        layout: 'horizontal',
+        color: 'gold',
+        shape: 'rect',
+        label: 'pay',
+      }}
+      createOrder={(data, actions) => createOrder(data, actions)}
+      onApprove={(data, actions) => handleApprove(data, actions)}
+      onError={(err) => handleError(err)}
+      forceReRender={[isPending]} // Para forzar la actualización del componente cuando cambia el estado de PayPal SDK
+    />
+  )}
 
 
                   
