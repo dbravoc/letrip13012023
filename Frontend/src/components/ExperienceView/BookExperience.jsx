@@ -5,7 +5,6 @@ import { faMoneyBills } from '@fortawesome/free-solid-svg-icons';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
 import { useBranch } from '../../branch/branchContext'; 
 import ReactDOM from "react-dom"
-import { usePayPalScriptReducer } from '@paypal/react-paypal-js';
 
  
 const PayPalButton = window.paypal.Buttons.driver("react", {React ,ReactDOM})  
