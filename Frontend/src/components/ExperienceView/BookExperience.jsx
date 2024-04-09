@@ -393,7 +393,7 @@ const BookExperience = () => {
                 </div> 
                 </div>
 
-              <div className='flex justify-center items-center'> 
+              <div className='flex col-span-5 justify-center items-center'> 
 
               {formData.payment_method === 'paypal' && (
                 
