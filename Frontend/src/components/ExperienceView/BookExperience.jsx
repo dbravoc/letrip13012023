@@ -385,7 +385,7 @@ const BookExperience = () => {
                     name="payment_method"
                     value={formData.payment_method}
                     onChange={handleChange}
-                    className="mmb-3 text-lg font-semibold block w-full p-2 border-b-2 bg-transparent border-yellow-200 text-gray-900 text-center focus:outline-none border-l-0 border-r-0 border-t-0"
+                    className="mmb-3 text-sm font-semibold block w-full p-2 border-b-2 bg-transparent border-yellow-200 text-gray-900 text-center focus:outline-none border-l-0 border-r-0 border-t-0"
                   >
                     <option value="">Selecciona un método de pago</option>
                     <option value="paypal">PayPal</option>
