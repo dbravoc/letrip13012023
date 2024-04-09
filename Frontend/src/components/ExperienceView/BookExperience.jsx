@@ -402,8 +402,8 @@ const BookExperience = () => {
                     style={{
                       layout: 'horizontal',
                       color: 'gold',
-                     
-                      fundingSource: window.paypal.FUNDING.CARD,
+                      shape: 'rect',
+                      label: 'pay',  
                     }}
                     createOrder={(data, actions) => createOrder(data, actions)}
                     onApprove={(data, actions) => onApprove(data, actions)}
