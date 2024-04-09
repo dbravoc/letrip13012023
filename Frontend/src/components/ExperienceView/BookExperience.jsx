@@ -404,11 +404,13 @@ const BookExperience = () => {
                       color: 'gold',
                       shape: 'rect',
                       label: 'pay',  
+                      fundingSource: window.paypal.FUNDING.CARD,
                     }}
                     createOrder={(data, actions) => createOrder(data, actions)}
                     onApprove={(data, actions) => onApprove(data, actions)}
                     onError={(err) => handleError(err)}
-                  />
+                  /> 
+                  
           
                 )}
             
