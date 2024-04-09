@@ -391,7 +391,6 @@ const BookExperience = () => {
                 </div>
 
                 </div> 
-                </div>
 
               <div className='flex col-span-5 justify-center items-center'> 
 
@@ -413,7 +412,8 @@ const BookExperience = () => {
                   
           
                 )}
-            
+              </div>
+
               </div>
               </div >  
 
