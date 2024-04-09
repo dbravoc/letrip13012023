@@ -378,14 +378,14 @@ const BookExperience = () => {
 
                   <label htmlFor="payment_method"><h3 className="flex justify-center text-lg font-bold my-8">Método de pago</h3> </label>
                   
-                  <div className="mb-4 flex flex-row">
+                  <div className="mb-4 flex flex-col">
                   <div>
                   <select
                     id="payment_method"
                     name="payment_method"
                     value={formData.payment_method}
                     onChange={handleChange}
-                    className="mmb-3 text-sm font-semibold block w-full p-2 border-b-2 bg-transparent border-yellow-200 text-gray-900 text-center focus:outline-none border-l-0 border-r-0 border-t-0"
+                    className="mmb-3 text-lg font-semibold block w-full p-2 border-b-2 bg-transparent border-yellow-200 text-gray-900 text-center focus:outline-none border-l-0 border-r-0 border-t-0"
                   >
                     <option value="">Selecciona un método de pago</option>
                     <option value="paypal">PayPal</option>
