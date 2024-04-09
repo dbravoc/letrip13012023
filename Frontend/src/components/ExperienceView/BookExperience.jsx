@@ -391,7 +391,7 @@ const BookExperience = () => {
 
                 </div>
                 {formData.payment_method === 'paypal' && (
-              <div className="col-span-5" style={{ width: '100%' }}>
+              <div className="col-span-5" style={{ width: '150%' }}>
                 <PayPalButton
                   style={{
                     layout: 'horizontal',
