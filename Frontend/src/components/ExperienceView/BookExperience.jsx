@@ -390,15 +390,16 @@ const BookExperience = () => {
                 </div>
 
                 </div> 
-              <div className="w-full mt-8">
+             
                 {formData.payment_method === 'paypal' && (
-                <div className="col-span-5" style={{ width: '100%' }}>
+                <div className="col-span-1">
                   <PayPalButton
                     style={{
                       layout: 'horizontal',
                       color: 'gold',
                       shape: 'rect',
                       label: 'pay',
+                      width: '100%'
 
                     }}
                     createOrder={(data, actions) => createOrder(data, actions)}
@@ -407,7 +408,7 @@ const BookExperience = () => {
                   />
                 </div>
                 )} 
-              </div > 
+              
 
             </div >  
             
