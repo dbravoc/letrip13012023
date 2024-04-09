@@ -394,13 +394,16 @@ const BookExperience = () => {
                 </div>
                 </div >  
 
-              <div className='flex justify-center items-center h-12 w-auto'> 
+              <div className='flex justify-center items-center h-10 w-auto'> 
 
               {formData.payment_method === 'paypal' && (
                 
                   <PayPalButton
                     style={{
+                      layout: 'horizontal',
                       color: 'gold',
+                      shape: 'rect',
+                      label: 'pay',
                     }}
                     createOrder={(data, actions) => createOrder(data, actions)}
                     onApprove={(data, actions) => onApprove(data, actions)}
