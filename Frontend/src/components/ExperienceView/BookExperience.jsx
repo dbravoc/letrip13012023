@@ -398,7 +398,7 @@ const BookExperience = () => {
 
               {formData.payment_method === 'paypal' && (
                 
-                  <PayPalButton
+                  <Button
                     style={{
                       layout: 'horizontal',
                       color: 'gold',
