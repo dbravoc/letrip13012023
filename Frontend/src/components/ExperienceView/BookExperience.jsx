@@ -394,7 +394,7 @@ const BookExperience = () => {
               <div className='w-full'> 
 
               {formData.payment_method === 'paypal' && (
-                <div>
+                
                   <PayPalButton
                     style={{
                       layout: 'horizontal',
@@ -408,7 +408,7 @@ const BookExperience = () => {
                     onApprove={(data, actions) => onApprove(data, actions)}
                     onError={(err) => handleError(err)}
                   />
-                </div>
+          
                 )} 
 
               </div>
