@@ -394,7 +394,7 @@ const BookExperience = () => {
                 </div>
                 </div >  
 
-              <div className='flex justify-center items-center h-24 w-auto'> 
+              <div className='flex justify-center items-center'> 
 
               {formData.payment_method === 'paypal' && (
                 
@@ -404,8 +404,8 @@ const BookExperience = () => {
                       color: 'gold',
                       shape: 'rect',
                       label: 'pay',
-                      height: '100vh', // Corrección: "height" debe estar en minúsculas y el valor como string
-                      width: '100vw'
+                      height: 50, // altura en píxeles
+                      width: '100%'
                     }}
                     createOrder={(data, actions) => createOrder(data, actions)}
                     onApprove={(data, actions) => onApprove(data, actions)}
