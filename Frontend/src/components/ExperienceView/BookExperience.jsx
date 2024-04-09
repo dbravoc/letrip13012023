@@ -402,7 +402,7 @@ const BookExperience = () => {
                       shape: 'rect',
                       label: 'pay',
                       tagline: 'false',
-                      width: 300,
+                      width: 55,  // Corregido para usar '100%' como un string
                       height: 55,
                     }}
                     createOrder={(data, actions) => createOrder(data, actions)}
