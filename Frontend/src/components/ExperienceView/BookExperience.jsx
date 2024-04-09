@@ -391,7 +391,7 @@ const BookExperience = () => {
                 </div>
 
 
-              <div className='flex col-span-5 justify-center items-center'> 
+              <div className='flex col-span-5 justify-center items-center w-full'> 
 
               {formData.payment_method === 'paypal' && (
                 
@@ -400,7 +400,7 @@ const BookExperience = () => {
                       layout: 'horizontal',
                       color: 'gold',
                       shape: 'rect',
-                      label: 'pay',
+                      label: 'paypal',
                       tagline: 'false',
                       width: 55,  // Corregido para usar '100%' como un string
                       height: 55,
