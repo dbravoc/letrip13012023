@@ -394,7 +394,7 @@ const BookExperience = () => {
                 </div>
                 </div >  
 
-              <div className='flex justify-center items-center'> 
+              <div className='flex justify-center items-center w-full'> 
 
               {formData.payment_method === 'paypal' && (
                 
@@ -404,7 +404,6 @@ const BookExperience = () => {
                       color: 'gold',
                       shape: 'rect',
                       label: 'pay',
-                      width: '100%'
                     }}
                     createOrder={(data, actions) => createOrder(data, actions)}
                     onApprove={(data, actions) => onApprove(data, actions)}
