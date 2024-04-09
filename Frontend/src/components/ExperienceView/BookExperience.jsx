@@ -400,7 +400,6 @@ const BookExperience = () => {
                 
                   <PayPalButton className='w-full'
                     style={{
-                      layout: 'horizontal',
                       color: 'gold',
                       shape: 'rect',
                       label: 'pay',  
