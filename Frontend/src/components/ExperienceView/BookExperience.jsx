@@ -403,7 +403,7 @@ const BookExperience = () => {
                       label: 'pay',
                       width: '100%',
                       locale: 'es_ES',
-                      size: 'medium',
+                      size: 'large',
                     }}
                     createOrder={(data, actions) => createOrder(data, actions)}
                     onApprove={(data, actions) => onApprove(data, actions)}
