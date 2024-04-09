@@ -395,7 +395,7 @@ const BookExperience = () => {
 
               {formData.payment_method === 'paypal' && (
                 
-                  <PayPalButton className=' block w-full '
+                  <PayPalButton
                     style={{
                       layout: 'horizontal',
                       color: 'gold',
