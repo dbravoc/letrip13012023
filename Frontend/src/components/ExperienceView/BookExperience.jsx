@@ -378,6 +378,7 @@ const BookExperience = () => {
                         <div className="mb-4">
 
                   <label htmlFor="payment_method"><h3 className="flex justify-center text-lg font-bold my-8">Método de pago</h3> </label>
+                  
                   <select
                     id="payment_method"
                     name="payment_method"
@@ -388,7 +389,6 @@ const BookExperience = () => {
                     <option value="">Selecciona un método de pago</option>
                     <option value="paypal">PayPal</option>
                   </select>
-                </div>
 
 
               <div className='flex justify-center items-center w-full'> 
@@ -412,6 +412,8 @@ const BookExperience = () => {
                   
           
                 )}
+              </div>
+
               </div>
               </div> 
 
