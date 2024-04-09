@@ -375,7 +375,7 @@ const BookExperience = () => {
                         </span> USD en total
                         </li>
 
-                        <div className="mb-4">
+                  <div className="mb-4 flex flex-row">
 
                   <label htmlFor="payment_method"><h3 className="flex justify-center text-lg font-bold my-8">Método de pago</h3> </label>
                   
@@ -391,28 +391,28 @@ const BookExperience = () => {
                   </select>
 
 
-              <div className='flex justify-center items-center w-full'> 
+                  <div className='flex justify-end items-center w-full'> 
 
-              {formData.payment_method === 'paypal' && (
-                
-                  <PayPalButton
-                    style={{
-                      layout: 'horizontal',
-                      color: 'gold',
-                      shape: 'rect',
-                      label: 'paypal',
-                      tagline: 'false',
-                      width: 55,  // Corregido para usar '100%' como un string
-                      height: 55,
-                    }}
-                    createOrder={(data, actions) => createOrder(data, actions)}
-                    onApprove={(data, actions) => onApprove(data, actions)}
-                    onError={(err) => handleError(err)}
-                  /> 
-                  
-          
-                )}
-              </div>
+                  {formData.payment_method === 'paypal' && (
+                    
+                      <PayPalButton
+                        style={{
+                          layout: 'horizontal',
+                          color: 'gold',
+                          shape: 'rect',
+                          label: 'paypal',
+                          tagline: 'false',
+                          width: 55,  // Corregido para usar '100%' como un string
+                          height: 55,
+                        }}
+                        createOrder={(data, actions) => createOrder(data, actions)}
+                        onApprove={(data, actions) => onApprove(data, actions)}
+                        onError={(err) => handleError(err)}
+                      /> 
+                      
+              
+                    )}
+                  </div>
 
               </div>
               </div> 
