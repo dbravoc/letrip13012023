@@ -390,7 +390,6 @@ const BookExperience = () => {
                   </select>
                 </div>
 
-                </div> 
 
               <div className='flex col-span-5 justify-center items-center'> 
 
@@ -402,8 +401,6 @@ const BookExperience = () => {
                       color: 'gold',
                       shape: 'rect',
                       label: 'pay',  
-                      width: '100%' // Asegurarse de que el estilo inline no restrinja el ancho
-
                     }}
                     createOrder={(data, actions) => createOrder(data, actions)}
                     onApprove={(data, actions) => onApprove(data, actions)}
@@ -413,6 +410,7 @@ const BookExperience = () => {
           
                 )}
               </div>
+              </div> 
 
               </div>
               </div >  
