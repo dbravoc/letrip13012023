@@ -402,8 +402,7 @@ const BookExperience = () => {
                     style={{
                       layout: 'horizontal',
                       color: 'gold',
-                      shape: 'rect',
-                      label: 'pay',  
+                     
                       fundingSource: window.paypal.FUNDING.CARD,
                     }}
                     createOrder={(data, actions) => createOrder(data, actions)}
