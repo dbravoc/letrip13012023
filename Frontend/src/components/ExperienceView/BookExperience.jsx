@@ -392,7 +392,6 @@ const BookExperience = () => {
 
                 </div> 
                 </div>
-                </div >  
 
               <div className='flex justify-center items-center'> 
 
@@ -416,6 +415,8 @@ const BookExperience = () => {
                 )}
             
               </div>
+              </div >  
+
 
                   
               
