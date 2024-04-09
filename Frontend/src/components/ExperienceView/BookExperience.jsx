@@ -391,21 +391,25 @@ const BookExperience = () => {
 
                 </div>
 
-            </div>
-                
+            </div>  
             {formData.payment_method === 'paypal' && (
-            <PayPalButton
-              style={{
-                layout: 'horizontal',
-                color: 'gold',
-                shape: 'rect',
-                label: 'pay',
-              }}
-              createOrder={(data, actions) => createOrder(data, actions)}
-              onApprove={(data, actions) => onApprove(data, actions)}
-              onError={(err) => handleError(err)}
-            />
-  )}
+            <div className="flex justify-center"> {/* Agregar un contenedor para centrar el botón */}
+                <PayPalButton
+                  style={{
+                    layout: 'horizontal',
+                    color: 'gold',
+                    shape: 'rect',
+                    label: 'pay',
+                    width: '100%', // Establecer el ancho del botón al 100%
+                    locale: 'es_ES', // Establecer el idioma a español
+
+                  }}
+                  createOrder={(data, actions) => createOrder(data, actions)}
+                  onApprove={(data, actions) => onApprove(data, actions)}
+                  onError={(err) => handleError(err)}
+                />
+            </div>
+            )}
 
 
                   
