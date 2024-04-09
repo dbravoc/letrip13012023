@@ -235,7 +235,7 @@ const BookExperience = () => {
         <div className='pt-2'>
           <h2 className="rounded-2xl text-3xl px-4 py-2 text-left font-bold tracking-tight mb-10">Reserva tu experiencia</h2>
           <form onSubmit={handleSubmit}>
-            <div className='flex flex-col'>
+        <div className='flex flex-col'>
             <div className='md:grid md:grid-cols-5 flex flex-col gap-x-8'>
               <div className='md:col-span-2'>
               <h3 className="rounded-2xl bg-yellow-100 text-gray-900 px-4 py-2 text-xl text-center font-bold mb-10">Ingresa tus datos</h3>
@@ -391,6 +391,9 @@ const BookExperience = () => {
                 </div>
 
                 </div> 
+                </div>
+                </div >  
+
               <div className='w-full'> 
 
               {formData.payment_method === 'paypal' && (
@@ -401,21 +404,13 @@ const BookExperience = () => {
                       color: 'gold',
                       shape: 'rect',
                       label: 'pay',
-                      width: '100%'
-
                     }}
                     createOrder={(data, actions) => createOrder(data, actions)}
                     onApprove={(data, actions) => onApprove(data, actions)}
                     onError={(err) => handleError(err)}
                   />
           
-                )} 
-
-              </div>
-                
-              
-
-            </div >  
+                )}
             
           </div>
 
