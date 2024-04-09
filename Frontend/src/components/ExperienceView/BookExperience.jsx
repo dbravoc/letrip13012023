@@ -401,7 +401,7 @@ const BookExperience = () => {
                       color: 'gold',
                       shape: 'rect',
                       label: 'pay',
-                      height: 100  
+                      height: '100%'  
                     }}
                     createOrder={(data, actions) => createOrder(data, actions)}
                     onApprove={(data, actions) => onApprove(data, actions)}
