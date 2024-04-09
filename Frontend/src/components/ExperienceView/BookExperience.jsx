@@ -379,7 +379,7 @@ const BookExperience = () => {
                   <label htmlFor="payment_method"><h3 className="flex justify-center text-lg font-bold my-8">Método de pago</h3> </label>
                   
                   <div className="mb-4 flex flex-col">
-                  <div>
+                  <div className='mt-4'>
                   <select
                     id="payment_method"
                     name="payment_method"
