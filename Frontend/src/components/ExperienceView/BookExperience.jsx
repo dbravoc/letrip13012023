@@ -389,23 +389,25 @@ const BookExperience = () => {
                   </select>
                 </div>
 
-                </div>
+                </div> 
+              <div className="w-full mt-8">
                 {formData.payment_method === 'paypal' && (
-              <div className="w-full mt-8" style={{ width: '150%' }}>
-                <PayPalButton
-                  style={{
-                    layout: 'horizontal',
-                    color: 'gold',
-                    shape: 'rect',
-                    label: 'pay',
+                <div className="col-span-5" style={{ width: '100%' }}>
+                  <PayPalButton
+                    style={{
+                      layout: 'horizontal',
+                      color: 'gold',
+                      shape: 'rect',
+                      label: 'pay',
 
-                  }}
-                  createOrder={(data, actions) => createOrder(data, actions)}
-                  onApprove={(data, actions) => onApprove(data, actions)}
-                  onError={(err) => handleError(err)}
-                />
-              </div>
-            )}
+                    }}
+                    createOrder={(data, actions) => createOrder(data, actions)}
+                    onApprove={(data, actions) => onApprove(data, actions)}
+                    onError={(err) => handleError(err)}
+                  />
+                </div>
+                )} 
+              </div > 
 
             </div >  
             
