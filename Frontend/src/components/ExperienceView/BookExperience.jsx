@@ -401,7 +401,9 @@ const BookExperience = () => {
                     shape: 'rect',
                     label: 'pay',
                     width: '100%',
-                    text: 'Pagar con PayPal', // Cambiar el texto del botón a español
+                    locale: 'es_ES',
+                    size: 'medium',
+
                   }}
                   createOrder={(data, actions) => createOrder(data, actions)}
                   onApprove={(data, actions) => onApprove(data, actions)}
