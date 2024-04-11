@@ -393,7 +393,7 @@ const BookExperience = () => {
                   </div>
 
 
-                  <div className='flex justify-center items-center' style={{ width: '100%', maxWidth: '5000px' }}> 
+                  <div className='flex justify-center items-center' style={{ width: '100%', maxWidth: '80px' }}> 
 
                   {formData.payment_method === 'paypal' && (
                     
