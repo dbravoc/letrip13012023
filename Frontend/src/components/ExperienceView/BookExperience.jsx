@@ -392,30 +392,25 @@ const BookExperience = () => {
                   </select>
                   </div>
                   
-
                   <div className='flex justify-center items-center mt-4' > 
-
-                  {formData.payment_method === 'paypal' && (
-                    
-                      <PayPalButton
-                        style={{
-                          layout: 'horizontal',
-                          color: 'gold',
-                          shape: 'rect',
-                          label: 'paypal',
-                          tagline: 'false',
-                          width: '100%',
-                          height: 55,  
-                          borderRadius: 30,
-                        }}
-                        createOrder={(data, actions) => createOrder(data, actions)}
-                        onApprove={(data, actions) => onApprove(data, actions)}
-                        onError={(err) => handleError(err)}
-                      /> 
-                      
-                    
-                    )}
-              </div>
+  {formData.payment_method === 'paypal' ? (
+    <PayPalButton
+      style={{
+        layout: 'horizontal',
+        color: 'gold',
+        shape: 'rect',
+        label: 'paypal',
+        tagline: 'false',
+        width: '100%',
+        height: 55,
+        borderRadius: 30,
+      }}
+      createOrder={(data, actions) => createOrder(data, actions)}
+      onApprove={(data, actions) => onApprove(data, actions)}
+      onError={(err) => handleError(err)}
+    />
+  ) : null}
+</div>
               </div>
               </div> 
 
@@ -434,5 +429,5 @@ const BookExperience = () => {
     </div>
   );
 };
-//hola//
+//hola2//
 export default BookExperience;
