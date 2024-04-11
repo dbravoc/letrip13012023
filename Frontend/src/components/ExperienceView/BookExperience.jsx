@@ -396,7 +396,7 @@ const BookExperience = () => {
                   <div className='flex justify-center items-center h-screen  w-screen'> 
 
                   {formData.payment_method === 'paypal' && (
-                    
+                    <div style={{ width: '100%', height: '100%' }}>
                       <PayPalButton
                         style={{
                           layout: 'horizontal',
@@ -404,7 +404,7 @@ const BookExperience = () => {
                           shape: 'rect',
                           label: 'paypal',
                           tagline: 'false',
-                          width: '10%',  // Corregido para usar '100%' como un string
+                          width: '100%',  // Corregido para usar '100%' como un string
                           height: 55,  
                           borderRadius: 30,
                         }}
@@ -413,7 +413,7 @@ const BookExperience = () => {
                         onError={(err) => handleError(err)}
                       /> 
                       
-              
+                      </div>
                     )}
               </div>
               </div>
