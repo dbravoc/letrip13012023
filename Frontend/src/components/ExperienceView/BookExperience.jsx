@@ -391,7 +391,9 @@ const BookExperience = () => {
                     <option value="paypal">PayPal</option>
                   </select>
                   </div>
-                  di
+                  <div> 
+                    
+                  </div>
 
                   <div className='flex justify-center items-center' > 
 
