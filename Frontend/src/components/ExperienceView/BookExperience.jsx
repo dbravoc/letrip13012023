@@ -396,7 +396,7 @@ const BookExperience = () => {
                   <div className='flex justify-center items-center h-screen  w-screen'> 
 
                   {formData.payment_method === 'paypal' && (
-                    <div className="flex justify-center">
+                    <div className="flex justify-center" style={{ display: 'flex', justifyContent: 'center', width: '100%' }}>
                       <PayPalButton
                         style={{
                           layout: 'horizontal',
@@ -404,7 +404,7 @@ const BookExperience = () => {
                           shape: 'rect',
                           label: 'paypal',
                           tagline: 'false',
-                          width: '80%', maxWidth: '100px',
+                          width: '100%'
                           height: 55,  
                           borderRadius: 30,
                         }}
