@@ -393,10 +393,10 @@ const BookExperience = () => {
                   </div>
 
 
-                  <div className='flex justify-center items-center h-screen  w-screen'> 
+                  <div className='flex justify-center items-center' style={{ display: 'flex', justifyContent: 'center', width: '100%' }}> 
 
                   {formData.payment_method === 'paypal' && (
-                    <div className="flex justify-center" style={{ display: 'flex', justifyContent: 'center', width: '100%' }}>
+                    
                       <PayPalButton
                         style={{
                           layout: 'horizontal',
@@ -413,7 +413,7 @@ const BookExperience = () => {
                         onError={(err) => handleError(err)}
                       /> 
                       
-                      </div>
+                    
                     )}
               </div>
               </div>
