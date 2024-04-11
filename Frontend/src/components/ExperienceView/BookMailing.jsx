@@ -12,19 +12,20 @@ const BookMailing = async (emailData) => {
     const response = await resendClient.emails.send({
       from: 'Le trip <david@letriplab.com>',
       to: `${customer_email}, david@letriplab.com, matias@letriplab.com, thomas@letriplab.com`,
-      subject: 'Confirmación de Reserva - Le trip',
+      subject: 'Estás a un paso de reservar tu experiencia deportiva en Le trip',
       html: `
         <h3>¡Hola, ${customer_name}!</h3>
-        <p>Gracias por elegir <strong>Le trip</strong> para vivir una experiencia deportiva inolvidable. Nos complace confirmarte los detalles de tu reserva:</p>
+        <p>Estás a un paso de reservar tu experiencia deportiva en <strong>Le trip</strong>. Sólo debes continuar con el pago a través de tu medio de pago seleccionado. Te recordamos los detalles de tu experiencia escogida:</p>
         <ul>
           <li>Nombre experiencia: ${selectedExperience.experience_name}</li>
           <li>Fecha: ${selectedItem.available_date_start} al ${selectedItem.available_date_end}</li>
           <li>Nº de personas: ${players}</li>
           <li>Precio total: ${totalPriceFull} USD</li>
         </ul>
-        <p>En las próximas horas, uno de nuestros representantes se pondrá en contacto contigo para resolver cualquier duda y enviarte la boleta o factura correspondiente.</p>
-        <p>Estamos emocionados de que vayas a disfrutar una de nuestras experiencias únicas.</p>
-        <p>¡Te esperamos con los brazos abiertos!</p>
+        <p>En caso de no haber concluido el pago, uno de nuestros representantes se pondrá en contacto contigo para resolver cualquier duda y ayudarte con el proceso.</p>
+        <p>¡Prepárate a vivir una experiencia que no olvidarás!</p>
+        <p></p>
+        <p><strong>Equipo Le trip</strong></p>
       `,
     });
 

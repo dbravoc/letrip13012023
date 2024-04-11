@@ -1,34 +1,25 @@
 import React, { useState, useEffect } from 'react'; 
-import ReactDOM from "react-dom"
 import { useParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMoneyBills } from '@fortawesome/free-solid-svg-icons';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
-// import { PayPalButton } from "react-paypal-button-v2"; 
+import { useBranch } from '../../branch/branchContext'; 
+import ReactDOM from "react-dom"
 
-/*const PayPalButton = window.paypal.Buttons.driver("react", {React ,ReactDOM})   
 
-//Función para desarrollar pago
-const createOrder = (data, actions) => {
-  return actions.order.create({
-    purchase_units: [
-      {
-        amount: {
-          value: total_price, 
-        },
-      },
-    ],
-  });
-};
+ 
+const PayPalButton = window.paypal.Buttons.driver("react", {React ,ReactDOM})  
 
-const onApprove = (data, actions) => {
-  return actions.order.capture();
-};
-*/
-const BookExperience = ({ experienceCard }) => {
-  const [players, setPlayers] = useState(1);
+
+
+
+
+const BookExperience = () => {
   const { id } = useParams();
+  const { experienceCard, availableDatesUrl } = useBranch();
   const selectedExperience = experienceCard.find(e => e.experience_uuid === id);
+
+  const [players, setPlayers] = useState(1);
   const [totalPrice, setTotalPrice] = useState(0);
   const [availableDates, setAvailableDates] = useState([]);
   const [selectedItem, setSelectedItem] = useState(null);
@@ -54,7 +45,7 @@ const BookExperience = ({ experienceCard }) => {
 
   useEffect(() => {
     const loadAvailableDates = async () => {
-      const apiUrl = `https://letrip13012023-backend-lawitec.vercel.app/available_experiences?experience_uuid=${id}`;
+      const apiUrl = `${availableDatesUrl}?experience_uuid=${id}`;
       try {
         const response = await fetch(apiUrl);
         if (!response.ok) {
@@ -77,7 +68,7 @@ const BookExperience = ({ experienceCard }) => {
     };
   
     loadAvailableDates();
-  }, [id]);// Dependencia [id] para reaccionar a cambios en el ID seleccionado
+  }, [id, availableDatesUrl]); // Asegúrate de incluir availableDatesUrl como dependencia
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -93,6 +84,12 @@ const BookExperience = ({ experienceCard }) => {
         available_date_end: endDate,
         ...item,
       });
+    }else if (name === "payment_method") {
+      // Aquí actualizas el método de pago seleccionado
+      setFormData(prevData => ({
+        ...prevData,
+        payment_method: value,
+      }));
     }
   };
 
@@ -133,11 +130,42 @@ const BookExperience = ({ experienceCard }) => {
     // Supongamos que quieres actualizar el estado con este nuevo valor de descuento
    setDiscount(discountValue); // Asegúrate de tener un estado `discount` definido para esto
   }, [players, selectedExperience]); // Dependencias [players, selectedExperience] para reaccionar a cambios
+  const onApprove = (data, actions) => {
+    return actions.order.capture().then(function (details) {
+      alert('Transacción completada por ' + details.payer.name.given_name);
+      // Aquí puedes realizar cualquier acción adicional después de que se haya completado el pago
+      // Por ejemplo, redireccionar a una página de confirmación o mostrar un mensaje de éxito
+    }).catch(function (error) {
+      console.error(error);
+      // Maneja cualquier error que pueda ocurrir durante la captura del pago
+      // Por ejemplo, muestra un mensaje de error al usuario
+      alert('Error al completar la transacción: ' + error.message);
+    });
+  };
+  
+  const handleError = (err) => {
+    console.error(err);
+  };
   
   const letripPrice = players > 0 ? parseFloat((totalPrice * 0.05).toFixed(0)):0;
   const tax = players > 0 ?  parseFloat((letripPrice * 0.19).toFixed(0)):0;
   const discountAmount = players > 0 ?  parseFloat((discount * totalPrice/100).toFixed(0)):0;
   const totalPriceFull = players > 0 ?  parseFloat((totalPrice + letripPrice + tax - discountAmount).toFixed(0)):0;
+
+  //Función para desarrollar pago
+  const createOrder = (data, actions) => {
+    return actions.order.create({
+      purchase_units: [
+        {
+          amount: {
+            value: totalPriceFull.toFixed(2),
+            currency_code: 'USD', // Cambia esto si necesitas otra moneda
+          },
+        },
+      ],
+    });
+  };
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -148,7 +176,8 @@ const BookExperience = ({ experienceCard }) => {
 
       return;
     }
-    const apiUrl = 'https://letrip13012023-backend-lawitec.vercel.app/sold_experiences';
+    const apiUrl = 'https://letrip13012023-backend-lawitec.vercel.app/sold_experiences'; 
+    
   
     try {
       // Llamada a la API para guardar los datos de la experiencia vendidaa/
@@ -178,9 +207,10 @@ const BookExperience = ({ experienceCard }) => {
       // Si la respuesta es exitosa, procesar los datos
       const data = await response.json();
 
+      
       // Coloca aquí la lógica de redirección basada en el método de pago seleccionado
       if(formData.payment_method === 'paypal') {
-        window.open('https://paypal.me/letriplab', '_blank');
+        createOrder();
       } else if(formData.payment_method === 'global66') {
         window.open('https://cobros.global66.com/DAVBRA654', '_blank');
       } else {
@@ -195,7 +225,8 @@ const BookExperience = ({ experienceCard }) => {
          alert('Error al guardar los datos: ' + error.message);
       }
       };
-
+ 
+   
 
   return (
     <div className="mx-0 pt-28 md:px-40 px-8 pb-20 tracking-tight border-t-2 text-gray-900">
@@ -204,6 +235,7 @@ const BookExperience = ({ experienceCard }) => {
         <div className='pt-2'>
           <h2 className="rounded-2xl text-3xl px-4 py-2 text-left font-bold tracking-tight mb-10">Reserva tu experiencia</h2>
           <form onSubmit={handleSubmit}>
+            <div className='flex flex-col'>
             <div className='md:grid md:grid-cols-5 flex flex-col gap-x-8'>
               <div className='md:col-span-2'>
               <h3 className="rounded-2xl bg-yellow-100 text-gray-900 px-4 py-2 text-xl text-center font-bold mb-10">Ingresa tus datos</h3>
@@ -343,9 +375,11 @@ const BookExperience = ({ experienceCard }) => {
                         </span> USD en total
                         </li>
 
-                        <div className="mb-4">
 
                   <label htmlFor="payment_method"><h3 className="flex justify-center text-lg font-bold my-8">Método de pago</h3> </label>
+                  
+                  <div className="mb-4 flex flex-col">
+                  <div className='mt-4'>
                   <select
                     id="payment_method"
                     name="payment_method"
@@ -356,26 +390,39 @@ const BookExperience = ({ experienceCard }) => {
                     <option value="">Selecciona un método de pago</option>
                     <option value="paypal">PayPal</option>
                   </select>
-                </div>
+                  </div>
+                  
 
-                </div>
+                  <div className='flex justify-center items-center mt-4' > 
 
-            </div>
-                
+                  {formData.payment_method === 'paypal' && (
+                    
+                      <PayPalButton
+                        style={{
+                          layout: 'horizontal',
+                          color: 'gold',
+                          shape: 'rect',
+                          label: 'paypal',
+                          tagline: 'false',
+                          width: '100%',
+                          height: 55,  
+                          borderRadius: 30,
+                        }}
+                        createOrder={(data, actions) => createOrder(data, actions)}
+                        onApprove={(data, actions) => onApprove(data, actions)}
+                        onError={(err) => handleError(err)}
+                      /> 
+                      
+                    
+                    )}
+              </div>
+              </div>
+              </div> 
 
-                  <button type="submit" className="text-lg hover:bg-black hover:text-letrip bg-letrip text-black py-4 rounded-md text-center w-full block">
-                    <span className="font-semibold text-2xl">
-                       Confirmar reserva
-                    </span>
-                  </button>  
- {/*
-                            <div>
-                           Resto del código del componente 
-                          <PayPalButton
-                            createOrder={(data, actions) => createOrder(data, actions)}
-                            onApprove={(data, actions) => onApprove(data, actions)}
-                          />
-                        </div>*/}
+              </div>
+              </div >  
+
+
                   
               
       </form>

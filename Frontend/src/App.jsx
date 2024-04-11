@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import ReactGA from 'react-ga';
+import { BranchProvider } from './branch/branchContext';
 import './App.css';
 import Inicio from './components/Inicio';
 import Experiencias from './components/Experiencias';
@@ -16,7 +17,6 @@ import { ExperienceFormProvider } from './context/ExperienceFormContext';
 import 'react-toastify/dist/ReactToastify.css';
 import Footer from './components/Footer'
 import Footer2 from './components/Footer2'
-
 import ExperienceForm from './pages/ExperienceForm copy 2'
 import Info from './components/ExperienceView/Info';
 import Carousel from './components/ExperienceView/Carousel';
@@ -24,6 +24,7 @@ import BookExperience from './components/ExperienceView/BookExperience';
 import InboundForm from './components/Form/InboundForm';
 import ExperienceRequest from './components/Form/ExperienceRequest';
 //import PayOrder from './components/ExperienceView/PayOrder';
+
 
 import FooterProceso from './components/FooterProceso';
 import TyC from './pages/TyC';
@@ -36,6 +37,7 @@ function initializeReactGA() {
 }
 
 const App = () => {
+
   const [experienceCard, setExperienceCard] = useState([]);
   
   const isDevelopment = process.env.NODE_ENV === 'development';
@@ -57,23 +59,22 @@ const App = () => {
   }, [backendUrl]); // Asegúrate de agregar backendUrl aquí para evitar efectos innecesarios
 
 
-
   return (
-    <ExperienceFormProvider>
+    <BranchProvider>
     <Router>
       <Routes>
         <Route path="/" element={
           <>
             <div className="bg-white mx-auto flex flex-col justify-between w-full min-h-screen">
               <div className="flex flex-col justify-between flex-wrap"><Inicio /></div>
-              <div className='pt-36 pb-12'><Experiencias experienceCard={experienceCard} /></div>
+              <div className='pt-36 pb-12'><Experiencias  /></div>
               <div className='flex flex-col justify-between flex-wrap'><Footer /></div>
             </div>
           </>
         } />
 
 
-      <Route path="/inboundform" element={
+       <Route path="/inboundform" element={
           <>
             <div className="mx-auto w-full">
               <div className="mb-36 flex flex-col justify-between flex-wrap"><Inicio /></div>
@@ -97,15 +98,6 @@ const App = () => {
           </>
         } />
 
-      <Route path="/pruebas" element={
-          <>
-            <div className="mx-auto w-full md:px-6 px-8">
-              <div className="flex flex-col justify-between flex-wrap"><Inicio /></div>
-              <div className="pt-36 px-12 flex flex-col justify-between flex-wrap relative z-10"><ExperienceForm /></div>
-            </div>
-          </>
-        } /> 
-
             <Route path="/tyc" element={
           <>
             <div className="mx-auto w-full md:px-6 px-8">
@@ -119,9 +111,9 @@ const App = () => {
           <>
             <div className="mx-auto w-full">
               <div className="flex flex-col justify-between flex-wrap px-8"><Inicio /></div>
-              <div className="flex-wrap pt-44 relative z-10 px-8"><Carousel experienceCard={experienceCard} /></div>
-              <div className="pt-24 md:px-32 px-8"><Info experienceCard={experienceCard} /></div>
-              <div className="pt-24"><BookExperience experienceCard={experienceCard} /></div>
+              <div className="flex-wrap pt-44 relative z-10 px-8"><Carousel  /></div>
+              <div className="pt-24 md:px-32 px-8"><Info  /></div>
+              <div className="pt-24"><BookExperience  /></div>
               <div className='flex flex-col justify-between flex-wrap'><Footer2 /></div>
 
 
@@ -129,21 +121,14 @@ const App = () => {
             </div>
           </>
         } /> 
-
-      <Route path="/admin" element={
-          <>
-            <div className="mx-auto w-full md:px-6 px-8">
-              <div className="flex flex-col justify-between flex-wrap"><Inicio /></div>
-              <div className="pt-36 px-12 flex flex-col justify-between flex-wrap relative z-10"><MenuCard /></div>
-            </div>
-          </>
-        } />   
-
         
-        <Route path="/borrar/:id" element={
+
+        <Route path="/formulariopago/:id" element={
           <>
-          <div className="bg-white mx-auto w-full px-2">
+          <div className="bg-white mx-auto w-full md:px-6 px-8">
             <div className="flex flex-col justify-between flex-wrap"><Inicio /></div>
+
+
             <div className='grid grid-cols-1 md:grid-cols-2'>
               <div className='justify-self-center'>
                   <div className='pt-36'><Tarjeta experienceCard={experienceCard} /></div>
@@ -160,26 +145,10 @@ const App = () => {
           </div>
           </>
         } />
-        <Route path="/formulariopago/:id" element={
-          <>
-          <div className="bg-white mx-auto w-full md:px-6 px-8">
-            <div className="flex flex-col justify-between flex-wrap"><Inicio /></div>
-            <div className='pt-36 '><FormularioPago experienceCard={experienceCard} /></div>
-
-          </div>
-          </>
-        }/>
-        <Route path="/OrderPago" element={
-          <>
-          <div className="bg-white mx-auto w-full md:px-6 px-8">
-          {/*<div className="flex flex-col justify-between flex-wrap"><Inicio /></div>
-          <div className="pt-24"><PayOrder experienceCard={experienceCard} /></div> */}
-          </div>
-          </>
-        }/>
       </Routes>
     </Router>
-    </ExperienceFormProvider>
+    </BranchProvider>
+
   );
 };
 

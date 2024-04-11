@@ -3,10 +3,13 @@ import { useParams } from 'react-router-dom';
 import { faMoneyBills } from '@fortawesome/free-solid-svg-icons';
 import { CheckIcon, XMarkIcon } from '@heroicons/react/24/outline';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useBranch } from '../../branch/branchContext'; 
 
-
-const Info = ({ experienceCard }) => {
+const Info = () => {
   const { id } = useParams(); // Obtiene el ID de la URL
+  const { experienceCard } = useBranch(); // Utiliza el hook useBranch para acceder al contexto
+
+  // Encuentra la experiencia seleccionada basada en el ID de los parámetros de la URL
   const selectedExperience = experienceCard.find(e => e.experience_uuid === id);
 
   if (!selectedExperience) {

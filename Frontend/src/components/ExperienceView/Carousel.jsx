@@ -2,9 +2,14 @@ import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useBranch } from '../../branch/branchContext'; 
 
-const Carousel = ({ experienceCard }) => {
+
+const Carousel = () => {
   const { id } = useParams();
+  const { experienceCard } = useBranch(); // Utiliza el hook useBranch para acceder al contexto
+
+  // Encuentra la experiencia seleccionada basada en el ID de los parámetros de la URL
   const selectedExperience = experienceCard.find(e => e.experience_uuid === id);
 
   if (!selectedExperience) {
