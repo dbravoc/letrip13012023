@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ReactGA from 'react-ga';
 import { BranchProvider } from './branch/branchContext';
-import './App.css';https://github.com/dbravoc/letrip13012023/pull/5/conflict?name=Frontend%252Fsrc%252FApp.jsx&ancestor_oid=27b4a937d0f90b35f4bb31263db3f8cf7b87a0da&base_oid=6c2288b86ab556f3eae99322b19a97e877637126&head_oid=e8a411abf99ac3269664d8ea1e25871394c86d41
+import './App.css';
 import Inicio from './components/Inicio';
 import Experiencias from './components/Experiencias';
 import Tarjeta from './pages/Tarjeta';
