@@ -393,7 +393,7 @@ const BookExperience = () => {
                   </div>
 
 
-                  <div className='flex justify-end items-center h-screen  w-screen'> 
+                  <div className='flex justify-center items-center h-screen  w-screen'> 
 
                   {formData.payment_method === 'paypal' && (
                     
@@ -405,7 +405,7 @@ const BookExperience = () => {
                           label: 'paypal',
                           tagline: 'false',
                           width: '100%',  // Corregido para usar '100%' como un string
-                          height: 55,  
+                          height: 80,  
                           borderRadius: 30,
                         }}
                         createOrder={(data, actions) => createOrder(data, actions)}
