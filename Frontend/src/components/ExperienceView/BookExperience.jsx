@@ -404,7 +404,7 @@ const BookExperience = () => {
                           shape: 'rect',
                           label: 'paypal',
                           tagline: 'false',
-                          width: 55,  // Corregido para usar '100%' como un string
+                          width: '100%',  // Corregido para usar '100%' como un string
                           height: 55,  
                           borderRadius: 30,
                         }}
