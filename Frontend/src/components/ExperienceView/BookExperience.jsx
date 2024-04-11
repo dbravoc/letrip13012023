@@ -405,7 +405,8 @@ const BookExperience = () => {
                           label: 'paypal',
                           tagline: 'false',
                           width: 55,  // Corregido para usar '100%' como un string
-                          height: 55,
+                          height: 55,  
+                          borderRadius: 30,
                         }}
                         createOrder={(data, actions) => createOrder(data, actions)}
                         onApprove={(data, actions) => onApprove(data, actions)}
