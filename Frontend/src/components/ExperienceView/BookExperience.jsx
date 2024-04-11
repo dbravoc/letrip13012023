@@ -409,7 +409,7 @@ const BookExperience = () => {
       onApprove={(data, actions) => onApprove(data, actions)}
       onError={(err) => handleError(err)}
     />
-  ) : null}  // Asegúrate de que el botón no se muestra si el método de pago no es PayPal
+  ) : null}
 </div>
               </div>
               </div> 
