@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ReactGA from 'react-ga';
 import { BranchProvider } from './branch/branchContext';
-import './App.css';
+import './App.css';https://github.com/dbravoc/letrip13012023/pull/5/conflict?name=Frontend%252Fsrc%252FApp.jsx&ancestor_oid=27b4a937d0f90b35f4bb31263db3f8cf7b87a0da&base_oid=6c2288b86ab556f3eae99322b19a97e877637126&head_oid=e8a411abf99ac3269664d8ea1e25871394c86d41
 import Inicio from './components/Inicio';
 import Experiencias from './components/Experiencias';
 import Tarjeta from './pages/Tarjeta';
@@ -23,6 +23,7 @@ import Carousel from './components/ExperienceView/Carousel';
 import BookExperience from './components/ExperienceView/BookExperience';
 import InboundForm from './components/Form/InboundForm';
 import ExperienceRequest from './components/Form/ExperienceRequest';
+//import PayOrder from './components/ExperienceView/PayOrder';
 
 
 import FooterProceso from './components/FooterProceso';
@@ -36,10 +37,27 @@ function initializeReactGA() {
 }
 
 const App = () => {
-  // Inicialización de Google Analytics
-  React.useEffect(() => {
+
+  const [experienceCard, setExperienceCard] = useState([]);
+  
+  const isDevelopment = process.env.NODE_ENV === 'development';
+  
+
+  // URLs del backend para diferentes entornos
+  const backendUrl = isDevelopment
+    ? 'https://letrip13012023-backend-lawitec.vercel.app/experiences'
+    : 'https://m-develop-backend-letrip.vercel.app/experiences';
+
+
+  useEffect(() => {
     initializeReactGA();
-  }, []);
+    console.log("Haciendo una petición a:", backendUrl); // Imprimiendo la URL en la consola
+    fetch(backendUrl)
+      .then(response => response.json())
+      .then(data => setExperienceCard(data))
+      .catch(error => console.error('Error:', error));
+  }, [backendUrl]); // Asegúrate de agregar backendUrl aquí para evitar efectos innecesarios
+
 
   return (
     <BranchProvider>
@@ -109,19 +127,24 @@ const App = () => {
           <>
           <div className="bg-white mx-auto w-full md:px-6 px-8">
             <div className="flex flex-col justify-between flex-wrap"><Inicio /></div>
-            <div className='pt-36 '><FormularioPago  /></div>
+
+
+            <div className='grid grid-cols-1 md:grid-cols-2'>
+              <div className='justify-self-center'>
+                  <div className='pt-36'><Tarjeta experienceCard={experienceCard} /></div>
+                  <div className='pt-10'><IncludedNotIncluded experienceCard={experienceCard} /></div>
+                  <div className='pt-10'><PriceExperience experienceCard={experienceCard}/></div>
+                  <div className='pt-10'><SelectAvailableDates experienceCard={experienceCard}/></div>
+                  <div className='pt-10'><TotalPrice experienceCard={experienceCard}/></div>
+              </div>
+              <div className='justify-self-center'>
+                  <div className='pt-36'><Galeria experienceCard={experienceCard} /></div>
+              </div>
+            </div>
 
           </div>
           </>
-        } /> 
-      {/*  <Route path="/PayOrder" element={
-          <>
-          <div className="bg-white mx-auto w-full md:px-6 px-8">
-          <div className="flex flex-col justify-between flex-wrap"><Inicio /></div>
-          {/*<div className='pt-36 '><PayOrder  /></div> 
-          </div>
-          </>
-        } />*/}
+        } />
       </Routes>
     </Router>
     </BranchProvider>
