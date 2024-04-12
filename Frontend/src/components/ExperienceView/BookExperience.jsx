@@ -40,7 +40,14 @@ const BookExperience = () => {
     customer_tax:'',
     total_price:''
   });
+  const [paypalButtonRendered, setPayPalButtonRendered] = useState(false);
 
+  useEffect(() => {
+    // Restablecer el estado de renderizado del botón de PayPal cuando cambia el método de pago
+    setPayPalButtonRendered(false);
+  }, [formData.payment_method]);
+  
+  
 
 
   useEffect(() => {
@@ -392,25 +399,26 @@ const BookExperience = () => {
                   </select>
                   </div>
                   
-                {formData.payment_method && formData.payment_method === 'paypal' ? (
-                  <div className='flex justify-center items-center mt-4' > 
-                    <PayPalButton
-                      style={{
-                        layout: 'horizontal',
-                        color: 'gold',
-                        shape: 'rect',
-                        label: 'paypal',
-                        tagline: 'false',
-                        width: '100%',
-                        height: 55,
-                        borderRadius: 30,
-                      }}
-                      createOrder={(data, actions) => createOrder(data, actions)}
-                      onApprove={(data, actions) => onApprove(data, actions)}
-                      onError={(err) => handleError(err)}
-                    />
-                  </div>
-                ) : null}
+                  {formData.payment_method && formData.payment_method === 'paypal' && !paypalButtonRendered ? (
+  <div className='flex justify-center items-center mt-4' > 
+    <PayPalButton
+      style={{
+        layout: 'horizontal',
+        color: 'gold',
+        shape: 'rect',
+        label: 'paypal',
+        tagline: 'false',
+        width: '100%',
+        height: 55,
+        borderRadius: 30,
+      }}
+      createOrder={(data, actions) => createOrder(data, actions)}
+      onApprove={(data, actions) => onApprove(data, actions)}
+      onError={(err) => handleError(err)}
+    />
+    {setPayPalButtonRendered(true)}
+  </div>
+) : null}
               </div>
               </div> 
 
